@@ -1,0 +1,563 @@
+[
+  {
+    "Tag": "0-0",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "咦？是不认识的人呢"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "你从何而来"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:人间之里@外界"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "哦？这样啊，那么你的名字是？"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "rename"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "这个名字，我记下了"
+        }
+      }
+    ]
+  },
+  {
+    "Tag": "1-0",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "这是1-0的剧本"
+        }
+      }
+    ]
+  },
+  {
+    "Tag": "1-4",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "右侧",
+        "Face": "",
+        "Text": {
+          "Ch": "你好呀，最近忙吗"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:忙@不忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:忙@不忙@很不忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:忙@不是很忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:不忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:还行"
+        }
+      },
+      {
+        "Branch": "1",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "还好啦，也不是很忙"
+        }
+      },
+      {
+        "Branch": "2",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "唉，最近忙死了"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "右侧",
+        "Face": "",
+        "Text": {
+          "Ch": "我们换个话题吧"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "music:gezi的主题曲"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "backImage:哇啊的"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "倒数第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "只要不要停下来"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "道路就会不断延伸"
+        }
+      }
+    ]
+  },
+  {
+    "Tag": "1-1",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "这是1-1的剧本"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "右侧",
+        "Face": "",
+        "Text": {
+          "Ch": "你好呀，最近忙吗"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "好呀"
+        }
+      }
+    ]
+  },
+  {
+    "Tag": "1-2",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "这是1-2的剧本"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "灵梦",
+        "Position": "右侧",
+        "Face": "",
+        "Text": {
+          "Ch": "你好呀，最近忙吗"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "请进行第一个选项"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:忙@不忙"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "选择完毕"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "请进行第一个选项"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "指令",
+        "Position": "",
+        "Face": "",
+        "Text": {
+          "Ch": "select:俺选B@俺选A"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "选择完毕"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "早苗",
+        "Position": "左侧",
+        "Face": "",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      }
+    ]
+  },
+  {
+    "Tag": "test-0",
+    "Operations": [
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "右侧",
+        "Face": "开心",
+        "Text": {
+          "Ch": "第一句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "震惊",
+        "Text": {
+          "Ch": "第二句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "右侧",
+        "Face": "开心",
+        "Text": {
+          "Ch": "第三句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "震惊",
+        "Text": {
+          "Ch": "第四句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "生气",
+        "Text": {
+          "Ch": "第五句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "右侧",
+        "Face": "伤心",
+        "Text": {
+          "Ch": "第六句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "右侧",
+        "Face": "开心",
+        "Text": {
+          "Ch": "第七句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "震惊",
+        "Text": {
+          "Ch": "第八句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "生气",
+        "Text": {
+          "Ch": "第九句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "右侧",
+        "Face": "伤心",
+        "Text": {
+          "Ch": "第十句话"
+        }
+      },
+      {
+        "Branch": "",
+        "Chara": "popko",
+        "Position": "左侧",
+        "Face": "开心",
+        "Text": {
+          "Ch": "第十一句话"
+        }
+      }
+    ]
+  }
+]

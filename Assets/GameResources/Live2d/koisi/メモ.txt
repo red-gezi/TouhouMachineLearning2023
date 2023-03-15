@@ -1,0 +1,6 @@
+Zキー　笑顔(ParamCheek)
+Xキー  腕B表示(ParamTear) 
+Cキー  ハート表示(ParamRage)
+
+Qキー　腕パタパタ
+Wキー　電話もしもし

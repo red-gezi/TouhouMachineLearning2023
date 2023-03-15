@@ -1,0 +1,18 @@
+{
+    "name": "TouHouMachineLearning",
+    "rootNamespace": "",
+    "references": [
+        "GUID:836a140971c543d4aa13d64b7906ec66",
+        "GUID:656e461844099ae43a609ff6109b0877",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

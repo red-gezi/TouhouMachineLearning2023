@@ -1,0 +1,76 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using Server.Data
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a services.</p>
+
+ <Row Gutter="(48, 40)">
+	@for (int i = 0; i < 15; i++)
+	{
+		@Card();
+		@*int num = i;
+			<AntDesign.Col Span = "6" >Gezi @num</AntDesign.Col>*@
+	}
+</Row>
+
+
+@code {
+	RenderFragment Card()
+	{
+		return
+	@<Template>
+				<AntDesign.Col Span = "6" >
+				<Card Style="width:300px;" Bordered Cover="coverTemplate" >
+				<CardMeta AvatarTemplate="@avatarTemplate" Title="Meta Card" Description="This is the description" />
+			</Card> 
+			</AntDesign.Col>
+	</Template>;
+	}
+	RenderFragment avatarTemplate = @<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></Avatar>;
+
+    RenderFragment coverTemplate = @<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />;
+}
+
+@*@if (forecasts == null)
+	{
+	<p><em>Loading...</em></p>
+	}
+	else
+	{
+
+	<table class="table">
+	<thead>
+	<tr>
+	<th>Date</th>
+	<th>Temp. (C)</th>
+	<th>Temp. (F)</th>
+	<th>Summary</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var forecast in forecasts)
+	{
+	<tr>
+	<td>@forecast.Date.ToShortDateString()</td>
+	<td>@forecast.TemperatureC</td>
+	<td>@forecast.TemperatureF</td>
+	<td>@forecast.Summary</td>
+	</tr>
+	}
+	</tbody>
+	</table>
+	}*@
+
+@code {
+	private WeatherForecast[]? forecasts;
+
+	protected override async Task OnInitializedAsync()
+	{
+		forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+	}
+}

@@ -1,0 +1,98 @@
+﻿@inherits LayoutComponentBase
+@inject MessageService message
+@inject DiyInfo diyInfo;
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using MongoDB.Driver;
+
+@code {
+	bool isLogin = false;
+	string input_user = "";
+	string input_password = "";
+	public static PlayerInfo? userInfo = null;
+}
+<div class="page">
+	<div >
+		<NavMenu />
+	</div>
+	<main>
+	   <div class="top-row px">
+			@if (!isLogin)
+			{
+
+					<Input style="width:150px" placeholder="账号" @bind-Value="input_user" />
+					<Input style="width:150px" placeholder="密码" @bind-Value="input_password" />
+					<Button @onclick="_ => Login()">登录</Button>
+			}
+			else
+			{
+					<Button Type="link">欢迎你，陌生而可敬的 @userInfo?.Name </Button>
+					<Button @onclick="_ => Logout()">登出</Button>
+			}
+	</div>
+		<article class="content px-4">
+			@Body
+		</article>
+	</main>
+</div>
+
+@code {
+	protected override void OnAfterRender(bool firstRender)
+	{
+		if (firstRender)
+		{
+			CheckUserInfo();
+			StateHasChanged();
+			InvokeAsync(StateHasChanged);
+
+		}
+	}
+	async void CheckUserInfo()
+	{
+		if (await localStorage.ContainKeyAsync("user"))
+		{
+			string user = await localStorage.GetItemAsync<string>("user");
+			string password = await localStorage.GetItemAsync<string>("password");
+			userInfo = MongoDbCommand.Login(input_user, input_password);
+			if (userInfo != null)
+			{
+				
+				isLogin = true;
+				diyInfo.userInfo=userInfo;
+				StateHasChanged();
+				InvokeAsync(StateHasChanged);
+
+			}
+		}
+	}
+	async void Login()
+	{
+		userInfo = MongoDbCommand.Login(input_user, input_password);
+		if (userInfo != null)
+		{
+			isLogin = true;
+			diyInfo.userInfo=userInfo;
+
+			await localStorage.SetItemAsync("user", input_user);
+			await localStorage.SetItemAsync("password", input_password);
+			StateHasChanged();
+			await message.Success("登陆成功");
+		}
+		else
+		{
+			StateHasChanged();
+			await message.Error("登陆失败");
+		}
+		InvokeAsync(StateHasChanged);
+
+	}
+	async void Logout()
+	{
+		isLogin = false;
+		diyInfo.userInfo = null;
+		await localStorage.RemoveItemAsync("user");
+		await localStorage.RemoveItemAsync("password");
+		StateHasChanged();
+		InvokeAsync(StateHasChanged);
+		await message.Warning("退出登录状态");
+	}
+}

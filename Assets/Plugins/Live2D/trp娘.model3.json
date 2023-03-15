@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "trp娘.moc3",
+		"Textures": [
+			"trp娘.1024/texture_00.png"
+		],
+		"DisplayInfo": "trp娘.cdi3.json"
+	}
+}

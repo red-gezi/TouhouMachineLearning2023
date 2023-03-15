@@ -1,0 +1,2 @@
+G:\UnityProject\TouhouMachineLearning2022\obj\Debug\GameCard.csproj.AssemblyReference.cache
+G:\UnityProject\TouhouMachineLearning2022\obj\Debug\GameCard.csproj.CoreCompileInputs.cache

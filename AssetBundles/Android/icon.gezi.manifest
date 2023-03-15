@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 1393971442
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 68b2088366306c47596772bcbe3d1b67
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f267fd2d8bcb1179236b6179ac5313bc
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/GameResources/Icon/\u5355.png"
+- Assets/GameResources/Icon/Shintoism.png
+- "Assets/GameResources/Icon/\u591A.png"
+- Assets/GameResources/Icon/Z5G`$I(_%6(A0R52(L}]]BJ.png
+- Assets/GameResources/Icon/Silver.png
+- Assets/GameResources/Icon/Copper.png
+- Assets/GameResources/Icon/Neutral.png
+- Assets/GameResources/Icon/Buddhism.png
+- "Assets/GameResources/Icon/\u5361\u7EC4.png"
+- Assets/GameResources/Icon/2BN39VO]SXZRYK1L`M(73JM.png
+- Assets/GameResources/Icon/Leader.png
+- Assets/GameResources/Icon/Technology.png
+- Assets/GameResources/Icon/1Y]SO~}QMK45R79)JK_Z{9R.png
+- Assets/GameResources/Icon/Gold.png
+- Assets/GameResources/Icon/Taoism.png
+Dependencies: []

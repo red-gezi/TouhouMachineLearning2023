@@ -1,0 +1,50 @@
+﻿//代表当前ui组件的状态
+namespace TouhouMachineLearningSummary.GameEnum
+{
+    public enum MenuState
+    {
+        //登录前
+        Login,
+        //一级页面
+        Single,//单人页面
+               //故事关卡选择页面-采用组件-用户信息-地图
+               //①牌组选择页面-卡牌列表-卡组列表
+               //②牌组修改页面-卡牌列表-牌库列表-筛选器
+               //练习页面
+               //①牌组选择页面-卡牌列表-卡组列表
+               //②牌组修改页面-卡牌列表-牌库列表-筛选器
+        Multiplayer,//多人页面
+                    //休闲页面
+                    //对战页面
+                    //牌组选择页面
+                    //牌组修改页面
+                    //竞技场页面
+        CardLibrary,//牌库查看页面-用户信息-牌库列表-筛选器
+                    //③卡牌合成/分解页面
+        Shrine,
+        Collect,//收藏页面
+                //成就页面
+                //称号页面
+                //音乐
+                //CG
+                //制作组/贡献名单
+        Config,
+        //二级页面
+        LevelSelect,
+        PracticeConfig,
+        //单人卡组选择模式
+        LevelModeDeckSelect,
+        PracticeModeDeckSelect,
+        //多人卡组选择模式
+        CasualModeDeckSelect,
+        RankModeDeckSelect,
+        ArenaModeDeckSelect,
+
+        CampSelect,
+        CardListChange,
+        CardDetail,
+        //场景书页
+        WaitForBattle,
+        ScenePage,
+    }
+}

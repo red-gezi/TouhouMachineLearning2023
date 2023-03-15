@@ -1,0 +1,186 @@
+﻿@using System.ComponentModel
+@using AntDesign.TableModels
+@using AntDesign.Charts
+@using Title = AntDesign.Charts.Title
+@page "/Plan"
+
+
+<PageTitle>计划任务</PageTitle>
+<SimpleSelect DefaultValue="lucy" Style="width:120px;" OnSelectedItemChanged="SelectChange" >
+	<SelectOptions>
+		<SimpleSelectOption Value="close" Label="停服"></SimpleSelectOption>
+		<SimpleSelectOption Value="gift" Label="奖励"></SimpleSelectOption>
+		<SimpleSelectOption Value="mail" Label="邮件"></SimpleSelectOption>
+	</SelectOptions>
+</SimpleSelect>
+<SimpleSelect DefaultValue="立刻" Style="width:120px;" OnSelectedItemChanged="SelectChange" >
+	<SelectOptions>
+		<SimpleSelectOption Value="close" Label="立刻"></SimpleSelectOption>
+		<SimpleSelectOption Value="gift" Label="定时"></SimpleSelectOption>
+		<SimpleSelectOption Value="mail" Label="延时"></SimpleSelectOption>
+	</SelectOptions>
+</SimpleSelect>
+
+@code {
+	string txtValue { get; set; }
+	public static string CurrentCommandType { get; set; }
+	public void SelectChange(string value)
+	{
+		CurrentCommandType = value;
+		Console.WriteLine($"选择了{CurrentCommandType}");
+		StateHasChanged();
+	}
+	public void Click()
+	{
+		switch (CurrentCommandType)
+		{
+			case ("gift"): PlanManager.Creat(() => Console.WriteLine("礼物"), 1, 0); break;
+			case ("stop"): PlanManager.Creat(() => Console.WriteLine("停服"), 1, 0); break;
+			case ("mail"): PlanManager.Creat(() => Console.WriteLine("邮件"), 1, 0); break;
+			default: break;
+		}
+		Console.WriteLine($"按下{CurrentCommandType}按钮");
+	}
+	public static void Click1()
+	{
+
+	}
+}
+<Button @onclick="Click">创建</Button>
+@if (CurrentCommandType == "mail")
+{
+			<Input Placeholder="标题" @bind-Value="@txtValue"  />
+	<Text>@txtValue</Text>
+			<TextArea  Placeholder="内容"  Rows="4" @bind-Value="@txtValue"   />
+	<Text>@txtValue</Text>
+}
+
+@*<Table TItem="Data" DataSource="@data">
+	<AntDesign.Column @bind-Field="@context.CommandType"></AntDesign.Column>
+	<AntDesign.Column @bind-Field="@context.TriggerType"></AntDesign.Column>
+	<AntDesign.Column @bind-Field="@context.TriggerTime"></AntDesign.Column>
+	<AntDesign.Column @bind-Field="@context.DetailContent"></AntDesign.Column>
+	<ActionColumn Title="Action">
+	<Space Size=@("middle")>
+	<SpaceItem><a>取消</a></SpaceItem>
+	</Space>
+	</ActionColumn>
+	</Table>*@
+
+@code {
+	Data[] data = new Data[]
+			{
+		new()
+		{
+		   CommandType="关服",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="还有5分钟即将关服"
+		},
+		new()
+		{
+		   CommandType="礼物",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="这是十个纠缠之缘"
+		},
+		new()
+		{
+		   CommandType="礼物",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="这是十个纠缠之缘"
+		},
+		new()
+		{
+		   CommandType="礼物",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="这是十个纠缠之缘"
+		},
+		new()
+		{
+		   CommandType="礼物",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="这是十个纠缠之缘"
+		},
+		new()
+		{
+		   CommandType="邮件",
+		   TriggerType="定时",
+		   TriggerTime=DateTime.Today.AddHours(4).AddMinutes(0).AddSeconds(0),
+		   DetailContent="亲爱的用户，你们游玩本游戏..."
+		}
+			};
+
+	public class Data
+	{
+		[DisplayName("类型")]
+		public string CommandType { get; set; }
+		[DisplayName("触发方式")]
+		public string TriggerType { get; set; }
+		[DisplayName("触发时间点")]
+		public DateTime TriggerTime { get; set; }
+		[DisplayName("触发内容")]
+		public string DetailContent { get; set; }
+	}
+}
+<Rose Data="data1" Config="config1" />
+
+ @code {
+	 readonly object[] data1 =
+    {
+        new
+        {
+            type = "北国人",
+            value = 5
+        },
+        new
+        {
+            type = "松鼠党",
+            value = 25
+        },
+        new
+        {
+            type = "帝国",
+            value = 20
+        },
+        new
+        {
+            type = "群岛",
+            value = 15
+        },
+        new
+        {
+            type = "怪兽",
+            value = 10
+        }
+    };
+
+    readonly RoseConfig config1 = new RoseConfig
+    {
+        ForceFit = true,
+        Title = new Title
+        {
+            Visible = true,
+            Text = "对战阵营选择"
+        },
+        Description = new Description
+        {
+            Visible = true,
+            Text ="北国人注定摇尾乞怜"
+        },
+        Radius = 0.8,
+        RadiusField = "value",
+        CategoryField = "type",
+        ColorField = "type",
+        Label = new RoseLabel
+        {
+            Visible = true,
+            Type = "outer"
+            @*content= (text) => text.value,*@
+        }
+    };
+
+}

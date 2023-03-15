@@ -1,0 +1,4 @@
+G:\UnityProject\TouhouMachineLearning2022\obj\Debug\TouHouMachineLearning.csproj.AssemblyReference.cache
+G:\UnityProject\TouhouMachineLearning2022\obj\Debug\TouHouMachineLearning.csproj.CoreCompileInputs.cache
+D:\vs2022-Project\TouhouMachineLearning2022\obj\Debug\TouHouMachineLearning.csproj.AssemblyReference.cache
+D:\vs2022-Project\TouhouMachineLearning2022\obj\Debug\TouHouMachineLearning.csproj.CoreCompileInputs.cache

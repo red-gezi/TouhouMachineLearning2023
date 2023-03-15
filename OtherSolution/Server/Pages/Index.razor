@@ -1,0 +1,24 @@
+﻿@page "/"
+@inject DiyInfo info;
+@*<Input  Placeholder="战力" @bind-Value="@info?.userInfo?.UID"></Input>*@
+<Button>"@info?.userInfo?.UID"</Button>
+
+<PageTitle>Index</PageTitle>
+
+<h1>当前版本 V22.11.10</h1>
+<h1>当前在线人数 @OnlineUserManager.OnlineUserList.Count </h1>
+<button @onclick="StopServer">停服 </button>
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{
+	int num=>OnlineUserManager.OnlineUserList.Count;
+
+	public void StopServer()
+	{
+		Console.WriteLine("按下停服按钮");
+		PlanManager.Creat(()=>Console.WriteLine("停服") ,1,0);
+	}
+}

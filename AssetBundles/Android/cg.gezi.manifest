@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3032512288
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f1ed4da4d7bd3c0072ef027b7ded2e15
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ff414f606ea1972259b080d7bcf51689
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/GameResources/CG/\u7384\u6B66\u6DA7.png"
+- "Assets/GameResources/CG/\u5C71\u811A.png"
+- "Assets/GameResources/CG/\u7CBE\u7075.png"
+Dependencies: []

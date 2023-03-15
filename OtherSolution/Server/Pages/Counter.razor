@@ -1,0 +1,24 @@
+﻿@page "/gameresults"
+
+@code {
+    private static int currentCount = 0;
+}
+<p >点击数: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="()=>currentCount++">Click me</button>
+
+
+@code{
+	protected override void OnInitialized()
+	{
+		//Task.Run(async () =>
+		//{
+		//	while(true)
+		//	{
+		//		await InvokeAsync(StateHasChanged);
+		//		await Task.Delay(500);
+		//	}
+		//});
+	}
+
+}

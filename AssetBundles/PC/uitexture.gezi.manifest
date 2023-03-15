@@ -1,0 +1,54 @@
+ManifestFileVersion: 0
+CRC: 3238053119
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: abefccaf6c4b4a684a1720cdd3219350
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f52ba32c49b512dc5c9771910e02f2e4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 84
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/GameResources/UITexture/\u7075\u68A6.png"
+- "Assets/GameResources/UITexture/\u4E3B\u4F53.png"
+- "Assets/GameResources/UITexture/\u5F39\u7A97\u7EB9\u7406.psd"
+- Assets/GameResources/UITexture/LHE74AT9X0VH9EEUUBZE0`Q.png
+- Assets/GameResources/UITexture/9PY8{4ROGW1F(0X2_GU3ZHL.png
+- Assets/GameResources/UITexture/2C6(QEI[5VEHX{H[X$}{4GF.png
+- "Assets/GameResources/UITexture/\u9F7F\u8F6E2.psd"
+- Assets/GameResources/UITexture/K5UXYI@WGP(PQT@CP(CEQZT.png
+- "Assets/GameResources/UITexture/\u6A21\u5F0F\u9009\u62E9.png"
+- Assets/GameResources/UITexture/A$`GG`AVGRZXG3E2E)3A[HT.png
+- Assets/GameResources/UITexture/U$7WQP2XH[K4}YD%C5[~3VT.png
+- "Assets/GameResources/UITexture/\u5361\u724C\u6846.png"
+- "Assets/GameResources/UITexture/\u5377\u8F74.png"
+- "Assets/GameResources/UITexture/\u7AD6\u5F62ui 1.psd"
+- "Assets/GameResources/UITexture/\u6A59.png"
+- Assets/GameResources/UITexture/[Q`LJB@(%FBQQYW1{`4K__E.png
+- "Assets/GameResources/UITexture/\u8774\u8776.psd"
+- "Assets/GameResources/UITexture/\u795E\u793E.png"
+- "Assets/GameResources/UITexture/\u80CC\u666F.psd"
+- "Assets/GameResources/UITexture/\u7AD6\u5F62ui.psd"
+- "Assets/GameResources/UITexture/\u6807\u51C6\u6846.png"
+- "Assets/GameResources/UITexture/\u84DD\u70B9.psd"
+- "Assets/GameResources/UITexture/\u5C11\u5973\u7948\u7977\u4E2D.png"
+- "Assets/GameResources/UITexture/\u7075\u68A6.gif"
+- "Assets/GameResources/UITexture/\u5934\u50CF\u6846.png"
+- Assets/GameResources/UITexture/Fire.png
+- "Assets/GameResources/UITexture/\u724C\u5E93\u5361\u724C\u8FB9\u6846.png"
+- Assets/GameResources/UITexture/47c8e7895ae24c822873f185b6b30384.png
+- Assets/GameResources/UITexture/scene.renderTexture
+- "Assets/GameResources/UITexture/\u5929\u5B50.png"
+- "Assets/GameResources/UITexture/\u9F7F\u8F6E.png"
+- Assets/GameResources/UITexture/map.png
+- "Assets/GameResources/UITexture/\u6807\u9898.png"
+- "Assets/GameResources/UITexture/\u7BAD\u5934.png"
+Dependencies: []

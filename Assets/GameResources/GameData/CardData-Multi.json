@@ -1,0 +1,4259 @@
+[
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N0",
+    "point": 9,
+    "Name": {
+      "Name-Ch": "板烧琪露诺",
+      "Name-En": "BBQ-qilunuo"
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署，力竭:我方场上每存在一个自身外的妖精单位便对对方场上点数最高目标造成一次1点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "夏天的冰之妖精才是最强的姿态",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 0,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "大妖精",
+      "Name-En": "Daiyousei"
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:治愈一个非金妖精单位并重新触发其部署效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "再，一起努力一下吧！",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 2,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N0",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "桑尼*缪克",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:摧毁场上非金且点数最大的所有单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "所有挡在我面前的都燃为灰烬吧！",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 1,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "露娜",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:对场上所有最低的非金单位造成一点伤害，重复x+1次(x为两侧单位的活力值总和)",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 2,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N0",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "斯塔",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:对一行最左侧的非金单位造成x+1点伤害，并向右侧（跳过金卡）依此递减(x为两侧单位的活力值总和)",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N0",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "三月精*日",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:设置自身活力为2,\n并召唤三月精*月，三月精*星\n被召唤时:设置自身活力为2",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 1,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [
+      "M_N0_2S_002",
+      "M_N0_2S_003"
+    ],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "三月精*月",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:设置自身活力为2,\n并召唤三月精*日，三月精*星\n被召唤时:设置自身活力为2",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 2,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [
+      "M_N0_2S_001",
+      "M_N0_2S_003"
+    ],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "三月精*星",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:设置自身活力为2,\n并召唤三月精*星，三月精*星\n被召唤时:设置自身活力为2",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [
+      "M_N0_2S_001",
+      "M_N0_2S_002"
+    ],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "琪露诺",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署，活力（x）:封印1+x个非金单位并给与2点伤害，x为两侧单位的活力值总和",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "冻结吧！",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "N0",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "莉莉白",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:增加场上所有非金妖精牌1点鼓舞",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "春天来了哦！",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "N0",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "美国小妖精",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:选择两个非金妖精单位并翻倍其鼓舞值",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "陷入疯狂，激发你的活力吧！",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 1,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "鼓舞小妖精",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:获得1点鼓舞，选择并治愈一个非金妖精单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "战略转移",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署:将我方场上一个铜色单位移入卡组底端，同时打出卡组中点数最低的首张铜色单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "好可怕，快溜",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "弱小妖精",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署:获得1点活力，并从卡组中打出一张点数最低的首张铜色妖精单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "狂妄小妖精",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖精",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Fairy",
+      "En_Introduction": "The type label of the card",
+      "geyu": "ads"
+    },
+    "Ability": {
+      "Ability-Ch": "部署，活力（x）:对对方随机一个点数最大的非金单位造成1点伤害，重复1+x次",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "N0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "樱石",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "物体",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Object",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "复活一个铜色妖精单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N1",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "鬼人正邪",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "每当己方打出并部署一个单位时，在其部署效果生效前，选择我方场上一个非金单位与其点数互换",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 0,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N1",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "少名针妙丸",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：摧毁一个点数大于自身3倍的非金单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N1",
+    "point": 8,
+    "Name": {
+      "Name-Ch": "堀川雷鼓",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：使与自身点数相同的所有非金单位与自身点数减半（向下取整），重复三次",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "天空的逆城",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "异变",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Variation",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "回合开始：场上所有单位阶级循环一轮",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N1",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "作弊的天邪鬼",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：检索牌组中一张道具卡并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N1",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "若鹭姬",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "暴躁：两侧单位受到伤害\n温顺：两侧单位受到增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N1",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "赤蛮奇",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "暴躁：在敌方同排最右侧生成一个头，每回合开始正序移动至最下一排最右侧并对左侧单位造成1点伤害\n温顺：在我方同排最右侧生成一个头，每回合开始对左侧单生成一点增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 1,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N1",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "今泉影狼",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "暴躁：对对方同排所有目标获得一点伤害\n温顺：按正顺序移动至下一排",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 2,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "九十九弁弁「高山流水」",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "暴躁：令场上所有高于自身点数的单位点数受到一点伤害\n温顺：令所有低于自身点数的单位点数加一",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "N1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "九十九八桥",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "暴躁：清除所有单位的温顺状态\n温顺：清除所有单位的暴躁状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "N1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "逆符「天下翻覆」",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：自身与场上点数最大的非金单位进行逆转",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "此乃以下克上的奥义！",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 7,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "草根妖怪网络",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "特殊",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Special ",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "召唤一个草根妖怪",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "姐妹们，来帮忙！",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 8,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "万宝槌",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对同排所有单位产生2点增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 8,
+    "level": "多人",
+    "series": "N1",
+    "point": 8,
+    "Name": {
+      "Name-Ch": "下克上的奥义",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：若对方场上存在至少一个非金单位\n若部署后我方总点数落后，则此卡与对方点数最大的单位进行逆转\n若部署后我方总点数领先，则此卡与对方点数最小的单位进行逆转，并且再抽一张卡",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "替身地藏",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "选择场上一个铜色单位，将其重新打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "万宝槌（仿制品）",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对一个单位造成（当前点数-1）点的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "虽然看着跟正品一样，但其实只是砸起来很痛的锤子",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "亡灵的送行提灯",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "赋予一个单位延命1",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "隙间的折叠伞",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "将一个单位移动至横向的另一排",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "N1",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "闪避布",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "道具",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Tool",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "为一个非金单位添加隐身状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "N1",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "狂暴之头",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "每回合开始正序移动至最下一排最右侧并对左侧单位造成1点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 1,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  },
+  {
+    "cardID": 7,
+    "level": "多人",
+    "series": "N1",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "温顺之头",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "在我方同排最右侧生成一个头，每回合开始对左侧单生成一点增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N8",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "反狱王",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：在我方手牌中生成一张旧地狱怨灵",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "N8",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "旧地狱怨灵",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合结束时:若自身位于手牌，则移动至对方手牌\n当我方pass时 召唤至场上\n部署、召唤:丢弃我方手牌中最右侧的卡牌",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "寄宿在强者身上的怨灵，榨干宿主后便会脱离",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "N8",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "四季映姬",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "阎魔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Enma",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择两个单位，依次赋予黑、白状态\n回合开始，赋予左侧单位黑状态，赋予右侧单位白状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "如果你不想被贴上黑色和白色的贴纸的话最好还是不要靠近她",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N8",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "小野冢小町",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "死神",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Death",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择两个单位，依次拉取至自身右侧",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N9",
+    "point": 8,
+    "Name": {
+      "Name-Ch": "毛玉王",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "野兽",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Monster",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "拥有王者之气的巨型毛玉，比少见的大毛玉还要大一点\n除此外并没有什么特殊的效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "拥有王者之气的巨型毛玉，比少见的大毛玉还要大一点",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N9",
+    "point": 7,
+    "Name": {
+      "Name-Ch": "大毛玉",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "野兽",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Monster",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "少见的大型毛玉，比普通的毛玉要大一点\n除此外并没有什么特殊的效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "少见的大型毛玉，并普通的毛玉要大一点",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "N9",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "毛玉",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "野兽",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Monster",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "普通的毛玉球，十分常见\n除此外并没有什么特殊的效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "常见的毛玉球，没有什么特别的",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 0,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "荷城河取",
+      "Name-En": "Kawasiro Nitori"
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：复活两个带机械标签的单位\n活力 延命 计时 封印",
+      "Ability-En": "Deploy: Resurrect two mechanically  units  \nVitality Apothanasia Timer Seal  "
+    },
+    "Describe": {
+      "Describe-Ch": "修一送一啦",
+      "Describe-En": "Fix one and get one for free"
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 0,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T0",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "黄瓜加特林",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "部署：移除我方场上所有单位的能量，对对方场上点数最高的非金单位造成移除值等次数的1点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "压力测试",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "选择一个机械单位，将其移动至对方同排，并根据其能量值对同排所有单位造成伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T0",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "尼斯湖水怪",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合结束：移除两侧单位能量值，对对方点数最大的单位造成等量伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T0",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "急速充能器",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "部署：获得倒计时（2）\n我方回合开始时，倒计时-1，倒计时归0时\n将卡牌两侧的\"水利发电机\"或\"储能电容器\"单位的能量点数增加到容量上限，然后重置倒计时为2",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "手摇发电机",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "位于场上时，我方每部署一张单位，在其部署效果生效前，该牌能量点数+1",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T0",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "临时储存器",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择两个单位，将其能量集中至自身",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "捆绑销售",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：移除左侧单位能量，从卡组中打出一张最上方点数相同的非金单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "废物利用",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "将墓地中三个机械单位回收到卡组中",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "T0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "非想天则",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合结束：移除两侧单位能量值，对自身产生等量增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "没错，只要一直充能，他就能越来越大。。。不不，才不是个气球呢",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "T0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "山童",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择一个属性区域，对该牌所有单位赋予土元素状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 3,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "水利发电机",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "容量：（3）\n我方回合结束：自身能量加一，并为两侧单位附加水状态，能量值超出容量后触发超载效果\n超载：对两侧单位造成2点伤害并摧毁自身",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "储能电容器",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "容量：（8）\n我方回合结束：移除两侧单位能量值，加到自身身上，能量值超出容量后触发超载效果\n超载：对全场所有单位造成1点伤害并摧毁自身",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T0",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "护盾生成器",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "部署：移除左侧单位能量，随后选择我方场上一个非金单位对其产生等能量值的护盾",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T0",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "充能水炮",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "机械",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Machine",
+      "En_Introduction": "The type label of the card",
+      "geyu": "asdsaf"
+    },
+    "Ability": {
+      "Ability-Ch": "部署：移除左侧单位能量，随后选择对方场上一个非金单位对其产生等能量值的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "T0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "河童修理工",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择并治愈并重新触发一个铜色机械单位的部署效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "T0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "河童的天才维修法",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择并将我方场上一个机械单位直接移入墓地（不视为伤害和死亡），随后从牌组中打出其同名单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "品质保障，只换不修！",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "蓬莱山辉夜",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "生成一张五难题牌中的一张并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 0,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "1",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "牌技：打出牌库最上方点数与自身连锁值相等且品质最高的单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "八意永琳",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "从双方墓地中复活一个非领袖单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "远古的骗术",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "依次完成以下效果（不满足发动条件则跳过）\n从手牌中打出一张牌\n从场上回收一张非金单位至卡组底端\n从卡组抽取一张牌",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "1",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "牌技：打出牌组最上方的单位，并将其点数设为本牌连锁值*2",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "1",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "牌技：打出与自身连锁值*2的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "[炸符*赢家通吃]",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "牌技：摧毁场上所以小于自身连锁值的单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "铃仙二号",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "潜入\n部署：打出牌组中最上方的兔子/月兔单位，两回合后移动至对面同排最右侧",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "铃仙",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "潜入\n部署：令两侧单位互伤",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "下一回合就还你！",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "间谍，我方回合开始时若该牌位于墓地则复活到对面场上",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "1",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "牌技：选择场上一个点数与自身连锁值相等的单位，视自己为触发方执行其部署效果",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "月兔谍报员",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "潜入\n部署：与左侧单位互换战力，\n计时（1）：回合结束时移动至对面同排最右侧",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "月兔狙击兵",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "部署：选择一个单位，造成1点伤害\n我方打出潜伏卡后：若其左侧为非金单位则对其造成1点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "受到目标，准备射击",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "月兔先遣队",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "潜入\n部署：检索牌我方组中最上方的两张不同的铜色单位牌，选择其中一张并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "T1",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "月兔抓捕手",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "潜入\n部署：选择两个单位移动至最右侧，并给于3点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 4,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "东风谷早苗",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "现人神",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "GodHuman",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "令场上所有牌至内向外产生位移",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 0,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "八班神奈子",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "神明",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "God",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "场上每有一个非金单位触发一次位移效果后，便给予其1点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 1,
+    "cardDeployRegion": 2,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "洩矢诹访子",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "神明",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "God",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合结束时，若自身右侧存在单位，则向右移动一格位置并给与对方一点伤害（多个同类型效果可能会有bug）",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "加倍奉还",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "卡组中一奇迹牌的祈祷值设置为自身两倍并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "命定之抽",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "从卡组中选择一张小于等于自身祈祷值的卡牌并打出（非单位牌视为0点）",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "她是在作弊吧。。。是在作弊呢",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "诹访大舞",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "祷告",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Pray",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "每有一个单位发生位移，我方奇迹卡牌获得一点祈祷值",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "奇迹*圣人苏生",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "从墓地中选择一张小于等于自身祈祷值的非金单位复活至场上",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "死而复生，是为奇迹！",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "S0",
+    "point": 6,
+    "Name": {
+      "Name-Ch": "五谷丰登之术",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "现人神",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "GodHuman",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "自身触发位移效果后，获得2点增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "微概率的奇迹",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "打出牌组中两张铜色奇迹牌",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "奇迹是不会连续发生的，除非发生奇迹！",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "祈求命运的赌徒",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "展现牌库中最上方的铜卡，选择是否打出，若选择了跳过或牌组中不存在铜卡，则直接打出牌库最上方的银卡",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "古老的崇神",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "神明",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "God",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "回合结束时，若自身不处于单位数最多的一行，则移动过去（优先移动至对面）,若所属发生变化，则自身状态在恩赐和灾厄之间转换，并增加双方所有奇迹牌1祈祷值\n恩赐：移动结束后对同排所有非金单位1点增益\n灾厄：移动结束后对同排所有非金单位1点伤害\n",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "古老神明都是一体两面的，赞美祂会带来恩赐与丰收，冒犯祂则会带来灾厄和饥荒",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "静坐祈福",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "祷告",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Pray",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "回合结束：我方所有奇迹牌获得一点祈祷值",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "瀑布修行",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "祷告",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Pray",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "自身受到伤害后，我方所有奇迹牌获得一点祈祷值",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "请神",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "从牌组中打出点数小于自身祈祷值且最接近的铜色单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "商业繁荣",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "给与我方单位与自身祈祷值等量的增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "S0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "八坂之神风",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "奇迹",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Miracle",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "给与我方单位与自身祈祷值等量的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "S0",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "宗教传销",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "现人神",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "GodHuman",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择场上一个单位，将其移动至所在半场与该牌属性相同排的最右侧",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 2,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F0",
+    "point": 3,
+    "Name": {
+      "Name-Ch": "【众生平等】圣白莲",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "部署：将自身与左右两侧单位的基础点数设为三者间最大的点数，并进行重置",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 0,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "超度[我佛慈悲]",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "部署:从对方墓地中超度一个单位,选择对方一个非金单位造成自身增益相同的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "封兽鵺",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：在右侧和牌组顶端生成一张“正体不明”",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "寅丸星",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "部署：超度我方墓地一个单位，对所有与被超度单位同点数的对方非金单位给予2点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "魔人经卷",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "从我方墓地复活一个单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "正体不明",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "受到伤害时：将所有同名牌召唤至场上随机排，自身点数重置并强化一点，随后将自身置于牌组顶端",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "【咏经的回响】幽谷响子",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择一张墓地中的带\"佛经\"词条卡生成其同名卡牌并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "多多良小伞",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "当大于自身点数的卡牌部署后，将此牌从墓地中复活或卡组中召唤出\n召唤：自身基础点数翻倍\n复活：自身基础点数翻倍\n",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "【入道使】云居一轮",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "回合开始时：重置自身，并将自身基础点数设为与场上点数最大的单位相同（若不存在其他单位则设为1）",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "村纱水蜜",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "选择对方单排对所有单位造成1点伤害，根据单位数量给予自身同等增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "纳兹令",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪 ",
+      "Ch_Introduction": "卡牌的类型标签 ",
+      "Tc": " ",
+      "En": "Yokai ",
+      "En_Introduction": "The type label of the card ",
+      "geyu": " "
+    },
+    "Ability": {
+      "Ability-Ch": "部署：从卡组中选择一张法宝或者佛经并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 7,
+    "level": "多人",
+    "series": "F0",
+    "point": 0,
+    "Name": {
+      "Name-Ch": "毘沙门天的宝塔",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "依次选择场上两个非金单位，根据第一个单位的增益伤害对第二个单位造成同等的增益伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "能放出激光的宝塔，既能烧毁一切也能将照射物转化为宝石带来财富",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 8,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "圣辇船",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "我方每超度一个单位，增益自身与两侧非金单位1点",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "咏经者",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "部署：从我方卡组中打出一张经书",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "见习妖怪僧侣",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "自身受到伤害后，给予右侧单位同等增益\n自身受到增益后，给予右侧单位同等伤害\n",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "妙法华经",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "部署：选择我方场上一个非金单位，将其增益或伤害转至另一个单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "金刚经",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "打出:选择一个单位，令其受到的伤害转变为增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "楞严经",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "摧毁我方场上一个单位，随后从卡组中打出一张同名牌，并根据摧毁单位点数给予后者同等增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "副标题【轮回转世之不小心重生成了我自己——并且越来越强】",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "F0",
+    "point": 1,
+    "Name": {
+      "Name-Ch": "往生咒",
+      "Name-En": ""
+    },
+    "CardTags": {},
+    "Ability": {
+      "Ability-Ch": "选择我方一个单位，将其视为触发者超度双方墓地一个单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 0,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "古明地恋：封闭的内心",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署，选择对方卡组中一个单位，赋予\"封闭\"状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 0,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "地底的太阳",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "计数（3）：回合开始时弱计数不为0，则减少1，并摧毁双方场上所有最强的单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "[回忆]过往的经历",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "复制并打出对方上一次打出的非金卡牌",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "被厌恶者的哲学",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "令一个单位重新进入覆盖状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "被隐匿的弱点",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合开始时：赋予对方手牌中品质最低且点数最小的单位窥视状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 1,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "玛丽小姐",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "我方回合结束时：移动至对方点数最大单位右侧，若其是非金单位，则增益自身1点，并对其造成与自身点数相同的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "我在你身后哦~",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "古明地觉",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：为对方手牌中最左侧和最右侧的卡牌赋予“窥视”状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "火焰猫磷",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择将对方墓地一个单位移入己方墓地顶端，同时自身获得与其基数点数等量的强化",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "哇，时还没腐烂的新鲜尸体",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "阿空",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：从双方墓地中放逐一个单位，选择场上一个非金单位造成与放逐单位基数点数等量的伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "空气朋友",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对方先于己方pass时：若自身处于卡组，则自动打出至场上单位最少的随机排",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 6,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "条件反射",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "生成一张覆盖状态的卡牌，效果择一：\n对方下个单位部署时掀开并在其部署生效前给予4点伤害\n对方下个特殊卡打出时掀开并在其打出效果发动前给与封印状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 2,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [
+      "M_F1_3C_007",
+      "M_F1_3C_008"
+    ],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 1,
+    "level": "多人",
+    "series": "F1",
+    "point": 2,
+    "Name": {
+      "Name-Ch": "本能「本我的解放」",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对方下个单位打出时掀开并获得其点数同等增益",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 2,
+    "level": "多人",
+    "series": "F1",
+    "point": 4,
+    "Name": {
+      "Name-Ch": "抑制「Super Ego」",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对方下个单位部署效果发生前掀开并对其造成2点伤害",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 3,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "底牌窥伺",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "符卡",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "SpellCard",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：窥视对方手牌中最左侧和最右侧的1个单位",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 4,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "抉择",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "策略",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "tactics",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：选择场上一个铜色单位，将其洗回卡组，随后从牌组中最上方2张有覆盖标签的铜色卡牌选择一张并打出",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 1,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 5,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "灵活反制",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "妖怪",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Yokai",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "部署：对方每有一个单位处于窥视状态，则可至多选择对应数量的卡牌进行换牌",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 0,
+    "isFinish": true
+  },
+  {
+    "cardID": 7,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "条件反射a",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "覆盖",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Cover",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对方下个卡牌为铜色单位时自动掀开，在其效果发动后将其与我方点数最小的铜色单位弹回卡组顶端",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  },
+  {
+    "cardID": 8,
+    "level": "多人",
+    "series": "F1",
+    "point": 5,
+    "Name": {
+      "Name-Ch": "条件反射b",
+      "Name-En": ""
+    },
+    "CardTags": {
+      "Ch": "覆盖",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Cover",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
+    "Ability": {
+      "Ability-Ch": "对方下个特殊卡打出时掀开并在其打出效果发动前给与封印状态",
+      "Ability-En": ""
+    },
+    "Describe": {
+      "Describe-Ch": "",
+      "Describe-En": ""
+    },
+    "cardType": 0,
+    "cardCamp": 3,
+    "cardRank": 3,
+    "cardDeployRegion": 99,
+    "cardDeployTerritory": 0,
+    "refCardIDs": [],
+    "ramification": 1,
+    "isFinish": true
+  }
+]

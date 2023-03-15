@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 799683378
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9f7ebabba4c12f6602f81e2e69657a43
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f267fd2d8bcb1179236b6179ac5313bc
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- "Assets/GameResources/Coin/\u9635\u8425.psd"
+- Assets/GameResources/Coin/Icon.png
+- "Assets/GameResources/Coin/\u6307\u9488.psd"
+- "Assets/GameResources/Coin/\u571F.png"
+- "Assets/GameResources/Coin/\u6C34.png"
+- Assets/GameResources/Coin/Icon1.png
+- "Assets/GameResources/Coin/\u98CE.png"
+- "Assets/GameResources/Coin/\u4E3B\u4F53.psd"
+- "Assets/GameResources/Coin/\u706B.png"
+Dependencies: []

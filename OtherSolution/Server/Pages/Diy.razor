@@ -1,0 +1,366 @@
+﻿@page "/Diy"
+@using System.IO;
+@using Newtonsoft.Json;
+@inject MessageService message
+@inject DiyInfo diyInfo;
+
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+@*/////////////////////////////////////////////////////选项区/////////////////////////////////////////////////*@
+@code {
+	protected override void OnInitialized()
+	{
+		Task.Run(async () =>
+		{
+			while (true)
+			{
+				await InvokeAsync(StateHasChanged);
+				//Console.WriteLine("refresh");
+				await Task.Delay(500);
+			}
+		});
+	}
+}
+@*/////////////////////////////////////////////////////主体展示区/////////////////////////////////////////////////*@
+@code {
+	public int currentPage = 0;
+	public int pageMaxCount = 3;
+	public bool CanChange(DiyCardInfo currentCard) => diyInfo.userInfo?.UID == currentCard.UpLoadUID;
+	DiyCardInfo? ClickCard { get; set; }
+	List<DiyCardInfo> OrderDiyCardsInfo = DiyCommand.GetDiyCardsInfo();
+	List<DiyCardInfo> ShowDiyCardsInfo => OrderDiyCardsInfo.Skip(pageMaxCount * (currentPage - 1)).Take(pageMaxCount).ToList();
+	public int OrderType = 0;
+	public void OrderByHot()
+	{
+		message.Info("按热度排序");
+		OrderDiyCardsInfo = DiyCommand.GetDiyCardsInfo().OrderBy(x => x.CardName).ToList();
+	}
+	public void OrderByLike()
+	{
+		message.Info("按赞同度排序");
+		OrderDiyCardsInfo = DiyCommand.GetDiyCardsInfo().OrderBy(x => x.Point).ToList();
+	}
+	public void OrderByTime()
+	{
+		message.Info("按时间排序");
+		OrderDiyCardsInfo = DiyCommand.GetDiyCardsInfo().OrderBy(x => x.Camp).ToList();
+	}
+	void OnChangeSize()
+	{
+		switch (OrderType)
+		{
+			case (0): OrderByHot(); break;
+			case (1): OrderByLike(); break;
+			case (2): OrderByTime(); break;
+		}
+		StateHasChanged();
+	}
+	void OnPageChange(PaginationEventArgs args)
+	{
+		currentPage = args.Page;
+	}
+	async Task<int> GetUserUid()
+	{
+		if (await localStorage.ContainKeyAsync("uid"))
+		{
+			return await localStorage.GetItemAsync<int>("uid");
+		}
+		else
+		{
+			return 0;
+		}
+	}
+}
+
+<Button @onclick="() => DiyDrawerOpen()">上传设计</Button>
+<Affix OffsetTop="80" Style="width:100;">
+	<div Style=" text-align:right;">
+		<RadioGroup @bind-Value="@OrderType" OnChange="OnChangeSize" TValue="int">
+			<Radio Style="display: block;height:30px;line-height:30px" RadioButton Value=0>按人气</Radio>
+			<Radio Style="display: block;height:30px;line-height:30px" RadioButton Value=1>按点赞</Radio>
+			<Radio Style="display: block;height:30px;line-height:30px" RadioButton Value=2>按时间</Radio>
+		</RadioGroup>
+	</div>
+</Affix>
+
+@for (int i = 0; i < ShowDiyCardsInfo.Count; i++)
+{
+	int num = i;
+	var currentCard = ShowDiyCardsInfo[num];
+	<Card Title="@currentCard.CardName">
+		<Body>
+			<Row>
+				<AntDesign.Col Span="4">
+					<Image Width="200px" Height="300px" Src=@currentCard.ImageUrl />
+				</AntDesign.Col>
+				<AntDesign.Col Span="20">
+					<Content>
+						<p>
+							<Tag>@currentCard.CardType</Tag>
+							<Tag>@currentCard.Rank</Tag>
+							<Tag>@currentCard.Camp</Tag>
+						</p>
+						<p>
+							@for (int j = 0; j < currentCard.Tag.Count; j++)
+							{
+								int tagRank = j;
+								<Tag PresetColor="@PresetColor.Orange">@currentCard.Tag[tagRank]</Tag>
+							}
+						</p>
+						<p>战力：<Tag>@currentCard.Point</Tag>，效果：@currentCard.Ability</p>
+
+						<Divider />
+
+						<span>
+							<Tooltip Title='@("Like")'>
+								<Icon Type="caret-up" OnClick="()=>currentCard.SetLike(MainLayout.userInfo?.UID)"
+								  Style="color:#18A558;font-size:30px;cursor:pointer;" />
+							</Tooltip>
+							<span style="color:#18A558;font-size:20px;">@currentCard.LikeUidList.Count()</span>
+						</span>
+						<span>
+							<Tooltip Title='@("Dislike")'>
+								<Icon Type="caret-down" OnClick="()=>currentCard.SetDislike(MainLayout.userInfo?.UID)"
+								  Style="color:red;font-size:30px;cursor:pointer;" />
+							</Tooltip>
+							<span style="color:red;font-size:20px;">@currentCard.DislikeUidList.Count()</span>
+						</span>
+						<Button OnClick="() => {detailPageVisible = true; ClickCard=currentCard;}">详细</Button>
+						<Button OnClick="() => {commitDrawerVisible = true; ClickCard=currentCard;}">评论</Button>
+						<Button Color=Color.Red1 OnClick="() => {commitDrawerVisible = true; ClickCard=currentCard;}">举报</Button>
+						@if (diyInfo.userInfo?.UID == currentCard.UpLoadUID)
+						{
+							<Button Color=Color.Yellow1 OnClick="() => {commitDrawerVisible = true; ClickCard=currentCard;}">修改</Button>
+						}
+					</Content>
+				</AntDesign.Col>
+			</Row>
+		</Body>
+	</Card>
+}
+<br>
+<br />
+<Pagination Style="text-align: center" ; PageIndex="1" Current="@currentPage" PageSize="@pageMaxCount" Total="OrderDiyCardsInfo.Count" OnChange="OnPageChange"></Pagination>
+<br>
+<br />
+
+@*/////////////////////////////////////////////////////上传区/////////////////////////////////////////////////*@
+@code {
+	string UploadMode { get; set; }
+
+	string NewDiyCardName { get; set; } = "";
+	string NewDiyCardType { get; set; } = "";
+	int NewDiyCardPoint { get; set; } = 0;
+	string NewDiyCardTags { get; set; } = "";
+	string NewDiyCardRank { get; set; } = "";
+	string NewDiyCardCamp { get; set; } = "";
+	string NewDiyCardDescribe { get; set; } = "";
+	string NewDiyCardAbility { get; set; } = "";
+
+	string HasShowPermission;
+	string HasUsePermission;
+
+	void UploadModeChange(string select)
+	{
+		UploadMode = select;
+		StateHasChanged();
+	}
+	void ShowPermissionChange(string select) => HasShowPermission = select;
+	void UsePermissionChange(string select) => HasUsePermission = select;
+
+	void CardTypeChange(string select) => NewDiyCardType = select;
+	void CardRankChange(string select) => NewDiyCardRank = select;
+	void CardCampChange(string select) => NewDiyCardCamp = select;
+
+	bool diyDrawerVisible = false;
+	bool detailPageVisible = false;
+
+	void DiyDrawerOpen() => this.diyDrawerVisible = true;
+	void DiyDrawerClose() => this.diyDrawerVisible = false;
+	void DiyDrawerInit()
+	{
+		NewDiyCardName = "";
+		NewDiyCardDescribe = "";
+	}
+
+	byte[] uploadImageData = new byte[0];
+	public async Task UpLoadImage(InputFileChangeEventArgs e)
+	{
+		int fileLength = (int)e.File.Size;
+		uploadImageData = new byte[fileLength];
+		await e.File.OpenReadStream().ReadAsync(uploadImageData, 0, fileLength);
+	}
+	public async Task SubmitCard()
+	{
+		string path = $"{DateTime.Now.Millisecond}-{NewDiyCardName}.png";
+		File.WriteAllBytes($"wwwroot/image/{path}", uploadImageData);
+		DiyCommand.AddDiyCardInfos(diyInfo.userInfo.UID, diyInfo.userInfo.Name, NewDiyCardName, NewDiyCardTags, NewDiyCardPoint, NewDiyCardRank, NewDiyCardCamp, NewDiyCardDescribe, NewDiyCardAbility, path);
+		OrderDiyCardsInfo = DiyCommand.GetDiyCardsInfo();
+		await message.Success("上传完成");
+	}
+}
+
+<Drawer Width="450" Closable="true" Visible="diyDrawerVisible" Placement="right" Title=@("Diy设计") OnClose="_ => DiyDrawerClose()">
+
+	<SimpleSelect Placeholder="上传类型" OnSelectedItemChanged="UploadModeChange">
+		<SelectOptions>
+			<SimpleSelectOption Value="1" Label="纯卡画"></SimpleSelectOption>
+			<SimpleSelectOption Value="2" Label="纯效果"></SimpleSelectOption>
+			<SimpleSelectOption Value="3" Label="卡画&效果"></SimpleSelectOption>
+		</SelectOptions>
+	</SimpleSelect>
+	@if (UploadMode == "1" || UploadMode == "3")
+	{
+		<Image Style="width=150px ;height=210px" src=@("data:image/png;base64,"+Convert.ToBase64String(uploadImageData))></Image>
+		<InputFile OnChange="UpLoadImage" />
+
+		<div>若是卡画作者或者获得了图片展示许可选则是，否则选否（图片将会模糊化处理）</div>
+		<SimpleSelect Placeholder="立绘展示许可" OnSelectedItemChanged="ShowPermissionChange">
+			<SelectOptions>
+				<SimpleSelectOption Value="1" Label="未许可"></SimpleSelectOption>
+				<SimpleSelectOption Value="2" Label="已许可"></SimpleSelectOption>
+			</SelectOptions>
+		</SimpleSelect>
+		<div>若为卡画作者，且允许制作组在游戏中使用该立绘，则选择授权，为避免版权纠纷，若是网图等请勿选择授权</div>
+		<SimpleSelect Placeholder="是否允许制作组使用该立绘" OnSelectedItemChanged="UsePermissionChange">
+			<SelectOptions>
+				<SimpleSelectOption Value="1" Label="不授权"></SimpleSelectOption>
+				<SimpleSelectOption Value="2" Label="授权"></SimpleSelectOption>
+			</SelectOptions>
+		</SimpleSelect>
+	}
+	<br />
+	<br />
+	<Input Placeholder="名字" @bind-Value="@NewDiyCardName" />
+
+	@if (UploadMode == "2" || UploadMode == "3")
+	{
+		<SimpleSelect Placeholder="类型" OnSelectedItemChanged="CardTypeChange">
+			<SelectOptions>
+				<SimpleSelectOption Value="单位卡" Label="单位卡"></SimpleSelectOption>
+				<SimpleSelectOption Value="特殊卡" Label="特殊卡"></SimpleSelectOption>
+			</SelectOptions>
+		</SimpleSelect>
+		<div>战力</div>
+		<Input Placeholder="战力" @bind-Value="@NewDiyCardPoint"></Input>
+		<SimpleSelect Placeholder="阵营" OnSelectedItemChanged="CardCampChange">
+			<SelectOptions>
+				<SimpleSelectOption Value="中立" Label="中立"></SimpleSelectOption>
+				<SimpleSelectOption Value="佛教" Label="佛教"></SimpleSelectOption>
+				<SimpleSelectOption Value="科技" Label="科技"></SimpleSelectOption>
+				<SimpleSelectOption Value="道教" Label="道教"></SimpleSelectOption>
+				<SimpleSelectOption Value="神道" Label="神道"></SimpleSelectOption>
+			</SelectOptions>
+		</SimpleSelect>
+		<SimpleSelect Placeholder="品质" OnSelectedItemChanged="CardRankChange">
+			<SelectOptions>
+				<SimpleSelectOption Value="领袖" Label="领袖"></SimpleSelectOption>
+				<SimpleSelectOption Value="金色" Label="金色"></SimpleSelectOption>
+				<SimpleSelectOption Value="银色" Label="银色"></SimpleSelectOption>
+				<SimpleSelectOption Value="铜色" Label="铜色"></SimpleSelectOption>
+			</SelectOptions>
+		</SimpleSelect>
+		<TextArea MinRows="1" Placeholder="标签（用空格隔开）" @bind-Value="@NewDiyCardTags" />
+		<Input Placeholder="卡牌描述(可选)" @bind-Value="@NewDiyCardDescribe" />
+		<TextArea MinRows="4" Placeholder="卡牌能力" @bind-Value="@NewDiyCardAbility" />
+	}
+	<Button @onclick="async () => {await SubmitCard();}">提交</Button>
+</Drawer>
+@*/////////////////////////////////////////////////////评论区/////////////////////////////////////////////////*@
+
+@code {
+	bool commitDrawerVisible = false;
+	void OpenCommitDrawer() => this.commitDrawerVisible = true;
+	void CloseCommitDrawer() => this.commitDrawerVisible = false;
+	bool like = false;
+	bool dislike = false;
+
+	RenderFragment likeAction =>
+	@<span>
+		<Tooltip Title="@("Like")">
+			<Icon Type="like" Theme="@(like ? "fill" : "outline")" OnClick="SetLike" />
+		</Tooltip>
+		<span>@(like ? 1 : 0)</span>
+	</span>;
+
+	RenderFragment dislikeAction =>
+	@<span>
+		<Tooltip Title="@("Dislike")">
+			<Icon Type="dislike" Theme="@(dislike ? "fill" : "outline")" OnClick="SetDislike" />
+		</Tooltip>
+		<span>@(dislike ? 1 : 0)</span>
+	</span>;
+
+	RenderFragment dateTime =
+	@<Tooltip Title="@(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))">
+		<span>
+			@(MomentHelper.FromNow(DateTime.Now))
+		</span>
+	</Tooltip>;
+	async void onSubmit()
+	{
+
+	}
+	void SetLike()
+	{
+		like = true;
+		dislike = false;
+	}
+
+	void SetDislike()
+	{
+		like = false;
+		dislike = true;
+	}
+}
+
+<Drawer Width="520" Closable="true" Visible=@commitDrawerVisible Placement="right" Title='("卡片评论")' OnClose=@(()=>commitDrawerVisible=false)>
+	<Comment Actions="@(new []{likeAction,dislikeAction})"
+			 Author="格子"
+			 Avatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+			 Content="太超模了，建议去除"
+			 Datetime="dateTime">
+	</Comment>
+
+	<Comment Avatar="@(@"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png")">
+		<ContentTemplate>
+			<TextArea MinRows="4" />
+			<br />
+			<br />
+			<br />
+			<Button OnClick="onSubmit " type="primary">
+				发表评论
+			</Button>
+		</ContentTemplate>
+	</Comment>
+</Drawer>
+@*/////////////////////////////////////////////////////详情区/////////////////////////////////////////////////*@
+
+<Modal Title="详细信息"
+	   Visible="@detailPageVisible"
+	   OnOk="()=> { detailPageVisible = false; }"
+	   OnCancel="()=>{detailPageVisible = false; }">
+	<h1>@ClickCard.CardName</h1>
+	<Layout>
+		<Sider Style="background-color:aliceblue">
+
+			<p>备注：</p>
+			<p>立绘为原创：</p>
+			<p>允许制作组使用该立绘：</p>
+			<p>上传人：</p>
+			<p>上传时间：</p>
+
+
+		</Sider>
+		<Layout>
+			<content Style="background-color:aliceblue">
+				<p>@ClickCard.Ability</p>
+				<p>是</p>
+				<p>否</p>
+				<p>@ClickCard.UpLoadName （@ClickCard.UpLoadUID） </p>
+				<p>@ClickCard.UpLoadTime</p>
+			</content>
+		</Layout>
+	</Layout>
+</Modal>
+

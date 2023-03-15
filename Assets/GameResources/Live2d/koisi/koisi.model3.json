@@ -1,0 +1,18 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "koisi.moc3",
+		"Textures": [
+			"koisi.2048/texture_00.png"
+		],
+		"Physics": "koisi.physics3.json",
+		"DisplayInfo": "koisi.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		}
+	]
+}

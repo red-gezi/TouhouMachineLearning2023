@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
+  m_Name: Koharu.fadeMotionList
+  m_EditorClassIdentifier: 
+  MotionInstanceIds: d2830000ea830000a68400004883000068830000868400007c8300009c830000ba84000084820000aa820000e8830000788200009e820000da830000a8820000ce8200000a84000084830000a4830000c6840000d0830000f0830000328500002c8300004a83000062840000d6830000f4840000c4830000de830000e4840000308400004e84000078850000708300008e830000888400009a840000b48400009c850000
+  CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: f6ab879991b069a42ad46ca437aad9ae, type: 2}
+  - {fileID: 11400000, guid: cec0a0e4747580a4fbaac77eb3075454, type: 2}
+  - {fileID: 11400000, guid: 7e83480cff0a84048af6dd61eb45c3d7, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}
+  - {fileID: 11400000, guid: fd22a94773b561d449e0a2cd7477e3a0, type: 2}
+  - {fileID: 11400000, guid: afba1d2fa6787a7469949eb247677c1a, type: 2}
+  - {fileID: 11400000, guid: 4b1bccbeb4006f44891835fc56c0d852, type: 2}

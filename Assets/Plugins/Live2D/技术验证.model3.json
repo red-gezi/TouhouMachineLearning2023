@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "技术验证.moc3",
+		"Textures": [
+			"技术验证.1024/texture_00.png"
+		],
+		"DisplayInfo": "技术验证.cdi3.json"
+	}
+}

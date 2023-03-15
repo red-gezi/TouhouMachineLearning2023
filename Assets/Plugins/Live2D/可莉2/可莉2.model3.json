@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "可莉2.moc3",
+		"Textures": [
+			"可莉2.1024/texture_00.png"
+		],
+		"DisplayInfo": "可莉2.cdi3.json"
+	}
+}

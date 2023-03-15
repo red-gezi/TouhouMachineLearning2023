@@ -1,0 +1,578 @@
+{
+  "BattleStart": {
+    "Tag": "BattleStart",
+    "Ch": "对战开始",
+    "Ch_Introduction": "无",
+    "Tc": "對戰開始",
+    "En": "Battle Start",
+    "En_Introduction": "",
+    "geyu": "ads"
+  },
+  "BattleEnd": {
+    "Tag": "BattleEnd",
+    "Ch": "对战终止",
+    "Ch_Introduction": "无",
+    "Tc": "對戰中止",
+    "En": "Battle End",
+    "En_Introduction": "",
+    "geyu": "asdsaf"
+  },
+  "Remaining": {
+    "Tag": "Remaining",
+    "Ch": "剩余抽卡次数为：",
+    "Ch_Introduction": "无",
+    "Tc": "剩余抽卡次數為：",
+    "En": "Remaining number of card draws:",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "FirstRoundStart": {
+    "Tag": "FirstRoundStart",
+    "Ch": "第一小局开始",
+    "Ch_Introduction": "无",
+    "Tc": "第一小局開始",
+    "En": "First Round Start",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "SecondRoundStart": {
+    "Tag": "SecondRoundStart",
+    "Ch": "第一小局开始",
+    "Ch_Introduction": "无",
+    "Tc": "第二小局開始",
+    "En": "Second Round Start",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "ThridRoundStart": {
+    "Tag": "ThridRoundStart",
+    "Ch": "第一小局开始",
+    "Ch_Introduction": "无",
+    "Tc": "第三小局開始",
+    "En": "Thrid Round Start",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "MyTurnStart": {
+    "Tag": "MyTurnStart",
+    "Ch": "我方回合开始",
+    "Ch_Introduction": "无",
+    "Tc": "我方回合開始",
+    "En": "My Turn Start",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "MyTurnEnd": {
+    "Tag": "MyTurnEnd",
+    "Ch": "我方回合结束",
+    "Ch_Introduction": "无",
+    "Tc": "我方回合結束",
+    "En": "My Turn End",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "OpTurnStart": {
+    "Tag": "OpTurnStart",
+    "Ch": "对方回合开始",
+    "Ch_Introduction": "无",
+    "Tc": "對方回合開始",
+    "En": "Op Turn Start",
+    "En_Introduction": "",
+    "geyu": "新翻译"
+  },
+  "OpTurnEnd": {
+    "Tag": "OpTurnEnd",
+    "Ch": "对方回合结束",
+    "Ch_Introduction": "无",
+    "Tc": "對方回合結束",
+    "En": "Op Turn End",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Fairy": {
+    "Tag": "Fairy",
+    "Ch": "妖精",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Fairy",
+    "En_Introduction": "The type label of the card",
+    "geyu": "ads"
+  },
+  "Machine": {
+    "Tag": "Machine",
+    "Ch": "机械",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Machine",
+    "En_Introduction": "The type label of the card",
+    "geyu": "asdsaf"
+  },
+  "SpellCard": {
+    "Tag": "SpellCard",
+    "Ch": "符卡",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "SpellCard",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "tactics": {
+    "Tag": "tactics",
+    "Ch": "策略",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "tactics",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Object": {
+    "Tag": "Object",
+    "Ch": "物体",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Object",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Yokai": {
+    "Tag": "Yokai",
+    "Ch": "妖怪",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Yokai",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Tool": {
+    "Tag": "Tool",
+    "Ch": "道具",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Tool",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Variation": {
+    "Tag": "Variation",
+    "Ch": "异变",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Variation",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Special ": {
+    "Tag": "Special ",
+    "Ch": "特殊",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Special ",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Spell": {
+    "Tag": "Spell",
+    "Ch": "法术",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Spell",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Sutra": {
+    "Tag": "Sutra",
+    "Ch": "佛经",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Sutra",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "GodHuman": {
+    "Tag": "GodHuman",
+    "Ch": "现人神",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "GodHuman",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "God": {
+    "Tag": "God",
+    "Ch": "神明",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "God",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Miracle": {
+    "Tag": "Miracle",
+    "Ch": "奇迹",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Miracle",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Pray": {
+    "Tag": "Pray",
+    "Ch": "祷告",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Pray",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Enma": {
+    "Tag": "Enma",
+    "Ch": "阎魔",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Enma",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Death": {
+    "Tag": "Death",
+    "Ch": "死神",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Death",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Monster": {
+    "Tag": "Monster",
+    "Ch": "野兽",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Monster",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Cover": {
+    "Tag": "Cover",
+    "Ch": "覆盖",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Cover",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Null": {
+    "Tag": "Null",
+    "Ch": "潜伏",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Null",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Seal": {
+    "Tag": "Seal",
+    "Ch": "封印",
+    "Ch_Introduction": "封印：清除自身所有附加状态和附加值，并使自身特殊效果无法发动",
+    "Tc": "",
+    "En": "Seal",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Invisibility": {
+    "Tag": "Invisibility",
+    "Ch": "隐身",
+    "Ch_Introduction": "隐身：无法被选择成为目标",
+    "Tc": "",
+    "En": "Invisibility",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Pry": {
+    "Tag": "Pry",
+    "Ch": "窥探",
+    "Ch_Introduction": "窥探：向对手明示，下个我方会回合开始时自动取消该状态",
+    "Tc": "",
+    "En": "Pry",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Close": {
+    "Tag": "Close",
+    "Ch": "封闭",
+    "Ch_Introduction": "封闭：背面展示，不计算点数，达成指定条件后触发反射效果并翻开",
+    "Tc": "",
+    "En": "Close",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Durance": {
+    "Tag": "Durance",
+    "Ch": "禁锢",
+    "Ch_Introduction": "禁锢：无法打出",
+    "Tc": "",
+    "En": "",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Fate": {
+    "Tag": "Fate",
+    "Ch": "命运",
+    "Ch_Introduction": "命运：当处于随机选择的目标中时会被优先选择",
+    "Tc": "",
+    "En": "Fate",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Lurk": {
+    "Tag": "Lurk",
+    "Ch": "间谍",
+    "Ch_Introduction": "潜伏：部署于对方战场时标记",
+    "Tc": "",
+    "En": "Lurk",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Secret": {
+    "Tag": "Secret",
+    "Ch": "隐秘",
+    "Ch_Introduction": "隐秘：无法被选中，无法查看效果，同时不计入点数计算，状态消失时翻开",
+    "Tc": "",
+    "En": "Secret",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Furor": {
+    "Tag": "Furor",
+    "Ch": "狂暴",
+    "Ch_Introduction": "狂暴：拥有此状态时无法再次触发狂暴效果\n当点数减少时该状态自动消失",
+    "Tc": "",
+    "En": "Furor",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Docile": {
+    "Tag": "Docile",
+    "Ch": "温顺",
+    "Ch_Introduction": "温顺：拥有此状态时无法再次触发温顺效果\n当点数增加时该状态自动消失",
+    "Tc": "",
+    "En": "Docile",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Poisoning": {
+    "Tag": "Poisoning",
+    "Ch": "中毒",
+    "Ch_Introduction": "中毒：每回合自身受到一点伤害",
+    "Tc": "",
+    "En": "Poisoning",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Rely": {
+    "Tag": "Rely",
+    "Ch": "凭依",
+    "Ch_Introduction": "凭依：指定技能被替换",
+    "Tc": "",
+    "En": "Rely",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Water": {
+    "Tag": "Water",
+    "Ch": "水",
+    "Ch_Introduction": "水:可与其他元素状态发生反应\n治愈（水+水）：治愈单位\n中和（水+火）：清空卡牌状态\n泥泞（水+土）：使单位无法被移动\n扩散（水+风）：使单位与两侧单位获得水状态",
+    "Tc": "",
+    "En": "Water",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Fire": {
+    "Tag": "Fire",
+    "Ch": "火",
+    "Ch_Introduction": "火:可与其他元素状态发生反应\n治愈（水+水）：治愈单位\n中和（水+火）：清空卡牌状态\n泥泞（水+土）：使单位无法被移动\n扩散（水+风）：使单位两侧单位获得水状态",
+    "Tc": "",
+    "En": "Fire",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Wind": {
+    "Tag": "Wind",
+    "Ch": "风",
+    "Ch_Introduction": "土:可与其他元素状态发生反应",
+    "Tc": "",
+    "En": "Wind",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Soil": {
+    "Tag": "Soil",
+    "Ch": "土",
+    "Ch_Introduction": "风:可与其他元素状态发生反应\n扩散（风+任意其他元素状态）：令该单位与两侧单位获得同样的元素状态\n烈风（风+风）：对同排所有单位造成一点伤害",
+    "Tc": "",
+    "En": "Soil",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Hold": {
+    "Tag": "Hold",
+    "Ch": "驻守",
+    "Ch_Introduction": "驻守：小局结束时可留在场上，触发一次后自动取消改状态",
+    "Tc": "",
+    "En": "Hold",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Congealbounds": {
+    "Tag": "Congealbounds",
+    "Ch": "结界",
+    "Ch_Introduction": "结界:抵消一次伤害或置值导致的点数减少",
+    "Tc": "",
+    "En": "Congealbounds",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Forbidden": {
+    "Tag": "Forbidden",
+    "Ch": "固足",
+    "Ch_Introduction": "固足：无法被移动",
+    "Tc": "",
+    "En": "Forbidden",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Black": {
+    "Tag": "Black",
+    "Ch": "黑",
+    "Ch_Introduction": "当附着单位发生移动效果后，若两侧存在\"黑\"状态的牌则将赋予两者间所有的牌\"黑\"状态\n当卡牌从\"白\"状态转换为\"黑\"时，给与对方场上随机非金单位1点伤害",
+    "Tc": "",
+    "En": "Black",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "White": {
+    "Tag": "White",
+    "Ch": "白",
+    "Ch_Introduction": "当附着单位发生移动效果后，若两侧存在\"白\"状态的牌则将赋予两者间所有的牌\"白\"状态\n当卡牌从\"黑\"状态转换为\"白\"时，给与我方场上随机非金单位1点增益",
+    "Tc": "",
+    "En": "White",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Apothanasia": {
+    "Tag": "Apothanasia",
+    "Ch": "延命",
+    "Ch_Introduction": "延命：回合结束时，若自身为0时，则消耗此状态并获得一点增益",
+    "Tc": "",
+    "En": "Apothanasia",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Timer": {
+    "Tag": "Timer",
+    "Ch": "计时",
+    "Ch_Introduction": "计时($Point$)：计数为0时触发效果",
+    "Tc": "",
+    "En": "Timer",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Inspire": {
+    "Tag": "Inspire",
+    "Ch": "鼓舞",
+    "Ch_Introduction": "鼓舞($Point$)：增强两侧单位\"活力\"类型效果",
+    "Tc": "",
+    "En": "Inspire",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Chain": {
+    "Tag": "Chain",
+    "Ch": "连锁",
+    "Ch_Introduction": "连锁($Point$)：当前回合打出卡牌的数量",
+    "Tc": "",
+    "En": "Chain",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Energy": {
+    "Tag": "Energy",
+    "Ch": "能量",
+    "Ch_Introduction": "能量($Point$)：强化机械的触发效果，过多时触发\"超载\"效果",
+    "Tc": "",
+    "En": "Energy",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Shield": {
+    "Tag": "Shield",
+    "Ch": "护盾",
+    "Ch_Introduction": "护盾($Point$)：受到\"伤害\"类型效果时时抵消相应点数的伤害",
+    "Tc": "",
+    "En": "Shield",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Pary": {
+    "Tag": "Pary",
+    "Ch": "祈祷",
+    "Ch_Introduction": "祈祷($Point$)：增强奇迹类型卡牌的发动效果",
+    "Tc": "",
+    "En": "Pary",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "TurnStart": {
+    "Tag": "TurnStart",
+    "Ch": "回合开始",
+    "Ch_Introduction": "无",
+    "Tc": "",
+    "En": "TurnStart",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "TurnEnd": {
+    "Tag": "TurnEnd",
+    "Ch": "回合结束",
+    "Ch_Introduction": "无",
+    "Tc": "",
+    "En": "TurnEnd",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "RoundStart": {
+    "Tag": "RoundStart",
+    "Ch": "小局开始",
+    "Ch_Introduction": "无",
+    "Tc": "",
+    "En": "RoundStart",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "RoundEnd": {
+    "Tag": "RoundEnd",
+    "Ch": "小局结束",
+    "Ch_Introduction": "无",
+    "Tc": "",
+    "En": "RoundEnd",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Deploy": {
+    "Tag": "Deploy",
+    "Ch": "部署",
+    "Ch_Introduction": "部署：单位从出牌区移动到战场时触发，但若在部署效果生效前被打死或封印则无法触发部署效果",
+    "Tc": "",
+    "En": "Deploy",
+    "En_Introduction": "",
+    "geyu": ""
+  },
+  "Weak": {
+    "Tag": "Weak",
+    "Ch": "力竭",
+    "Ch_Introduction": "力竭:触发效果时，自身基础点数减少1点，至多减少至1",
+    "Tc": "",
+    "En": "Weak",
+    "En_Introduction": "",
+    "geyu": ""
+  }
+}

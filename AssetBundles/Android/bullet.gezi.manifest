@@ -1,0 +1,86 @@
+ManifestFileVersion: 0
+CRC: 1489003660
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8e34511dc4081880f1533ecf88a4d321
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6014806d3778edeeff70ea2f44d41399
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 479218ad243cfb04eabef643d1a61df0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 139800fdc9713ed4bbadeb0786748453, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 328
+  Script: {instanceID: 0}
+- Class: 329
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+Assets:
+- Assets/GameResources/Bullet/GainParticle.prefab
+- Assets/GameResources/Bullet/Bomb.prefab
+- Assets/GameResources/Bullet/Card.prefab
+- "Assets/GameResources/Bullet/\u5C01\u5370.prefab"
+- Assets/GameResources/Bullet/Heal.prefab
+- Assets/GameResources/Bullet/Butterfly.prefab
+- Assets/GameResources/Bullet/SmallBullet.prefab
+- Assets/GameResources/Bullet/MiBullet.prefab
+- Assets/GameResources/Bullet/BigBall.prefab
+- Assets/GameResources/Bullet/HurtParticle.prefab
+Dependencies:
+- D:/vs2022-Project/TouhouMachineLearning2022/AssetBundles/Android/shader_material.gezi
+- D:/vs2022-Project/TouhouMachineLearning2022/AssetBundles/Android/texture.gezi
