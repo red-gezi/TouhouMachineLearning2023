@@ -31,7 +31,6 @@ OtherSolution/xls检测更新/.vs/*
 *.sln
 *.csproj
 *.sln
-*.meta
 *.log
 *.cache
 //特殊文件

@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 7f1c6b773a14938499e5d13da6bd05c3
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: shader_material.gezi
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}

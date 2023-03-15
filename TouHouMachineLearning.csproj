@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C59B79D0-2714-1C68-356F-AE308C1C32C2}</ProjectGuid>
+    <ProjectGuid>{3079994F-21F8-620E-57A7-4FC3D4372A4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>TouHouMachineLearning</AssemblyName>
@@ -56,134 +56,134 @@
     <Analyzer Include="D:\vs2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\9_MixedScene\Title\TitleInfo.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardInLibraryManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\UIEvent.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\KeyWordPopup\KeyWordManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\CardAbilityBoard\CardAbilityBoardManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardInGameManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\UI\CardAbilityPopup\CardAbilityPopupManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\BulletControl.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\Arrow\ArrowManager.cs" />
+    <Compile Include="Assets\Script\0_Other\HotFixedManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Other\GearControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueInfo.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardCommand.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ImageSummary\ImageSummary.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Title\TitleInfo.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Config\DeckConfig.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardInLibraryManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\LoginCanves\UserInfoManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\State\StateControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\StageCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\UIEvent.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardLibraryComponent\CardLibraryManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardListComponent\CardListCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletTrackManager.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\GameSystem\Event.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Loading\LoadingBarManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigInfoModel.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardSet.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampInfo.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystem.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\Arrow\ArrowEndPointManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectType.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\CardAbilityBoard\CardAbilityBoardManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Config\AgainstConfig.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\KeyWordPopup\KeyWordManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CollectionComponent\AgainstSummaryItemManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Other\CameraViewManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Other\UIScaler.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PageInfo\PageComponentInfo.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\StageInfoModel.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\ParticleInfo.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\LoadingComponent\LoadingManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageState\MenuStateCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardInSelectBoardManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ChatComponent\ChatManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\Card.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardInGameManager.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Row\RowCommand.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ImageSummary\ImageSummary.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardLibraryComponent\CardLibraryManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Against\AgainstSummaryManager.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Row\RowManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueControl.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Book\BookTagControl.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\SceneEffectInfo.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Scene\SceneCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Config\CardAbilityConfig.cs" />
-    <Compile Include="Assets\Script\0_Other\HotFixedManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorCommand.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\Chain\ChainManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Network\NetCommand.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletOnGui.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\CardBoard\CardBoardCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Dialogue\Live2d\Live2dManager.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\BulletControl.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\Coin\CoinManager.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Thread\TaskThrowCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectInfo.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Dialogue\Live2d\ModelTriggerArea.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Book\BookCommand.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\ParticeTest.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardControl.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\TheWorldEffect.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\UiInfo.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Network\UpdateType.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Enum\GameEnum.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Other\GearControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Config\DeckConfig.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\LoginCanves\UserInfoManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\StageCommand.cs" />
     <Compile Include="Assets\Script\0_Other\EditorExtension.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Against\AgainstSummaryManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Extension\Extension.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Row\RowManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\State\StateCommand.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\CardBoard\CardBoardControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageState\MenuState.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\GameSystem\Event.cs" />
     <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletEnum.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\KeyWordPopup\KeyWordModel.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Loading\LoadingBarManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Input\InputManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Ai\AiCommand.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Other\Log.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Book\BookTagControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampSelectCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigInfoModel.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\SceneEffectInfo.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataControl.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardMenu.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Scene\SceneCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardSet.cs" />
     <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectTest.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardDetailComponent\CardDetailCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\EffectCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Scene\DontDestory.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Translate\TranslateManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\UiCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampSelectControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Test\PremiumCardCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Book\BookCompmentType.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Test\test.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\MapLineManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\NotifyBoard\NoticeCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PracticeComponent\PracticeManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectCommand.cs" />
-    <Compile Include="Assets\Script\0_Other\SteamControl.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletModel.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Camera\CameraManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardModel.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Thread\CustomThread.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorInfo.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardInfo.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\Card\CardAssemblyManager.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueInfo.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\State\StateControl.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\State\StateCommand.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\CardBoard\CardBoardControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\UI\KeyWordPopup\KeyWordModel.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\Ai\AiCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardMenu.cs" />
-    <Compile Include="Assets\Script\2_BattleScene\UI\Arrow\ArrowManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Config\CardAbilityConfig.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampInfo.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystem.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\Arrow\ArrowEndPointManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectType.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Title\TitleCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\UI\Figure\FigureManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Scene\DontDestory.cs" />
     <Compile Include="Assets\Script\9_MixedScene\UI\NotifyBoard\NoticeControl.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Translate\TranslateManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\Chain\ChainManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Config\AgainstConfig.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Network\NetCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\UI\Point\PointManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\UiCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampSelectControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CollectionComponent\AgainstSummaryItemManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletOnGui.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\Condition.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\CardBoard\CardBoardCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Test\PremiumCardCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Dialogue\Live2d\Live2dManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\AssetBundle\AssetBundleCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Title\TitleModel.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Book\BookCompmentType.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Other\CameraViewManager.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\UI\Coin\CoinManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Test\test.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Book\BookInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageState\MenuStateControl.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Thread\TaskThrowCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\MapLineManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectInfo.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Other\UIScaler.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Dialogue\Live2d\ModelTriggerArea.cs" />
     <Compile Include="Assets\Script\1_LoginScene\LoginCanves\LoginSceneManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PageInfo\PageComponentInfo.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\NotifyBoard\NoticeCommand.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\ParticeTest.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\Book\BookCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\StageControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\PracticeComponent\PracticeManager.cs" />
     <Compile Include="Assets\Script\2_BattleScene\UI\TempCardIntroductionManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectCommand.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Dialogue\Live2d\Live2dModelManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\StageComponent\StageInfoModel.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\TheWorldEffect.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\ParticleInfo.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\LoadingComponent\LoadingManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Shader\Blur.cs" />
+    <Compile Include="Assets\Script\0_Other\SteamControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueModel.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Test\TaskTest.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardListComponent\CardListControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageState\MenuStateCommand.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletModel.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CollectionComponent\CollectionManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardListComponent\CardListControl.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardInSelectBoardManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Network\NetInfoModel.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Camera\CameraManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ChatComponent\ChatManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\UI\UiInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystemCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Against\AgainstInfo.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardControl.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardModel.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\Card.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Thread\CustomThread.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigManager.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Network\UpdateType.cs" />
+    <Compile Include="Assets\Script\2_BattleScene\Row\RowCommand.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorInfo.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardInfo.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Enum\GameEnum.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\Card\CardAssemblyManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataCommand.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -439,68 +439,89 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Pipelines">
       <HintPath>Assets\Assemblies\SignalR\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
       <HintPath>Assets\Assemblies\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleTables">
-      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="1Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\NoEditor\1Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization.Config">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="InTheHand.Net.Personal">
-      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Assemblies\SignalR\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Connections.Common">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleTables">
+      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json">
       <HintPath>Assets\Assemblies\SignalR\System.Text.Json.dll</HintPath>
@@ -508,68 +529,50 @@
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web">
-      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Network">
       <HintPath>Assets\Assemblies\Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    <Reference Include="System.Threading.Channels">
+      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Channels">
-      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -949,7 +952,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Live2D.csproj">
-      <Project>{34AA1B34-88B5-120E-60AC-A4A78A443313}</Project>
+      <Project>{90464133-A6F7-0BEA-7AF2-CA4C85F9A93C}</Project>
       <Name>Live2D</Name>
     </ProjectReference>
   </ItemGroup>

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1F698780-9633-18EA-105E-4A502421ABC8}</ProjectGuid>
+    <ProjectGuid>{43313BA8-3951-C488-49F2-1D417A45639D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -56,8 +56,8 @@
     <Analyzer Include="D:\vs2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\Steamworks.NET\RedistCopy.cs" />
     <Compile Include="Assets\Editor\Steamworks.NET\RedistInstall.cs" />
+    <Compile Include="Assets\Editor\Steamworks.NET\RedistCopy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -315,68 +315,89 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Pipelines">
       <HintPath>Assets\Assemblies\SignalR\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
       <HintPath>Assets\Assemblies\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleTables">
-      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="1Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\NoEditor\1Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization.Config">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="InTheHand.Net.Personal">
-      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Assemblies\SignalR\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Connections.Common">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleTables">
+      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json">
       <HintPath>Assets\Assemblies\SignalR\System.Text.Json.dll</HintPath>
@@ -384,68 +405,50 @@
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web">
-      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Network">
       <HintPath>Assets\Assemblies\Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    <Reference Include="System.Threading.Channels">
+      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Channels">
-      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -903,36 +906,36 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{B02015FA-70D4-E2B7-035E-3213216BB0D0}</Project>
+      <Project>{70CBC469-20C8-64D2-4949-CA06870AF6D4}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{07F6CE13-DF15-4F6E-6ACD-7545E955F739}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
-      <Project>{F43A768E-1679-C852-EF7F-C47F457BAD4E}</Project>
-      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{E2119A8F-5013-4D19-7879-5BC1E8B656F5}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="TouHouMachineLearning.csproj">
-      <Project>{C59B79D0-2714-1C68-356F-AE308C1C32C2}</Project>
+      <Project>{3079994F-21F8-620E-57A7-4FC3D4372A4B}</Project>
       <Name>TouHouMachineLearning</Name>
     </ProjectReference>
+    <ProjectReference Include="Steam.csproj">
+      <Project>{EB1D4076-4C4A-8C35-9BEE-5438B332211D}</Project>
+      <Name>Steam</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
+      <Project>{968890A6-7909-8402-CBA6-227BA8D5284D}</Project>
+      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
+      <Project>{9DDB8386-10C6-68F5-0088-2BF060FDF52B}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
+      <Project>{485207FE-0BDE-4F6D-690A-44DE20D55B36}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="GameCard.csproj">
-      <Project>{CA517AF5-44AD-1DCF-3502-4ACC49C766AC}</Project>
+      <Project>{2F30CFEF-B5E9-78E3-C6D1-BE911B2FC5DD}</Project>
       <Name>GameCard</Name>
     </ProjectReference>
     <ProjectReference Include="Live2D.csproj">
-      <Project>{34AA1B34-88B5-120E-60AC-A4A78A443313}</Project>
+      <Project>{90464133-A6F7-0BEA-7AF2-CA4C85F9A93C}</Project>
       <Name>Live2D</Name>
-    </ProjectReference>
-    <ProjectReference Include="Steam.csproj">
-      <Project>{DE7EB8C2-445B-0882-9B09-0022903164F2}</Project>
-      <Name>Steam</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

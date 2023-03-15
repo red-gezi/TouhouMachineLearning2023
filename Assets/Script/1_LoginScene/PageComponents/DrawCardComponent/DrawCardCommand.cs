@@ -87,6 +87,7 @@ namespace TouhouMachineLearningSummary.Command
             //初始化卡牌展示界面
             else
             {
+                int drawCardNum = 5;
                 //等待抽卡结果
                 InitOpenCardComponent(drawCardNum);
                 ShowOpenCardComponent();

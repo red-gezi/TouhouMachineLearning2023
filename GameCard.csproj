@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CA517AF5-44AD-1DCF-3502-4ACC49C766AC}</ProjectGuid>
+    <ProjectGuid>{2F30CFEF-B5E9-78E3-C6D1-BE911B2FC5DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>GameCard</AssemblyName>
@@ -56,153 +56,153 @@
     <Analyzer Include="D:\vs2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM__0L_000.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\Card0.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_007.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_007.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_005.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_006.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_005.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_006.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_0L_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_007.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_0L_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_3C_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_008.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_006.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_0L_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_0L_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_0L_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_007.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM__0L_000.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\Card1.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_2S_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_3C_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_0L_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_007.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_0L_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_006.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\Card0.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_0L_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_008.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_002.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_007.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_005.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_008.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_005.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_002.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_004.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_2S_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_2S_004.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_001.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_0L_001.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_1G_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_008.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_2S_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_2S_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_2S_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N9_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\Card1.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_1G_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T0_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_006.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N8_1G_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardS_0_0_1G_004.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_0L_001.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_S0_3C_005.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_3C_002.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F0_2S_003.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_3C_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N1_3C_003.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_N0_1G_003.cs" />
     <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_T1_2S_005.cs" />
+    <Compile Include="Assets\Script\9_MixedScene\CardSpace\CardM_F1_2S_004.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Script\9_MixedScene\CardSpace\GameCard.asmdef" />
@@ -457,68 +457,89 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Pipelines">
       <HintPath>Assets\Assemblies\SignalR\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
       <HintPath>Assets\Assemblies\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleTables">
-      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="1Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\NoEditor\1Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization.Config">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="InTheHand.Net.Personal">
-      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Assemblies\SignalR\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Connections.Common">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleTables">
+      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json">
       <HintPath>Assets\Assemblies\SignalR\System.Text.Json.dll</HintPath>
@@ -526,68 +547,50 @@
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web">
-      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Network">
       <HintPath>Assets\Assemblies\Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    <Reference Include="System.Threading.Channels">
+      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Channels">
-      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -964,7 +967,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="TouHouMachineLearning.csproj">
-      <Project>{C59B79D0-2714-1C68-356F-AE308C1C32C2}</Project>
+      <Project>{3079994F-21F8-620E-57A7-4FC3D4372A4B}</Project>
       <Name>TouHouMachineLearning</Name>
     </ProjectReference>
   </ItemGroup>

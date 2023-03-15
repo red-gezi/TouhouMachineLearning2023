@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{34AA1B34-88B5-120E-60AC-A4A78A443313}</ProjectGuid>
+    <ProjectGuid>{90464133-A6F7-0BEA-7AF2-CA4C85F9A93C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Live2D</AssemblyName>
@@ -56,137 +56,137 @@
     <Analyzer Include="D:\vs2022\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismPart.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismRenderController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeStateObserver.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMotionData.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTexture.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMotionList.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismExpressionData.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismMoc.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismExpressionList.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismDrawable.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismRenderer.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Pose\CubismPosePart.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismEyeBlinkParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismHitDrawable.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastable.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismModel.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParametersInspector.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismPartsInspector.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismEyeBlinkController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismMouthController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismMouthParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\Masking\MaskTexturePreview.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ComponentExtensionMethods.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ICubismOpacityHandler.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ObjectExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskMaskedJunction.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Pose\CubismPoseController.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\ICubismMaskTextureCommandSource.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismHitDrawable.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismPose3Json.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsRig.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskProperties.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastHit.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismMoc.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismExp3Json.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\ICubismMaskCommandSource.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismModel.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsParticle.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataTag.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\ByteExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismPhysics3Json.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Pose\CubismPoseData.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookParameter.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ICubismUpdatable.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataBody.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismTaskableModel.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Demo\CubismLookTarget.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismUserData3Json.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedParameters.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\LookAt\Billboarder.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskCommandBuffer.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookTargetBehaviour.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParametersInspector.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismTaskQueue.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismExpressionData.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastable.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ICubismDrawOrderHandler.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismUpdateController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsMath.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeStateObserver.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Demo\CubismSampleController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsInput.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\Masking\MaskTexturePreview.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycaster.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskRenderer.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Pose\CubismPosePart.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismDontMoveOnReimportAttribute.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismModel3Json.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskRendererExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookAxis.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismMoveOnReimportCopyComponentsOnly.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMotionList.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismSortingModeExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismMotion3Json.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismAutoEyeBlinkInput.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismDynamicDrawableData.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismRenderController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismPose3Json.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismCanvasInformation.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsRig.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskProperties.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastHit.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParameterBlendMode.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedMemory.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismExp3Json.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\HarmonicMotion\CubismHarmonicMotionParameter.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Tasking\CubismBuiltinAsyncTaskHandler.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\ICubismMaskCommandSource.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismUpdateExecutionOrder.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionState.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\ICubismFadeState.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTile.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismEyeBlinkParameter.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\ICubismLookTarget.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsParticle.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataTag.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismAudioSamplingQuality.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsOutput.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismAudioMouthInput.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysics.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedModel.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismPlayingExpression.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsSubRig.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMotionData.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ICubismTask.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismExpressionList.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismSortingMode.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\HarmonicMotion\CubismHarmonicMotionDirection.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionLayer.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMath.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismMouthController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ArrayExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismShaderVariables.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismBuiltinPickers.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ArrayExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ComponentExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ICubismOpacityHandler.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ObjectExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismDontMoveOnReimportAttribute.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismModel3Json.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismAutoEyeBlinkInput.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismRenderer.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\HarmonicMotion\CubismHarmonicMotionParameter.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismUpdateExecutionOrder.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\ByteExtensionMethods.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTilePool.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismPhysics3Json.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\IntExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\AsyncBenchmark\ModelSpawner.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismPartsInspector.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismPart.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParameterStore.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Pose\CubismPoseData.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsOutput.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ICubismUpdatable.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Expression\CubismExpressionPreview.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParameterExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismCoreDll.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismMouthParameter.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataBody.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismTaskableModel.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismAudioMouthInput.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadePlayingMotion.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysics.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsSourceComponent.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedModel.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedArrayView.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Demo\CubismLookTarget.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismBuiltinShaders.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismUserData3Json.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismPlayingExpression.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsSubRig.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismBuiltinMaterials.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedParameters.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ICubismTask.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ComponentExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionPriority.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismSortingMode.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\HarmonicMotion\CubismHarmonicMotionDirection.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedDrawables.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\Raycasting\RaycastHitDisplay.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastablePrecision.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\GameObjectExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\AsyncBenchmark\FpsCounter.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsNormalization.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataTargetType.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\AsyncBenchmark\AsyncToggler.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismLogging.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycaster.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismSortingModeExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismCanvasInformation.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParameterBlendMode.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedMemory.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\ICubismLookTarget.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTilePool.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismParameterStore.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadePlayingMotion.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismBuiltinShaders.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismBuiltinMaterials.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismDrawable.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismEyeBlinkController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ComponentExtensionMethods.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTexture.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeCurveType.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\LookAt\Billboarder.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastablePrecision.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskCommandBuffer.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookTargetBehaviour.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\LookAt\CubismLookController.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedCanvasInformation.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Motion\CubismMotionLayer.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismTaskQueue.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeMath.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\Masking\CubismMaskTransform.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\GameObjectExtensionMethods.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ICubismDrawOrderHandler.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\AsyncBenchmark\FpsCounter.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MouthMovement\CubismAutoMouthInput.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismUpdateController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsNormalization.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsMath.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedParts.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\ArrayExtensionMethods.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Demo\CubismSampleController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\UserData\CubismUserDataTargetType.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Expression\CubismExpressionController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\AsyncBenchmark\AsyncToggler.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Physics\CubismPhysicsInput.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Motion\CubismMotionPreview.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeController.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismJsonParser.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Rendering\CubismShaderVariables.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\CubismLogging.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedMoc.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Json\CubismBuiltinPickers.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\HarmonicMotion\CubismHarmonicMotionController.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Core\ArrayExtensionMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Live2D\Cubism\Plugins\Windows\x86_64\Live2DCubismCore.dll" />
@@ -455,68 +455,89 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Pipelines">
       <HintPath>Assets\Assemblies\SignalR\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="I18N">
       <HintPath>Assets\Assemblies\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleTables">
-      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="1Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\NoEditor\1Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.Serialization.Config">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="InTheHand.Net.Personal">
-      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Assets\Assemblies\SignalR\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>Assets\Assemblies\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Connections.Common">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Common">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleTables">
+      <HintPath>Assets\Assemblies\ConsoleTables.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Json">
       <HintPath>Assets\Assemblies\SignalR\System.Text.Json.dll</HintPath>
@@ -524,68 +545,50 @@
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Features">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.Connections.Abstractions">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Connections.Abstractions.dll</HintPath>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>Assets\Assemblies\SignalR\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.Json">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web">
-      <HintPath>Assets\Assemblies\SignalR\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\Assemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Network">
       <HintPath>Assets\Assemblies\Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder">
-      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
+    <Reference Include="System.Threading.Channels">
+      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Channels">
-      <HintPath>Assets\Assemblies\SignalR\System.Threading.Channels.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Assets\Assemblies\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\unity2020\2021.3.8f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
