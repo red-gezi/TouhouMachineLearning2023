@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -97,7 +97,7 @@
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigInfoModel.cs" />
     <Compile Include="Assets\Script\2_BattleScene\ParticleSystem-废弃\SceneEffectInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardMenu.cs" />
+    <Compile Include="Assets\Script\0_Other\CardInspector\CardMenu.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Scene\SceneCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\CardSet.cs" />
     <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectTest.cs" />
@@ -107,7 +107,7 @@
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CampComponent\CampInfo.cs" />
     <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystem.cs" />
     <Compile Include="Assets\Script\2_BattleScene\UI\Arrow\ArrowEndPointManager.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorCommand.cs" />
+    <Compile Include="Assets\Script\0_Other\CardInspector\InspectorCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\SoundEffect\SoundEffectType.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Title\TitleCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\UI\Figure\FigureManager.cs" />
@@ -174,13 +174,13 @@
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Against\AgainstInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardControl.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\CardModel.cs" />
+    <Compile Include="Assets\Script\0_Other\CardInspector\CardModel.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\Card.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Thread\CustomThread.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\ConfigComponent\ConfigManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Network\UpdateType.cs" />
     <Compile Include="Assets\Script\2_BattleScene\Row\RowCommand.cs" />
-    <Compile Include="Assets\Script\9_MixedScene\CardInspector\InspectorInfo.cs" />
+    <Compile Include="Assets\Script\0_Other\CardInspector\InspectorInfo.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\CardInfo.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Enum\GameEnum.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\CardAssemblyManager.cs" />
@@ -447,9 +447,6 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="1Sirenix.Serialization">
-      <HintPath>Assets\Assemblies\Sirenix\Assemblies\NoEditor\1Sirenix.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="I18N.CJK">
       <HintPath>Assets\Assemblies\I18N.CJK.dll</HintPath>

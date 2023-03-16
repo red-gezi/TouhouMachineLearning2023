@@ -45,9 +45,18 @@ namespace TouhouMachineLearningSummary.Other
                 AssetDatabase.Refresh();
             }
         }
-
-        [MenuItem("Public/发布当前卡牌版本", false, 101)]
-        static void UpdateCardSpace()
+        [MenuItem("Public/发布当前服务器到正式环境", false, 100)]
+        static async void UpdateServer()
+        {
+            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
+            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
+            await VersionsHub.StartAsync();
+            var result = await VersionsHub.InvokeAsync<bool>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"));
+            UnityEngine.Debug.LogWarning("上传结果" + result);
+            await VersionsHub.StopAsync();
+        }
+        [MenuItem("Public/发布当前卡牌版本为测试版", false, 101)]
+        static void UpdateTestCardSpace()
         {
             var gameCardAssembly = new DirectoryInfo(@"Library\ScriptAssemblies").GetFiles("GameCard*.dll").FirstOrDefault();
             var singleCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Single.json");
@@ -68,17 +77,30 @@ namespace TouhouMachineLearningSummary.Other
                 UnityEngine.Debug.LogError("检索不到卡牌dll文件");
             }
         }
-        [MenuItem("Public/发布当前服务器版本", false, 102)]
-        static async void UpdateServer()
+        [MenuItem("Public/发布当前卡牌版本为正式版", false, 151)]
+        static void UpdateReleaseCardSpace()
         {
-            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
-            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
-            await VersionsHub.StartAsync();
-            var result = await VersionsHub.InvokeAsync<bool>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"));
-            UnityEngine.Debug.LogWarning("上传结果" + result);
-            await VersionsHub.StopAsync();
+            var gameCardAssembly = new DirectoryInfo(@"Library\ScriptAssemblies").GetFiles("GameCard*.dll").FirstOrDefault();
+            var singleCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Single.json");
+            var multiCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Multi.json");
+            if (gameCardAssembly != null && singleCardFile != null && multiCardFile != null)
+            {
+                CardConfig cardConfig = new CardConfig(DateTime.Today.ToString("yyy_MM_dd"), gameCardAssembly, singleCardFile, multiCardFile);
+                List<string> drawAbleList = File.ReadAllText(multiCardFile.FullName).ToObject<List<CardModel>>()
+                    .Where(card => card.cardRank != GameEnum.CardRank.Leader)//排除掉领袖级卡牌
+                    .Where(card => card.ramification != 0)//排除衍生物卡牌
+                                                          //排除活动限定卡牌
+                    .Select(card => card.cardID)
+                    .ToList();
+                _ = Command.NetCommand.UploadCardConfigsAsync(cardConfig, drawAbleList);
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("检索不到卡牌dll文件");
+            }
         }
-        [MenuItem("Public/发布测试版游戏热更资源文件", priority = 103)]
+        
+        [MenuItem("Public/发布游戏热更资源为测试版", priority = 102)]
         static async void BuildBetaAssetBundles()
         {
             //打标签
@@ -146,7 +168,7 @@ namespace TouhouMachineLearningSummary.Other
             UnityEngine.Debug.LogWarning("MD5.json上传完成");
             await touhouHub.StopAsync();
         }
-        [MenuItem("Public/发布正式版游戏热更资源文件", priority = 104)]
+        [MenuItem("Public/发布游戏热更资源为正式版", priority = 152)]
         static async void BuildReleaseAssetBundles()
         {
             //打标签
@@ -276,7 +298,7 @@ namespace TouhouMachineLearningSummary.Other
             File.WriteAllText(direPath + @"\MD5.json", MD5s.ToJson());
             return MD5s;
         }
-        [MenuItem("Public/打包安卓", priority = 151)]
+        [MenuItem("Public/打包安卓AB包", priority = 150)]
         static void BuileAndroid()
         {
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
