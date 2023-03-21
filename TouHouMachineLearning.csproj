@@ -147,7 +147,7 @@
     <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletModel.cs" />
     <Compile Include="Assets\Script\2_BattleScene\Camera\CameraManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardControl.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\FaithControl.cs" />
     <Compile Include="Assets\Script\0_Other\CardInspector\CardModel.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Thread\CustomThread.cs" />
     <Compile Include="Assets\Script\0_Other\CardInspector\InspectorInfo.cs" />
@@ -181,10 +181,11 @@
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardListComponent\CardListControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CollectionComponent\CollectionManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Network\NetInfoModel.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\DrawCardComponent\DrawCardCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\FaithCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystemCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Against\AgainstInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\OpenCardManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Script\TouHouMachineLearning.asmdef" />
