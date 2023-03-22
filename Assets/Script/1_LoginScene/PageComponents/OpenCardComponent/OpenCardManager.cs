@@ -16,7 +16,7 @@ namespace TouhouMachineLearningSummary.Manager
             cardMaterial = new Material(GetComponent<Image>().material);
             GetComponent<Image>().material = cardMaterial;  // 这里重新设置下材质参数
         }
-        public async void FaithClick()
+        public async void FaithBroken()
         {
             faithBrokenParticle.Play();
             await Task.Delay(1500);
