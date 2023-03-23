@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -147,12 +147,12 @@
     <Compile Include="Assets\Script\2_BattleScene\Bullet\BulletModel.cs" />
     <Compile Include="Assets\Script\2_BattleScene\Camera\CameraManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\DeckListComponent\DeckBoardCommand.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\FaithBrokenManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\OpenCardManager.cs" />
     <Compile Include="Assets\Script\0_Other\CardInspector\CardModel.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Thread\CustomThread.cs" />
     <Compile Include="Assets\Script\0_Other\CardInspector\InspectorInfo.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\CardInfo.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\OpenCardManager.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\SingleOpenCardInfo.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Card\CardAssemblyManager.cs" />
     <Compile Include="Assets\Script\1_LoginScene\Dialogue\DialogueInfo.cs" />
     <Compile Include="Assets\Script\2_BattleScene\State\StateControl.cs" />
@@ -182,7 +182,7 @@
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CardListComponent\CardListControl.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\CollectionComponent\CollectionManager.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Network\NetInfoModel.cs" />
-    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\FaithCommand.cs" />
+    <Compile Include="Assets\Script\1_LoginScene\PageComponents\OpenCardComponent\OpenCardCommand.cs" />
     <Compile Include="Assets\Script\2_BattleScene\GameSystem\GameSystemCommand.cs" />
     <Compile Include="Assets\Script\9_MixedScene\Against\AgainstInfo.cs" />
     <Compile Include="Assets\Script\1_LoginScene\PageComponents\PlayerDataComponent\PlayerDataCommand.cs" />
