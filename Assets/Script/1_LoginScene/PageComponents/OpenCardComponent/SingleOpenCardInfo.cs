@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace TouhouMachineLearningSummary.Info
 {
-    //用于展示单人多人页面中的卡组面板
+    //单个开卡组件信心
     public class SingleOpenCardInfo : MonoBehaviour
     {
         public ParticleSystem faithBrokenParticle;

@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TouhouMachineLearningSummary.Config;
-using TouhouMachineLearningSummary.Extension;
-using TouhouMachineLearningSummary.GameEnum;
-using TouhouMachineLearningSummary.Info;
-using TouhouMachineLearningSummary.Manager;
-using TouhouMachineLearningSummary.Model;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TouhouMachineLearningSummary.Command
 {
     class OpenCardCommand
     {
         //初始化抽卡面板状态
-        public static void Init()
+        public static void InitDrawCardPage()
         {
             Info.PageComponentInfo.Instance.FaithComponent.SetActive(false);
             Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(false);
@@ -84,28 +76,70 @@ namespace TouhouMachineLearningSummary.Command
 
             }
             //如果服务器扣除失败,弹窗提示失败
-            if (true)
+            if (false)
             {
 
             }
             //初始化卡牌展示界面
             else
             {
-                int drawCardNum = 5;
+                List<string> drawCardId = new List<string>() { "M_N0_0L_001", "M_N0_1G_001", "M_N0_1G_002", "M_N0_1G_003", "M_N0_1G_004" };
                 //等待抽卡结果
-                InitOpenCardComponent(drawCardNum);
+                InitOpenCardComponent(drawCardId);
                 ShowOpenCardComponent();
             }
 
         }
         /// ///////////////////////////////////////////////开卡选择相关操作//////////////////////////////////////////
-
-        //初始化开卡组件
-        public static void InitOpenCardComponent(int drawCardNum)
+        /// <summary>
+        /// 获得开卡界面中的所有卡牌UI组件
+        /// </summary>
+        /// <returns></returns>
+        static List<Info.SingleOpenCardInfo> GetOpenCardInfos() => Manager.OpenCardManager.Instance.singleOpenCardInfos;
+        //初始化配置每个开卡组件
+        public static void InitOpenCardComponent(List<string> drawCardId)
         {
+            for (int i = 0; i < 5; i++)
+            {
+                var targetOpenCard = GetOpenCardInfos()[i];
+                bool isActive = i < drawCardId.Count;
+                targetOpenCard.gameObject.SetActive(isActive);
+                //激活的卡牌替换卡图
+                if (isActive)
+                {
+                    var cardInfo = Manager.CardAssemblyManager.GetCurrentCardInfos(drawCardId[i]);
+                    targetOpenCard.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
+                    targetOpenCard.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
+                }
+            }
+        }
+        //显示开卡组件
+        public static void ShowOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(true);
+        //关闭信念选择组件
+        public static void CloseOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(false);
+        //刷新组件状态
+        public static void RefreshOpenCardComponent()
+        {
+            if (GetOpenCardInfos().Any(info => info.state == 1))
+            {
+                if (GetOpenCardInfos().Any(info => info.state == 2))
+                {
+                    //进入等待关闭状态
+                }
+                else
+                {
+                    //进入等待翻转状态
+                }
+            }
+            else
+            {
+                //进入等待开卡状态
+            }
+
 
         }
-        public static async void FaithBroken(Info.SingleOpenCardInfo singleOpenCardInfo)
+        //显露抽的的卡牌卡背
+        public static async void ShowCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
             //判断是否可以点破信念使卡牌显形
             if (singleOpenCardInfo.state == 1)
@@ -124,40 +158,8 @@ namespace TouhouMachineLearningSummary.Command
             //刷新组件状态
             RefreshOpenCardComponent();
         }
-        //刷新组件状态
-        public static void RefreshOpenCardComponent()
-        {
-            if (Manager.OpenCardManager.Instance.singleOpenCardInfos.Any(info=>info.state==1))
-            {
-                if (Manager.OpenCardManager.Instance.singleOpenCardInfos.Any(info => info.state == 2))
-                {
-                    //进入等待关闭状态
-                }
-                else
-                {
-                    //进入等待翻转状态
-                }
-            }
-            else
-            {
-                //进入等待开卡状态
-            }
-        }
-
-        //显示开卡组件
-        public static void ShowOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(true);
-        //关闭信念选择组件
-        public static void CloseOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(false);
-        //消耗信念创造出卡牌
-        public static void ClickFaith()
-        {
-            //播放动画
-            //信念碎裂，粒子上移
-
-            //卡牌
-        }
-        //展现出生成的卡牌真身
-        public static void ShowCard()
+        //翻转生成的卡牌真身
+        public static void TurnCard()
         {
 
         }
