@@ -340,9 +340,6 @@
     <Reference Include="I18N">
       <HintPath>Assets\Assemblies\I18N.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>Assets\Assemblies\SignalR\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.Features">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.Extensions.Features.dll</HintPath>
     </Reference>

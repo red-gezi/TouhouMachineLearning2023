@@ -10,14 +10,14 @@ namespace TouhouMachineLearningSummary.Info
     {
         public ParticleSystem faithBrokenParticle;
         public ParticleSystem cardGenerateParticle;
+        public GameObject card;
         public Material cardMaterial;
+
+        public GameObject faithUserUi;
+        public GameObject cardNameUi;
+        public GameObject cardCountUi;
         //卡牌状态，0为未使用，1为未显形，2为显形后背面朝上，3为翻转过来正面显示
         public int state = 1;
-        private void Awake()
-        {
-            cardMaterial = new Material(GetComponent<Image>().material);
-            GetComponent<Image>().material = cardMaterial;  // 这里重新设置下材质参数
-        }
 
     }
 }

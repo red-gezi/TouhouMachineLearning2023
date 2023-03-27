@@ -20,9 +20,9 @@ namespace TouhouMachineLearningSummary.Manager
         public GameObject turnAllCardButton;
         public GameObject closeButton;
         private void Awake() => Instance = this;
-        public void BrokenFaith(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.ShowCard(info);
+        public void ShowCard(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.ShowCard(info);
 
-        public void BrokenAllFaiths() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.ShowCard);
+        public void ShowAllCards() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.ShowCard);
         //显示开卡界面
         public void ShowOpenCardsCanve() => OpenCardsCanve.SetActive(true);
         //关闭开卡界面

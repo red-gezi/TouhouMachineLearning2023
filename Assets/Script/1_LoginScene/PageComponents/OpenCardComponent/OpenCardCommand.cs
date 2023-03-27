@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
+using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace TouhouMachineLearningSummary.Command
 {
@@ -108,8 +112,18 @@ namespace TouhouMachineLearningSummary.Command
                 if (isActive)
                 {
                     var cardInfo = Manager.CardAssemblyManager.GetCurrentCardInfos(drawCardId[i]);
+                    //第一次触发时初始化材质球
+                    if (targetOpenCard.cardMaterial == null)
+                    {
+                        targetOpenCard.cardMaterial = new Material(targetOpenCard.card.GetComponent<Image>().material);
+                        targetOpenCard.card.GetComponent<Image>().material = targetOpenCard.cardMaterial;
+                    }
                     targetOpenCard.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
                     targetOpenCard.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
+                    targetOpenCard.card.transform.eulerAngles = new Vector3(0, 180, 0);
+                    targetOpenCard.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", 2);
+                    targetOpenCard.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
+
                 }
             }
         }
@@ -159,9 +173,14 @@ namespace TouhouMachineLearningSummary.Command
             RefreshOpenCardComponent();
         }
         //翻转生成的卡牌真身
-        public static void TurnCard()
+        public static async Task TurnCardAsync(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
-
+            await CustomThread.TimerAsync(1, process =>
+            {
+                singleOpenCardInfo.card.transform.eulerAngles = new Vector3(0, 180 * (1 - process), 0);
+                singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
+                singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
+            });
         }
     }
 }
