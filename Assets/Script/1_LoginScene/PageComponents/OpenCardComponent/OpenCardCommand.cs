@@ -105,25 +105,29 @@ namespace TouhouMachineLearningSummary.Command
         {
             for (int i = 0; i < 5; i++)
             {
-                var targetOpenCard = GetOpenCardInfos()[i];
+                var singleOpenCardInfo = GetOpenCardInfos()[i];
                 bool isActive = i < drawCardId.Count;
-                targetOpenCard.gameObject.SetActive(isActive);
+                singleOpenCardInfo.gameObject.SetActive(isActive);
                 //激活的卡牌替换卡图
                 if (isActive)
                 {
                     var cardInfo = Manager.CardAssemblyManager.GetCurrentCardInfos(drawCardId[i]);
                     //第一次触发时初始化材质球
-                    if (targetOpenCard.cardMaterial == null)
+                    if (singleOpenCardInfo.cardMaterial == null)
                     {
-                        targetOpenCard.cardMaterial = new Material(targetOpenCard.card.GetComponent<Image>().material);
-                        targetOpenCard.card.GetComponent<Image>().material = targetOpenCard.cardMaterial;
+                        singleOpenCardInfo.cardMaterial = new Material(singleOpenCardInfo.card.GetComponent<Image>().material);
+                        singleOpenCardInfo.card.GetComponent<Image>().material = singleOpenCardInfo.cardMaterial;
                     }
-                    targetOpenCard.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
-                    targetOpenCard.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
-                    targetOpenCard.card.transform.eulerAngles = new Vector3(0, 180, 0);
-                    targetOpenCard.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", 2);
-                    targetOpenCard.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
-
+                    singleOpenCardInfo.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
+                    singleOpenCardInfo.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
+                    singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 180, 0);
+                    singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", 2);
+                    singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
+                    singleOpenCardInfo.state = 1;
+                }
+                else
+                {
+                    singleOpenCardInfo.state = 0;
                 }
             }
         }
@@ -173,7 +177,7 @@ namespace TouhouMachineLearningSummary.Command
             RefreshOpenCardComponent();
         }
         //翻转生成的卡牌真身
-        public static async Task TurnCardAsync(Info.SingleOpenCardInfo singleOpenCardInfo)
+        public static async void TurnCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
             await CustomThread.TimerAsync(1, process =>
             {
