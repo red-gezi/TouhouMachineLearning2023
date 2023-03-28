@@ -23,9 +23,9 @@ namespace TouhouMachineLearningSummary.Manager
         //抽卡,并打开开卡组件
         public void DrawCard() => Command.OpenCardCommand.DrawCard();
         //再次抽取1张卡
-        public void DrawOneCardAgain() => Command.DeckBoardCommand.DeleteDeck();
+        public void DrawOneCardAgain() => Command.OpenCardCommand.DrawCard();
         //再次抽取至多5张卡
-        public void DrawMoreCardAgain() => Command.DeckBoardCommand.DeleteDeck();
+        public void DrawMoreCardAgain() => Command.OpenCardCommand.DrawCard();
         //关闭开卡界面
         public void CloseOpenCardsCanve() => Command.OpenCardCommand.CloseOpenCardComponent();
 

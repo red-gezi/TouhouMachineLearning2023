@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
 using UnityEngine.UI;
@@ -118,10 +119,17 @@ namespace TouhouMachineLearningSummary.Command
 
                     singleOpenCardInfo.state = 1;
                     singleOpenCardInfo.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
-                    singleOpenCardInfo.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
+                    //singleOpenCardInfo.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
                     singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 180, 0);
+                    singleOpenCardInfo.cardMaterial.SetFloat("_process", 345);
                     singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", 2);
                     singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
+                    var s = singleOpenCardInfo.cardNameUi.transform.GetChild(0);
+                    singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text= cardInfo.TranslateName;
+                    singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+                    singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text="New";
+
                 }
                 else
                 {
@@ -161,6 +169,7 @@ namespace TouhouMachineLearningSummary.Command
         //显露抽的的卡牌卡背
         public static async void ShowCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
+            
             //判断是否可以点破信念使卡牌显形
             if (singleOpenCardInfo.state == 1)
             {
@@ -181,16 +190,21 @@ namespace TouhouMachineLearningSummary.Command
         //翻转生成的卡牌真身
         public static async void TurnCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
+            Debug.Log("翻开");
             //反转卡牌
             await CustomThread.TimerAsync(1, process =>
             {
-                singleOpenCardInfo.card.transform.eulerAngles = new Vector3(0, 180 * (1 - process), 0);
+                singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 180 * (1 - process), 0);
+            });
+            //显示卡牌数量和名字UI
+            await CustomThread.TimerAsync(1, process =>
+            {
                 singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
                 singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
             });
-            //显示卡牌数量和名字UI
-
             //显示卡牌数量和名字文字
+            singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+            singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
         }
     }
 }
