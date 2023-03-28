@@ -153,9 +153,9 @@ namespace TouhouMachineLearningSummary.Info
         public GameObject suffixTitleModel;
         ///////////////////////////////////////////////////////////抽卡信息/////////////////////////////
         public static List<Faith> SelectFaiths { get; set; } = new();
-
+        [Header("抽卡组件")]
         //抽卡界面组件
-        public GameObject DrawCardComponent;
+        public GameObject CardPoolComponent;
         //信念选择组件
         public GameObject FaithComponent;
         //开卡界面组件

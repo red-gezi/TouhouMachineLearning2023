@@ -12,29 +12,26 @@ namespace TouhouMachineLearningSummary.Manager
     public class OpenCardManager : MonoBehaviour
     {
         public static OpenCardManager Instance { get; set; }
-        public GameObject OpenCardsCanve;
-        public List<SingleOpenCardInfo> singleOpenCardInfos = new List<SingleOpenCardInfo>();
         public GameObject drawOneCardButton;
         public GameObject drawMoreCardButton;
-        public GameObject brokenAllFaithsButton;
-        public GameObject turnAllCardButton;
+        public GameObject showAllCardsButton;
+        public GameObject turnAllCardsButton;
         public GameObject closeButton;
+
+        public List<SingleOpenCardInfo> singleOpenCardInfos = new List<SingleOpenCardInfo>();
         private void Awake() => Instance = this;
-        public void ShowCard(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.ShowCard(info);
-
-        public void ShowAllCards() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.ShowCard);
-        public void TurnCard(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.TurnCard(info);
-
-        public void TurnAllCards() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.TurnCard);
-        //显示开卡界面
-        public void ShowOpenCardsCanve() => OpenCardsCanve.SetActive(true);
-        //关闭开卡界面
-        public void CloseOpenCardsCanve() => OpenCardsCanve.SetActive(false);
-        //选择抽卡
+        //抽卡,并打开开卡组件
         public void DrawCard() => Command.OpenCardCommand.DrawCard();
         //再次抽取1张卡
         public void DrawOneCardAgain() => Command.DeckBoardCommand.DeleteDeck();
         //再次抽取至多5张卡
         public void DrawMoreCardAgain() => Command.DeckBoardCommand.DeleteDeck();
+        //关闭开卡界面
+        public void CloseOpenCardsCanve() => Command.OpenCardCommand.CloseOpenCardComponent();
+
+        public void ShowCard(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.ShowCard(info);
+        public void TurnCard(Info.SingleOpenCardInfo info) => Command.OpenCardCommand.TurnCard(info);
+        public void ShowAllCards() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.ShowCard);
+        public void TurnAllCards() => singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.OpenCardCommand.TurnCard);
     }
 }

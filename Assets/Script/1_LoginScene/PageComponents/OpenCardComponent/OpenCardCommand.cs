@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 namespace TouhouMachineLearningSummary.Command
 {
@@ -118,43 +115,48 @@ namespace TouhouMachineLearningSummary.Command
                         singleOpenCardInfo.cardMaterial = new Material(singleOpenCardInfo.card.GetComponent<Image>().material);
                         singleOpenCardInfo.card.GetComponent<Image>().material = singleOpenCardInfo.cardMaterial;
                     }
+
+                    singleOpenCardInfo.state = 1;
                     singleOpenCardInfo.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
                     singleOpenCardInfo.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
                     singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 180, 0);
                     singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", 2);
                     singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
-                    singleOpenCardInfo.state = 1;
                 }
                 else
                 {
                     singleOpenCardInfo.state = 0;
                 }
             }
+            RefreshOpenCardComponent();
         }
         //显示开卡组件
         public static void ShowOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(true);
-        //关闭信念选择组件
+        //关闭开卡组件
         public static void CloseOpenCardComponent() => Info.PageComponentInfo.Instance.OpenCardComponent.SetActive(false);
         //刷新组件状态
         public static void RefreshOpenCardComponent()
         {
             if (GetOpenCardInfos().Any(info => info.state == 1))
             {
-                if (GetOpenCardInfos().Any(info => info.state == 2))
-                {
-                    //进入等待关闭状态
-                }
-                else
-                {
-                    //进入等待翻转状态
-                }
-            }
-            else
-            {
                 //进入等待开卡状态
+                Manager.OpenCardManager.Instance.showAllCardsButton.SetActive(true);
+                Manager.OpenCardManager.Instance.turnAllCardsButton.SetActive(false);
+                Manager.OpenCardManager.Instance.closeButton.SetActive(false);
+                return;
             }
-
-
+            if (GetOpenCardInfos().Any(info => info.state == 2))
+            {
+                //进入等待翻转状态
+                Manager.OpenCardManager.Instance.showAllCardsButton.SetActive(false);
+                Manager.OpenCardManager.Instance.turnAllCardsButton.SetActive(true);
+                Manager.OpenCardManager.Instance.closeButton.SetActive(false);
+                return;
+            }
+            //进入等待关闭状态
+            Manager.OpenCardManager.Instance.showAllCardsButton.SetActive(false);
+            Manager.OpenCardManager.Instance.turnAllCardsButton.SetActive(false);
+            Manager.OpenCardManager.Instance.closeButton.SetActive(true);
         }
         //显露抽的的卡牌卡背
         public static async void ShowCard(Info.SingleOpenCardInfo singleOpenCardInfo)
@@ -179,12 +181,16 @@ namespace TouhouMachineLearningSummary.Command
         //翻转生成的卡牌真身
         public static async void TurnCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
+            //反转卡牌
             await CustomThread.TimerAsync(1, process =>
             {
                 singleOpenCardInfo.card.transform.eulerAngles = new Vector3(0, 180 * (1 - process), 0);
                 singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
                 singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
             });
+            //显示卡牌数量和名字UI
+
+            //显示卡牌数量和名字文字
         }
     }
 }
