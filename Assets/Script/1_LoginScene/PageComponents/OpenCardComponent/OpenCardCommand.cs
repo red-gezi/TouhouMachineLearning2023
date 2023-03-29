@@ -115,6 +115,9 @@ namespace TouhouMachineLearningSummary.Command
                     {
                         singleOpenCardInfo.cardMaterial = new Material(singleOpenCardInfo.card.GetComponent<Image>().material);
                         singleOpenCardInfo.card.GetComponent<Image>().material = singleOpenCardInfo.cardMaterial;
+                        singleOpenCardInfo.cardNameUi.GetComponent<Image>().material = new Material(singleOpenCardInfo.cardNameUi.GetComponent<Image>().material);
+                        singleOpenCardInfo.cardCountUi.GetComponent<Image>().material = new Material(singleOpenCardInfo.cardCountUi.GetComponent<Image>().material);
+
                     }
 
                     singleOpenCardInfo.state = 1;
@@ -126,9 +129,9 @@ namespace TouhouMachineLearningSummary.Command
                     singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", 2);
                     var s = singleOpenCardInfo.cardNameUi.transform.GetChild(0);
                     singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
-                    singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text= cardInfo.TranslateName;
+                    singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = cardInfo.TranslateName;
                     singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
-                    singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text="New";
+                    singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "New";
 
                 }
                 else
@@ -169,7 +172,7 @@ namespace TouhouMachineLearningSummary.Command
         //显露抽的的卡牌卡背
         public static async void ShowCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
-            
+
             //判断是否可以点破信念使卡牌显形
             if (singleOpenCardInfo.state == 1)
             {
@@ -191,20 +194,34 @@ namespace TouhouMachineLearningSummary.Command
         public static async void TurnCard(Info.SingleOpenCardInfo singleOpenCardInfo)
         {
             Debug.Log("翻开");
-            //反转卡牌
-            await CustomThread.TimerAsync(1, process =>
+            // 判断是否可以翻开
+            if (singleOpenCardInfo.state == 2)
             {
-                singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 180 * (1 - process), 0);
-            });
-            //显示卡牌数量和名字UI
-            await CustomThread.TimerAsync(1, process =>
-            {
-                singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
-                singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
-            });
-            //显示卡牌数量和名字文字
-            singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-            singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                //反转卡牌
+                await CustomThread.TimerAsync(0.4f, process =>
+                {
+                    singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 90 + 90 * (1 - process), 0);
+                    singleOpenCardInfo.card.transform.localPosition = new Vector3(0, 0, process * -256);
+                });
+                await CustomThread.TimerAsync(0.4f, process =>
+                {
+                    singleOpenCardInfo.card.transform.localEulerAngles = new Vector3(0, 90 * (1 - process), 0);
+                    singleOpenCardInfo.card.transform.localPosition = new Vector3(0, 0, (1 - process) * -256);
+                });
+                //显示卡牌数量和名字UI
+                await CustomThread.TimerAsync(0.6f, process =>
+                {
+                    singleOpenCardInfo.cardNameUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
+                    singleOpenCardInfo.cardCountUi.GetComponent<Image>().material.SetFloat("_progress", Mathf.Lerp(2, 0, process));
+                });
+                //显示卡牌数量和名字文字
+                singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+                singleOpenCardInfo.state = 3;
+                //刷新组件状态
+                RefreshOpenCardComponent();
+
+            }
         }
     }
 }
