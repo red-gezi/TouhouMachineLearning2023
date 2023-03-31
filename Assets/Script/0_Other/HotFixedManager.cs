@@ -21,6 +21,7 @@ namespace TouhouMachineLearningSummary.Manager
         public Text versiousText;
         public Slider slider;
         public GameObject RestartNotice;
+        string serverIP = File.ReadAllLines("敏感信息.txt")[1];
 
         MD5 md5 = new MD5CryptoServiceProvider();
 
@@ -129,17 +130,13 @@ namespace TouhouMachineLearningSummary.Manager
                             WebClient webClient = new WebClient();
                             webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
                             await webClient.DownloadFileTaskAsync(new System.Uri($"http://106.15.38.165:7777/AssetBundles/{ConfigManager.GetServerTag()}/{MD5FiIeData.Key}"), savePath);
-                            //var fileData = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/{ConfigManager.GetServerTag()}/{MD5FiIeData.Key}").Result.Content.ReadAsByteArrayAsync();
-                            //File.WriteAllBytes(savePath, fileData);
                             Debug.LogWarning(MD5FiIeData.Key + "下载完成");
                             Debug.LogWarning("结束下载文件" + localFile.Name + " " + System.DateTime.Now);
-
                             void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
                             {
                                 processText.text = $"{e.BytesReceived / 1024 / 1024}MB/{e.TotalBytesToReceive / 1024 / 1024}MB";
                                 slider.value = e.BytesReceived *1f/ e.TotalBytesToReceive;
                             }
-
                         }
                     }
                     downloadTaskCount++;

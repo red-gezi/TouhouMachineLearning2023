@@ -60,7 +60,7 @@ public class TouHouHub : Hub
     //查询最新版本
     public string GetCardConfigsVersion() => MongoDbCommand.GetLastCardUpdateVersion();
     //更新卡牌配置信息
-    public string UploadCardConfigs(CardConfig cardConfig) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig);
+    public string UploadCardConfigs(CardConfig cardConfig, List<string> drawAbleList) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig, drawAbleList);
     //下载卡牌配置信息
     public CardConfig DownloadCardConfigs(string date) => MongoDbCommand.GetCardConfig(date);
     //////////////////////////////////////////////上传AB包////////////////////////////////////////////////////////////////////

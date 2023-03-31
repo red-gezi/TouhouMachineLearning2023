@@ -1,0 +1,6 @@
+screen -ls 查看后台程序
+screen -r id 进入指定后台窗口
+
+输入 sh start.sh 
+该程序会启动ServerVersions.dll 版本控制器
+ServerVersions.dll会启动Server目录下的Server.dll

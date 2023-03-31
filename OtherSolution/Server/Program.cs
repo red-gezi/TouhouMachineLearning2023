@@ -3,12 +3,14 @@ using Server;
 using Server.Data;
 using System;
 //链接用户数据库
+Log.Init();
+Log.Summary("日志系统初始化");
 MongoDbCommand.Init();
-Console.WriteLine("数据库已初始化");
+Log.Summary("数据库已初始化");
 HoldListManager.Init();
-Console.WriteLine("匹配管理器已初始化");
+Log.Summary("匹配管理器已初始化");
 HttpServer.Init();
-Console.WriteLine("资源服务器已初始化");
+Log.Summary("资源服务器已初始化");
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();

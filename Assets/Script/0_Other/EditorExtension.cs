@@ -16,6 +16,8 @@ namespace TouhouMachineLearningSummary.Other
 {
     public class EditorExtension : MonoBehaviour
     {
+        string serverIP = File.ReadAllLines("敏感信息.txt")[1];
+        string password = File.ReadAllLines("敏感信息.txt")[1];
         [MenuItem("Tools/打开服务端", false, 1)]
         static void StartServer() => Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
         [MenuItem("Tools/打开游戏客户端", false, 2)]

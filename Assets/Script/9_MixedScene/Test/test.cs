@@ -44,22 +44,12 @@ namespace TouhouMachineLearningSummary.Test
                 abilities.Add(cardAbility);
             }
             Debug.Log(abilities.ToJson());
-            //Debug.Log("手动点击触发");
-            //var Hub = new HubConnectionBuilder()
-            //    .WithUrl($"https://gezi.ovyno.com/TouHouHub")
-            //    .Build();
-            //await Hub.StartAsync();
-            //Debug.Log(await Hub.InvokeAsync<string>("GetCardConfigsVersion"));
+           
         }
         public async void Start()
         {
 
-            //Debug.Log("由unity触发");
-            //var Hub = new HubConnectionBuilder()
-            //    .WithUrl($"http://106.15.38.165:495/TouHouHub")
-            //    .Build();
-            //await Hub.StartAsync();
-            //Debug.Log(await Hub.InvokeAsync<string>("GetCardConfigsVersion"));
+            
         }
         [Button("下载拥有记录")]
         public void test1()

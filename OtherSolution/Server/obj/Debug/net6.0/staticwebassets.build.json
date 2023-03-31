@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0JmnQ9HoFH3icJACSU7jKAKQTfvketHpDt3lYDGMGd8=",
+  "Hash": "MwVKfIDJOqszBDmI7xNcZIjJ/TPl4MrRyPnnTPxam6o=",
   "Source": "Server",
   "BasePath": "_content/Server",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Server\\wwwroot",
       "Source": "Server",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "Pattern": "**"
     }
@@ -5559,10 +5559,10 @@
       "OriginalItemSpec": "C:\\Users\\wuyunge\\.nuget\\packages\\antdesign\\0.10.2\\staticwebassets\\less\\upload\\style\\rtl.less"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Server.styles.css",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Server.styles.css",
       "SourceId": "Server",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Server",
       "RelativePath": "Server.styles.css",
       "AssetKind": "All",
@@ -5573,13 +5573,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Server.styles.css"
+      "OriginalItemSpec": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Server.styles.css"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Server.bundle.scp.css",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Server.bundle.scp.css",
       "SourceId": "Server",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Server",
       "RelativePath": "Server.bundle.scp.css",
       "AssetKind": "All",
@@ -5590,13 +5590,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Server.bundle.scp.css"
+      "OriginalItemSpec": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Server.bundle.scp.css"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\2\\1.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\2\\1.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "2/1.png",
       "AssetKind": "All",
@@ -5610,10 +5610,10 @@
       "OriginalItemSpec": "wwwroot\\2\\1.png"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\2\\2.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\2\\2.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "2/2.png",
       "AssetKind": "All",
@@ -5627,10 +5627,10 @@
       "OriginalItemSpec": "wwwroot\\2\\2.png"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\2\\3.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\2\\3.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "2/3.png",
       "AssetKind": "All",
@@ -5644,10 +5644,10 @@
       "OriginalItemSpec": "wwwroot\\2\\3.png"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -5661,10 +5661,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -5678,10 +5678,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -5695,10 +5695,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -5712,10 +5712,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -5729,10 +5729,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -5746,10 +5746,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -5763,10 +5763,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -5780,10 +5780,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -5797,10 +5797,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -5814,10 +5814,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -5831,10 +5831,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\css\\site.css",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\css\\site.css",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -5848,10 +5848,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\favicon.ico",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\favicon.ico",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -5865,10 +5865,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\image\\1.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\image\\1.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "image/1.png",
       "AssetKind": "All",
@@ -5882,10 +5882,10 @@
       "OriginalItemSpec": "wwwroot\\image\\1.png"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\image\\2.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\image\\2.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "image/2.png",
       "AssetKind": "All",
@@ -5899,10 +5899,10 @@
       "OriginalItemSpec": "wwwroot\\image\\2.png"
     },
     {
-      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\image\\3.png",
+      "Identity": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\image\\3.png",
       "SourceId": "Server",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2022\\OtherSolution\\Server\\wwwroot\\",
+      "ContentRoot": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\wwwroot\\",
       "BasePath": "_content/Server",
       "RelativePath": "image/3.png",
       "AssetKind": "All",

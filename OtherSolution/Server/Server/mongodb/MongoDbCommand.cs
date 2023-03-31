@@ -19,13 +19,28 @@ namespace Server
         {
 
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            Console.WriteLine("链接数据库");
+
+            Log.Summary("/////////////////////////////");
+            Log.Summary("链接数据库");
+            //读取服务器配置保密文件
+            if (!File.Exists("Config.ini"))
+            {
+                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "", "CommandPassword", "" });
+                Console.WriteLine("检测不到配置文件，开始创建");
+            }
+
             client = new MongoClient("mongodb://106.15.38.165:28020");
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
             CardConfigCollection = db.GetCollection<CardConfig>("CardConfig");
             SummaryCollection = db.GetCollection<AgainstSummary>("AgainstSummary");
             DiyCardCollection = db.GetCollection<DiyCardInfo>("DiyCards");
+
+            Log.Summary($"查询到用户信息{PlayerInfoCollection.AsQueryable().Count()}条");
+            Log.Summary($"查询到卡牌配置信息{CardConfigCollection.AsQueryable().Count()}条");
+            Log.Summary($"查询到对局记录信息{SummaryCollection.AsQueryable().Count()}条");
+            Log.Summary($"查询到diy卡牌信息{DiyCardCollection.AsQueryable().Count()}条");
+            Log.Summary("/////////////////////////////");
         }
         //////////////////////////////////////////////////账号系统///////////////////////////////////////////////////////////////////
         public static int Register(string account, string password)
