@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.Other
     public class EditorExtension : MonoBehaviour
     {
         string serverIP = File.ReadAllLines("敏感信息.txt")[1];
-        string password = File.ReadAllLines("敏感信息.txt")[1];
+        string password = File.ReadAllLines("敏感信息.txt")[3];
         [MenuItem("Tools/打开服务端", false, 1)]
         static void StartServer() => Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
         [MenuItem("Tools/打开游戏客户端", false, 2)]
@@ -47,16 +47,7 @@ namespace TouhouMachineLearningSummary.Other
                 AssetDatabase.Refresh();
             }
         }
-        [MenuItem("Public/发布当前服务器到正式环境", false, 100)]
-        static async void UpdateServer()
-        {
-            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
-            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
-            await VersionsHub.StartAsync();
-            var result = await VersionsHub.InvokeAsync<bool>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"));
-            UnityEngine.Debug.LogWarning("上传结果" + result);
-            await VersionsHub.StopAsync();
-        }
+    
         [MenuItem("Public/发布当前卡牌版本为测试版", false, 101)]
         static void UpdateTestCardSpace()
         {
@@ -169,6 +160,16 @@ namespace TouhouMachineLearningSummary.Other
             await touhouHub.InvokeAsync<bool>("UploadAssetBundles", @$"AssetBundles/Test/MD5.json", File.ReadAllBytes(@$"AssetBundles/PC/MD5.json"));
             UnityEngine.Debug.LogWarning("MD5.json上传完成");
             await touhouHub.StopAsync();
+        }
+        [MenuItem("Public/发布当前服务器到正式环境", false, 151)]
+        static async void UpdateServer()
+        {
+            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
+            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
+            await VersionsHub.StartAsync();
+            var result = await VersionsHub.InvokeAsync<bool>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"));
+            UnityEngine.Debug.LogWarning("上传结果" + result);
+            await VersionsHub.StopAsync();
         }
         [MenuItem("Public/发布游戏热更资源为正式版", priority = 152)]
         static async void BuildReleaseAssetBundles()

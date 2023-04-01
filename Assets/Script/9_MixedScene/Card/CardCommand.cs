@@ -62,7 +62,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             var card = e.TargetCard;
             await BulletCommand.InitBulletAsync(e);
-            ShakeCard(e.TargetCard);
+            _=ShakeCard(e.TargetCard);
             if (card[CardState.Congealbounds])
             {
                 await GameSystem.StateSystem.ClearState(new Event(e.TriggerCard, card));
