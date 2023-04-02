@@ -20,6 +20,7 @@ public class TouHouHub : Hub
     //////////////////////////////////////////////账户////////////////////////////////////////////////////////////////////
     public int Register(string account, string password) => MongoDbCommand.Register(account, password);
     public PlayerInfo? Login(string account, string password) => MongoDbCommand.Login(account, password);
+    public List<string> DrawCard(string account, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(account, password, selectFaiths);
     //////////////////////////////////////////////等候列表////////////////////////////////////////////////////////////////////
     public void Join(AgainstModeType againstMode, int FirstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo) => HoldListManager.Add(againstMode, FirstMode, userInfo, virtualOpponentInfo, Clients.Caller);
     public void Leave(AgainstModeType againstMode, string account) => HoldListManager.Remove(againstMode, account);
@@ -45,6 +46,9 @@ public class TouHouHub : Hub
             default: return false;
         }
     }
+
+
+    
     //////////////////////////////////////////////日志////////////////////////////////////////////////////////////////////
     //下载自己的记录
     public List<AgainstSummary> DownloadOwnerAgentSummary(string playerName, int skipNum, int takeNum) => MongoDbCommand.QueryAgainstSummary(playerName, skipNum, takeNum);
@@ -60,16 +64,20 @@ public class TouHouHub : Hub
     //查询最新版本
     public string GetCardConfigsVersion() => MongoDbCommand.GetLastCardUpdateVersion();
     //更新卡牌配置信息
-    public string UploadCardConfigs(CardConfig cardConfig, List<string> drawAbleList) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig, drawAbleList);
+    public string UploadCardConfigs(CardConfig cardConfig, List<string> drawAbleList,string CommandPassword) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig, drawAbleList,  CommandPassword);
     //下载卡牌配置信息
     public CardConfig DownloadCardConfigs(string date) => MongoDbCommand.GetCardConfig(date);
     //////////////////////////////////////////////上传AB包////////////////////////////////////////////////////////////////////
-    public bool UploadAssetBundles(string path, byte[] fileData)
+    public string UploadAssetBundles(string path, byte[] fileData, string commandPassword)
     {
-        Directory.CreateDirectory(new FileInfo(path).DirectoryName);
-        Console.WriteLine("接收到" + path + "——开始写入，长度为" + fileData.Length);
-        File.WriteAllBytes(path, fileData);
-        return true;
+        if (commandPassword.GetSaltHash("514") == ServerConfigManager.CommandPassword)
+        {
+            Directory.CreateDirectory(new FileInfo(path).DirectoryName);
+            Console.WriteLine("接收到" + path + "——开始写入，长度为" + fileData.Length);
+            File.WriteAllBytes(path, fileData);
+            return "AB包更新成功";
+        }
+        return "指令密码输入错误，服务器拒绝修改";
     }
 
     //////////////////////////////////////////////聊天////////////////////////////////////////////////////////////////////

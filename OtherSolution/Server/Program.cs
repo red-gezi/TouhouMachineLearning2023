@@ -11,7 +11,6 @@ HoldListManager.Init();
 Log.Summary("匹配管理器已初始化");
 HttpServer.Init();
 Log.Summary("资源服务器已初始化");
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddAntDesign();

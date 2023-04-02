@@ -31,11 +31,11 @@ namespace TouhouMachineLearningSummary.Manager
         }
 
         //抽卡,并打开开卡组件
-        public void DrawCard() => Command.GachaCommand.DrawCard();
+        public void DrawCard() => Command.GachaCommand.DrawCard(1);
         //再次抽取1张卡
-        public void DrawOneCardAgain() => Command.GachaCommand.DrawCard();
+        public void DrawOneCardAgain() => Command.GachaCommand.DrawCard(1);
         //再次抽取至多5张卡
-        public void DrawMoreCardAgain() => Command.GachaCommand.DrawCard();
+        public void DrawMoreCardAgain() => Command.GachaCommand.DrawCard(5);
         //关闭开卡界面
         public void CloseOpenCardsCanve() => Command.GachaCommand.CloseOpenCardComponent();
 

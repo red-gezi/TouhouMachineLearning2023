@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using AntDesign;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ namespace Server
         static IMongoDatabase db;
         static IMongoCollection<PlayerInfo>? PlayerInfoCollection { get; set; }
         static IMongoCollection<CardConfig>? CardConfigCollection { get; set; }
+        static IMongoCollection<ServerConfig>? ServerConfigCollection { get; set; }
         static IMongoCollection<AgainstSummary>? SummaryCollection { get; set; }
         public static IMongoCollection<DiyCardInfo> DiyCardCollection { get; set; }
         public static void Init()
@@ -25,14 +27,15 @@ namespace Server
             //读取服务器配置保密文件
             if (!File.Exists("Config.ini"))
             {
-                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "", "CommandPassword", "" });
+                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "mongodb://106.15.38.165:28020" });
                 Console.WriteLine("检测不到配置文件，开始创建");
             }
 
-            client = new MongoClient("mongodb://106.15.38.165:28020");
+            client = new MongoClient(File.ReadAllLines("Config.ini")[1]);
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
             CardConfigCollection = db.GetCollection<CardConfig>("CardConfig");
+            ServerConfigCollection = db.GetCollection<ServerConfig>("ServerConfig");
             SummaryCollection = db.GetCollection<AgainstSummary>("AgainstSummary");
             DiyCardCollection = db.GetCollection<DiyCardInfo>("DiyCards");
 
@@ -41,6 +44,18 @@ namespace Server
             Log.Summary($"查询到对局记录信息{SummaryCollection.AsQueryable().Count()}条");
             Log.Summary($"查询到diy卡牌信息{DiyCardCollection.AsQueryable().Count()}条");
             Log.Summary("/////////////////////////////");
+            LoadServerConfig();
+        }
+        //加载服务器的配置信息
+        public static void LoadServerConfig()
+        {
+            ServerConfigManager.config = ServerConfigCollection?.AsQueryable().FirstOrDefault();
+            if (ServerConfigManager.config == null)
+            {
+                Console.WriteLine("检索不到数据库中的服务器配置文件，请重新生成新配置文件");
+                ServerConfigManager.config = new ServerConfig() { CommandPassword = "" };
+                ServerConfigCollection?.InsertOne(ServerConfigManager.config);
+            }
         }
         //////////////////////////////////////////////////账号系统///////////////////////////////////////////////////////////////////
         public static int Register(string account, string password)
@@ -93,12 +108,20 @@ namespace Server
             //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
             return userInfo;
         }
-        public static List<string> DrawCardAsync(string account, string password, List<Faith> selectFaiths)
+        public static List<string> DrawCard(string account, string password, List<Faith> selectFaiths)
         {
-            var GetUserQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == account && info.Password == password.GetSaltHash(info.UID));
-            PlayerInfo userInfo = PlayerInfoCollection.Find(GetUserQuery).FirstOrDefault();
+            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.Account == account);
             if (userInfo != null)
             {
+                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
+                {
+                    var result = UpdateInfo(account, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                }
+                else
+                {
+                    userInfo = null;
+                }
+
                 bool HaveEnoughFaith = true;
                 //判断能否扣除仓库中的信念
                 selectFaiths.GroupBy(x => x.BelongUser).ToList().ForEach(group =>
@@ -110,19 +133,23 @@ namespace Server
                     }
                 });
                 //满足抽卡条件
-                if (HaveEnoughFaith)
+                //if (HaveEnoughFaith)
+                if (true)
                 {
                     //如果是第一次，固定返回
                     if (userInfo.IsFirstDraw)
                     {
                         var result = UpdateInfo(account, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
-
-
-                        return new List<string> { "毛玉", "毛玉", "毛玉", "大毛玉", "毛玉王" };
+                        return new List<string> { "M_N0_1G_001" };
                     }
                     else
                     {
-                        return new List<string> { "毛玉", "毛玉", "毛玉", "大毛玉", "毛玉王" };
+                        //卡池计算公式
+                        Random rand = new Random();
+                        return ServerConfigManager.DrawAbleCardIDs_Test
+                                    .OrderBy(x => rand.Next())
+                                    .Take(selectFaiths.Count)
+                                    .ToList();
                     }
                     //否则平等的随机抽卡
                 }
@@ -161,24 +188,42 @@ namespace Server
         }
 
         //////////////////////////////////////////////////卡牌配置///////////////////////////////////////////////////////////////////
-        public static string InsertOrUpdateCardConfig(CardConfig cardConfig, List<string> drawAbleList)
+        public static string InsertOrUpdateCardConfig(CardConfig newConfig, List<string> drawAbleList, string commandPassword)
         {
-            var CheckConfigExistQuery = Builders<CardConfig>.Filter.Where(config => config.Version == cardConfig.Version);
-            IFindFluent<CardConfig, CardConfig> findFluent = CardConfigCollection.Find(CheckConfigExistQuery);
-            if (findFluent.CountDocuments() > 0)
+            if (commandPassword.GetSaltHash("514") == ServerConfigManager.CommandPassword)
             {
-                Console.WriteLine("修改卡组配置文件");
-                CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.UpdataTime, cardConfig.UpdataTime));
-                CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.AssemblyFileData, cardConfig.AssemblyFileData));
-                CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.SingleCardFileData, cardConfig.SingleCardFileData));
-                CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.MultiCardFileData, cardConfig.MultiCardFileData));
-                return "已修改配置";//修改成功
+                if (newConfig.Type == "Test")
+                {
+                    ServerConfigCollection.UpdateOne(x => true, Builders<ServerConfig>.Update.Set(x => x.DrawAbleCardIDs_Test, drawAbleList));
+                    Log.Summary(DateTime.Now + "更新测试版可抽取卡牌列表");
+                }
+                if (newConfig.Type == "Release")
+                {
+                    ServerConfigCollection.UpdateOne(x => true, Builders<ServerConfig>.Update.Set(x => x.DrawAbleCardIDs_Release, drawAbleList));
+                    Log.Summary(DateTime.Now + "更新正式版可抽取卡牌列表");
+                }
+                var CheckConfigExistQuery = Builders<CardConfig>.Filter.Where(config => config.Version == newConfig.Version && config.Type == newConfig.Type);
+                IFindFluent<CardConfig, CardConfig> findFluent = CardConfigCollection.Find(CheckConfigExistQuery);
+                if (findFluent.CountDocuments() > 0)
+                {
+                    Console.WriteLine("修改卡组配置文件");
+                    CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.UpdataTime, newConfig.UpdataTime));
+                    CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.AssemblyFileData, newConfig.AssemblyFileData));
+                    CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.SingleCardFileData, newConfig.SingleCardFileData));
+                    CardConfigCollection.UpdateOne(CheckConfigExistQuery, Builders<CardConfig>.Update.Set(x => x.MultiCardFileData, newConfig.MultiCardFileData));
+                    return "已修改配置";//修改成功
+                }
+                else
+                {
+                    Console.WriteLine("增加卡组配置文件");
+                    CardConfigCollection.InsertOne(newConfig);
+                    return "已新增配置";//修改失败
+                }
+
             }
             else
             {
-                Console.WriteLine("增加卡组配置文件");
-                CardConfigCollection.InsertOne(cardConfig);
-                return "已新增配置";//修改失败
+                return "指令密码输入错误，服务器拒绝修改";
             }
         }
         public static CardConfig GetCardConfig(string version)
@@ -192,5 +237,7 @@ namespace Server
         }
         public static string GetLastCardUpdateTime() => CardConfigCollection.AsQueryable().Max(x => x.UpdataTime).ToString();
         public static string GetLastCardUpdateVersion() => CardConfigCollection.AsQueryable().Max(x => x.Version).ToString();
+
+
     }
 }

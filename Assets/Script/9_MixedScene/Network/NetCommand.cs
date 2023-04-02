@@ -260,13 +260,13 @@ namespace TouhouMachineLearningSummary.Command
             return version;
         }
 
-        public static async Task UploadCardConfigsAsync(CardConfig cardConfig, List<string> drawAbleList)
+        public static async Task UploadCardConfigsAsync(CardConfig cardConfig, List<string> drawAbleList, string commandPassword)
         {
             try
             {
                 Debug.Log("上传卡牌配置");
                 await CheckHubState();
-                string result = await TouHouHub.InvokeAsync<string>("UploadCardConfigs", cardConfig,drawAbleList);
+                string result = await TouHouHub.InvokeAsync<string>("UploadCardConfigs", cardConfig,drawAbleList, commandPassword);
                 Debug.Log("新卡牌配置上传结果: " + result);
             }
             catch (Exception e) { Debug.LogException(e); }
@@ -427,5 +427,7 @@ namespace TouhouMachineLearningSummary.Command
                 }
             }
         }
+
+        
     }
 }

@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.Info
         //选择脚本是从本地加载还是从线上加载，从本地加载更方便测试
         public static bool LoagScriptFromLoacl => !File.Exists("Assets\\Script\\9_MixedScene\\CardSpace\\GameCard.asmdef");
         public static string CurrentCardScriptsVersion { get; set; } = "";
-        public static bool IsHostNetMode { get; set; } = false;//连接到本地服务器
+        public static bool IsHostNetMode { get; set; } = true;//连接到本地服务器
         public static bool IsTrainMode { get; set; } = false;//训练加速模式，所有等待设为0
         public static bool IsReplayMode { get; set; } = false;//回放模式，会加载指定对战记录读取操作
         public static bool IsJumpMode { get; set; } = false;//跳转到指定回合模式

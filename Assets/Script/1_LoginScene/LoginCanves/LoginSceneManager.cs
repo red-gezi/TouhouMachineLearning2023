@@ -20,8 +20,10 @@ namespace TouhouMachineLearningSummary.Control
         public Text PasswordText;
         public string Account;
         public string Password;
+        public static LoginSceneManager Instance { get; set; }
         static bool IsAleardyLogin { get; set; } = false;
         public static bool IsEnterRoom { get; set; } = false;
+        void Awake() => Instance = this;
         async void Start()
         {
             Debug.LogWarning("场景已切换" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));

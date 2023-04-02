@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using TouhouMachineLearningSummary.Extension;
+using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Model;
 using UnityEditor;
 using UnityEngine;
@@ -16,8 +17,8 @@ namespace TouhouMachineLearningSummary.Other
 {
     public class EditorExtension : MonoBehaviour
     {
-        string serverIP = File.ReadAllLines("敏感信息.txt")[1];
-        string password = File.ReadAllLines("敏感信息.txt")[3];
+        static string CommandPassword => File.ReadAllLines("config.ini")[1];
+        /////////////////////////////////////////////////////////////////工具///////////////////////////////////////////////////////////////////////////////////////////
         [MenuItem("Tools/打开服务端", false, 1)]
         static void StartServer() => Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
         [MenuItem("Tools/打开游戏客户端", false, 2)]
@@ -26,6 +27,14 @@ namespace TouhouMachineLearningSummary.Other
         static void OpenXls() => Process.Start(@"Assets\GameResources\GameData\GameData.xlsx");
         [MenuItem("Tools/打开表格数据实时同步工具", false, 52)]
         static void UpdateXls() => Process.Start(@"OtherSolution\xls检测更新\bin\Debug\net6.0\xls检测更新.exe");
+        /////////////////////////////////////////////////////////////////场景///////////////////////////////////////////////////////////////////////////////////////////
+        [MenuItem("Scene/载入热更场景", priority = 151)]
+        static void LoadHotfixedScene() => Process.Start(@"Assets\Scenes\0_HotfixedScene.unity");
+        [MenuItem("Scene/载入登录场景", priority = 152)]
+        static void LoadLoginScene() => Process.Start(@"Assets\Scenes\1_LoginScene.unity");
+        [MenuItem("Scene/载入对战场景", priority = 153)]
+        static void LoaBattleScene() => Process.Start(@"Assets\Scenes\2_BattleScene.unity");
+        /////////////////////////////////////////////////////////////////项目配置///////////////////////////////////////////////////////////////////////////////////////////
         [MenuItem("Config/切换当前卡牌使用线上版本（确保debug完要切回来）", priority = 1)]
         static void ChangeToOnlineCardScript()
         {
@@ -36,7 +45,6 @@ namespace TouhouMachineLearningSummary.Other
                 AssetDatabase.Refresh();
             }
         }
-
         [MenuItem("Config/切换当前卡牌使用本地版本（可以查看更多debug细节）", priority = 2)]
         static void ChangeToLoaclCardScript()
         {
@@ -47,8 +55,19 @@ namespace TouhouMachineLearningSummary.Other
                 AssetDatabase.Refresh();
             }
         }
-    
-        [MenuItem("Public/发布当前卡牌版本为测试版", false, 101)]
+        /////////////////////////////////////////////////////////////////发布（服务端）///////////////////////////////////////////////////////////////////////////////////////////
+        [MenuItem("Public/发布当前服务器到正式环境", false, 0)]
+        static async void UpdateServer()
+        {
+            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
+            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
+            await VersionsHub.StartAsync();
+            var result = await VersionsHub.InvokeAsync<string>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"), CommandPassword);
+            UnityEngine.Debug.LogWarning("上传结果" + result);
+            await VersionsHub.StopAsync();
+        }
+        /////////////////////////////////////////////////////////////////发布（PC客户端测试版）///////////////////////////////////////////////////////////////////////////////////////////
+        [MenuItem("Public/发布当前卡牌版本到测试版", false, 100)]
         static void UpdateTestCardSpace()
         {
             var gameCardAssembly = new DirectoryInfo(@"Library\ScriptAssemblies").GetFiles("GameCard*.dll").FirstOrDefault();
@@ -59,41 +78,19 @@ namespace TouhouMachineLearningSummary.Other
                 CardConfig cardConfig = new CardConfig(DateTime.Today.ToString("yyy_MM_dd"), gameCardAssembly, singleCardFile, multiCardFile);
                 List<string> drawAbleList = File.ReadAllText(multiCardFile.FullName).ToObject<List<CardModel>>()
                     .Where(card => card.cardRank != GameEnum.CardRank.Leader)//排除掉领袖级卡牌
-                    .Where(card => card.ramification != 0)//排除衍生物卡牌
+                    .Where(card => card.ramification == 0)//排除衍生物卡牌
                                                           //排除活动限定卡牌
-                    .Select(card => card.cardID)
+                    .Select(card => $"{"M_" + card.series}_{(int)card.cardRank}{card.cardRank.ToString()[0]}_{card.cardID.PadLeft(3, '0')}")
                     .ToList();
-                _ = Command.NetCommand.UploadCardConfigsAsync(cardConfig, drawAbleList);
+                cardConfig.Type = "Test";
+                _ = Command.NetCommand.UploadCardConfigsAsync(cardConfig, drawAbleList, CommandPassword);
             }
             else
             {
                 UnityEngine.Debug.LogError("检索不到卡牌dll文件");
             }
         }
-        [MenuItem("Public/发布当前卡牌版本为正式版", false, 151)]
-        static void UpdateReleaseCardSpace()
-        {
-            var gameCardAssembly = new DirectoryInfo(@"Library\ScriptAssemblies").GetFiles("GameCard*.dll").FirstOrDefault();
-            var singleCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Single.json");
-            var multiCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Multi.json");
-            if (gameCardAssembly != null && singleCardFile != null && multiCardFile != null)
-            {
-                CardConfig cardConfig = new CardConfig(DateTime.Today.ToString("yyy_MM_dd"), gameCardAssembly, singleCardFile, multiCardFile);
-                List<string> drawAbleList = File.ReadAllText(multiCardFile.FullName).ToObject<List<CardModel>>()
-                    .Where(card => card.cardRank != GameEnum.CardRank.Leader)//排除掉领袖级卡牌
-                    .Where(card => card.ramification != 0)//排除衍生物卡牌
-                                                          //排除活动限定卡牌
-                    .Select(card => card.cardID)
-                    .ToList();
-                _ = Command.NetCommand.UploadCardConfigsAsync(cardConfig, drawAbleList);
-            }
-            else
-            {
-                UnityEngine.Debug.LogError("检索不到卡牌dll文件");
-            }
-        }
-        
-        [MenuItem("Public/发布游戏热更资源为测试版", priority = 102)]
+        [MenuItem("Public/发布游戏热更资源到测试版", priority = 101)]
         static async void BuildBetaAssetBundles()
         {
             //打标签
@@ -161,17 +158,33 @@ namespace TouhouMachineLearningSummary.Other
             UnityEngine.Debug.LogWarning("MD5.json上传完成");
             await touhouHub.StopAsync();
         }
-        [MenuItem("Public/发布当前服务器到正式环境", false, 151)]
-        static async void UpdateServer()
+        /////////////////////////////////////////////////////////////////发布（PC客户端正式版）///////////////////////////////////////////////////////////////////////////////////////////
+
+        [MenuItem("Public/发布当前卡牌版本到正式版", false, 150)]
+        static void UpdateReleaseCardSpace()
         {
-            var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
-            //VersionsHub = new HubConnectionBuilder().WithUrl($"http://127.0.0.1:233/VersionsHub").Build();
-            await VersionsHub.StartAsync();
-            var result = await VersionsHub.InvokeAsync<bool>("UpdateServer", File.ReadAllBytes(@"OtherSolution\Server\bin\Debug\net6.0\Server.dll"));
-            UnityEngine.Debug.LogWarning("上传结果" + result);
-            await VersionsHub.StopAsync();
+            var gameCardAssembly = new DirectoryInfo(@"Library\ScriptAssemblies").GetFiles("GameCard*.dll").FirstOrDefault();
+            var singleCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Single.json");
+            var multiCardFile = new FileInfo(@"Assets\GameResources\GameData\CardData-Multi.json");
+            if (gameCardAssembly != null && singleCardFile != null && multiCardFile != null)
+            {
+                CardConfig cardConfig = new CardConfig(DateTime.Today.ToString("yyy_MM_dd"), gameCardAssembly, singleCardFile, multiCardFile);
+                List<string> drawAbleList = File.ReadAllText(multiCardFile.FullName).ToObject<List<CardModel>>()
+                    .Where(card => card.cardRank != GameEnum.CardRank.Leader)//排除掉领袖级卡牌
+                    .Where(card => card.ramification == 0)//排除衍生物卡牌
+                                                          //排除活动限定卡牌
+                    .Select(card => $"{"M_" + card.series}_{(int)card.cardRank}{card.cardRank.ToString()[0]}_{card.cardID.PadLeft(3, '0')}")
+                    .ToList();
+                cardConfig.Type = "Release";
+                _ = Command.NetCommand.UploadCardConfigsAsync(cardConfig, drawAbleList, CommandPassword);
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("检索不到卡牌dll文件");
+            }
         }
-        [MenuItem("Public/发布游戏热更资源为正式版", priority = 152)]
+
+        [MenuItem("Public/发布游戏热更资源到正式版", priority = 151)]
         static async void BuildReleaseAssetBundles()
         {
             //打标签
@@ -238,7 +251,7 @@ namespace TouhouMachineLearningSummary.Other
                     if (!onlineMD5Dict.ContainsKey(item.Key) || !onlineMD5Dict[item.Key].SequenceEqual(item.Value))
                     {
                         UnityEngine.Debug.LogWarning(item.Key + "开始传输");
-                        var result = await touhouHub.InvokeAsync<bool>("UploadAssetBundles", @$"AssetBundles/PC/{item.Key}", File.ReadAllBytes(@$"AssetBundles/PC/{item.Key}"));
+                        var result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/PC/{item.Key}", File.ReadAllBytes(@$"AssetBundles/PC/{item.Key}"), CommandPassword);
                         UnityEngine.Debug.LogWarning(item.Key + "传输" + result);
                     }
                     else
@@ -246,8 +259,8 @@ namespace TouhouMachineLearningSummary.Other
                         UnityEngine.Debug.LogWarning(item.Key + "无更改，无需上传");
                     }
                 }
-                await touhouHub.InvokeAsync<bool>("UploadAssetBundles", @$"AssetBundles/PC/MD5.json", File.ReadAllBytes(@$"AssetBundles/PC/MD5.json"));
-                UnityEngine.Debug.LogWarning("PC端MD5.json上传完成");
+                var Md5Result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/PC/MD5.json", File.ReadAllBytes(@$"AssetBundles/PC/MD5.json"), CommandPassword);
+                UnityEngine.Debug.LogWarning("PC端MD5.json上传完成" + Md5Result);
             }
 
             /////////////////////////////////////////////////////////////////Android///////////////////////////////////////////////////////////////////////////////////////
@@ -271,7 +284,7 @@ namespace TouhouMachineLearningSummary.Other
                     if (!onlineMD5Dict.ContainsKey(item.Key) || !onlineMD5Dict[item.Key].SequenceEqual(item.Value))
                     {
                         UnityEngine.Debug.LogWarning(item.Key + "开始传输");
-                        var result = await touhouHub.InvokeAsync<bool>("UploadAssetBundles", @$"AssetBundles/Android/{item.Key}", File.ReadAllBytes(@$"AssetBundles/Android/{item.Key}"));
+                        var result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Android/{item.Key}", File.ReadAllBytes(@$"AssetBundles/Android/{item.Key}"), CommandPassword);
                         UnityEngine.Debug.LogWarning(item.Key + "传输" + result);
                     }
                     else
@@ -279,11 +292,14 @@ namespace TouhouMachineLearningSummary.Other
                         UnityEngine.Debug.LogWarning(item.Key + "无更改，无需上传");
                     }
                 }
-                await touhouHub.InvokeAsync<bool>("UploadAssetBundles", @$"AssetBundles/Android/MD5.json", File.ReadAllBytes(@$"AssetBundles/Android/MD5.json"));
-                UnityEngine.Debug.LogWarning("安卓端MD5.json上传完成");
+                var Md5Result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Android/MD5.json", File.ReadAllBytes(@$"AssetBundles/Android/MD5.json"), CommandPassword);
+                UnityEngine.Debug.LogWarning("安卓端MD5.json上传完成" + Md5Result);
                 await touhouHub.StopAsync();
             }
         }
+
+        ///////////////////复用功能函数////////////////////
+
         static Dictionary<string, byte[]> CreatMD5FIle(string direPath)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -301,31 +317,26 @@ namespace TouhouMachineLearningSummary.Other
             File.WriteAllText(direPath + @"\MD5.json", MD5s.ToJson());
             return MD5s;
         }
-        [MenuItem("Public/打包安卓AB包", priority = 150)]
-        static void BuileAndroid()
-        {
-            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-            buildPlayerOptions.scenes = new[] { "Assets/Scenes/0_HotfixedScene.unity" };
-            buildPlayerOptions.target = BuildTarget.Android;
-            buildPlayerOptions.locationPathName = "Android";
-            // 正常构建并运行游戏，这会在 Android 设备上安装应用程序
-            //buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
-            //BuildPipeline.BuildPlayer(buildPlayerOptions);
+        /////////////////////////////////////////////////////////////////发布（安卓客户端正式版）///////////////////////////////////////////////////////////////////////////////////////////
 
-            // 修改 Unity 项目中的某些脚本
-            // 为应用程序打补丁并运行此应用程序
-            //（Unity 仅会重新编译脚本文件，并仅将必要文件推送到 Android 设备）
-            buildPlayerOptions.options = BuildOptions.BuildScriptsOnly | BuildOptions.PatchPackage | BuildOptions.AutoRunPlayer;
+        //[MenuItem("Public/打包安卓AB包", priority = 250)]
+        //static void BuileAndroid()
+        //{
+        //    BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        //    buildPlayerOptions.scenes = new[] { "Assets/Scenes/0_HotfixedScene.unity" };
+        //    buildPlayerOptions.target = BuildTarget.Android;
+        //    buildPlayerOptions.locationPathName = "Android";
+        //    // 正常构建并运行游戏，这会在 Android 设备上安装应用程序
+        //    //buildPlayerOptions.options = BuildOptions.AutoRunPlayer;
+        //    //BuildPipeline.BuildPlayer(buildPlayerOptions);
 
-            BuildPipeline.BuildPlayer(buildPlayerOptions);
-        }
+        //    // 修改 Unity 项目中的某些脚本
+        //    // 为应用程序打补丁并运行此应用程序
+        //    //（Unity 仅会重新编译脚本文件，并仅将必要文件推送到 Android 设备）
+        //    buildPlayerOptions.options = BuildOptions.BuildScriptsOnly | BuildOptions.PatchPackage | BuildOptions.AutoRunPlayer;
 
-        [MenuItem("Scene/载入热更场景", priority = 151)]
-        static void LoadHotfixedScene() => Process.Start(@"Assets\Scenes\0_HotfixedScene.unity");
-        [MenuItem("Scene/载入登录场景", priority = 152)]
-        static void LoadLoginScene() => Process.Start(@"Assets\Scenes\1_LoginScene.unity");
-        [MenuItem("Scene/载入对战场景", priority = 153)]
-        static void LoaBattleScene() => Process.Start(@"Assets\Scenes\2_BattleScene.unity");
+        //    BuildPipeline.BuildPlayer(buildPlayerOptions);
+        //}
 
     }
 }

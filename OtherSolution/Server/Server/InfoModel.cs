@@ -109,6 +109,7 @@ namespace Server
         public string _id { get; set; }
         public DateTime UpdataTime { get; set; }
         public string Version { get; set; }
+        public string Type { get; set; }
         public byte[] AssemblyFileData { get; set; }
         public byte[] SingleCardFileData { get; set; }
         public byte[] MultiCardFileData { get; set; }

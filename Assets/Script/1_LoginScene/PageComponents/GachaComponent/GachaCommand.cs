@@ -2,6 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
+using TouhouMachineLearningSummary.Control;
+using TouhouMachineLearningSummary.Extension;
+using TouhouMachineLearningSummary.Model;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,14 +72,22 @@ namespace TouhouMachineLearningSummary.Command
             }
         }
         //抽卡
-        public static void DrawCard()
+        public static async void DrawCard(int drawCardCount)
         {
-            //向服务器发送请求，等待结果
+            var drawCards = new List<Faith>();
+            for (int i = 0; i < drawCardCount; i++)
+            {
+                drawCards.Add(new Faith());
+            }
             //如果没有选择信念，弹窗提示
             if (true)
             {
 
+                //sreturn;
             }
+            //向服务器发送请求，等待结果
+            List<string> drawCardId = await Command.NetCommand.DrawCardAsync(LoginSceneManager.Instance.Account, LoginSceneManager.Instance.Password, drawCards);
+            Debug.Log(drawCardId.ToJson());
             //如果服务器扣除失败,弹窗提示失败
             if (false)
             {
@@ -85,7 +96,6 @@ namespace TouhouMachineLearningSummary.Command
             //初始化卡牌展示界面
             else
             {
-                List<string> drawCardId = new List<string>() { "M_N0_0L_001", "M_N0_1G_001", "M_N0_1G_002", "M_N0_1G_003", "M_N0_1G_004" };
                 //等待抽卡结果
                 InitOpenCardComponent(drawCardId);
                 ShowOpenCardComponent();
@@ -226,7 +236,7 @@ namespace TouhouMachineLearningSummary.Command
                 //显示卡牌数量和名字文字
                 singleOpenCardInfo.cardNameUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
                 singleOpenCardInfo.cardCountUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
-                
+
 
             }
         }

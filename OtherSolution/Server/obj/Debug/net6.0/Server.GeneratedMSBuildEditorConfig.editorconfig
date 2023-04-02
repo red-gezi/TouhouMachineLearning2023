@@ -8,61 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Server
 build_property.RootNamespace = Server
-build_property.ProjectDir = D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\
+build_property.ProjectDir = E:\UnityProject\TouhouMachineLearning2022\OtherSolution\Server\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server
+build_property.MSBuildProjectDirectory = E:\UnityProject\TouhouMachineLearning2022\OtherSolution\Server
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/App.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/Counter.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/Diy.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/Diy.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGl5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/FetchData.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/Index.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/Plan.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/Plan.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Shared/SurveyPrompt.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/_Imports.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Shared/MainLayout.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-kkt30o18ti
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Shared/NavMenu.razor]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-nl6y4qj04c
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/Error.cshtml]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/_Host.cshtml]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vs2022-Project/TouhouMachineLearning2023/OtherSolution/Server/Pages/_Layout.cshtml]
+[E:/UnityProject/TouhouMachineLearning2022/OtherSolution/Server/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

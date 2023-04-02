@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Server\新文件夹\**" />
-    <Content Remove="Server\新文件夹\**" />
-    <EmbeddedResource Remove="Server\新文件夹\**" />
-    <None Remove="Server\新文件夹\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.10.2" />
     <PackageReference Include="AntDesign.Charts" Version="0.2.0" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
