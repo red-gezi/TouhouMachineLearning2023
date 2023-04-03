@@ -26,7 +26,7 @@ public class TouHouHub : Hub
     public void Leave(AgainstModeType againstMode, string uid) => HoldListManager.Remove(againstMode, uid);
     //////////////////////////////////////////////房间////////////////////////////////////////////////////////////////////
     public void Async(NetAcyncType netAcyncType, string roomId, bool isPlayer1, object[] data) => RoomManager.GetRoom(roomId)?.AsyncInfo(netAcyncType, isPlayer1, data);
-    public bool AgainstFinish(string roomId, string uid, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, account, P1Score, P2Score);
+    public bool AgainstFinish(string roomId, string uid, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, uid, P1Score, P2Score);
     //////////////////////////////////////////////用户信息更新操作////////////////////////////////////////////////////////////////////
     public bool UpdateInfo(UpdateType updateType, string uid, string password, object updateValue)
     {
