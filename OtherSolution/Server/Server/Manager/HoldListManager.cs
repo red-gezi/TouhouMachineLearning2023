@@ -17,12 +17,12 @@ namespace Server
         }
         public static void Add(AgainstModeType againstMode,int FirstMode, PlayerInfo playerInfo, PlayerInfo virtualOpponentInfo,IClientProxy caller)
         {
-            Console.WriteLine(playerInfo.Account + "加入" + againstMode.ToString());
+            Console.WriteLine(playerInfo.UID + "加入" + againstMode.ToString());
             HoldLists[againstMode].Add(new HoldInfo(FirstMode,playerInfo, virtualOpponentInfo,caller));
         }
-        public static bool Remove(AgainstModeType againstMode, string account)
+        public static bool Remove(AgainstModeType againstMode, string uid)
         {
-            HoldInfo? target = HoldLists[againstMode].FirstOrDefault(x => x.UserInfo.Account == account);
+            HoldInfo? target = HoldLists[againstMode].FirstOrDefault(x => x.UserInfo.UID == uid);
             if (target == null)
             {
                 return false;

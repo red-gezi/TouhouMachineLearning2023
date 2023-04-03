@@ -20,27 +20,27 @@ public class TouHouHub : Hub
     //////////////////////////////////////////////账户////////////////////////////////////////////////////////////////////
     public int Register(string account, string password) => MongoDbCommand.Register(account, password);
     public PlayerInfo? Login(string account, string password) => MongoDbCommand.Login(account, password);
-    public List<string> DrawCard(string account, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(account, password, selectFaiths);
+    public List<string> DrawCard(string uid, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(uid, password, selectFaiths);
     //////////////////////////////////////////////等候列表////////////////////////////////////////////////////////////////////
     public void Join(AgainstModeType againstMode, int FirstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo) => HoldListManager.Add(againstMode, FirstMode, userInfo, virtualOpponentInfo, Clients.Caller);
-    public void Leave(AgainstModeType againstMode, string account) => HoldListManager.Remove(againstMode, account);
+    public void Leave(AgainstModeType againstMode, string uid) => HoldListManager.Remove(againstMode, uid);
     //////////////////////////////////////////////房间////////////////////////////////////////////////////////////////////
     public void Async(NetAcyncType netAcyncType, string roomId, bool isPlayer1, object[] data) => RoomManager.GetRoom(roomId)?.AsyncInfo(netAcyncType, isPlayer1, data);
-    public bool AgainstFinish(string roomId, string account, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, account, P1Score, P2Score);
+    public bool AgainstFinish(string roomId, string uid, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, account, P1Score, P2Score);
     //////////////////////////////////////////////用户信息更新操作////////////////////////////////////////////////////////////////////
-    public bool UpdateInfo(UpdateType updateType, string account, string password, object updateValue)
+    public bool UpdateInfo(UpdateType updateType, string uid, string password, object updateValue)
     {
         switch (updateType)
         {
-            case UpdateType.Name: return MongoDbCommand.UpdateInfo(account, password, (x => x.Name), updateValue.To<string>());
-            case UpdateType.UnlockTitles: return MongoDbCommand.UpdateInfo(account, password, (x => x.UnlockTitleTags), updateValue.To<List<string>>());
-            case UpdateType.PrefixTitle:return MongoDbCommand.UpdateInfo(account, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
-            case UpdateType.SuffixTitle: return MongoDbCommand.UpdateInfo(account, password, (x => x.UseSuffixTitleTag), updateValue.To<string>());
-            case UpdateType.Decks: return MongoDbCommand.UpdateInfo(account, password, (x => x.Decks), updateValue.To<List<Deck>>());
-            case UpdateType.UseDeckNum: return MongoDbCommand.UpdateInfo(account, password, (x => x.UseDeckNum), updateValue.To<int>());
-            case UpdateType.Stage: return MongoDbCommand.UpdateInfo(account, password, (x => x.Stage), updateValue.To<Dictionary<string, int>>());
+            case UpdateType.Name: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Name), updateValue.To<string>());
+            case UpdateType.UnlockTitles: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UnlockTitleTags), updateValue.To<List<string>>());
+            case UpdateType.PrefixTitle:return MongoDbCommand.UpdateInfo(uid, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
+            case UpdateType.SuffixTitle: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseSuffixTitleTag), updateValue.To<string>());
+            case UpdateType.Decks: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Decks), updateValue.To<List<Deck>>());
+            case UpdateType.UseDeckNum: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseDeckNum), updateValue.To<int>());
+            case UpdateType.Stage: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Stage), updateValue.To<Dictionary<string, int>>());
             case UpdateType.LastLoginTime:
-                return MongoDbCommand.UpdateInfo(account, password, (x => x.LastLoginTime), updateValue.To<DateTime>());
+                return MongoDbCommand.UpdateInfo(uid, password, (x => x.LastLoginTime), updateValue.To<DateTime>());
                 break;
            
             default: return false;

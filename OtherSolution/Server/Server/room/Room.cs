@@ -11,7 +11,7 @@ namespace Server
         public AgainstModeType Mode { get; set; }
         public bool IsCanEnter => P2 == null;
         public bool IsEmpty => P1 == null && P2 == null;
-        public bool IsContain(string Account) => Account == Player1Info.Account || Account == Player2Info.Account;
+        public bool IsContain(string uid) => uid == Player1Info.UID || uid == Player2Info.UID;
         public IClientProxy P1 { get; set; }
         public IClientProxy P2 { get; set; }
         public List<IClientProxy> clientProxies { get; set; }

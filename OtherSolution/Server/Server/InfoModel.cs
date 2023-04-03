@@ -35,7 +35,7 @@ namespace Server
     }
     public class Faith
     {
-        public List<string> BelongUser { get; set; }
+        public string BelongUserUID { get; set; }
         public int Count { get; set; }
         public bool IsLock { get; set; }
     }

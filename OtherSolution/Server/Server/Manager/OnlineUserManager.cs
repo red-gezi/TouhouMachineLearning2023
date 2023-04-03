@@ -12,9 +12,9 @@ namespace Server
             OnlineUserList.Remove(connectId);
         }
 
-        public static bool hasAgainstRoom(string account)
+        public static bool hasAgainstRoom(string uid)
         {
-            var room = RoomManager.ContainPlayerRoom(account);
+            var room = RoomManager.ContainPlayerRoom(uid);
             return room != null;
         }
     }

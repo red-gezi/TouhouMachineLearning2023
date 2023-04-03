@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace Server
 {
@@ -9,7 +10,7 @@ namespace Server
     {
         public static List<Room> Rooms { get; set; } = new List<Room>();
         public static Room? GetRoom(string RoomId) => Rooms.FirstOrDefault(room => room.RoomId == RoomId);
-        public static Room? ContainPlayerRoom(string account) => Rooms.FirstOrDefault(room => room.Player1Info.Account == account || room.Player2Info.Account == account);
+        public static Room? ContainPlayerRoom(string uid) => Rooms.FirstOrDefault(room => room.Player1Info.UID == uid || room.Player2Info.UID == uid);
         public static void CreatRoom(AgainstModeType mode, HoldInfo player1, HoldInfo player2)
         {
             string roomId = Guid.NewGuid().ToString("N");
@@ -20,11 +21,11 @@ namespace Server
             TargetRoom.Creat(player1, player2);
 
         }
-        public static bool DisponseRoom(string roomID, string account, int p1Score, int p2Score)
+        public static bool DisponseRoom(string roomID, string uid, int p1Score, int p2Score)
         {
             Room? TargetRoom = GetRoom(roomID);
             //验证是否合法
-            if (TargetRoom != null && (TargetRoom.Player1Info.Account == account || TargetRoom.Player2Info.Account == account))
+            if (TargetRoom != null && (TargetRoom.Player1Info.UID == uid || TargetRoom.Player2Info.UID == uid))
             {
                 Console.WriteLine("销毁房间"+ roomID);
                 //房间上传数据

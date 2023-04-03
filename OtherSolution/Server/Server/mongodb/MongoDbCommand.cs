@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace Server
 {
@@ -88,6 +89,7 @@ namespace Server
                 return 1;//成功
             }
         }
+        //之后会根据登录方式进行扩展
         public static PlayerInfo? Login(string account, string password)
         {
             var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == account);
@@ -97,7 +99,7 @@ namespace Server
                 userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
                 if (userInfo.Password == password.GetSaltHash(userInfo.UID))
                 {
-                    var result = UpdateInfo(account, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                    var result = UpdateInfo(userInfo.UID, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
                 }
                 else
                 {
@@ -108,14 +110,81 @@ namespace Server
             //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
             return userInfo;
         }
-        public static List<string> DrawCard(string account, string password, List<Faith> selectFaiths)
+        //////////////////////////////////////////////////抽卡系统///////////////////////////////////////////////////////////////////
+        public static string AddFaiths(string uid, string password, Faith newFaith)
         {
-            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.Account == account);
+            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.UID == uid);
             if (userInfo != null)
             {
                 if (userInfo.Password == password.GetSaltHash(userInfo.UID))
                 {
-                    var result = UpdateInfo(account, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                    var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                }
+                else
+                {
+                    userInfo = null;
+                    return "账号验证失败";
+                }
+            }
+            var targetFaith = userInfo.Faiths.FirstOrDefault(userFaith => userFaith.BelongUserUID == newFaith.BelongUserUID);
+            if (targetFaith == null)
+            {
+                userInfo.Faiths.Add(newFaith);
+            }
+            else
+            {
+                targetFaith.Count += newFaith.Count;
+            }
+            PlayerInfoCollection.UpdateOne(info => info.UID == uid, Builders<PlayerInfo>.Update.Set(info => info.Faiths, userInfo.Faiths));
+            return "信念增添成功";
+        }
+        public static string RemoveFaiths(string uid, string password, Faith newFaith)
+        {
+            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.UID == uid);
+            if (userInfo != null)
+            {
+                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
+                {
+                    var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                }
+                else
+                {
+                    userInfo = null;
+                    return "账号验证失败";
+                }
+            }
+            var targetFaith = userInfo.Faiths.FirstOrDefault(userFaith => userFaith.BelongUserUID == newFaith.BelongUserUID);
+            if (targetFaith == null)
+            {
+                return "无移除目标";
+            }
+            else
+            {
+                //如果数量足够，减去，否则
+                if (targetFaith.Count > newFaith.Count)
+                {
+                    targetFaith.Count -= newFaith.Count;
+                }
+                else if (targetFaith.Count == newFaith.Count)
+                {
+                    userInfo.Faiths.Remove(targetFaith);
+                }
+                else
+                {
+                    return "信念移除数量不足";
+                }
+            }
+            PlayerInfoCollection.UpdateOne(info => info.UID == uid, Builders<PlayerInfo>.Update.Set(info => info.Faiths, userInfo.Faiths));
+            return "信念移除成功";
+        }
+        public static List<string> DrawCard(string uid, string password, List<Faith> selectFaiths)
+        {
+            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.UID == uid);
+            if (userInfo != null)
+            {
+                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
+                {
+                    var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
                 }
                 else
                 {
@@ -139,7 +208,7 @@ namespace Server
                     //如果是第一次，固定返回
                     if (userInfo.IsFirstDraw)
                     {
-                        var result = UpdateInfo(account, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                        var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
                         return new List<string> { "M_N0_1G_001" };
                     }
                     else
@@ -164,9 +233,9 @@ namespace Server
         }
         public static int GetRegisterPlayerCount() => PlayerInfoCollection.AsQueryable().Count();
         //////////////////////////////////////////////////用户信息更新///////////////////////////////////////////////////////////////////
-        public static bool UpdateInfo<TField>(string account, string password, Expression<Func<PlayerInfo, TField>> setOperator, TField field)
+        public static bool UpdateInfo<TField>(string uid, string password, Expression<Func<PlayerInfo, TField>> setOperator, TField field)
         {
-            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == account && info.Password == password);
+            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == uid && info.Password == password);
             var updateUserState = Builders<PlayerInfo>.Update.Set(setOperator, field);
             IFindFluent<PlayerInfo, PlayerInfo> findFluent = PlayerInfoCollection.Find(CheckUserExistQuery);
             if (findFluent.CountDocuments() > 0)
@@ -182,9 +251,9 @@ namespace Server
         //////////////////////////////////////////////////对战记录///////////////////////////////////////////////////////////////////
         public static void InsertAgainstSummary(AgainstSummary againstSummary) => SummaryCollection.InsertOne(againstSummary);
         public static List<AgainstSummary> QueryAgainstSummary(int skipCount, int takeCount) => SummaryCollection.AsQueryable().Skip(skipCount).Take(takeCount).ToList();
-        public static List<AgainstSummary> QueryAgainstSummary(string playerAccount, int skipCount, int takeCount)
+        public static List<AgainstSummary> QueryAgainstSummary(string playerUID, int skipCount, int takeCount)
         {
-            return SummaryCollection.AsQueryable().Where(summary => summary.Player1Info.Account == playerAccount || summary.Player1Info.Account == playerAccount).Skip(skipCount).Take(takeCount).ToList();
+            return SummaryCollection.AsQueryable().Where(summary => summary.Player1Info.UID == playerUID || summary.Player1Info.UID == playerUID).Skip(skipCount).Take(takeCount).ToList();
         }
 
         //////////////////////////////////////////////////卡牌配置///////////////////////////////////////////////////////////////////
