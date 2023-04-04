@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Config;
+using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Manager;
@@ -16,10 +17,10 @@ namespace TouhouMachineLearningSummary.Control
 {
     public class LoginSceneManager : MonoBehaviour
     {
-        public Text AccountText;
+        //用户输入的账号，可能是游戏账号，UID，邮箱等
+        public Text LoginAccountText;
         public Text PasswordText;
-        public string Account;
-        public string Password;
+
         public static LoginSceneManager Instance { get; set; }
         static bool IsAleardyLogin { get; set; } = false;
         public static bool IsEnterRoom { get; set; } = false;
@@ -27,8 +28,8 @@ namespace TouhouMachineLearningSummary.Control
         async void Start()
         {
             Debug.LogWarning("场景已切换" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
-            AccountText.text = Account;
-            PasswordText.text = Password;
+            LoginAccountText.text = UserInfoManager.Account;
+            PasswordText.text = UserInfoManager.Password;
             await SceneCommand.InitAsync(false);
             Debug.LogWarning("场景初始化" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
             //加载对话
@@ -137,7 +138,7 @@ namespace TouhouMachineLearningSummary.Control
         {
             try
             {
-                int result = await NetCommand.RegisterAsync(AccountText.text, PasswordText.text);
+                int result = await NetCommand.RegisterAsync(LoginAccountText.text, PasswordText.text);
                 switch (result)
                 {
                     case (1): await NoticeCommand.ShowAsync("注册成功", NotifyBoardMode.Ok); break;
@@ -147,17 +148,20 @@ namespace TouhouMachineLearningSummary.Control
             }
             catch (Exception e) { Debug.LogException(e); }
         }
-
+        //登录按钮触发函数，自动读取登录框内容
         public async void UserLogin()
         {
             try
             {
-                bool isSuccessLogin = await NetCommand.LoginAsync(AccountText.text, PasswordText.text);
-                if (isSuccessLogin)
+                Info.AgainstInfo.OnlineUserInfo = await NetCommand.LoginAsync(LoginAccountText.text, PasswordText.text);
+                Debug.Log(Info.AgainstInfo.OnlineUserInfo.ToJson());
+                if (Info.AgainstInfo.OnlineUserInfo!=null)
                 {
                     //保存静态账号密码
-                    Account = AccountText.text;
-                    Password = PasswordText.text;
+                    UserInfoManager.Account = LoginAccountText.text;
+                    UserInfoManager.Password = PasswordText.text;
+                    UserInfoManager.UID = Info.AgainstInfo.OnlineUserInfo.UID;
+                    UserInfoManager.E_mail = Info.AgainstInfo.OnlineUserInfo.E_mail;
                     IsAleardyLogin = true;
                     var stage = AgainstInfo.OnlineUserInfo.Stage;
                     if (AgainstInfo.OnlineUserInfo.GetStage("0") == 0)
@@ -168,7 +172,7 @@ namespace TouhouMachineLearningSummary.Control
                     Manager.UserInfoManager.Refresh();
                     await BookCommand.InitToOpenStateAsync();
                     //检测是否已经在对战中
-                    _ = NetCommand.CheckRoomAsync(AccountText.text, PasswordText.text);
+                    _ = NetCommand.CheckRoomAsync(LoginAccountText.text, PasswordText.text);
                 }
                 else
                 {
@@ -179,7 +183,7 @@ namespace TouhouMachineLearningSummary.Control
         }
         public async Task TestReplayAsync()
         {
-            var summarys = await NetCommand.DownloadOwnerAgentSummaryAsync(AgainstInfo.OnlineUserInfo.Account, 0, 20);
+            var summarys = await NetCommand.DownloadOwnerAgentSummaryAsync(AgainstInfo.OnlineUserInfo.UID, 0, 20);
             AgainstConfig.ReplayStart(summarys.Last());
         }
         public async Task TestBattleAsync()
@@ -199,7 +203,7 @@ namespace TouhouMachineLearningSummary.Control
                 await Task.Delay(2000);
                 await Manager.CameraViewManager.MoveToViewAsync(1);
                 MenuStateCommand.RebackStare();
-                await NetCommand.LeaveHoldOnList(AgainstModeType.Story, sampleUserInfo.Account);
+                await NetCommand.LeaveHoldOnList(AgainstModeType.Story, sampleUserInfo.UID);
             });
             //配置对战模式
             AgainstConfig.Init();

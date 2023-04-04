@@ -6,12 +6,20 @@ namespace TouhouMachineLearningSummary.Manager
     {
         public Text userName;
         public Text uid;
-        static UserInfoManager manager;
-        private void Awake() => manager = this;
+        public static UserInfoManager Instance { get; set; }
+
+        public static string Account { get; set; }
+        public static string UID { get; set; }
+
+        public static string E_mail { get; set; }
+
+        public static string Password { get; set; }
+
+        private void Awake() => Instance = this;
         public static void Refresh()
         {
-            manager.userName.text = Info.AgainstInfo.OnlineUserInfo.Name;
-            manager.uid.text = "UID:" + Info.AgainstInfo.OnlineUserInfo.UID;
+            Instance.userName.text = Info.AgainstInfo.OnlineUserInfo.Name;
+            Instance.uid.text = "UID:" + Info.AgainstInfo.OnlineUserInfo.UID;
         }
     }
 }

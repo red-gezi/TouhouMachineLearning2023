@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TMPro;
 using TouhouMachineLearningSummary.Control;
 using TouhouMachineLearningSummary.Extension;
+using TouhouMachineLearningSummary.Manager;
 using TouhouMachineLearningSummary.Model;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
@@ -71,35 +72,38 @@ namespace TouhouMachineLearningSummary.Command
                 }
             }
         }
-        //抽卡
-        public static async void DrawCard(int drawCardCount)
+        public static void QuickDrawCard(int drawCardCount)
         {
-            var drawCards = new List<Faith>();
+            List<Faith> drawCards = new();
             for (int i = 0; i < drawCardCount; i++)
             {
                 drawCards.Add(new Faith());
             }
+            DrawCard(drawCards);
+        }
+        //抽卡
+        public static async void DrawCard(List<Faith> selectFaiths)
+        {
+
             //如果没有选择信念，弹窗提示
-            if (true)
+            if (!selectFaiths.Any())
             {
 
-                //sreturn;
+                return;
             }
             //向服务器发送请求，等待结果
-            List<string> drawCardId = await Command.NetCommand.DrawCardAsync(LoginSceneManager.Instance.Account, LoginSceneManager.Instance.Password, drawCards);
+            List<string> drawCardId = await Command.NetCommand.DrawCardAsync(UserInfoManager.UID, UserInfoManager.Password, selectFaiths);
             Debug.Log(drawCardId.ToJson());
             //如果服务器扣除失败,弹窗提示失败
             if (false)
             {
 
+                return;
             }
             //初始化卡牌展示界面
-            else
-            {
-                //等待抽卡结果
-                InitOpenCardComponent(drawCardId);
-                ShowOpenCardComponent();
-            }
+            InitOpenCardComponent(drawCardId);
+            //展示抽卡结果
+            ShowOpenCardComponent();
 
         }
         /// ///////////////////////////////////////////////开卡选择相关操作//////////////////////////////////////////

@@ -195,7 +195,7 @@ namespace TouhouMachineLearningSummary.Command
                 await Task.Delay(2000);
                 await Manager.CameraViewManager.MoveToViewAsync(1);
                 Command.MenuStateCommand.RebackStare();
-                await Command.NetCommand.LeaveHoldOnList(Info.PageComponentInfo.currentAgainstMode, sampleUserInfo.Account);
+                await Command.NetCommand.LeaveHoldOnList(Info.PageComponentInfo.currentAgainstMode, sampleUserInfo.UID);
             });
             //配置对战模式
             AgainstConfig.Init();

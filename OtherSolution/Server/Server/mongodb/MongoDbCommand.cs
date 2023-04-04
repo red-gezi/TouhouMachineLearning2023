@@ -193,10 +193,10 @@ namespace Server
 
                 bool HaveEnoughFaith = true;
                 //判断能否扣除仓库中的信念
-                selectFaiths.GroupBy(x => x.BelongUser).ToList().ForEach(group =>
+                selectFaiths.GroupBy(x => x.BelongUserUID).ToList().ForEach(group =>
                 {
                     //如果有一项不足，则跳过
-                    if (userInfo.Faiths.Where(faith => faith.BelongUser == group.Key).Count() >= group.Count())
+                    if (userInfo.Faiths.Where(faith => faith.BelongUserUID == group.Key).Count() >= group.Count())
                     {
                         HaveEnoughFaith = false;
                     }

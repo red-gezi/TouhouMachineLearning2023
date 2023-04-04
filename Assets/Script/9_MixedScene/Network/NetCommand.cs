@@ -180,29 +180,28 @@ namespace TouhouMachineLearningSummary.Command
             catch (Exception e) { Debug.LogException(e); }
             return -1;
         }
-        public static async Task<bool> LoginAsync(string account, string password)
+        public static async Task<PlayerInfo> LoginAsync(string account, string password)
         {
             try
             {
                 Debug.Log("登陆请求");
                 await CheckHubState();
-                Info.AgainstInfo.OnlineUserInfo = await TouHouHub.InvokeAsync<PlayerInfo>("Login", account, password);
-                Debug.Log(Info.AgainstInfo.OnlineUserInfo.ToJson());
+                return await TouHouHub.InvokeAsync<PlayerInfo>("Login", account, password);
             }
             catch (Exception e) { Debug.LogException(e); }
-            return Info.AgainstInfo.OnlineUserInfo != null;
+            return null;
         }
 
-        public static async Task<List<string>> DrawCardAsync(string account, string password, List<Faith> selectFaiths)
+        public static async Task<List<string>> DrawCardAsync(string uid, string password, List<Faith> selectFaiths)
         {
             List<string> DrawCardList = new List<string>();
             try
             {
                 Debug.Log("抽卡请求");
                 await CheckHubState();
-                DrawCardList = await TouHouHub.InvokeAsync<List<string>>("DrawCard", account, password, selectFaiths);
+                DrawCardList = await TouHouHub.InvokeAsync<List<string>>("DrawCard", uid, password, selectFaiths);
                 //抽完卡重新拉取用户信息
-                Info.AgainstInfo.OnlineUserInfo = await TouHouHub.InvokeAsync<PlayerInfo>("Login", account, password);
+                Info.AgainstInfo.OnlineUserInfo = await LoginAsync(uid, password);
             }
             catch (Exception e) { Debug.LogException(e); }
             return DrawCardList;
@@ -238,10 +237,10 @@ namespace TouhouMachineLearningSummary.Command
             await CheckHubState();
             await TouHouHub.SendAsync("UploadSurrender", Info.AgainstInfo.RoomID, surrenddrState);
         }
-        public static async Task<List<AgainstSummaryManager>> DownloadOwnerAgentSummaryAsync(string playerAccount, int skipCount, int takeCount)
+        public static async Task<List<AgainstSummaryManager>> DownloadOwnerAgentSummaryAsync(string uid, int skipCount, int takeCount)
         {
             await CheckHubState();
-            return await TouHouHub.InvokeAsync<List<AgainstSummaryManager>>("DownloadOwnerAgentSummary", playerAccount, skipCount, takeCount);
+            return await TouHouHub.InvokeAsync<List<AgainstSummaryManager>>("DownloadOwnerAgentSummary", uid, skipCount, takeCount);
         }
         public static async Task<List<AgainstSummaryManager>> DownloadAllAgentSummaryAsync(int skipCount, int takeCount)
         {
@@ -266,7 +265,7 @@ namespace TouhouMachineLearningSummary.Command
             {
                 Debug.Log("上传卡牌配置");
                 await CheckHubState();
-                string result = await TouHouHub.InvokeAsync<string>("UploadCardConfigs", cardConfig,drawAbleList, commandPassword);
+                string result = await TouHouHub.InvokeAsync<string>("UploadCardConfigs", cardConfig, drawAbleList, commandPassword);
                 Debug.Log("新卡牌配置上传结果: " + result);
             }
             catch (Exception e) { Debug.LogException(e); }
@@ -293,7 +292,7 @@ namespace TouhouMachineLearningSummary.Command
             {
                 Log.Show("更新");
                 await CheckHubState();
-                return await TouHouHub.InvokeAsync<bool>("UpdateInfo", updateType, AgainstInfo.OnlineUserInfo.Account, AgainstInfo.OnlineUserInfo.Password, updateValue);
+                return await TouHouHub.InvokeAsync<bool>("UpdateInfo", updateType, AgainstInfo.OnlineUserInfo.UID, AgainstInfo.OnlineUserInfo.Password, updateValue);
             }
             catch (Exception e) { Debug.LogException(e); }
             return false;
@@ -314,15 +313,15 @@ namespace TouhouMachineLearningSummary.Command
             }
             catch (Exception ex) { Debug.LogException(ex); }
         }
-        public static async Task<bool> LeaveHoldOnList(AgainstModeType modeType, string account)
+        public static async Task<bool> LeaveHoldOnList(AgainstModeType modeType, string uid)
         {
             await CheckHubState();
-            return await TouHouHub.InvokeAsync<bool>("Leave", modeType, account);
+            return await TouHouHub.InvokeAsync<bool>("Leave", modeType, uid);
         }
         public static async Task<bool> AgainstFinish()
         {
             await CheckHubState();
-            return await TouHouHub.InvokeAsync<bool>("AgainstFinish", Info.AgainstInfo.RoomID, AgainstInfo.OnlineUserInfo.Account, AgainstInfo.PlayerScore.P1Score, AgainstInfo.PlayerScore.P2Score);
+            return await TouHouHub.InvokeAsync<bool>("AgainstFinish", Info.AgainstInfo.RoomID, AgainstInfo.OnlineUserInfo.UID, AgainstInfo.PlayerScore.P1Score, AgainstInfo.PlayerScore.P2Score);
         }
         //判断是否存在正在对战中的房间
         internal static async Task CheckRoomAsync(string text1, string text2)
@@ -428,6 +427,6 @@ namespace TouhouMachineLearningSummary.Command
             }
         }
 
-        
+
     }
 }

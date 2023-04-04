@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.Manager
         {
             Init();
             Manager.againstSummaryComponent.SetActive(true);
-            var summarys = await NetCommand.DownloadOwnerAgentSummaryAsync(Info.AgainstInfo.OnlineUserInfo.Account, 0, 20);
+            var summarys = await NetCommand.DownloadOwnerAgentSummaryAsync(Info.AgainstInfo.OnlineUserInfo.UID, 0, 20);
             summarys.ForEach(summary =>
             {
                 var item = Instantiate(Manager.againstSummaryItem, Manager.againstSummaryItem.transform.parent);

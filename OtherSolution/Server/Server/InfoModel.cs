@@ -45,7 +45,11 @@ namespace Server
         //[BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
         public string UID { get; set; }
+        //玩家的个人账号，手机或邮箱
         public string Account { get; set; }
+        //玩家后期补充的邮箱信息，用于找回密码
+        public string E_mail { get; set; }
+        //玩家游戏中的名字
         public string Name { get; set; }
         public List<string> UnlockTitleTags { get; set; }
         public string UsePrefixTitleTag { get; set; }
