@@ -25,6 +25,26 @@ namespace TouhouMachineLearningSummary.Command
         public static void ShowFaithComponent() => Info.PageComponentInfo.Instance.FaithComponent.SetActive(true);
         //关闭信念选择组件
         public static void CloseFaithComponent() => Info.PageComponentInfo.Instance.FaithComponent.SetActive(false);
+
+        public static void InitFaithBag(GameObject faithBag, GameObject closeFaithBagButton)
+        {
+            faithBag.SetActive(false);
+            closeFaithBagButton.SetActive(false);
+        }
+        //打开信念背包组件
+        public static void ShowFaithBag(GameObject faithBag, GameObject closeFaithBagButton)
+        {
+            faithBag.SetActive(true);
+            closeFaithBagButton.SetActive(true);
+        }
+
+        //关闭信念背包组件
+        public static void CloseFaithBag(GameObject faithBag, GameObject closeFaithBagButton)
+        {
+            faithBag.SetActive(false);
+            closeFaithBagButton.SetActive(false);
+        }
+
         //添加信念
         public static void AddFaith(int index)
         {

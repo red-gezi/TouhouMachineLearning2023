@@ -12,6 +12,16 @@ namespace TouhouMachineLearningSummary.Manager
     public class GachaManager : MonoBehaviour
     {
         public static GachaManager Instance { get; set; }
+        [Header("卡池面板")]
+        public GameObject FaithBag;
+
+        public GameObject fastSelectButton;
+        public GameObject openFaithBagButton;
+        public GameObject closeFaithBagButton;
+
+
+
+        [Header("开卡面板")]
         public GameObject drawOneCardButton;
         public GameObject drawMoreCardButton;
         public GameObject showAllCardsButton;
@@ -28,8 +38,12 @@ namespace TouhouMachineLearningSummary.Manager
             {
                 singleOpenCardInfos.Add(GachaBoardGroup.GetChild(i).GetComponent<GachaBoardInfo>());
             }
+            Command.GachaCommand.InitFaithBag(FaithBag, closeFaithBagButton);
         }
-
+        //打开信念背包组件
+        public  void ShowFaithBag() =>Command.GachaCommand.ShowFaithBag(FaithBag, closeFaithBagButton);
+        //关闭信念背包组件
+        public  void CloseFaithBag() => Command.GachaCommand.CloseFaithBag(FaithBag, closeFaithBagButton);
         //抽卡,并打开开卡组件
         public void DrawCard() => Command.GachaCommand.QuickDrawCard(1);
         //再次抽取1张卡

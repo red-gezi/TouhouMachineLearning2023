@@ -2091,7 +2091,14 @@
       "Name-Ch": "蓬莱山辉夜",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月之民",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "生成一张五难题牌中的一张并打出",
       "Ability-En": ""
@@ -2118,7 +2125,14 @@
       "Name-Ch": "1",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "牌技",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "牌技：打出牌库最上方点数与自身连锁值相等且品质最高的单位",
       "Ability-En": ""
@@ -2145,7 +2159,14 @@
       "Name-Ch": "八意永琳",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月之民",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "从双方墓地中复活一个非领袖单位",
       "Ability-En": ""
@@ -2206,7 +2227,14 @@
       "Name-Ch": "1",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "牌技",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "牌技：打出牌组最上方的单位，并将其点数设为本牌连锁值*2",
       "Ability-En": ""
@@ -2233,7 +2261,14 @@
       "Name-Ch": "1",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "牌技",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "牌技：打出与自身连锁值*2的伤害",
       "Ability-En": ""
@@ -2260,7 +2295,14 @@
       "Name-Ch": "[炸符*赢家通吃]",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "牌技",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "牌技：摧毁场上所以小于自身连锁值的单位",
       "Ability-En": ""
@@ -2287,7 +2329,14 @@
       "Name-Ch": "铃仙二号",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "潜入\n部署：打出牌组中最上方的兔子/月兔单位，两回合后移动至对面同排最右侧",
       "Ability-En": ""
@@ -2314,7 +2363,14 @@
       "Name-Ch": "铃仙",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "潜入\n部署：令两侧单位互伤",
       "Ability-En": ""
@@ -2341,7 +2397,14 @@
       "Name-Ch": "下一回合就还你！",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "兔子",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "间谍，我方回合开始时若该牌位于墓地则复活到对面场上",
       "Ability-En": ""
@@ -2368,7 +2431,14 @@
       "Name-Ch": "1",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "兔子",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "牌技：选择场上一个点数与自身连锁值相等的单位，视自己为触发方执行其部署效果",
       "Ability-En": ""
@@ -2395,7 +2465,14 @@
       "Name-Ch": "月兔谍报员",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "潜入\n部署：与左侧单位互换战力，\n计时（1）：回合结束时移动至对面同排最右侧",
       "Ability-En": ""
@@ -2422,7 +2499,14 @@
       "Name-Ch": "月兔狙击兵",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "部署：选择一个单位，造成1点伤害\n我方打出潜伏卡后：若其左侧为非金单位则对其造成1点伤害",
       "Ability-En": ""
@@ -2449,7 +2533,14 @@
       "Name-Ch": "月兔先遣队",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "潜入\n部署：检索牌我方组中最上方的两张不同的铜色单位牌，选择其中一张并打出",
       "Ability-En": ""
@@ -2476,7 +2567,14 @@
       "Name-Ch": "月兔抓捕手",
       "Name-En": ""
     },
-    "CardTags": {},
+    "CardTags": {
+      "Ch": "月兔",
+      "Ch_Introduction": "卡牌的类型标签",
+      "Tc": "",
+      "En": "Null",
+      "En_Introduction": "The type label of the card",
+      "geyu": ""
+    },
     "Ability": {
       "Ability-Ch": "潜入\n部署：选择两个单位移动至最右侧，并给于3点伤害",
       "Ability-En": ""

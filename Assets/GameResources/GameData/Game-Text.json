@@ -260,8 +260,44 @@
     "En_Introduction": "The type label of the card",
     "geyu": ""
   },
-  "Null": {
-    "Tag": "Null",
+  "Null1": {
+    "Tag": "Null1",
+    "Ch": "月之民",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Null",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Null2": {
+    "Tag": "Null2",
+    "Ch": "牌技",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Null",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Null3": {
+    "Tag": "Null3",
+    "Ch": "月兔",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Null",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Null4": {
+    "Tag": "Null4",
+    "Ch": "兔子",
+    "Ch_Introduction": "卡牌的类型标签",
+    "Tc": "",
+    "En": "Null",
+    "En_Introduction": "The type label of the card",
+    "geyu": ""
+  },
+  "Null5": {
+    "Tag": "Null5",
     "Ch": "潜伏",
     "Ch_Introduction": "卡牌的类型标签",
     "Tc": "",
