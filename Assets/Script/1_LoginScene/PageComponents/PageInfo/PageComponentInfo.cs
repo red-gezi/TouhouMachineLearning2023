@@ -155,11 +155,8 @@ namespace TouhouMachineLearningSummary.Info
         public static List<Faith> SelectFaiths { get; set; } = new();
         [Header("抽卡组件")]
         //抽卡界面组件
-        public GameObject CardPoolComponent;
-        //信念选择组件
-        public GameObject FaithComponent;
-        //开卡界面组件
-        public GameObject OpenCardComponent;
+        public GameObject GachaComponent;
+        
         
 
 

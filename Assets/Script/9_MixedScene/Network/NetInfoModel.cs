@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
+using TouhouMachineLearningSummary.Info;
+using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Model
 {
@@ -85,9 +87,15 @@ namespace TouhouMachineLearningSummary.Model
     }
     public class Faith
     {
-        public List<string> BelongUser { get; set; }
+        public string BelongUserUID { get; set; }
         public int Count { get; set; }
         public bool IsLock { get; set; }
+        //一个临时实现方案
+        public Texture2D GetFaithIcon()
+        {
+            int rank = int.Parse(BelongUserUID);
+            return GachaComponentInfo.Instance.TempSprites[rank];
+        }
     }
     /// <summary>
     /// 玩家信息模板,若有更新需要在服务端同步更新
@@ -117,7 +125,6 @@ namespace TouhouMachineLearningSummary.Model
         public string LoseMessage { get; set; }
         public string GreetingsMessage { get; set; }
         //信仰相关属性
-        public Color Color { get; set; }
         public List<Faith> Faiths { get; set; } = new();
         //决定游戏进程
         [ShowInInspector]
