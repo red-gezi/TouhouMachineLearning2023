@@ -15,6 +15,7 @@ namespace TouhouMachineLearningSummary.Info
         public Material cardMaterial;
 
         public GameObject faithUserUi;
+        public GameObject faithUserIcon;
         public GameObject cardNameUi;
         
         public GameObject cardCountUi;

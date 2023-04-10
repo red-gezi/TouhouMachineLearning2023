@@ -90,11 +90,30 @@ namespace TouhouMachineLearningSummary.Model
         public string BelongUserUID { get; set; }
         public int Count { get; set; }
         public bool IsLock { get; set; }
-        //一个临时实现方案
-        public Texture2D GetFaithIcon()
+        [NonSerialized]
+        public Texture2D faithTexture;
+        [NonSerialized]
+        public Sprite faithSprite;
+        [NonSerialized] 
+        public string userName;
+
+        public void Init()
         {
             int rank = int.Parse(BelongUserUID);
-            return GachaInfo.Instance.TempSprites[rank];
+            userName = GachaInfo.Instance.TempSprites[rank].name;
+            faithTexture = GachaInfo.Instance.TempSprites[rank];
+            faithSprite = GachaInfo.Instance.TempSprites[rank].ToSprite();
+        }
+        //一个临时实现方案
+        public Texture2D GetFaithIconTexture()
+        {
+            Init();
+            return faithTexture;
+        }
+        public Sprite GetFaithIconSprite()
+        {
+            Init();
+            return faithSprite;
         }
     }
     /// <summary>

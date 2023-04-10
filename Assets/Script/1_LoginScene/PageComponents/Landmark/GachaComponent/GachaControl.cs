@@ -21,7 +21,7 @@ namespace TouhouMachineLearningSummary.control
         //快速选择符合条件的信念
         public void QuickSelectFaith() => Command.GachaCommand.QuickSelectFaith();
         //抽卡,并打开开卡组件
-        public void DrawCard() => Command.GachaCommand.QuickDrawCard(1);
+        public void DrawCard() => Command.GachaCommand.DrawCard(Info.GachaInfo.SelectFaiths);
         //再次抽取1张卡
         public void DrawOneCardAgain() => Command.GachaCommand.QuickDrawCard(1);
         //再次抽取至多5张卡

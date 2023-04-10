@@ -19,6 +19,7 @@ namespace TouhouMachineLearningSummary.Command
             Info.GachaInfo.Instance.cardPoolComponent.SetActive(true);
             Info.GachaInfo.Instance.openCardComponent.SetActive(false);
             Info.GachaInfo.Instance.faithBagComponent.SetActive(false);
+            RefreshSelectFaith();
             Info.GachaInfo.singleOpenCardInfos.Clear();
             for (int i = 0; i < 5; i++)
             {
@@ -32,16 +33,6 @@ namespace TouhouMachineLearningSummary.Command
             });
         }
         /// ///////////////////////////////////////////////信念选择相关操作//////////////////////////////////////////
-        ////打开信念选择组件
-        //public static void ShowFaithComponent() => Info.GachaComponentInfo.Instance.cardPoolComponent.SetActive(true);
-        ////关闭信念选择组件
-        //public static void CloseFaithComponent() => Info.GachaComponentInfo.Instance.cardPoolComponent.SetActive(false);
-
-        //public static void InitFaithBag()
-        //{
-        //    Info.GachaComponentInfo.Instance.faithBagComponent.SetActive(false);
-        //    Info.GachaComponentInfo.Instance.closeFaithBagButton.SetActive(false);
-        //}
         //打开信念背包组件
         public static void ShowFaithBag()
         {
@@ -71,7 +62,7 @@ namespace TouhouMachineLearningSummary.Command
                 if (i < currentFaiths.Count)
                 {
                     targetItem.gameObject.SetActive(true);
-                    targetItem.GetComponent<Image>().material.mainTexture = currentFaiths[i].GetFaithIcon();
+                    targetItem.GetComponent<Image>().material.mainTexture = currentFaiths[i].GetFaithIconTexture();
                     targetItem.GetChild(2).GetComponent<TextMeshProUGUI>().text = currentFaiths[i].Count.ToString();
                 }
                 else
@@ -90,7 +81,6 @@ namespace TouhouMachineLearningSummary.Command
         public static void CloseFaithBag()
         {
             Info.GachaInfo.Instance.faithBagComponent.SetActive(false);
-            //Info.GachaComponentInfo.Instance.closeFaithBagButton.SetActive(false);
         }
 
         //添加信念
@@ -140,12 +130,12 @@ namespace TouhouMachineLearningSummary.Command
         {
             for (int i = 0; i < 5; i++)
             {
-                var IconUI = Info.GachaInfo.Instance.faithSelectGroup.GetChild(i).GetChild(1);
+                var IconUI = Info.GachaInfo.Instance.faithSelectGroup.GetChild(i).GetChild(0);
                 if (i < Info.GachaInfo.SelectFaiths.Count)
                 {
                     //设置图片
                     IconUI.gameObject.SetActive(true);
-                    IconUI.GetComponent<Image>().sprite = Info.GachaInfo.SelectFaiths[i].GetFaithIcon().ToSprite();
+                    IconUI.GetComponent<Image>().sprite = Info.GachaInfo.SelectFaiths[i].GetFaithIconSprite();
                 }
                 else
                 {
@@ -179,12 +169,13 @@ namespace TouhouMachineLearningSummary.Command
         }
         public static void QuickDrawCard(int drawCardCount)
         {
-            List<Faith> drawCards = new();
-            for (int i = 0; i < drawCardCount; i++)
-            {
-                drawCards.Add(new Faith());
-            }
-            DrawCard(drawCards);
+            List<Faith> currentFaiths = new();
+            currentFaiths.Add(new Faith() { BelongUserUID = "0", Count = 5 });
+            currentFaiths.Add(new Faith() { BelongUserUID = "1", Count = 45 });
+            currentFaiths.Add(new Faith() { BelongUserUID = "2", Count = 225 });
+            currentFaiths.Add(new Faith() { BelongUserUID = "3", Count = 215 });
+            currentFaiths.Add(new Faith() { BelongUserUID = "4", Count = 3 });
+            DrawCard(currentFaiths.Take(drawCardCount).ToList());
         }
         //抽卡
         public static async void DrawCard(List<Faith> selectFaiths)
@@ -233,7 +224,8 @@ namespace TouhouMachineLearningSummary.Command
                         singleOpenCardInfo.cardCountUi.GetComponent<Image>().material = new Material(singleOpenCardInfo.cardCountUi.GetComponent<Image>().material);
 
                     }
-
+                    singleOpenCardInfo.faithUserIcon.GetComponent<Image>().sprite = Info.GachaInfo.SelectFaiths[i].GetFaithIconSprite();
+                    singleOpenCardInfo.faithUserUi.GetComponent<TextMeshProUGUI>().text = Info.GachaInfo.SelectFaiths[i].userName;
                     singleOpenCardInfo.state = 1;
                     singleOpenCardInfo.cardMaterial.SetTexture("_Face", cardInfo.cardFace);
                     //singleOpenCardInfo.cardMaterial.SetTexture("_Back", cardInfo.cardBack);
