@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.control
         //添加选择信念
         public void AddFaith(Transform item) => Command.GachaCommand.AddFaith(item);
         //移除选择信念
-        public void RemoveFaith(int index) => Command.GachaCommand.RemoveFaith(index);
+        public void RemoveFaith(Transform item) => Command.GachaCommand.RemoveFaith(item);
         //快速选择符合条件的信念
         public void QuickSelectFaith() => Command.GachaCommand.QuickSelectFaith();
         //抽卡,并打开开卡组件
@@ -31,7 +31,7 @@ namespace TouhouMachineLearningSummary.control
 
         public void ShowCard(Info.GachaCardInfo info) => Command.GachaCommand.ShowCard(info);
         public void TurnCard(Info.GachaCardInfo info) => Command.GachaCommand.TurnCard(info);
-        public void ShowAllCards() => Info.GachaComponentInfo.singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.GachaCommand.ShowCard);
-        public void TurnAllCards() => Info.GachaComponentInfo.singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.GachaCommand.TurnCard);
+        public void ShowAllCards() => Info.GachaInfo.singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.GachaCommand.ShowCard);
+        public void TurnAllCards() => Info.GachaInfo.singleOpenCardInfos.Where(info => info.gameObject.activeSelf).ForEach(Command.GachaCommand.TurnCard);
     }
 }

@@ -94,7 +94,7 @@ namespace TouhouMachineLearningSummary.Model
         public Texture2D GetFaithIcon()
         {
             int rank = int.Parse(BelongUserUID);
-            return GachaComponentInfo.Instance.TempSprites[rank];
+            return GachaInfo.Instance.TempSprites[rank];
         }
     }
     /// <summary>

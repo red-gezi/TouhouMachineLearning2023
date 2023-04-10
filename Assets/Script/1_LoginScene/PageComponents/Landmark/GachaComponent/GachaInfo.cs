@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TouhouMachineLearningSummary.Model;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Info
 {
     //抽卡ui组件的相关信息
-    public class GachaComponentInfo : MonoBehaviour
+    public class GachaInfo : MonoBehaviour
     {
         [Header("抽卡相关组件")]
         //卡池界面组件
@@ -22,7 +23,8 @@ namespace TouhouMachineLearningSummary.Info
         [Header("信念选择器")]
         public GameObject fastSelectButton;
         public GameObject openFaithBagButton;
-
+        public Transform faithSelectGroup;
+        public static List<Faith> SelectFaiths { get; set; } = new();
         [Header("信念背包")]
         public Transform faithBagGroup;
         public GameObject faithBagItem;
@@ -39,7 +41,7 @@ namespace TouhouMachineLearningSummary.Info
 
         public static List<GachaCardInfo> singleOpenCardInfos = new List<GachaCardInfo>();
 
-        public static GachaComponentInfo Instance { get; set; }
+        public static GachaInfo Instance { get; set; }
 
         private void Awake() => Instance = this;
 

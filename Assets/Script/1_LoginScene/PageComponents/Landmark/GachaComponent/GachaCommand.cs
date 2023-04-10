@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using TouhouMachineLearningSummary.Extension;
-using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Manager;
 using TouhouMachineLearningSummary.Model;
 using TouhouMachineLearningSummary.Thread;
@@ -17,19 +16,19 @@ namespace TouhouMachineLearningSummary.Command
         //初始化抽卡面板状态
         public static async void InitGachaComponent()
         {
-            Info.GachaComponentInfo.Instance.cardPoolComponent.SetActive(true);
-            Info.GachaComponentInfo.Instance.openCardComponent.SetActive(false);
-            Info.GachaComponentInfo.Instance.faithBagComponent.SetActive(false);
-            Info.GachaComponentInfo.singleOpenCardInfos.Clear();
+            Info.GachaInfo.Instance.cardPoolComponent.SetActive(true);
+            Info.GachaInfo.Instance.openCardComponent.SetActive(false);
+            Info.GachaInfo.Instance.faithBagComponent.SetActive(false);
+            Info.GachaInfo.singleOpenCardInfos.Clear();
             for (int i = 0; i < 5; i++)
             {
-                Info.GachaComponentInfo.singleOpenCardInfos.Add(Info.GachaComponentInfo.Instance.GachaBoardGroup.GetChild(i).GetComponent<Info.GachaCardInfo>());
+                Info.GachaInfo.singleOpenCardInfos.Add(Info.GachaInfo.Instance.GachaBoardGroup.GetChild(i).GetComponent<Info.GachaCardInfo>());
             }
             //清空选择槽
             await CustomThread.TimerAsync(0.5f, process =>
             {
-                Info.GachaComponentInfo.Instance.cardPoolComponent.transform.localPosition = new Vector3(50 * (1 - process), 0, 0);
-                Info.GachaComponentInfo.Instance.cardPoolComponent.GetComponent<CanvasGroup>().alpha = process;
+                Info.GachaInfo.Instance.cardPoolComponent.transform.localPosition = new Vector3(50 * (1 - process), 0, 0);
+                Info.GachaInfo.Instance.cardPoolComponent.GetComponent<CanvasGroup>().alpha = process;
             });
         }
         /// ///////////////////////////////////////////////信念选择相关操作//////////////////////////////////////////
@@ -46,7 +45,7 @@ namespace TouhouMachineLearningSummary.Command
         //打开信念背包组件
         public static void ShowFaithBag()
         {
-            Info.GachaComponentInfo.Instance.faithBagComponent.SetActive(true);
+            Info.GachaInfo.Instance.faithBagComponent.SetActive(true);
             //Info.GachaComponentInfo.Instance.closeFaithBagButton.SetActive(true);
             var currentFaiths = Info.AgainstInfo.OnlineUserInfo.Faiths;
             if (!currentFaiths.Any())
@@ -59,15 +58,15 @@ namespace TouhouMachineLearningSummary.Command
             }
 
             //创建不足的背包物体
-            int creatItemCount = currentFaiths.Count - GachaComponentInfo.Instance.faithBagGroup.childCount;
+            int creatItemCount = currentFaiths.Count - Info.GachaInfo.Instance.faithBagGroup.childCount;
             for (int i = 0; i < creatItemCount; i++)
             {
-                var newItem = GameObject.Instantiate(GachaComponentInfo.Instance.faithBagItem, GachaComponentInfo.Instance.faithBagGroup);
+                var newItem = GameObject.Instantiate(Info.GachaInfo.Instance.faithBagItem, Info.GachaInfo.Instance.faithBagGroup);
                 newItem.GetComponent<Image>().material = new(newItem.GetComponent<Image>().material);
             }
-            for (int i = 0; i < GachaComponentInfo.Instance.faithBagGroup.childCount; i++)
+            for (int i = 0; i < Info.GachaInfo.Instance.faithBagGroup.childCount; i++)
             {
-                Transform targetItem = GachaComponentInfo.Instance.faithBagGroup.GetChild(i);
+                Transform targetItem = Info.GachaInfo.Instance.faithBagGroup.GetChild(i);
 
                 if (i < currentFaiths.Count)
                 {
@@ -90,46 +89,69 @@ namespace TouhouMachineLearningSummary.Command
         //关闭信念背包组件
         public static void CloseFaithBag()
         {
-            Info.GachaComponentInfo.Instance.faithBagComponent.SetActive(false);
+            Info.GachaInfo.Instance.faithBagComponent.SetActive(false);
             //Info.GachaComponentInfo.Instance.closeFaithBagButton.SetActive(false);
         }
 
         //添加信念
         public static void AddFaith(Transform item)
         {
-            int index=0;
-            for (int i = 0; i < GachaComponentInfo.Instance.faithBagGroup.childCount; i++)
+            int index = 0;
+            for (int i = 0; i < Info.GachaInfo.Instance.faithBagGroup.childCount; i++)
             {
-                if (GachaComponentInfo.Instance.faithBagGroup.GetChild(i) == item)
+                if (Info.GachaInfo.Instance.faithBagGroup.GetChild(i) == item)
                 {
                     index = i;
                     break;
                 }
             }
-            if (Info.PageComponentInfo.SelectFaiths.Count < 5)
+            if (Info.GachaInfo.SelectFaiths.Count < 5)
             {
                 var targetFaiths = Info.AgainstInfo.OnlineUserInfo.Faiths[index];
                 //当点击的信念剩余数量小于同类型已选的信念数量才会被添加
-                if (Info.PageComponentInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID) < targetFaiths.Count)
+                if (Info.GachaInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID) < targetFaiths.Count)
                 {
-                    Info.PageComponentInfo.SelectFaiths.Add(targetFaiths);
+                    Info.GachaInfo.SelectFaiths.Add(targetFaiths);
                 }
                 else
                 {
                     //播放无效音效
                 }
             }
-
+            RefreshSelectFaith();
         }
         //移除信念
-        public static void RemoveFaith(int index)
+        public static void RemoveFaith(Transform item)
         {
-            Info.PageComponentInfo.SelectFaiths.RemoveAt(index);
+            int index = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (Info.GachaInfo.Instance.faithSelectGroup.GetChild(i) == item)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            Info.GachaInfo.SelectFaiths.RemoveAt(index);
+            RefreshSelectFaith();
         }
         //刷新信念选择器
         public static void RefreshSelectFaith()
         {
-
+            for (int i = 0; i < 5; i++)
+            {
+                var IconUI = Info.GachaInfo.Instance.faithSelectGroup.GetChild(i).GetChild(1);
+                if (i < Info.GachaInfo.SelectFaiths.Count)
+                {
+                    //设置图片
+                    IconUI.gameObject.SetActive(true);
+                    IconUI.GetComponent<Image>().sprite = Info.GachaInfo.SelectFaiths[i].GetFaithIcon().ToSprite();
+                }
+                else
+                {
+                    IconUI.gameObject.SetActive(false);
+                }
+            }
         }
         //锁定信念
         public static void ChangeLockFaith(int index)
@@ -140,18 +162,18 @@ namespace TouhouMachineLearningSummary.Command
         //快速选择信念
         public static void QuickSelectFaith()
         {
-            if (Info.PageComponentInfo.SelectFaiths.Count == 5) return;
+            if (Info.GachaInfo.SelectFaiths.Count == 5) return;
             for (int i = 0; i < Info.AgainstInfo.OnlineUserInfo.Faiths.Count; i++)
             {
                 var targetFaiths = Info.AgainstInfo.OnlineUserInfo.Faiths[i];
 
                 //计算该信仰未被使用的数量
-                var unusedNum = targetFaiths.Count - Info.PageComponentInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID);
+                var unusedNum = targetFaiths.Count - Info.GachaInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID);
                 Debug.Log("第" + i + "项未被使用的数量为" + unusedNum);
                 for (int j = 0; j < unusedNum; i++)
                 {
-                    Info.PageComponentInfo.SelectFaiths.Add(targetFaiths);
-                    if (Info.PageComponentInfo.SelectFaiths.Count == 5) return;
+                    Info.GachaInfo.SelectFaiths.Add(targetFaiths);
+                    if (Info.GachaInfo.SelectFaiths.Count == 5) return;
                 }
             }
         }
@@ -195,7 +217,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             for (int i = 0; i < 5; i++)
             {
-                var singleOpenCardInfo = Info.GachaComponentInfo.singleOpenCardInfos[i];
+                var singleOpenCardInfo = Info.GachaInfo.singleOpenCardInfos[i];
                 bool isActive = i < drawCardId.Count;
                 singleOpenCardInfo.gameObject.SetActive(isActive);
                 //激活的卡牌替换卡图
@@ -234,38 +256,38 @@ namespace TouhouMachineLearningSummary.Command
             RefreshOpenCardComponent();
         }
         //显示开卡组件
-        public static void ShowOpenCardComponent() => Info.GachaComponentInfo.Instance.openCardComponent.SetActive(true);
+        public static void ShowOpenCardComponent() => Info.GachaInfo.Instance.openCardComponent.SetActive(true);
         //关闭开卡组件
-        public static void CloseOpenCardComponent() => Info.GachaComponentInfo.Instance.openCardComponent.SetActive(false);
+        public static void CloseOpenCardComponent() => Info.GachaInfo.Instance.openCardComponent.SetActive(false);
         //刷新组件状态
         public static void RefreshOpenCardComponent()
         {
-            if (Info.GachaComponentInfo.singleOpenCardInfos.Any(info => info.state == 1))
+            if (Info.GachaInfo.singleOpenCardInfos.Any(info => info.state == 1))
             {
                 //进入等待开卡状态
-                Info.GachaComponentInfo.Instance.showAllCardsButton.SetActive(true);
-                Info.GachaComponentInfo.Instance.turnAllCardsButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.closeButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.drawOneCardButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.drawMoreCardButton.SetActive(false);
+                Info.GachaInfo.Instance.showAllCardsButton.SetActive(true);
+                Info.GachaInfo.Instance.turnAllCardsButton.SetActive(false);
+                Info.GachaInfo.Instance.closeButton.SetActive(false);
+                Info.GachaInfo.Instance.drawOneCardButton.SetActive(false);
+                Info.GachaInfo.Instance.drawMoreCardButton.SetActive(false);
                 return;
             }
-            if (Info.GachaComponentInfo.singleOpenCardInfos.Any(info => info.state == 2))
+            if (Info.GachaInfo.singleOpenCardInfos.Any(info => info.state == 2))
             {
                 //进入等待翻转状态
-                Info.GachaComponentInfo.Instance.showAllCardsButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.turnAllCardsButton.SetActive(true);
-                Info.GachaComponentInfo.Instance.closeButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.drawOneCardButton.SetActive(false);
-                Info.GachaComponentInfo.Instance.drawMoreCardButton.SetActive(false);
+                Info.GachaInfo.Instance.showAllCardsButton.SetActive(false);
+                Info.GachaInfo.Instance.turnAllCardsButton.SetActive(true);
+                Info.GachaInfo.Instance.closeButton.SetActive(false);
+                Info.GachaInfo.Instance.drawOneCardButton.SetActive(false);
+                Info.GachaInfo.Instance.drawMoreCardButton.SetActive(false);
                 return;
             }
             //进入等待关闭状态
-            Info.GachaComponentInfo.Instance.showAllCardsButton.SetActive(false);
-            Info.GachaComponentInfo.Instance.turnAllCardsButton.SetActive(false);
-            Info.GachaComponentInfo.Instance.closeButton.SetActive(true);
-            Info.GachaComponentInfo.Instance.drawOneCardButton.SetActive(true);
-            Info.GachaComponentInfo.Instance.drawMoreCardButton.SetActive(true);
+            Info.GachaInfo.Instance.showAllCardsButton.SetActive(false);
+            Info.GachaInfo.Instance.turnAllCardsButton.SetActive(false);
+            Info.GachaInfo.Instance.closeButton.SetActive(true);
+            Info.GachaInfo.Instance.drawOneCardButton.SetActive(true);
+            Info.GachaInfo.Instance.drawMoreCardButton.SetActive(true);
         }
         //显露抽的的卡牌卡背
         public static async void ShowCard(Info.GachaCardInfo singleOpenCardInfo)

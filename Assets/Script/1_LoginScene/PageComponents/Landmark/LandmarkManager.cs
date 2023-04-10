@@ -14,22 +14,16 @@ namespace TouhouMachineLearningSummary.Manager
     }
     public class LandmarkManager : MonoBehaviour
     {
-        public void InitLandmark(int landmarkType)
+        LandmarkManager Instance { get; set; }
+        public void Awake() => Instance = this;
+        public void InitHakureiShrine()
         {
             Info.PageComponentInfo.Instance.GachaComponent.SetActive(false);
-
-
-            switch ((LandmarkType)landmarkType)
-            {
-                case LandmarkType.HakureiShrine:
-                    break;
-                case LandmarkType.MyorenTemple:
-                    Info.PageComponentInfo.Instance.GachaComponent.SetActive(true);
-                    Command.GachaCommand.InitGachaComponent();
-                    break;
-                default: break;
-            }
         }
-
+        public void InitMyorenTemple()
+        {
+            Info.PageComponentInfo.Instance.GachaComponent.SetActive(true);
+            Command.GachaCommand.InitGachaComponent();
+        }
     }
 }

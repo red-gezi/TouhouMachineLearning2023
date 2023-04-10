@@ -152,7 +152,7 @@ namespace TouhouMachineLearningSummary.Info
         public GameObject prefixTitleModel;
         public GameObject suffixTitleModel;
         ///////////////////////////////////////////////////////////抽卡信息/////////////////////////////
-        public static List<Faith> SelectFaiths { get; set; } = new();
+        
         [Header("抽卡组件")]
         //抽卡界面组件
         public GameObject GachaComponent;
