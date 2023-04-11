@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace TouhouMachineLearningSummary.Info
         public GameObject fastSelectButton;
         public GameObject openFaithBagButton;
         public Transform faithSelectGroup;
+        [ShowInInspector]
         public static List<Faith> SelectFaiths { get; set; } = new();
         [Header("信念背包")]
         public Transform faithBagGroup;
@@ -37,9 +39,12 @@ namespace TouhouMachineLearningSummary.Info
         public GameObject showAllCardsButton;
         public GameObject turnAllCardsButton;
         public GameObject drawMoreCardButton;
-        
 
+        [ShowInInspector]
         public static List<GachaCardInfo> singleOpenCardInfos = new List<GachaCardInfo>();
+
+        [ShowInInspector]
+        public static PlayerInfo playerInfo => Info.AgainstInfo.OnlineUserInfo;
 
         public static GachaInfo Instance { get; set; }
 

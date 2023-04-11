@@ -90,9 +90,9 @@ namespace Server
             }
         }
         //之后会根据登录方式进行扩展
-        public static PlayerInfo? Login(string account, string password)
+        public static PlayerInfo? Login(string accountOrUID, string password)
         {
-            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == account);
+            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == accountOrUID|| info.UID==accountOrUID);
             PlayerInfo? userInfo = null;
             if (PlayerInfoCollection.Find(CheckUserExistQuery).Any())
             {

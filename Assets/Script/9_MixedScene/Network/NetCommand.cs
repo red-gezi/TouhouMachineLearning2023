@@ -188,8 +188,12 @@ namespace TouhouMachineLearningSummary.Command
                 await CheckHubState();
                 return await TouHouHub.InvokeAsync<PlayerInfo>("Login", account, password);
             }
-            catch (Exception e) { Debug.LogException(e); }
-            return null;
+            catch (Exception e) 
+            {
+                Debug.LogException(e);
+                Debug.Log("账号登录失败");
+                return null;
+            }
         }
 
         public static async Task<List<string>> DrawCardAsync(string uid, string password, List<Faith> selectFaiths)

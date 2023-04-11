@@ -18,7 +18,7 @@ namespace TouhouMachineLearningSummary.Control
     public class LoginSceneManager : MonoBehaviour
     {
         //用户输入的账号，可能是游戏账号，UID，邮箱等
-        public Text LoginAccountText;
+        public Text AccountOrUIDText;
         public Text PasswordText;
 
         public static LoginSceneManager Instance { get; set; }
@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.Control
         async void Start()
         {
             Debug.LogWarning("场景已切换" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
-            LoginAccountText.text = UserInfoManager.Account;
+            AccountOrUIDText.text = UserInfoManager.Account;
             PasswordText.text = UserInfoManager.Password;
             await SceneCommand.InitAsync(false);
             Debug.LogWarning("场景初始化" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
@@ -138,7 +138,7 @@ namespace TouhouMachineLearningSummary.Control
         {
             try
             {
-                int result = await NetCommand.RegisterAsync(LoginAccountText.text, PasswordText.text);
+                int result = await NetCommand.RegisterAsync(AccountOrUIDText.text, PasswordText.text);
                 switch (result)
                 {
                     case (1): await NoticeCommand.ShowAsync("注册成功", NotifyBoardMode.Ok); break;
@@ -153,12 +153,12 @@ namespace TouhouMachineLearningSummary.Control
         {
             try
             {
-                Info.AgainstInfo.OnlineUserInfo = await NetCommand.LoginAsync(LoginAccountText.text, PasswordText.text);
+                Info.AgainstInfo.OnlineUserInfo = await NetCommand.LoginAsync(AccountOrUIDText.text, PasswordText.text);
                 Debug.Log(Info.AgainstInfo.OnlineUserInfo.ToJson());
                 if (Info.AgainstInfo.OnlineUserInfo!=null)
                 {
                     //保存静态账号密码
-                    UserInfoManager.Account = LoginAccountText.text;
+                    UserInfoManager.Account = AccountOrUIDText.text;
                     UserInfoManager.Password = PasswordText.text;
                     UserInfoManager.UID = Info.AgainstInfo.OnlineUserInfo.UID;
                     UserInfoManager.E_mail = Info.AgainstInfo.OnlineUserInfo.E_mail;
@@ -172,7 +172,7 @@ namespace TouhouMachineLearningSummary.Control
                     Manager.UserInfoManager.Refresh();
                     await BookCommand.InitToOpenStateAsync();
                     //检测是否已经在对战中
-                    _ = NetCommand.CheckRoomAsync(LoginAccountText.text, PasswordText.text);
+                    _ = NetCommand.CheckRoomAsync(AccountOrUIDText.text, PasswordText.text);
                 }
                 else
                 {

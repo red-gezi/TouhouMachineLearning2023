@@ -122,7 +122,11 @@ namespace TouhouMachineLearningSummary.Command
                     break;
                 }
             }
-            Info.GachaInfo.SelectFaiths.RemoveAt(index);
+            if (Info.GachaInfo.SelectFaiths.Count>index)
+            {
+                Info.GachaInfo.SelectFaiths.RemoveAt(index);
+            }
+            
             RefreshSelectFaith();
         }
         //刷新信念选择器
@@ -150,45 +154,50 @@ namespace TouhouMachineLearningSummary.Command
             //更新面板的锁
         }
         //快速选择信念
-        public static void QuickSelectFaith()
+        public static void QuickSelectFaith(int drawCardCount)
         {
-            if (Info.GachaInfo.SelectFaiths.Count == 5) return;
+            //已经满足了则直接跳过
+            if (Info.GachaInfo.SelectFaiths.Count == drawCardCount) return;
             for (int i = 0; i < Info.AgainstInfo.OnlineUserInfo.Faiths.Count; i++)
             {
                 var targetFaiths = Info.AgainstInfo.OnlineUserInfo.Faiths[i];
-
-                //计算该信仰未被使用的数量
-                var unusedNum = targetFaiths.Count - Info.GachaInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID);
-                Debug.Log("第" + i + "项未被使用的数量为" + unusedNum);
-                for (int j = 0; j < unusedNum; i++)
+                if (!targetFaiths.IsLock)
                 {
-                    Info.GachaInfo.SelectFaiths.Add(targetFaiths);
-                    if (Info.GachaInfo.SelectFaiths.Count == 5) return;
+                    //计算该信仰未被使用的数量
+                    var unusedNum = targetFaiths.Count - Info.GachaInfo.SelectFaiths.Count(faith => faith.BelongUserUID == targetFaiths.BelongUserUID);
+                    Debug.Log("第" + i + "项未被使用的数量为" + unusedNum);
+                    for (int j = 0; j < unusedNum; i++)
+                    {
+                        Info.GachaInfo.SelectFaiths.Add(targetFaiths);
+                        if (Info.GachaInfo.SelectFaiths.Count == drawCardCount) return;
+                    }
                 }
             }
         }
         public static void QuickDrawCard(int drawCardCount)
         {
-            List<Faith> currentFaiths = new();
-            currentFaiths.Add(new Faith() { BelongUserUID = "0", Count = 5 });
-            currentFaiths.Add(new Faith() { BelongUserUID = "1", Count = 45 });
-            currentFaiths.Add(new Faith() { BelongUserUID = "2", Count = 225 });
-            currentFaiths.Add(new Faith() { BelongUserUID = "3", Count = 215 });
-            currentFaiths.Add(new Faith() { BelongUserUID = "4", Count = 3 });
-            DrawCard(currentFaiths.Take(drawCardCount).ToList());
+            //List<Faith> currentFaiths = new();
+            //currentFaiths.Add(new Faith() { BelongUserUID = "0", Count = 5 });
+            //currentFaiths.Add(new Faith() { BelongUserUID = "1", Count = 45 });
+            //currentFaiths.Add(new Faith() { BelongUserUID = "2", Count = 225 });
+            //currentFaiths.Add(new Faith() { BelongUserUID = "3", Count = 215 });
+            //currentFaiths.Add(new Faith() { BelongUserUID = "4", Count = 3 });
+            //DrawCard(currentFaiths.Take(drawCardCount).ToList()); 
+            QuickSelectFaith(drawCardCount);
+            DrawCard(); 
         }
         //抽卡
-        public static async void DrawCard(List<Faith> selectFaiths)
+        public static async void DrawCard()
         {
 
             //如果没有选择信念，弹窗提示
-            if (!selectFaiths.Any())
+            if (!Info.GachaInfo.SelectFaiths.Any())
             {
 
                 return;
             }
             //向服务器发送请求，等待结果
-            List<string> drawCardId = await Command.NetCommand.DrawCardAsync(UserInfoManager.UID, UserInfoManager.Password, selectFaiths);
+            List<string> drawCardId = await Command.NetCommand.DrawCardAsync(UserInfoManager.UID, UserInfoManager.Password, Info.GachaInfo.SelectFaiths);
             Debug.Log(drawCardId.ToJson());
             //如果服务器扣除失败,弹窗提示失败
             if (false)
@@ -245,6 +254,7 @@ namespace TouhouMachineLearningSummary.Command
                     singleOpenCardInfo.state = 0;
                 }
             }
+            Info.GachaInfo.SelectFaiths.Clear();
             RefreshOpenCardComponent();
         }
         //显示开卡组件
