@@ -21,26 +21,94 @@ namespace TouhouMachineLearningSummary
         /// 对卡牌进行相关交互和数据刷新的管理器
         /// </summary>
         public CardInGameManager Manager => GetComponent<CardInGameManager>();
+        private void Awake() => Manager.Init();
+        ////////////////////////////////////////卡牌基本属性/////////////////////////////////////////////////////////////
         public string CardID { get; set; }
 
         public int BasePoint { get; set; }
         public int ChangePoint { get; set; }
         public int ShowPoint => Mathf.Max(0, BasePoint + ChangePoint);
-        //是否以灰色状态显示
-        public bool IsGray { get; set; } = false;
-        public Texture2D cardFace { get; set; }
-        public Texture2D cardBack { get; set; }
+        //卡牌类型
+        public CardType Type { get; set; }
+        //卡牌品质
+        public CardRank Rank { get; set; }
+        public Texture2D CardFace { get; set; }
+        public Texture2D CardBack { get; set; }
         //卡牌默认可部署属性区域
         public BattleRegion CardDeployRegion { get; set; }
         //卡牌默认可部署所属
         public Territory CardDeployTerritory { get; set; }
-        //卡牌当前可部署所属
+        [ShowInInspector]
+        public string TranslateName => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateName;
+        [ShowInInspector]
+        public string TranslateAbility => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateAbility;
+        //经过翻译后的描述
+        [ShowInInspector]
+        public string TranslateDescribe => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateDescribe;
+        //经过翻译后的标签集合
+        [ShowInInspector]
+        public string TranslateTags { get; set; }
+        //卡牌能力效果
+        public Dictionary<TriggerTime, Dictionary<TriggerType, List<Func<Event, Task>>>> CardAbility { get; set; } = new();
+        //卡牌附加状态
+        [ShowInInspector]
+        public List<CardState> cardStates = new ();
+        public bool this[CardState cardState]
+        {
+            get => cardStates.Contains(cardState);
+            set
+            {
+                if (value)
+                {
+                    if (!cardStates.Contains(cardState))
+                    {
+                        cardStates.Add(cardState);
+                    }
+                }
+                else
+                {
+                    cardStates.Remove(cardState);
+                }
+            }
+        }
+        //卡牌附加值
+        [ShowInInspector]
+        public Dictionary<CardField, int> cardFields = new ();
+        public int this[CardField cardField]
+        {
+            get => cardFields.ContainsKey(cardField) ? cardFields[cardField] : 0;
+            set
+            {
+                cardFields[cardField] = value;
+                if (value <= 0)
+                {
+                    cardFields.Remove(cardField);
+                }
+            }
+        }
+        ////////////////////////////////////////卡牌状态/////////////////////////////////////////////////////////////
+
+        //是否以灰色状态显示
+        public bool IsGray { get; set; } = false;
+        public bool IsCardReadyToGrave => ShowPoint == 0 && AgainstInfo.cardSet[GameRegion.Battle].CardList.Contains(this);
+        //决定卡牌落下阶段是否
+        public bool isMoveStepOver = true;
+        //决定卡牌抽卡阶段是否完成
+        public bool isDrawStepOver = true;
+        //卡牌准备打出
+        public bool isPrepareToPlay = false;
+        //处于系统控制移动状态
+        public bool IsSystemControlMove => this != AgainstInfo.playerPrePlayCard;
+       
+
+        ////////////////////////////////////////卡牌延生信息/////////////////////////////////////////////////////////////
+        //卡牌当前所属
         public Territory CardCurrentTerritory => AgainstInfo.cardSet[Orientation.Down].CardList.Contains(this) ? Territory.My : Territory.Op;
         [ShowInInspector]
         //卡牌默认可部署所属
         public Orientation CurrentOrientation => AgainstInfo.cardSet[Orientation.Down].CardList.Contains(this) ? Orientation.Down : Orientation.Up;
         public Orientation OppositeOrientation => CurrentOrientation == Orientation.Down ? Orientation.Up : Orientation.Down;
-        //获取全局牌表区域
+        //获取卡牌所在区域
         public GameRegion CurrentRegion => AgainstInfo.cardSet.RowManagers.First(row => row.CardList.Contains(this)).gameRegion;
         //卡牌的当前顺序
         public int CurrentIndex => AgainstInfo.cardSet.RowManagers.First(row => row.CardList.Contains(this)).CardList.IndexOf(this);
@@ -63,61 +131,8 @@ namespace TouhouMachineLearningSummary
             GameRegion.Soil => GameRegion.Water,
             _ => CurrentRegion,
         };
-        public string TranslateTags { get; set; }
-        public CardRank Rank { get; set; }
-        public CardType Type { get; set; }
-
-
-        [ShowInInspector]
-        public Dictionary<CardField, int> cardFields = new Dictionary<CardField, int>();
-        public int this[CardField cardField]
-        {
-            get => cardFields.ContainsKey(cardField) ? cardFields[cardField] : 0;
-            set
-            {
-                cardFields[cardField] = value;
-                if (value <= 0)
-                {
-                    cardFields.Remove(cardField);
-                }
-            }
-        }
-        [ShowInInspector]
-        public List<CardState> cardStates = new List<CardState>();
-        public bool this[CardState cardState]
-        {
-            get => cardStates.Contains(cardState);
-            set
-            {
-                if (value)
-                {
-                    if (!cardStates.Contains(cardState))
-                    {
-                        cardStates.Add(cardState);
-                    }
-                }
-                else
-                {
-                    cardStates.Remove(cardState);
-                }
-            }
-        }
-
-
-
-
-
-        public Dictionary<TriggerTime, Dictionary<TriggerType, List<Func<Event, Task>>>> CardAbility { get; set; } = new();
-
-        public bool IsCardReadyToGrave => ShowPoint == 0 && AgainstInfo.cardSet[GameRegion.Battle].CardList.Contains(this);
-        //决定卡牌落下阶段是否
-        public bool isMoveStepOver = true;
-        //决定卡牌抽卡阶段是否完成
-        public bool isDrawStepOver = true;
-        //卡牌准备打出
-        public bool isPrepareToPlay = false;
-        //处于系统控制移动状态
-        public bool IsSystemControlMove => this != AgainstInfo.playerPrePlayCard;
+        
+        
 
         public List<Card> BelongCardList => Command.RowCommand.GetCardList(this);
         public RowManager BelongRowManager => AgainstInfo.cardSet.RowManagers.FirstOrDefault(row=>row.CardList.Contains(this));
@@ -143,13 +158,8 @@ namespace TouhouMachineLearningSummary
         public Text PointText => transform.GetChild(0).GetChild(0).GetComponent<Text>();
         public Transform FieldIconContent => transform.GetChild(0).GetChild(1);
         public Transform StateIconContent => transform.GetChild(0).GetChild(2);
-        [ShowInInspector]
-        public string TranslateName => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateName;
-        [ShowInInspector]
-        public string TranslateAbility => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateAbility;
-        [ShowInInspector]
-        public string TranslateDescribe => CardAssemblyManager.GetCurrentCardInfos(CardID).TranslateDescribe;
-        private void Awake() => Manager.Init();
+       
+        
         #endregion
         #region 卡牌能力注册
         /// <summary>

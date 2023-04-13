@@ -146,17 +146,17 @@ namespace TouhouMachineLearningSummary.Command
             var CardStandardInfo = Manager.CardAssemblyManager.GetCurrentCardInfos(e.TargetCardId);
             card.CardID = CardStandardInfo.cardID;
             card.BasePoint = CardStandardInfo.point;
-            card.cardFace = CardStandardInfo.cardFace;
+            card.CardFace = CardStandardInfo.cardFace;
             if (e.carkBackID == "") e.carkBackID = AgainstInfo.myCardBackIndex;
-            card.cardBack = CardStandardInfo.GetCardBack(e.carkBackID);
+            card.CardBack = CardStandardInfo.GetCardBack(e.carkBackID);
             card.CardDeployRegion = CardStandardInfo.cardDeployRegion;
             card.CardDeployTerritory = CardStandardInfo.cardDeployTerritory;
             card.TranslateTags = CardStandardInfo.TranslateTags;
             card.Rank = CardStandardInfo.cardRank;
             card.Type = CardStandardInfo.cardType;
             card.refCardIDs = CardStandardInfo.refCardIDs;
-            card.GetComponent<Renderer>().material.SetTexture("_Front", card.cardFace);
-            card.GetComponent<Renderer>().material.SetTexture("_Back", card.cardBack);
+            card.GetComponent<Renderer>().material.SetTexture("_Front", card.CardFace);
+            card.GetComponent<Renderer>().material.SetTexture("_Back", card.CardBack);
             switch (card.Rank)
             {
                 case CardRank.Leader: card.GetComponent<Renderer>().material.SetColor("_side", new Color(0.43f, 0.6f, 1f)); break;

@@ -166,7 +166,7 @@ namespace TouhouMachineLearningSummary.Manager
             else
             {
                 Card card = (Card)(object)target;
-                Texture.sprite = card.cardFace.ToSprite();
+                Texture.sprite = card.CardFace.ToSprite();
                 Name.text = card.TranslateName;
                 DescribeText.text = card.TranslateDescribe;
                 ability = card.TranslateAbility;

@@ -207,6 +207,7 @@ namespace TouhouMachineLearningSummary.Command
             }
             //初始化卡牌展示界面
             InitOpenCardComponent(drawCardId);
+            RefreshOpenCardComponent();
             //展示抽卡结果
             ShowOpenCardComponent();
 
@@ -254,8 +255,10 @@ namespace TouhouMachineLearningSummary.Command
                     singleOpenCardInfo.state = 0;
                 }
             }
+
             Info.GachaInfo.SelectFaiths.Clear();
             RefreshOpenCardComponent();
+
         }
         //显示开卡组件
         public static void ShowOpenCardComponent() => Info.GachaInfo.Instance.openCardComponent.SetActive(true);
