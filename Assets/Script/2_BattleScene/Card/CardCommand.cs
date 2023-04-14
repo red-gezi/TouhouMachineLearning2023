@@ -60,36 +60,47 @@ namespace TouhouMachineLearningSummary.Command
         }
         public static async Task Hurt(Event e)
         {
-            var card = e.TargetCard;
+            var targetCard = e.TargetCard;
             await BulletCommand.InitBulletAsync(e);
             _=ShakeCard(e.TargetCard);
-            if (card[CardState.Congealbounds])
+            if (targetCard[CardState.Congealbounds])
             {
-                await GameSystem.StateSystem.ClearState(new Event(e.TriggerCard, card));
+                await GameSystem.StateSystem.ClearState(new Event(e.TriggerCard, targetCard));
             }
             else
             {
                 //抵消护盾
-                if (card[CardField.Shield] > 0)
+                if (targetCard[CardField.Shield] > 0)
                 {
                     //计算剩余盾量
-                    var shieldPoint = card[CardField.Shield] - e.point;
+                    var shieldPoint = targetCard[CardField.Shield] - e.point;
                     //计算剩余伤害
-                    e.point = e.point - card[CardField.Shield];
+                    e.point = e.point - targetCard[CardField.Shield];
                     //调整护盾值
-                    await GameSystem.FieldSystem.SetField(new Event(e.TriggerCard, card).SetPoint(shieldPoint));
+                    await GameSystem.FieldSystem.SetField(new Event(e.TriggerCard, targetCard).SetPoint(shieldPoint));
                 }
                 await Task.Delay(1000);
                 //悬浮伤害数字
                 int actualChangePoint = Math.Min(e.point, e.TargetCard.ShowPoint);
                 await e.TargetCard.Manager.ShowTips("-" + actualChangePoint, Color.red, false);
                 e.TargetCard.ChangePoint -= actualChangePoint;
+                e.TargetCard.ChangePoint = Math.Max(e.TargetCard.ChangePoint, -e.TargetCard.BasePoint);
                 e.TargetCard.Manager.RefreshCardUi();
                 await Task.Delay(1000);
                 //如果点数确实减少了则同时触发点数减少事件
                 if (e.point > 0)
                 {
                     await GameSystem.PointSystem.Decrease(e);
+                }
+                //我死啦
+                if (targetCard.ShowPoint==0)
+                {
+                    //延命
+                    if (targetCard[CardState.Apothanasia])
+                    {
+                        await GameSystem.StateSystem.ClearState(new Event(targetCard, GameSystem.InfoSystem.SelectUnits).SetTargetState(CardState.Apothanasia));
+                        await GameSystem.PointSystem.Gain(new Event(targetCard, targetCard).SetPoint(1));
+                    }
                 }
             }
         }
@@ -676,16 +687,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task TurnEnd(Event e)
         {
             var card = e.TargetCard;
-            //我死啦
-            if (card.IsCardReadyToGrave)
-            {
-                //延命
-                if (card[CardState.Apothanasia])
-                {
-                    await GameSystem.StateSystem.ClearState(new Event(card, GameSystem.InfoSystem.SelectUnits).SetTargetState(CardState.Apothanasia));
-                    await GameSystem.PointSystem.Gain(new Event(card, card).SetPoint(1));
-                }
-            }
+           
             //将判定为死掉卡牌移入墓地，触发遗愿联锁效果
             //我死啦
             if (card.IsCardReadyToGrave)
