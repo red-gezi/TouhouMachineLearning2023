@@ -24,11 +24,13 @@ namespace Server
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
             Log.Summary("/////////////////////////////");
+            Log.Summary("V2023.5.4.01");
+            Log.Summary("/////////////////////////////");
             Log.Summary("链接数据库");
             //读取服务器配置保密文件
             if (!File.Exists("Config.ini"))
             {
-                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "mongodb://106.15.38.165:28020" });
+                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "mongodb://127.0.0.1:28020" });
                 Console.WriteLine("检测不到配置文件，开始创建");
             }
 
