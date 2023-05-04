@@ -21,7 +21,8 @@ namespace TouhouMachineLearningSummary.Manager
         public Text versiousText;
         public Slider slider;
         public GameObject RestartNotice;
-        string serverIP = File.ReadAllLines("敏感信息.txt")[1];
+        //后期自定义修改服务器ip
+        //string serverIP = File.ReadAllLines("敏感信息.txt")[1];
 
         MD5 md5 = new MD5CryptoServiceProvider();
 
