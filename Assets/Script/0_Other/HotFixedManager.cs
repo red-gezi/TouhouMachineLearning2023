@@ -5,9 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using TMPro;
 using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.Thread;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,8 +21,15 @@ namespace TouhouMachineLearningSummary.Manager
         public Text loadText;
         public Text processText;
         public Text versiousText;
+        
+        public TMP_Dropdown serverSelect;
         public Slider slider;
+        //重启通知
         public GameObject RestartNotice;
+        //服务器选择界面
+        public GameObject ServerSelect;
+
+        string serverTag = "PC";
         //后期自定义修改服务器ip
         //string serverIP = File.ReadAllLines("敏感信息.txt")[1];
 
@@ -46,15 +55,26 @@ namespace TouhouMachineLearningSummary.Manager
             loadText.text = "初始化配置信息";
             ConfigManager.InitConfig();
             loadText.text = "校验资源包";
+        }
+        public void ChangeServer(int selectIndex) => serverTag = selectIndex == 0 ? "PC" : "Android";
+        public async void StartGame()
+        {
+            //如果是手机模式强制使用正式版安卓资源（安卓不进行测试了）
+            if (Application.isMobilePlatform)
+            {
+                serverTag = "Android";
+            }
+            //关掉选择界面
+            ServerSelect.SetActive(false);
+            //开启进度条
             await CheckAssetBundles();
         }
-        //已下好任务数
-        static int downloadTaskCount = 0;
-
         //校验本地文件
         private async Task CheckAssetBundles()
         {
             bool isNeedRestartApplication = false;
+            //已下好任务数
+            int downloadTaskCount = 0;
             loadText.text = "检查AB包中";
             //编辑器模式下不进行下载
             if (!isEditor)
@@ -86,7 +106,7 @@ namespace TouhouMachineLearningSummary.Manager
                     FileInfo localFile = null;
                     if (MD5FiIeData.Key.EndsWith(".dll")) //如果是游戏程序集dll文件，则根据不同平台对比不同路径下的游戏程序集dll
                     {
-                        
+
                         Debug.LogError("当前程序集路径为" + dllFIleRootPath);
                         string currentDllPath = new DirectoryInfo(dllFIleRootPath).GetFiles("TouHouMachineLearning.dll", SearchOption.AllDirectories).FirstOrDefault()?.FullName;
                         Debug.LogError("当前为脚本路径在：" + currentDllPath);
@@ -136,7 +156,7 @@ namespace TouhouMachineLearningSummary.Manager
                             void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
                             {
                                 processText.text = $"{e.BytesReceived / 1024 / 1024}MB/{e.TotalBytesToReceive / 1024 / 1024}MB";
-                                slider.value = e.BytesReceived *1f/ e.TotalBytesToReceive;
+                                slider.value = e.BytesReceived * 1f / e.TotalBytesToReceive;
                             }
                         }
                     }
