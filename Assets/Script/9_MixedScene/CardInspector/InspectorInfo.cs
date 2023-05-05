@@ -41,13 +41,6 @@ namespace TouhouMachineLearningSummary.Info
         public List<LevelLibrary> levelLibries = new List<LevelLibrary>();
         [ShowInInspector]
         public List<string> includeLevel => singleModeCards.Select(x => x.level).Distinct().ToList();
-
-
-
-
-
-
-
         public partial class LevelLibrary
         {
             internal bool isSingleMode;

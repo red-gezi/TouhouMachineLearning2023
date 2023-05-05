@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.Command
     {
         static string ip => Info.AgainstInfo.IsHostNetMode ? "localhost:495" : "106.15.38.165:495";
         static HubConnection TouHouHub { get; set; } = null;
-        public static async Task Init()
+        public static async Task Init(bool isHotFixedLoad = false)
         {
             try
             {
@@ -43,12 +43,11 @@ namespace TouhouMachineLearningSummary.Command
                         PlayerInfo playerInfo = ReceiveInfo[3].ToType<PlayerInfo>();
                         PlayerInfo opponentInfo = ReceiveInfo[4].ToType<PlayerInfo>();
 
-
                         _ = NoticeCommand.CloseAsync();//关闭ui
-                        Command.BookCommand.SimulateFilpPage(false);//停止翻书
-                        Command.MenuStateCommand.AddState(MenuState.ScenePage);//增加路由
-                        Debug.Log("进入对战配置模式");
+                        BookCommand.SimulateFilpPage(false);//停止翻书
+                        MenuStateCommand.AddState(MenuState.ScenePage);//增加书页路径
                         //Manager.LoadingManager.manager?.OpenAsync();
+                        Debug.Log("进入对战配置模式");
                         _ = AgainstConfig.OnlineStart(isPlayer1, isMyTurn, playerInfo, opponentInfo);
                     });
                     TouHouHub.On<NetAcyncType, object[]>("Async", (type, receiveInfo) =>
@@ -149,8 +148,15 @@ namespace TouhouMachineLearningSummary.Command
             }
             catch (Exception e)
             {
-                await NoticeCommand.ShowAsync("无法链接到服务器,请点击重连\n" + e.Message, NotifyBoardMode.Ok,
-                     okAction: async () => { await Init(); });
+                //热更界面使用独立的警告框素材单独处理
+                if (isHotFixedLoad)
+                {
+                    Debug.LogError("无法连接至服务器");
+                }
+                else
+                {
+                    await NoticeCommand.ShowAsync("无法链接到服务器,请点击重连\n" + e.Message, NotifyBoardMode.Ok,okAction: async () => { await Init(); });
+                }
             }
         }
         public static async Task CheckHubState()
@@ -188,7 +194,7 @@ namespace TouhouMachineLearningSummary.Command
                 await CheckHubState();
                 return await TouHouHub.InvokeAsync<PlayerInfo>("Login", account, password);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 Debug.LogException(e);
                 Debug.Log("账号登录失败");

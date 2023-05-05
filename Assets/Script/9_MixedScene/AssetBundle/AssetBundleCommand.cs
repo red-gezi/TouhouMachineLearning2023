@@ -8,8 +8,13 @@ namespace TouhouMachineLearningSummary.Command
 {
     class AssetBundleCommand
     {
+        static int totalLoadABCouat = 1;
+        static int currentLoadABCouat = 0;
         public static bool AlreadyInit { get; set; } = false;
-        static Dictionary<string, List<UnityEngine.Object>> assets = new();
+        static Dictionary<string, List<Object>> assets = new();
+        //获取进度
+        public static (int, int) GetLoadProcess() => (currentLoadABCouat, totalLoadABCouat);
+
         /// <summary>
         /// 初始化ab资源包，可选择从热更新拉取或是直接加载本地的
         /// </summary>
@@ -19,44 +24,29 @@ namespace TouhouMachineLearningSummary.Command
         {
             if (AlreadyInit) { return; }
             AlreadyInit = true;
-
-            string targetPath = "";
-            //选择从下载下来的热更新目录拉去还是本地获取
-            //当为热更模式且不是编辑器时从游戏数据更新路径加载，否在直接加载本地的
-            if (isHotFixedLoad)
+            //默认加载本地AB包
+            string targetPath = "AssetBundles/Test";
+            //如果当前是从热更界面进入且不是编辑器时从游戏下载的AB路径加载数据包
+            if (isHotFixedLoad && !Application.isEditor)
             {
-                if (Application.isEditor)
+                if (Application.isMobilePlatform)
                 {
-                    targetPath = "AssetBundles/PC";
+                    targetPath = Application.persistentDataPath + $"/AssetBundles/Android/";
                 }
                 else
                 {
-                    if (Application.isMobilePlatform)
-                    {
-                        targetPath = Application.persistentDataPath + $"/AssetBundles/Android/";
-                    }
-                    else
-                    {
-                        targetPath = Application.streamingAssetsPath + $"/AssetBundles/PC/";
-                    }
+                    targetPath = Application.streamingAssetsPath + $"/AssetBundles/PC/";
                 }
             }
-            else
-            {
-                targetPath = "AssetBundles/PC";
-            }
-
             Directory.CreateDirectory(targetPath);
-
             List<Task> ABLoadTask = new List<Task>();
-            foreach (var file in new DirectoryInfo(targetPath)
-                .GetFiles()
-                .AsParallel()
+            foreach (var file in new DirectoryInfo(targetPath).GetFiles().AsParallel()
                .Where(file => file.Name.Contains("gezi") && !file.Name.Contains("meta") && !file.Name.Contains("manifest")))
             {
-
                 ABLoadTask.Add(LoadAssetBundle(file.FullName));
             }
+            currentLoadABCouat = 0;
+            totalLoadABCouat = ABLoadTask.Count;
             await Task.WhenAll(ABLoadTask);
             Debug.LogWarning($"AB包加载完毕");
 
@@ -65,16 +55,15 @@ namespace TouhouMachineLearningSummary.Command
                 assets[ab.name] = ab.LoadAllAssets().ToList();
             }
             Debug.LogWarning("生成AB包字典");
-
             async Task<AssetBundle> LoadAssetBundle(string path)
             {
                 var ABLoadRequir = AssetBundle.LoadFromFileAsync(path);
                 while (!ABLoadRequir.isDone) { await Task.Delay(50); }
                 Debug.Log(path + "加载完毕");
+                currentLoadABCouat++;
                 return ABLoadRequir.assetBundle;
             }
         }
-
         /// <summary>
         /// 从带有tag名的AB包中加载素材
         /// </summary>

@@ -9,7 +9,6 @@ using TMPro;
 using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.Thread;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,7 +20,7 @@ namespace TouhouMachineLearningSummary.Manager
         public Text loadText;
         public Text processText;
         public Text versiousText;
-        
+
         public TMP_Dropdown serverSelect;
         public Slider slider;
         //重启通知
@@ -29,7 +28,7 @@ namespace TouhouMachineLearningSummary.Manager
         //服务器选择界面
         public GameObject ServerSelect;
 
-        string serverTag = "PC";
+        static string serverTag = "PC";
         //后期自定义修改服务器ip
         //string serverIP = File.ReadAllLines("敏感信息.txt")[1];
 
@@ -39,8 +38,8 @@ namespace TouhouMachineLearningSummary.Manager
         static bool isMobile = Application.isMobilePlatform;//是否是移动平台
         static string downLoadPath = isMobile switch
         {
-            true => Application.persistentDataPath + $"/Assetbundles/{ConfigManager.GetServerTag()}/",
-            false => Application.streamingAssetsPath + $"/Assetbundles/{ConfigManager.GetServerTag()}/"
+            true => Application.persistentDataPath + $"/Assetbundles/Android/",
+            false => Application.streamingAssetsPath + $"/Assetbundles/{serverTag}/"
         };
         //程序集存储路径
         static string dllFIleRootPath = isMobile switch
@@ -48,7 +47,7 @@ namespace TouhouMachineLearningSummary.Manager
             true => new DirectoryInfo(Application.persistentDataPath).Parent.FullName,
             false => Directory.GetCurrentDirectory()
         };
-        async void Start()
+        void Start()
         {
             RestartNotice.transform.localScale = new Vector3(1, 0, 1);
             versiousText.text = "我要改成v5";
@@ -56,7 +55,7 @@ namespace TouhouMachineLearningSummary.Manager
             ConfigManager.InitConfig();
             loadText.text = "校验资源包";
         }
-        public void ChangeServer(int selectIndex) => serverTag = selectIndex == 0 ? "PC" : "Android";
+        public void ChangeServer(int selectIndex) => serverTag = selectIndex == 0 ? "PC" : "Test";
         public async void StartGame()
         {
             //如果是手机模式强制使用正式版安卓资源（安卓不进行测试了）
@@ -85,7 +84,7 @@ namespace TouhouMachineLearningSummary.Manager
                 Debug.LogWarning("开始下载文件" + System.DateTime.Now);
                 Directory.CreateDirectory(downLoadPath);
                 var httpClient = new HttpClient();
-                var responseMessage = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/{ConfigManager.GetServerTag()}/MD5.json");
+                var responseMessage = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/{serverTag}/MD5.json");
                 if (!responseMessage.IsSuccessStatusCode)
                 {
                     loadText.text = "MD5文件获取出错";
@@ -150,7 +149,7 @@ namespace TouhouMachineLearningSummary.Manager
                             loadText.text = $"正在下载:{MD5FiIeData.Key},进度 {downloadTaskCount}/{Md5Dict.Count}";
                             WebClient webClient = new WebClient();
                             webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
-                            await webClient.DownloadFileTaskAsync(new System.Uri($"http://106.15.38.165:7777/AssetBundles/{ConfigManager.GetServerTag()}/{MD5FiIeData.Key}"), savePath);
+                            await webClient.DownloadFileTaskAsync(new System.Uri($"http://106.15.38.165:7777/AssetBundles/{serverTag}/{MD5FiIeData.Key}"), savePath);
                             Debug.LogWarning(MD5FiIeData.Key + "下载完成");
                             Debug.LogWarning("结束下载文件" + localFile.Name + " " + System.DateTime.Now);
                             void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -184,8 +183,20 @@ namespace TouhouMachineLearningSummary.Manager
             //加载AB包，并从中加载场景
             Debug.LogWarning("开始初始化AB包");
             AssetBundle.UnloadAllAssetBundles(true);
-            loadText.text = "开始加载资源包";
+            loadText.text = "资源包校验完毕，少女加载中~~~~~";
             await SceneCommand.InitAsync(true);
+            while (true)
+            {
+                (int currentLoadABCouat, int totalLoadABCouat) process = AssetBundleCommand.GetLoadProcess();
+                slider.value = process.currentLoadABCouat * 1.0f / process.totalLoadABCouat;
+                processText.text = $"{process.currentLoadABCouat}/{process.totalLoadABCouat}";
+                if (process.currentLoadABCouat == process.totalLoadABCouat)
+                {
+                    break;
+                }
+                Task.Delay(50);
+
+            }
             Debug.LogWarning("初始化完毕，加载场景。。。");
             SceneManager.LoadScene("1_LoginScene");
         }

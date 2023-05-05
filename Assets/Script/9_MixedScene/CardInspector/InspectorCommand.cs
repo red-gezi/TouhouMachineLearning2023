@@ -6,7 +6,6 @@ using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Model;
-using TouhouMachineLearningSummary.Other;
 using UnityEditor;
 using UnityEngine;
 using static TouhouMachineLearningSummary.Info.InspectorInfo;
@@ -80,7 +79,7 @@ namespace TouhouMachineLearningSummary.Command
                 }
             }
 #if UNITY_EDITOR
-            CardMenu.UpdateInspector();
+            Editor.CardMenu.UpdateInspector();
 #endif
             cardLibraryInfo.singleModeCards.ForEach(card => CreatScript(card.cardID));
             cardLibraryInfo.multiModeCards.ForEach(card => CreatScript(card.cardID));
@@ -91,7 +90,7 @@ namespace TouhouMachineLearningSummary.Command
             InspectorInfo.Instance.singleModeCards.Clear();
             InspectorInfo.Instance.levelLibries = new();
 #if UNITY_EDITOR
-            CardMenu.UpdateInspector();
+            Editor.CardMenu.UpdateInspector();
 #endif
         }
 

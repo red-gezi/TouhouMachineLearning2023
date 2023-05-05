@@ -7,7 +7,7 @@ namespace TouhouMachineLearningSummary.Manager
 {
     public partial class ConfigManager : MonoBehaviour
     {
-        static ConfigInfoModel configInfo = new ConfigInfoModel();
+        static ConfigInfoModel configInfo = new ();
         static string ConfigFileSavePath => Application.isMobilePlatform ? Application.persistentDataPath : Directory.GetCurrentDirectory();
 
         private static void SaveConfig() => File.WriteAllText(ConfigFileSavePath + "/GameConfig.ini", configInfo.ToJson());
@@ -31,7 +31,7 @@ namespace TouhouMachineLearningSummary.Manager
             {
                 Debug.Log("加载已有配置文件");
                 configInfo = File.ReadAllText(ConfigFileSavePath + "/GameConfig.ini").ToObject<ConfigInfoModel>();
-                Debug.LogError("设置分辨率" + configInfo.Width + " " + configInfo.Heigh + " " + configInfo.IsFullScreen);
+                Debug.Log("设置分辨率" + configInfo.Width + " " + configInfo.Heigh + " " + configInfo.IsFullScreen);
                 Screen.SetResolution(configInfo.Width, configInfo.Heigh, configInfo.IsFullScreen);
                 TranslateManager.currentLanguage = configInfo.UseLanguage;
             }

@@ -24,7 +24,7 @@ namespace Server
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
             Log.Summary("/////////////////////////////");
-            Log.Summary("V2023.5.4.01");
+            Log.Summary("V2023.5.5.01");
             Log.Summary("/////////////////////////////");
             Log.Summary("链接数据库");
             //读取服务器配置保密文件

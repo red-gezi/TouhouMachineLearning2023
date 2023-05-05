@@ -10,20 +10,20 @@ using UnityEditor;
 using static TouhouMachineLearningSummary.Info.InspectorInfo.LevelLibrary;
 using static TouhouMachineLearningSummary.Info.InspectorInfo.LevelLibrary.SectarianCardLibrary;
 
-namespace TouhouMachineLearningSummary.Other
+namespace TouhouMachineLearningSummary.Editor
 {
     public class CardMenu : OdinMenuEditorWindow
     {
 
-        static CardMenu instance;
-        [MenuItem("Tools/卡组编辑器")]
+        private static CardMenu Instance { get; set; }
+        [MenuItem("TML_Tools/卡组编辑器")]
         private static void OpenWindow()
         {
             CardMenu window = GetWindow<CardMenu>();
             InspectorCommand.LoadFromJson();
             window.position = GUIHelper.GetEditorWindowRect().AlignCenter(700, 700);
         }
-        public static void UpdateInspector() => instance?.ForceMenuTreeRebuild();
+        public static void UpdateInspector() => Instance?.ForceMenuTreeRebuild();
         //构造界面树系统
         protected override OdinMenuTree BuildMenuTree()
         {
@@ -72,7 +72,7 @@ namespace TouhouMachineLearningSummary.Other
             tree.EnumerateTree().AddIcons<SectarianCardLibrary>(x => x.icon);
             tree.EnumerateTree().AddIcons<RankLibrary>(x => x.icon);
             tree.EnumerateTree().AddIcons<CardModel>(x => x.cardFace);
-            instance = this;
+            Instance = this;
             return tree;
         }
     }
