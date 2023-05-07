@@ -76,10 +76,13 @@ namespace TouhouMachineLearningSummary.Manager
             int downloadTaskCount = 0;
             loadText.text = "检查AB包中";
             //编辑器模式下不进行下载
-            if (!isEditor)
+            if (true)
             {
                 //AB包存储路径
-
+                if (isEditor)
+                {
+                    downLoadPath = "AB/";
+                }
                 loadText.text = "开始下载文件";
                 Debug.LogWarning("开始下载文件" + System.DateTime.Now);
                 Directory.CreateDirectory(downLoadPath);
