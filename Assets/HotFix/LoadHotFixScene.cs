@@ -16,7 +16,8 @@ public class LoadHotFixScene : MonoBehaviour
         string HotFixedAssetBundlePath = $"{(Application.isEditor ? "AB" : "Assetbundles/PC")}/HotFixed.gezi";
 
         //判断文件是否存在，不存在直接下载
-        if (!File.Exists(HotFixedSceneBundlePath) || !File.Exists(HotFixedAssetBundlePath))
+        //if (!File.Exists(HotFixedSceneBundlePath) || !File.Exists(HotFixedAssetBundlePath))
+        if (true)
         {
             Debug.LogError("检测不到热更场景资源包，尝试自动下载");
             new FileInfo(HotFixedAssetBundlePath).Directory.Create();
