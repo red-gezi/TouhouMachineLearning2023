@@ -95,14 +95,12 @@ namespace TouhouMachineLearningSummary.Other
             }
         }
         /////////////////////////////////////////////////////////////////发布热更新资源///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Public/发布游戏热更资源到测试版", priority = 151)]
+        [MenuItem("TML_Public/发布电脑游戏热更资源为测试版", priority = 151)]
         static void BuildDAssetBundlesToTest() => BuildAssetBundles("Test");
-        [MenuItem("TML_Public/发布游戏热更资源到正式版", priority = 152)]
-        static void BuildAssetBundlesToRelease()
-        {
-            BuildAssetBundles("PC");
-            //BuildAssetBundles("Android");
-        }
+        [MenuItem("TML_Public/发布电脑游戏热更资源为正式版", priority = 152)]
+        static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC");
+        [MenuItem("TML_Public/发布安卓端游戏热更资源为正式版", priority = 153)]
+        static void BuildAssetBundlesToAndroid() => BuildAssetBundles("Android");
         private static async void BuildAssetBundles(string tag)
         {
             //打标签

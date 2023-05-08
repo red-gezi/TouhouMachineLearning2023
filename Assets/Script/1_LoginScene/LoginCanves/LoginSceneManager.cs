@@ -96,7 +96,14 @@ namespace TouhouMachineLearningSummary.Control
                             _ = NoticeCommand.ShowAsync("退出游戏？",
                             okAction: async () =>
                             {
-                                Application.Quit();
+                                //if (LoadHotFixScene.EndAction==null)
+                                //{
+                                //    Application.Quit();
+                                //}
+                                //else
+                                //{
+                                //   LoadHotFixScene.EndAction();
+                                //}
                             });
                             break;
                         }
