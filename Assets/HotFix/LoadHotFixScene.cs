@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
-using UnityEngine;
+using UnityEngine;//
 using UnityEngine.SceneManagement;
 
 public class LoadHotFixScene : MonoBehaviour
@@ -15,7 +15,7 @@ public class LoadHotFixScene : MonoBehaviour
         string HotFixedSceneBundlePath = $"{(Application.isEditor ? "AB" : "Assetbundles/PC")}/scene0.gezi";
         string HotFixedAssetBundlePath = $"{(Application.isEditor ? "AB" : "Assetbundles/PC")}/HotFixed.gezi";
 
-        //判断文件是否存在，不存在直接下载
+        //判断文件是否存在或者版本一直，不存在或不匹配直接下载
         //if (!File.Exists(HotFixedSceneBundlePath) || !File.Exists(HotFixedAssetBundlePath))
         if (true)
         {
@@ -44,10 +44,15 @@ public class LoadHotFixScene : MonoBehaviour
 
             }
         }
+
+        Debug.Log("卸载前场景数量为" + SceneManager.sceneCount);
+        AssetBundle.UnloadAllAssetBundles(false);
         //加载热更AB包，切换到热更场景
-        AssetBundle.UnloadAllAssetBundles(true);
+        Debug.Log("卸载后场景数量为" + SceneManager.sceneCount);
         AssetBundle.LoadFromFile(HotFixedSceneBundlePath);
         AssetBundle.LoadFromFile(HotFixedAssetBundlePath);
-        SceneManager.LoadScene("0_HotfixScene");
+        //var s = AssetBundle.GetAllLoadedAssetBundles();
+        Debug.LogWarning("重新载入完成");
+        SceneManager.LoadScene("0_HotFixScene");
     }
 }

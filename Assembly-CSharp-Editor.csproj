@@ -899,6 +899,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{2A8FA22F-3CCD-4F03-1281-1D633E6F1A90}</Project>
+      <Name>Assembly-CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
       <Project>{70CBC469-20C8-64D2-4949-CA06870AF6D4}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>

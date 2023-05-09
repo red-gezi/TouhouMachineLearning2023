@@ -29,8 +29,10 @@ namespace TouhouMachineLearningSummary.Other
         [MenuItem("TML_Tools/打开表格数据实时同步工具", false, 52)]
         static void UpdateXls() => System.Diagnostics.Process.Start(@"OtherSolution\xls检测更新\bin\Debug\net6.0\xls检测更新.exe");
         /////////////////////////////////////////////////////////////////场景///////////////////////////////////////////////////////////////////////////////////////////
+        [MenuItem("TML_Scene/载入初始化场景", priority = 150)]
+        static void LoadInitScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\-1_InitScene.unity");
         [MenuItem("TML_Scene/载入热更场景", priority = 151)]
-        static void LoadHotfixedScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\0_HotfixedScene.unity");
+        static void LoadHotFixScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\0_HotfixScene.unity");
         [MenuItem("TML_Scene/载入登录场景", priority = 152)]
         static void LoadLoginScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\1_LoginScene.unity");
         [MenuItem("TML_Scene/载入对战场景", priority = 153)]

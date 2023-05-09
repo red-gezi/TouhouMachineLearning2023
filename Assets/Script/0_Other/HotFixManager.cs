@@ -50,7 +50,7 @@ namespace TouhouMachineLearningSummary.Manager
         void Start()
         {
             RestartNotice.transform.localScale = new Vector3(1, 0, 1);
-            versiousText.text = "我要改成v5";
+            versiousText.text = "我要改成v8";
             loadText.text = "初始化配置信息";
             ConfigManager.InitConfig();
             loadText.text = "校验资源包";
@@ -180,13 +180,14 @@ namespace TouhouMachineLearningSummary.Manager
                         RestartNotice.transform.localScale = new Vector3(1, process, 1);
                     });
                     //等待用户重启，不再进行加载
+                    RestartGame();
                     return;
                 }
             }
 
             //加载AB包，并从中加载场景
             Debug.LogWarning("开始初始化AB包");
-            AssetBundle.UnloadAllAssetBundles(true);
+            //AssetBundle.UnloadAllAssetBundles(true);
             loadText.text = "资源包校验完毕，少女加载中~~~~~";
             await SceneCommand.InitAsync(true);
             while (true)
@@ -202,7 +203,7 @@ namespace TouhouMachineLearningSummary.Manager
 
             }
             Debug.LogWarning("初始化完毕，加载场景。。。");
-            SceneManager.LoadScene("1_LoginScene");
+            SceneManager.LoadScene("1_LoginScene", LoadSceneMode.Single);
         }
 
 
@@ -222,6 +223,21 @@ namespace TouhouMachineLearningSummary.Manager
                     System.Diagnostics.Process.Start(game.FullName);
                 }
                 Application.Quit();
+            }
+        }
+        private void OnGUI()
+        {
+            
+            if (GUI.Button(new Rect(0, 150, 100, 50), "重新加载"))
+            {
+                AssetBundleCommand.AlreadyInit = false;
+                SceneManager.LoadScene(0);
+                RestartGame();
+            }
+            if (GUI.Button(new Rect(0, 200, 100, 50), "退出"))
+            {
+                Application.Quit();
+
             }
         }
     }

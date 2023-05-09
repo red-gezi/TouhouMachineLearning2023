@@ -232,9 +232,8 @@ namespace TouhouMachineLearningSummary.Control
             //}
             if (GUI.Button(new Rect(0, 200, 100, 50), "资源重载"))
             {
-
                 AssetBundleCommand.AlreadyInit = false;
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("-1_InitScene");
             }
         }
     }
