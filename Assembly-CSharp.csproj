@@ -70,7 +70,7 @@
     <None Include="Assets\Assemblies\RestSharp.dll" />
     <None Include="Assets\Assemblies\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
     <None Include="Assets\Assemblies\Sirenix\Assemblies\link.xml" />
-    <None Include="Assets\OpenCard\mcs.rsp" />
+    <None Include="Assets\GameResources\OpenCard\mcs.rsp" />
     <None Include="Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Protocols.Json.dll" />
     <None Include="Assets\Assemblies\x86_64\steam_api64.dll" />
     <None Include="Assets\Assemblies\Sirenix\Assemblies\Sirenix.Serialization.Config.xml" />

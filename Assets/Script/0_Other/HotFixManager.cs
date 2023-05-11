@@ -17,6 +17,7 @@ namespace TouhouMachineLearningSummary.Manager
 {
     public class HotFixManager : MonoBehaviour
     {
+        public string verious;
         public Text loadText;
         public Text processText;
         public Text versiousText;
@@ -50,7 +51,7 @@ namespace TouhouMachineLearningSummary.Manager
         void Start()
         {
             RestartNotice.transform.localScale = new Vector3(1, 0, 1);
-            versiousText.text = "我要改成v8";
+            versiousText.text = verious;
             loadText.text = "初始化配置信息";
             ConfigManager.InitConfig();
             loadText.text = "校验资源包";
@@ -93,7 +94,6 @@ namespace TouhouMachineLearningSummary.Manager
                     loadText.text = "MD5文件获取出错";
                     return;
                 }
-
                 var OnlieMD5FiIeDatas = await responseMessage.Content.ReadAsStringAsync();
                 var Md5Dict = OnlieMD5FiIeDatas.ToObject<Dictionary<string, byte[]>>();
                 Debug.Log("MD5文件已加载完成" + OnlieMD5FiIeDatas);

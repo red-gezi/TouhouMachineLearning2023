@@ -98,9 +98,9 @@ namespace TouhouMachineLearningSummary.Other
         }
         /////////////////////////////////////////////////////////////////发布热更新资源///////////////////////////////////////////////////////////////////////////////////////////
         [MenuItem("TML_Public/发布电脑游戏热更资源为测试版", priority = 151)]
-        static void BuildDAssetBundlesToTest() => BuildAssetBundles("Test");
+        static void BuildDAssetBundlesToTest() => BuildAssetBundles("PC_Test");
         [MenuItem("TML_Public/发布电脑游戏热更资源为正式版", priority = 152)]
-        static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC");
+        static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC_Release");
         [MenuItem("TML_Public/发布安卓端游戏热更资源为正式版", priority = 153)]
         static void BuildAssetBundlesToAndroid() => BuildAssetBundles("Android");
         private static async void BuildAssetBundles(string tag)
@@ -115,7 +115,6 @@ namespace TouhouMachineLearningSummary.Other
                             .ForEach(file =>
                             {
                                 string path = file.FullName.Replace(Directory.GetCurrentDirectory() + @"\", "");
-                                //UnityEngine.Debug.LogWarning(dire.Name);
                                 AssetImporter.GetAtPath(path).assetBundleName = $"{dire.Name}.gezi";
                             });
                 });
@@ -126,11 +125,7 @@ namespace TouhouMachineLearningSummary.Other
             BuildPipeline.BuildAssetBundles(outputPath, BuildAssetBundleOptions.None, tag == "Android" ? BuildTarget.Android : BuildTarget.StandaloneWindows64);
             Debug.LogWarning($"{tag}打包完毕");
             Debug.LogWarning("开始生成MD5值校验文件");
-            //非手机平台把dll一起打包上去
-            if (tag != "Android")
-            {
-                new FileInfo(Directory.GetCurrentDirectory() + @"\Library\ScriptAssemblies\TouHouMachineLearning.dll").CopyTo(outputPath + "\\TouHouMachineLearning.dll", true);
-            }
+
             //创建md5文件
             MD5 md5 = new MD5CryptoServiceProvider();
             Dictionary<string, byte[]> MD5s = new();
@@ -143,12 +138,9 @@ namespace TouhouMachineLearningSummary.Other
                     MD5s[file.Name] = result;
                 }
             });
-            md5.Dispose();
             File.WriteAllText(outputPath + @"\MD5.json", MD5s.ToJson());
             var localMD5Dict = MD5s;
             Debug.LogWarning("MD5值校验生成完毕,开始上传文件");
-
-
             //获取网络md5文件，判断需要上传的文件
             using (WebClient webClient = new WebClient())
             {
@@ -186,12 +178,24 @@ namespace TouhouMachineLearningSummary.Other
                 result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AssetBundles/{tag}/MD5.json"), CommandPassword);
                 Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
                 //如果是移动端则继续上传apk文件
-                if (Application.isMobilePlatform)
+                //非手机平台上传dll，手机平台上传apk
+                if (tag != "Android")
                 {
-                    Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
+                    Debug.LogWarning("TouHouMachineLearning.dll开始传输");
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/TouHouMachineLearning.dll", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearning.dll"), CommandPassword);
+                    Debug.LogWarning("TouHouMachineLearning.dll传输" + result);
+
+                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearning.dll"));
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/MD5.json", dllMd5, CommandPassword);
+                    Debug.LogWarning("TouHouMachineLearning.dll的MD5码更新" + result);
+                }
+                else
+                {
+                    Debug.LogError("这里传输安卓");
                 }
                 await touhouHub.StopAsync();
             }
+            md5.Dispose();
         }
     }
 }

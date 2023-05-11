@@ -168,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23813716}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fe99565ac3247af4a90a2c4644fd29e1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 261867e9398e96443ac44f2b7e531a45, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3296,6 +3296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50337fdff77496647b0533105dfa27af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verious: "\u6211\u53EF\u662F\u5168\u65B0\u7684\u7248\u672C\uFF01"
   loadText: {fileID: 1216204943}
   processText: {fileID: 1504440819}
   versiousText: {fileID: 1381422059}
