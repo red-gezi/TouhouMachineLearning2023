@@ -17,13 +17,13 @@ public class LoadHotFixScene : MonoBehaviour
     static MD5 md5 = new MD5CryptoServiceProvider();
 
     static string serverTag = "PC_Release";
-    static string localHotFixedSceneBundlePath = "";
-    static string localHotFixedAssetBundlePath = "";
+    static string localHotFixSceneBundlePath = "";
+    static string localHotFixAssetBundlePath = "";
     static string localDllOrApkPath = "";
 
 
-    static string onlineHotFixedSceneBundlePath = "";
-    static string onlineHotFixedAssetBundlePath = "";
+    static string onlineHotFixSceneBundlePath = "";
+    static string onlineHotFixAssetBundlePath = "";
     static string onlineDllOrApkPath = "";
 
     static string onlineAB_MD5sFile = "";
@@ -60,36 +60,37 @@ public class LoadHotFixScene : MonoBehaviour
         {
             case Platform.Edit:
                 //指定热更场景和资源本地路径
-                localHotFixedSceneBundlePath = "AB/scene0.gezi";
-                localHotFixedAssetBundlePath = "AB/HotFixed.gezi";
-
-                onlineHotFixedSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/scene0.gezi";
-                onlineHotFixedAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/HotFixed.gezi";
+                localHotFixSceneBundlePath = "AB/scene0.gezi";
+                localHotFixAssetBundlePath = "AB/HotFixed.gezi";
+                //指定热更场景和资源网络路径
+                onlineHotFixSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/scene0.gezi";
+                onlineHotFixAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/HotFixed.gezi";
                 onlineAB_MD5sFile = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/MD5.json";
+                onlineDllOrApkPath= $"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/TouhouMachineLearning.dll";
                 onlineDllOrApk_MD5Path = $"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/MD5.json";
 
                 break;
             case Platform.PC:
                 //指定热更场景和资源本地路径
-                localHotFixedSceneBundlePath = "Assetbundles/PC/scene0.gezi";
-                localHotFixedAssetBundlePath = "Assetbundles/PC/HotFixed.gezi";
+                localHotFixSceneBundlePath = "Assetbundles/PC/scene0.gezi";
+                localHotFixAssetBundlePath = "Assetbundles/PC/HotFixed.gezi";
                 localDllOrApkPath = new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("TouHouMachineLearning.dll", SearchOption.AllDirectories).FirstOrDefault()?.FullName;
-
-                onlineHotFixedSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/scene0.gezi";
-                onlineHotFixedAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/HotFixed.gezi";
+                //指定热更场景和资源网络路径
+                onlineHotFixSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/scene0.gezi";
+                onlineHotFixAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/HotFixed.gezi";
                 onlineAB_MD5sFile = $"http://106.15.38.165:7777/AssetBundles/{serverTag}/MD5.json";
+                onlineDllOrApkPath = $"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/TouhouMachineLearning.dll";
                 onlineDllOrApk_MD5Path = $"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/MD5.json";
                 break;
             case Platform.Android:
                 //指定热更场景和资源本地路径
-                localHotFixedSceneBundlePath = $"{(Application.persistentDataPath + "Assetbundles")}/scene0.gezi";
-                localHotFixedAssetBundlePath = $"{(Application.persistentDataPath + "Assetbundles")}/HotFixed.gezi";
+                localHotFixSceneBundlePath = $"{(Application.persistentDataPath + "Assetbundles")}/scene0.gezi";
+                localHotFixAssetBundlePath = $"{(Application.persistentDataPath + "Assetbundles")}/HotFixed.gezi";
                 localDllOrApkPath = Application.persistentDataPath + "/TouhouMachineLearning.apk";
-
-                onlineHotFixedSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/Android/scene0.gezi";
-                onlineHotFixedAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/Android/HotFixed.gezi";
-                localDllOrApkPath = Application.persistentDataPath + "/TouhouMachineLearning.apk";
-
+                //指定热更场景和资源网络路径
+                onlineHotFixSceneBundlePath = $"http://106.15.38.165:7777/AssetBundles/Android/scene0.gezi";
+                onlineHotFixAssetBundlePath = $"http://106.15.38.165:7777/AssetBundles/Android/HotFixed.gezi";
+                onlineDllOrApkPath = $"http://106.15.38.165:7777/AssetBundles/APK/TouhouMachineLearning.apk";
                 onlineAB_MD5sFile = $"http://106.15.38.165:7777/AssetBundles/Android/MD5.json";
                 break;
             default:
@@ -98,44 +99,42 @@ public class LoadHotFixScene : MonoBehaviour
         using (var httpClient = new HttpClient())
         {
             //对比热更场景MD5，判断是否下载
-            HttpResponseMessage httpResponse;
             byte[] data;
+            HttpResponseMessage httpResponse;
             httpResponse = await httpClient.GetAsync(onlineAB_MD5sFile);
             if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
-            var AB_MD5s = JsonConvert.DeserializeObject<Dictionary<string, byte[]>>(await responseMessage.Content.ReadAsStringAsync());
+            var AB_MD5s = JsonConvert.DeserializeObject<Dictionary<string, byte[]>>(await httpResponse.Content.ReadAsStringAsync());
 
             //校验热更场景
-            var HotFixScene_Md5 = AB_MD5s["scene0.gezi"];
-            if (new FileInfo(localHotFixedSceneBundlePath).Exists && HotFixScene_Md5.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localHotFixedSceneBundlePath).FullName))))
+            if (new FileInfo(localHotFixSceneBundlePath).Exists && AB_MD5s["scene0.gezi"].SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localHotFixSceneBundlePath).FullName))))
             {
                 Debug.Log("热更场景无变动");
             }
             else
             {
                 //下载热更新场景
-                httpResponse = await httpClient.GetAsync(localHotFixedSceneBundlePath);
+                httpResponse = await httpClient.GetAsync(onlineHotFixSceneBundlePath);
                 if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
                 data = await httpResponse.Content.ReadAsByteArrayAsync();
-                File.WriteAllBytes(localHotFixedSceneBundlePath, data);
+                File.WriteAllBytes(localHotFixSceneBundlePath, data);
             }
 
-            var HotFixAsset_Md5 = AB_MD5s["HotFixed.gezi"];
             //校验热更场景素材
-            if (new FileInfo(localHotFixedAssetBundlePath).Exists && HotFixScene_Md5.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localHotFixedAssetBundlePath).FullName))))
+            if (new FileInfo(localHotFixAssetBundlePath).Exists && AB_MD5s["hotfixscene.gezi"].SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localHotFixAssetBundlePath).FullName))))
             {
                 Debug.Log("热更场景素材无变动");
             }
             else
             {
                 //下载热更新场景
-                httpResponse = await httpClient.GetAsync(localHotFixedSceneBundlePath);
-                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
+                httpResponse = await httpClient.GetAsync(onlineHotFixAssetBundlePath);
+                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("热更场景素材文件下载失败"); return; }
                 data = await httpResponse.Content.ReadAsByteArrayAsync();
-                File.WriteAllBytes(localHotFixedAssetBundlePath, data);
+                File.WriteAllBytes(localHotFixAssetBundlePath, data);
             }
 
             httpResponse = await httpClient.GetAsync(onlineDllOrApk_MD5Path);
-            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
+            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("dll或者apk的md5文件下载失败"); return; }
             data = await httpResponse.Content.ReadAsByteArrayAsync();
             //如果是手机端，检查apk变更，否则检查dll变更，若发生变更，则重启
             if (data.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localDllOrApkPath).FullName))))
@@ -144,17 +143,18 @@ public class LoadHotFixScene : MonoBehaviour
             }
             else
             {
+                httpResponse = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/TouhouMachineLearning.dll");
+                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
+                //报存相关的dll或者apk文件
+                File.WriteAllBytes(localDllOrApkPath, await httpResponse.Content.ReadAsByteArrayAsync());
+
                 if (Application.isMobilePlatform)
                 {
-
+                    //后续加上安卓重启
                     Application.Quit();
                 }
                 else
                 {
-                    httpResponse = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/Dll/{serverTag}/MD5.json");
-                    if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
-                    var dllMD5 = await httpResponse.Content.ReadAsByteArrayAsync();
-
                     var game = new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("TouhouMachineLearning.exe", SearchOption.AllDirectories).FirstOrDefault();
                     if (game != null)
                     {
@@ -164,32 +164,10 @@ public class LoadHotFixScene : MonoBehaviour
                 }
             }
         }
-        md5.ComputeHash();
-        //判断文件是否存在或者版本一直，不存在或不匹配直接下载
-        //if (!File.Exists(HotFixedSceneBundlePath) || !File.Exists(HotFixedAssetBundlePath))
-
-        if (true)
-        {
-            Debug.LogError("检测不到热更场景资源包，尝试自动下载");
-            new FileInfo(localHotFixedAssetBundlePath).Directory.Create();
-            using (var httpClient = new HttpClient())
-            {
-
-                //下载热更新场景的资源
-                responseMessage = await httpClient.GetAsync($"http://106.15.38.165:7777/AssetBundles/PC/hotfixscene.gezi");
-                if (!responseMessage.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
-                data = await responseMessage.Content.ReadAsByteArrayAsync();
-                File.WriteAllBytes(localHotFixedAssetBundlePath, data);
-
-            }
-        }
-
-        Debug.Log("卸载前场景数量为" + SceneManager.sceneCount);
-        AssetBundle.UnloadAllAssetBundles(false);
+        AssetBundle.UnloadAllAssetBundles(true);
         //加载热更AB包，切换到热更场景
-        Debug.Log("卸载后场景数量为" + SceneManager.sceneCount);
-        AssetBundle.LoadFromFile(HotFixedSceneBundlePath);
-        AssetBundle.LoadFromFile(localHotFixedAssetBundlePath);
+        AssetBundle.LoadFromFile(localHotFixSceneBundlePath);
+        AssetBundle.LoadFromFile(localHotFixAssetBundlePath);
         Debug.LogWarning("重新载入完成");
         SceneManager.LoadScene("0_HotFixScene");
     }
