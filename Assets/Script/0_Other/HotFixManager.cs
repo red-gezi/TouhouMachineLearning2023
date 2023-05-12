@@ -154,11 +154,13 @@ namespace TouhouMachineLearningSummary.Manager
                 }
             }
             md5.Dispose();
+           
             //加载AB包，并从中加载场景
             Debug.LogWarning("开始初始化AB包");
             AssetBundle.UnloadAllAssetBundles(true);
             loadText.text = "资源包校验完毕，少女加载中~~~~~";
             await SceneCommand.InitAsync(true);
+            //显示AB包加载进度
             while (true)
             {
                 (int currentLoadABCouat, int totalLoadABCouat) process = AssetBundleCommand.GetLoadProcess();
@@ -170,7 +172,7 @@ namespace TouhouMachineLearningSummary.Manager
                 }
                 await Task.Delay(50);
             }
-            Debug.LogWarning("初始化完毕，加载场景。。。");
+            Debug.LogWarning("AB包加载完毕，切换场景。。。");
             SceneManager.LoadScene("1_LoginScene", LoadSceneMode.Single);
         }
         public void RestartGame()
