@@ -24,6 +24,7 @@ namespace TouhouMachineLearningSummary.Manager
                 configInfo.Heigh = Screen.currentResolution.height;
                 configInfo.IsFullScreen = Screen.fullScreen;
                 configInfo.UseLanguage = TranslateManager.currentLanguage;
+                configInfo.ServerMode = "PC_Release";
                 Directory.CreateDirectory(ConfigFileSavePath);
                 SaveConfig();
             }
@@ -50,9 +51,10 @@ namespace TouhouMachineLearningSummary.Manager
             }
             else
             {
-                return (configInfo.IsTestServer == 1) ? "Test" : "PC";
+                return configInfo.ServerMode;
             }
         }
+
         /////////////////////////////////////////////////////////////////////////////游戏设置界面指令////////////////////////////////////////////////////////////////////////////////
         public TextMeshProUGUI ResolutionText;
         public TextMeshProUGUI LanguageText;
@@ -95,6 +97,11 @@ namespace TouhouMachineLearningSummary.Manager
         public void SendCode()
         {
 
+        }
+        public void SetServer(int selectIndex)
+        {
+            configInfo.ServerMode = selectIndex == 0 ? "PC_Release" : "PC_Test";
+            SaveConfig();
         }
     }
 }

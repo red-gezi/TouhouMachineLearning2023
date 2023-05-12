@@ -20,7 +20,7 @@ namespace TouhouMachineLearningSummary.Other
         [MenuItem("TML_Tools/打开服务端", false, 1)]
         static void StartServer() => System.Diagnostics.Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
         [MenuItem("TML_Tools/打开游戏客户端", false, 2)]
-        static void StartClient() => System.Diagnostics.Process.Start(@"Pc\TouhouMachineLearning.exe");
+        static void StartClient() => System.Diagnostics.Process.Start(@"Pc\TouHouMachineLearningSummary.exe");
         [MenuItem("TML_Tools/打开数据表格（云端）", false, 50)]
         static void OpenCloudXls() => System.Diagnostics.Process.Start(@"https://kdocs.cn/l/cfS6F51QxqGd");
 
@@ -103,6 +103,7 @@ namespace TouhouMachineLearningSummary.Other
         static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC_Release");
         [MenuItem("TML_Public/发布安卓端游戏热更资源为正式版", priority = 153)]
         static void BuildAssetBundlesToAndroid() => BuildAssetBundles("Android");
+
         private static async void BuildAssetBundles(string tag)
         {
             //打标签
@@ -119,7 +120,7 @@ namespace TouhouMachineLearningSummary.Other
                             });
                 });
             Debug.LogWarning("标签修改完毕，开始打包");
-            string outputPath = Directory.GetCurrentDirectory() + $@"\AssetBundles\{tag}";
+            string outputPath = Directory.GetCurrentDirectory() + $@"\AB\{tag}";
             Directory.CreateDirectory(outputPath);
 
             BuildPipeline.BuildAssetBundles(outputPath, BuildAssetBundleOptions.None, tag == "Android" ? BuildTarget.Android : BuildTarget.StandaloneWindows64);
@@ -166,7 +167,7 @@ namespace TouhouMachineLearningSummary.Other
                     if (!onlineMD5Dict.ContainsKey(item.Key) || !onlineMD5Dict[item.Key].SequenceEqual(item.Value))
                     {
                         Debug.LogWarning(item.Key + "开始传输");
-                        result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/{item.Key}", File.ReadAllBytes(@$"AssetBundles/{tag}/{item.Key}"), CommandPassword);
+                        result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/{item.Key}", File.ReadAllBytes(@$"AB/{tag}/{item.Key}"), CommandPassword);
                         Debug.LogWarning(item.Key + "传输" + result);
                     }
                     else
@@ -175,19 +176,19 @@ namespace TouhouMachineLearningSummary.Other
                     }
                 }
                 //传输完成后上传MD5文件
-                result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AssetBundles/{tag}/MD5.json"), CommandPassword);
+                result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AB/{tag}/MD5.json"), CommandPassword);
                 Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
                 //如果是移动端则继续上传apk文件
                 //非手机平台上传dll，手机平台上传apk
                 if (tag != "Android")
                 {
-                    Debug.LogWarning("TouHouMachineLearning.dll开始传输");
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/TouHouMachineLearning.dll", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearning.dll"), CommandPassword);
-                    Debug.LogWarning("TouHouMachineLearning.dll传输" + result);
+                    Debug.LogWarning("TouHouMachineLearningSummary.dll开始传输");
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/TouHouMachineLearningSummary.dll", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"), CommandPassword);
+                    Debug.LogWarning("TouHouMachineLearningSummary.dll传输" + result);
 
-                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearning.dll"));
+                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"));
                     result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/MD5.json", dllMd5, CommandPassword);
-                    Debug.LogWarning("TouHouMachineLearning.dll的MD5码更新" + result);
+                    Debug.LogWarning("TouHouMachineLearningSummary.dll的MD5码更新" + result);
                 }
                 else
                 {

@@ -11,6 +11,6 @@ namespace TouhouMachineLearningSummary.Model
         public string UseLanguage { get; set; }
         public float Volume { get; set; }
         public bool H_Mode { get; set; }
-        public int IsTestServer { get; set; }
+        public string ServerMode { get; set; }
     }
 }
