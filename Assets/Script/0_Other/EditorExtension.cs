@@ -1,11 +1,14 @@
 ﻿#if UNITY_EDITOR
 using Microsoft.AspNetCore.SignalR.Client;
+using Sirenix.Utilities.Editor;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
+using TouhouMachineLearningSummary.Command;
+using TouhouMachineLearningSummary.Editor;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.Model;
 using UnityEditor;
@@ -17,28 +20,30 @@ namespace TouhouMachineLearningSummary.Other
     {
         static string CommandPassword => File.ReadAllLines("config.ini")[1];
         /////////////////////////////////////////////////////////////////工具///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Tools/打开服务端", false, 1)]
+        [MenuItem("TouHouMLS/Tools/打开服务端", false, 1)]
         static void StartServer() => System.Diagnostics.Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
-        [MenuItem("TML_Tools/打开游戏客户端", false, 2)]
+        [MenuItem("TouHouMLS/Tools/打开游戏客户端", false, 2)]
         static void StartClient() => System.Diagnostics.Process.Start(@"Pc\TouHouMachineLearningSummary.exe");
-        [MenuItem("TML_Tools/打开数据表格（云端）", false, 50)]
+        [MenuItem("TouHouMLS/Tools/打开数据表格（云端）", false, 50)]
         static void OpenCloudXls() => System.Diagnostics.Process.Start(@"https://kdocs.cn/l/cfS6F51QxqGd");
 
-        [MenuItem("TML_Tools/打开数据表格", false, 51)]
+        [MenuItem("TouHouMLS/Tools/打开数据表格", false, 51)]
         static void OpenXls() => System.Diagnostics.Process.Start(@"Assets\GameResources\GameData\GameData.xlsx");
-        [MenuItem("TML_Tools/打开表格数据实时同步工具", false, 52)]
+        [MenuItem("TouHouMLS/Tools/打开表格数据实时同步工具", false, 52)]
         static void UpdateXls() => System.Diagnostics.Process.Start(@"OtherSolution\xls检测更新\bin\Debug\net6.0\xls检测更新.exe");
+        [MenuItem("TouHouMLS/Tools/卡组编辑器")]
+        private static void OpenCardInspector() => CardMenu.OpenWindow();
         /////////////////////////////////////////////////////////////////场景///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Scene/载入初始化场景", priority = 150)]
+        [MenuItem("TouHouMLS/Scene/载入初始化场景", priority = 150)]
         static void LoadInitScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\-1_InitScene.unity");
-        [MenuItem("TML_Scene/载入热更场景", priority = 151)]
+        [MenuItem("TouHouMLS/Scene/载入热更场景", priority = 151)]
         static void LoadHotFixScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\0_HotfixScene.unity");
-        [MenuItem("TML_Scene/载入登录场景", priority = 152)]
+        [MenuItem("TouHouMLS/Scene/载入登录场景", priority = 152)]
         static void LoadLoginScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\1_LoginScene.unity");
-        [MenuItem("TML_Scene/载入对战场景", priority = 153)]
+        [MenuItem("TouHouMLS/Scene/载入对战场景", priority = 153)]
         static void LoaBattleScene() => System.Diagnostics.Process.Start(@"Assets\Scenes\2_BattleScene.unity");
         /////////////////////////////////////////////////////////////////项目配置///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Config/切换当前卡牌使用线上版本（确保debug完要切回来）", priority = 1)]
+        [MenuItem("TouHouMLS/Config/切换当前卡牌使用线上版本（确保debug完要切回来）", priority = 1)]
         static void ChangeToOnlineCardScript()
         {
             var targetFile = new FileInfo("Assets\\Script\\9_MixedScene\\CardSpace\\GameCard.asmdef1");
@@ -48,7 +53,7 @@ namespace TouhouMachineLearningSummary.Other
                 AssetDatabase.Refresh();
             }
         }
-        [MenuItem("TML_Config/切换当前卡牌使用本地版本（可以查看更多debug细节）", priority = 2)]
+        [MenuItem("TouHouMLS/Config/切换当前卡牌使用本地版本（可以查看更多debug细节）", priority = 2)]
         static void ChangeToLoaclCardScript()
         {
             var targetFile = new FileInfo("Assets\\Script\\9_MixedScene\\CardSpace\\GameCard.asmdef");
@@ -59,7 +64,7 @@ namespace TouhouMachineLearningSummary.Other
             }
         }
         /////////////////////////////////////////////////////////////////发布（服务端）///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Public/发布当前服务器到正式环境", false, 0)]
+        [MenuItem("TouHouMLS/Public/发布当前服务器到正式环境", false, 0)]
         static async void UpdateServer()
         {
             var VersionsHub = new HubConnectionBuilder().WithUrl($"http://106.15.38.165:233/VersionsHub").Build();
@@ -69,10 +74,10 @@ namespace TouhouMachineLearningSummary.Other
             await VersionsHub.StopAsync();
         }
         /////////////////////////////////////////////////////////////////发布卡牌版本///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Public/发布当前卡牌版本到测试版", false, 100)]
+        [MenuItem("TouHouMLS/Public/发布当前卡牌版本到测试版", false, 100)]
         static void UpdateCardToTest() => UpdateCard("Test");
 
-        [MenuItem("TML_Public/发布当前卡牌版本到正式版", false, 101)]
+        [MenuItem("TouHouMLS/Public/发布当前卡牌版本到正式版", false, 101)]
         static void UpdateCardToRelease() => UpdateCard("Release");
         private static void UpdateCard(string tag)
         {
@@ -97,11 +102,11 @@ namespace TouhouMachineLearningSummary.Other
             }
         }
         /////////////////////////////////////////////////////////////////发布热更新资源///////////////////////////////////////////////////////////////////////////////////////////
-        [MenuItem("TML_Public/发布电脑游戏热更资源为测试版", priority = 151)]
+        [MenuItem("TouHouMLS/Public/发布电脑游戏热更资源为测试版", priority = 151)]
         static void BuildDAssetBundlesToTest() => BuildAssetBundles("PC_Test");
-        [MenuItem("TML_Public/发布电脑游戏热更资源为正式版", priority = 152)]
+        [MenuItem("TouHouMLS/Public/发布电脑游戏热更资源为正式版", priority = 152)]
         static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC_Release");
-        [MenuItem("TML_Public/发布安卓端游戏热更资源为正式版", priority = 153)]
+        [MenuItem("TouHouMLS/Public/发布安卓端游戏热更资源为正式版", priority = 153)]
         static void BuildAssetBundlesToAndroid() => BuildAssetBundles("Android");
 
         private static async void BuildAssetBundles(string tag)

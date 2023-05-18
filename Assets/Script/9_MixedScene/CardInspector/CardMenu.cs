@@ -16,8 +16,7 @@ namespace TouhouMachineLearningSummary.Editor
     {
 
         private static CardMenu Instance { get; set; }
-        [MenuItem("TML_Tools/卡组编辑器")]
-        private static void OpenWindow()
+        public static void OpenWindow()
         {
             CardMenu window = GetWindow<CardMenu>();
             InspectorCommand.LoadFromJson();

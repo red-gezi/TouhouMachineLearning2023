@@ -24,19 +24,12 @@ namespace TouhouMachineLearningSummary.Command
         {
             if (AlreadyInit) { return; }
             AlreadyInit = true;
-            //默认加载本地AB包
-            string targetPath = "AssetBundles/Test";
+            //若直接在编辑器中的后续界面运行时默认加载本地测试版本AB包
+            string targetPath = "AssetBundles/PC_Test";
             //如果当前是从热更界面进入且不是编辑器时从游戏下载的AB路径加载数据包
             if (isHotFixedLoad && !Application.isEditor)
             {
-                if (Application.isMobilePlatform)
-                {
-                    targetPath = Application.persistentDataPath + $"/AssetBundles/Android/";
-                }
-                else
-                {
-                    targetPath = Application.streamingAssetsPath + $"/AssetBundles/PC/";
-                }
+                targetPath = Application.persistentDataPath + $"/AssetBundles/{(Application.isMobilePlatform ? "Android" : Manager.ConfigManager.GetServerTag())}/";
             }
             Directory.CreateDirectory(targetPath);
             List<Task> ABLoadTask = new List<Task>();

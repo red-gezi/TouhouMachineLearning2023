@@ -128,7 +128,19 @@ public class LoadHotFixScene : MonoBehaviour
                     File.WriteAllBytes(localDllOrApkPath, await httpResponse.Content.ReadAsByteArrayAsync());
                     if (Application.isMobilePlatform)
                     {
-                        //后续加上安卓重启
+                        //安卓端重启重新安装
+                        AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
+                        AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentObj.GetStatic<string>("ACTION_INSTALL_PACKAGE"));
+
+                        // 设置 APK 文件的 Uri
+                        AndroidJavaClass uriObj = new AndroidJavaClass("android.net.Uri");
+                        AndroidJavaObject uri = uriObj.CallStatic<AndroidJavaObject>("parse", "file://" + "待修改");
+                        intent.Call<AndroidJavaObject>("setData", uri);
+
+                        // 调用安装程序
+                        AndroidJavaClass unityObj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                        AndroidJavaObject context = unityObj.GetStatic<AndroidJavaObject>("currentActivity");
+                        context.Call("startActivity", intent);
                         Application.Quit();
                     }
                     else
