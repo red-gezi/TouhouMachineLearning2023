@@ -125,6 +125,7 @@ namespace TouhouMachineLearningSummary.Other
                             });
                 });
             Debug.LogWarning("标签修改完毕，开始打包");
+            //将AB打包到AB文件夹下，并上传
             string outputPath = Directory.GetCurrentDirectory() + $@"\AB\{tag}";
             Directory.CreateDirectory(outputPath);
 
@@ -180,7 +181,7 @@ namespace TouhouMachineLearningSummary.Other
                         Debug.LogWarning(item.Key + "无更改，无需上传");
                     }
                 }
-                //传输完成后上传MD5文件
+                //传输完成后上传AB包MD5文件
                 result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AB/{tag}/MD5.json"), CommandPassword);
                 Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
                 //如果是移动端则继续上传apk文件
@@ -197,7 +198,16 @@ namespace TouhouMachineLearningSummary.Other
                 }
                 else
                 {
-                    Debug.LogError("这里传输安卓");
+                    Debug.LogWarning("TouHouMachineLearningSummary.apk开始传输");
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/APK/TouHouMachineLearningSummary.apk", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/APK/TouHouMachineLearningSummary.apk"), CommandPassword);
+                    Debug.LogWarning("TouHouMachineLearningSummary.apk传输" + result);
+
+                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/APK/TouHouMachineLearningSummary.apk"));
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/MD5.json", dllMd5, CommandPassword);
+                    Debug.LogWarning("TouHouMachineLearningSummary.dll的MD5码更新" + result);
+                    //传输完成后上传APK包MD5文件
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AB/{tag}/MD5.json"), CommandPassword);
+                    Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
                 }
                 await touhouHub.StopAsync();
             }

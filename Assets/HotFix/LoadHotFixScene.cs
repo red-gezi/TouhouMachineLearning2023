@@ -128,6 +128,11 @@ public class LoadHotFixScene : MonoBehaviour
                     File.WriteAllBytes(localDllOrApkPath, await httpResponse.Content.ReadAsByteArrayAsync());
                     if (Application.isMobilePlatform)
                     {
+                        //安卓端重启
+                        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+                        activity.Call("finish");
+                        activity.Call("startActivity", activity.Call<AndroidJavaObject>("getIntent"));
+    
                         //安卓端重启重新安装
                         AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
                         AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentObj.GetStatic<string>("ACTION_INSTALL_PACKAGE"));
