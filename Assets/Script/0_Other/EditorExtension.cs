@@ -189,25 +189,39 @@ namespace TouhouMachineLearningSummary.Other
                 if (tag != "Android")
                 {
                     Debug.LogWarning("TouHouMachineLearningSummary.dll开始传输");
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/TouHouMachineLearningSummary.dll", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"), CommandPassword);
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/DllOrAPK/{tag}/TouHouMachineLearningSummary.dll", File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"), CommandPassword);
                     Debug.LogWarning("TouHouMachineLearningSummary.dll传输" + result);
 
-                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"));
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/MD5.json", dllMd5, CommandPassword);
+                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}/Library/ScriptAssemblies/TouHouMachineLearningSummary.dll"));
+                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/DllOrAPK/{tag}/MD5.json", dllMd5, CommandPassword);
                     Debug.LogWarning("TouHouMachineLearningSummary.dll的MD5码更新" + result);
                 }
                 else
                 {
-                    Debug.LogWarning("TouHouMachineLearningSummary.apk开始传输");
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/APK/TouHouMachineLearningSummary.apk", File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/APK/TouHouMachineLearningSummary.apk"), CommandPassword);
-                    Debug.LogWarning("TouHouMachineLearningSummary.apk传输" + result);
+                    byte[] apkMD5FiIeDatas = new byte[0];
+                    try
+                    {
+                        //下载线上md5文件，如果不存在或与本地不一致则重新上传
+                         apkMD5FiIeDatas = webClient.DownloadData(@$"http://106.15.38.165:7777/AssetBundles/DllOrApk/Android/MD5.json");
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError("无法下载网络上APK的MD5.json文件" + e.Message);
+                    }
+                    if (new FileInfo(@$"AssetBundles/APK/THMLS.apk").Exists && apkMD5FiIeDatas.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo($@"{Directory.GetCurrentDirectory()}/APK/THMLS.apk").FullName))))
+                    {
+                        Debug.Log("热更场景无变动");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("THMLS.apk开始传输");
+                        result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/DllOrAPK/Android/THMLS.apk", File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}/APK/THMLS.apk"), CommandPassword);
+                        Debug.LogWarning("THMLS.apk传输" + result);
 
-                    byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{ Directory.GetCurrentDirectory()}/APK/TouHouMachineLearningSummary.apk"));
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/Dll/{tag}/MD5.json", dllMd5, CommandPassword);
-                    Debug.LogWarning("TouHouMachineLearningSummary.dll的MD5码更新" + result);
-                    //传输完成后上传APK包MD5文件
-                    result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/{tag}/MD5.json", File.ReadAllBytes(@$"AB/{tag}/MD5.json"), CommandPassword);
-                    Debug.LogWarning($"{tag}的MD5.json的传输结果为{result}");
+                        byte[] dllMd5 = md5.ComputeHash(File.ReadAllBytes($@"{Directory.GetCurrentDirectory()}/Apk/THMLS.apk"));
+                        result = await touhouHub.InvokeAsync<string>("UploadAssetBundles", @$"AssetBundles/DllOrAPK/Android/MD5.json", dllMd5, CommandPassword);
+                        Debug.LogWarning("THMLS.apk的MD5码更新" + result);
+                    }
                 }
                 await touhouHub.StopAsync();
             }

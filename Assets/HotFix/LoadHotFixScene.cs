@@ -76,7 +76,7 @@ public class LoadHotFixScene : MonoBehaviour
             byte[] data;
             HttpResponseMessage httpResponse;
             httpResponse = await httpClient.GetAsync(onlineAB_MD5sFile);
-            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
+            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("onlineAB_MD5sFile文件下载失败"); return; }
             var AB_MD5s = JsonConvert.DeserializeObject<Dictionary<string, byte[]>>(await httpResponse.Content.ReadAsStringAsync());
 
             //校验热更场景
@@ -110,7 +110,7 @@ public class LoadHotFixScene : MonoBehaviour
             }
 
             httpResponse = await httpClient.GetAsync(onlineDllOrApk_MD5Path);
-            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("dll或者apk的md5文件下载失败"); return; }
+            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("dll或者apk的md5文件下载失败");  }
             data = await httpResponse.Content.ReadAsByteArrayAsync();
             //如果是手机端，检查apk变更，否则检查dll变更，若发生变更，则重启
             if (data.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localDllOrApkPath).FullName))))
@@ -120,7 +120,7 @@ public class LoadHotFixScene : MonoBehaviour
             else
             {
                 httpResponse = await httpClient.GetAsync(onlineDllOrApkPath);
-                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("文件下载失败"); return; }
+                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("DllOrApk文件下载失败");  }
                 //报存相关的dll或者apk文件
                 if (!Application.isEditor)
                 {
@@ -130,23 +130,33 @@ public class LoadHotFixScene : MonoBehaviour
                     {
                         //安卓端重启
                         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
-                        activity.Call("finish");
-                        activity.Call("startActivity", activity.Call<AndroidJavaObject>("getIntent"));
-    
-                        //安卓端重启重新安装
-                        AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
-                        AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentObj.GetStatic<string>("ACTION_INSTALL_PACKAGE"));
+                        string packageName = activity.Call<string>("getPackageName");
 
-                        // 设置 APK 文件的 Uri
-                        AndroidJavaClass uriObj = new AndroidJavaClass("android.net.Uri");
-                        AndroidJavaObject uri = uriObj.CallStatic<AndroidJavaObject>("parse", "file://" + "待修改");
-                        intent.Call<AndroidJavaObject>("setData", uri);
+                        AndroidJavaObject intent = activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", packageName);
 
-                        // 调用安装程序
-                        AndroidJavaClass unityObj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-                        AndroidJavaObject context = unityObj.GetStatic<AndroidJavaObject>("currentActivity");
-                        context.Call("startActivity", intent);
+                        intent.Call<AndroidJavaObject>("addFlags", 0x00200000); //FLAG_ACTIVITY_CLEAR_TOP
+                        intent.Call<AndroidJavaObject>("addFlags", 0x10000000); //FLAG_ACTIVITY_NEW_TASK
+
+                        activity.Call("startActivity", intent);
+
+                        AndroidJavaObject unityActivity = activity.Call<AndroidJavaObject>("getApplicationContext");
+                        unityActivity.Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("restartPackage", packageName);
                         Application.Quit();
+
+                        //安卓端重启重新安装
+                        //AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
+                        //AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentObj.GetStatic<string>("ACTION_INSTALL_PACKAGE"));
+                        //Application.Quit();
+
+                        //// 设置 APK 文件的 Uri
+                        //AndroidJavaClass uriObj = new AndroidJavaClass("android.net.Uri");
+                        //AndroidJavaObject uri = uriObj.CallStatic<AndroidJavaObject>("parse", "file://" + "待修改");
+                        //intent.Call<AndroidJavaObject>("setData", uri);
+
+                        //// 调用安装程序
+                        //AndroidJavaClass unityObj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                        //AndroidJavaObject context = unityObj.GetStatic<AndroidJavaObject>("currentActivity");
+                        //context.Call("startActivity", intent);
                     }
                     else
                     {

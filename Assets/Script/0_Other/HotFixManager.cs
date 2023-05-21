@@ -180,6 +180,20 @@ namespace TouhouMachineLearningSummary.Manager
             if (Application.isMobilePlatform)
             {
                 //后续加上安卓重启
+                AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+                string packageName = activity.Call<string>("getPackageName");
+
+                AndroidJavaObject intent = activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", packageName);
+
+                intent.Call<AndroidJavaObject>("addFlags", 0x00200000); //FLAG_ACTIVITY_CLEAR_TOP
+                intent.Call<AndroidJavaObject>("addFlags", 0x10000000); //FLAG_ACTIVITY_NEW_TASK
+
+                activity.Call("startActivity", intent);
+
+                AndroidJavaObject unityActivity = activity.Call<AndroidJavaObject>("getApplicationContext");
+                unityActivity.Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("restartPackage", packageName);
+                //AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+                //activity.Call("startActivity", activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", activity.Call<AndroidJavaObject>("getPackageName")));
                 Application.Quit();
             }
             else
