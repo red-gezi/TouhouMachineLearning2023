@@ -49,13 +49,13 @@ public class LoadHotFixScene : MonoBehaviour
             //指定热更场景和资源本地路径
             localHotFixSceneBundlePath = $"{Application.persistentDataPath}/Assetbundles/{hotFixSceneFileName}";
             localHotFixAssetBundlePath = $"{Application.persistentDataPath}/Assetbundles/{hotFixAssetFileName}";
-            localDllOrApkPath = $"{Application.persistentDataPath}/APK/TouHouMachineLearningSummary.apk";
+            localDllOrApkPath = $"{Application.persistentDataPath}/APK/THMLS.apk";
             //指定热更场景和资源网络路径
             onlineHotFixSceneBundlePath = $"{serverAssetUrl}/Android/{hotFixSceneFileName}";
             onlineHotFixAssetBundlePath = $"{serverAssetUrl}/Android/{hotFixAssetFileName}";
             onlineAB_MD5sFile = $"{serverAssetUrl}/Android/MD5.json";
-            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/APK/MD5.json";
-            onlineDllOrApkPath = $"{serverAssetUrl}/APK/TouHouMachineLearningSummary.apk";
+            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/DllOrAPK/Android/MD5.json";
+            onlineDllOrApkPath = $"{serverAssetUrl}/DllOrAPK/Android/THMLS.apk";
         }
         else
         {
@@ -67,8 +67,8 @@ public class LoadHotFixScene : MonoBehaviour
             onlineHotFixSceneBundlePath = $"{serverAssetUrl}/{serverTag}/{hotFixSceneFileName}";
             onlineHotFixAssetBundlePath = $"{serverAssetUrl}/{serverTag}/{hotFixAssetFileName}";
             onlineAB_MD5sFile = $"{serverAssetUrl}/{serverTag}/MD5.json";
-            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/Dll/{serverTag}/MD5.json";
-            onlineDllOrApkPath = $"{serverAssetUrl}/Dll/{serverTag}/TouHouMachineLearningSummary.dll";
+            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/DllOrAPK/{serverTag}/MD5.json";
+            onlineDllOrApkPath = $"{serverAssetUrl}/DllOrAPK/{serverTag}/TouHouMachineLearningSummary.dll";
         }
         using (var httpClient = new HttpClient())
         {
@@ -110,7 +110,7 @@ public class LoadHotFixScene : MonoBehaviour
             }
 
             httpResponse = await httpClient.GetAsync(onlineDllOrApk_MD5Path);
-            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("dll或者apk的md5文件下载失败");  }
+            if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("dll或者apk的md5文件下载失败"); return; }
             data = await httpResponse.Content.ReadAsByteArrayAsync();
             //如果是手机端，检查apk变更，否则检查dll变更，若发生变更，则重启
             if (data.SequenceEqual(md5.ComputeHash(File.ReadAllBytes(new FileInfo(localDllOrApkPath).FullName))))
@@ -120,7 +120,7 @@ public class LoadHotFixScene : MonoBehaviour
             else
             {
                 httpResponse = await httpClient.GetAsync(onlineDllOrApkPath);
-                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("DllOrApk文件下载失败");  }
+                if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("DllOrApk文件下载失败"); return; }
                 //报存相关的dll或者apk文件
                 if (!Application.isEditor)
                 {
@@ -128,20 +128,10 @@ public class LoadHotFixScene : MonoBehaviour
                     File.WriteAllBytes(localDllOrApkPath, await httpResponse.Content.ReadAsByteArrayAsync());
                     if (Application.isMobilePlatform)
                     {
-                        //安卓端重启
-                        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
-                        string packageName = activity.Call<string>("getPackageName");
-
-                        AndroidJavaObject intent = activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", packageName);
-
-                        intent.Call<AndroidJavaObject>("addFlags", 0x00200000); //FLAG_ACTIVITY_CLEAR_TOP
-                        intent.Call<AndroidJavaObject>("addFlags", 0x10000000); //FLAG_ACTIVITY_NEW_TASK
-
-                        activity.Call("startActivity", intent);
-
-                        AndroidJavaObject unityActivity = activity.Call<AndroidJavaObject>("getApplicationContext");
-                        unityActivity.Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("restartPackage", packageName);
-                        Application.Quit();
+                        AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
+                        AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText",
+                            new AndroidJavaObject("android.content.Context"), "Hello from Unity!", 0);
+                        toastObject.Call("show");
 
                         //安卓端重启重新安装
                         //AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
