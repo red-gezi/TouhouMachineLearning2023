@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.SignalR;
 using System;
+using TouhouMachineLearningSummary.GameEnum;
 
 namespace Server
 {

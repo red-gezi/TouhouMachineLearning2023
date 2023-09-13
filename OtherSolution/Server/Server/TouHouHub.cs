@@ -3,6 +3,7 @@ using Server;
 using MongoDB.Bson;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Channels;
+using TouhouMachineLearningSummary.GameEnum;
 
 public class TouHouHub : Hub
 {
@@ -28,13 +29,13 @@ public class TouHouHub : Hub
     public void Async(NetAcyncType netAcyncType, string roomId, bool isPlayer1, object[] data) => RoomManager.GetRoom(roomId)?.AsyncInfo(netAcyncType, isPlayer1, data);
     public bool AgainstFinish(string roomId, string uid, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, uid, P1Score, P2Score);
     //////////////////////////////////////////////用户信息更新操作////////////////////////////////////////////////////////////////////
-    public bool UpdateInfo(UpdateType updateType, string uid, string password, object updateValue)
+    public bool UpdateInfo(string uid, string password, UpdateType updateType, object updateValue)
     {
         switch (updateType)
         {
             case UpdateType.Name: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Name), updateValue.To<string>());
             case UpdateType.UnlockTitles: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UnlockTitleTags), updateValue.To<List<string>>());
-            case UpdateType.PrefixTitle:return MongoDbCommand.UpdateInfo(uid, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
+            case UpdateType.PrefixTitle: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
             case UpdateType.SuffixTitle: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseSuffixTitleTag), updateValue.To<string>());
             case UpdateType.Decks: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Decks), updateValue.To<List<Deck>>());
             case UpdateType.UseDeckNum: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseDeckNum), updateValue.To<int>());
@@ -42,13 +43,13 @@ public class TouHouHub : Hub
             case UpdateType.LastLoginTime:
                 return MongoDbCommand.UpdateInfo(uid, password, (x => x.LastLoginTime), updateValue.To<DateTime>());
                 break;
-           
+
             default: return false;
         }
     }
 
 
-    
+
     //////////////////////////////////////////////日志////////////////////////////////////////////////////////////////////
     //下载自己的记录
     public List<AgainstSummary> DownloadOwnerAgentSummary(string playerName, int skipNum, int takeNum) => MongoDbCommand.QueryAgainstSummary(playerName, skipNum, takeNum);
@@ -64,7 +65,7 @@ public class TouHouHub : Hub
     //查询最新版本
     public string GetCardConfigsVersion() => MongoDbCommand.GetLastCardUpdateVersion();
     //更新卡牌配置信息
-    public string UploadCardConfigs(CardConfig cardConfig, List<string> drawAbleList,string CommandPassword) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig, drawAbleList,  CommandPassword);
+    public string UploadCardConfigs(CardConfig cardConfig, List<string> drawAbleList, string CommandPassword) => MongoDbCommand.InsertOrUpdateCardConfig(cardConfig, drawAbleList, CommandPassword);
     //下载卡牌配置信息
     public CardConfig DownloadCardConfigs(string date) => MongoDbCommand.GetCardConfig(date);
     //////////////////////////////////////////////上传AB包////////////////////////////////////////////////////////////////////

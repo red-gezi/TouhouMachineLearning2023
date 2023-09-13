@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using System.Drawing;
+using TouhouMachineLearningSummary.GameEnum;
 
 namespace Server
 {
@@ -51,6 +52,8 @@ namespace Server
         public string E_mail { get; set; }
         //玩家游戏中的名字
         public string Name { get; set; }
+        public List<ChatData> ChatTargets { get; set; } = new();
+
         public List<string> UnlockTitleTags { get; set; }
         public string UsePrefixTitleTag { get; set; }
         public string UseSuffixTitleTag { get; set; }
@@ -259,5 +262,86 @@ namespace Server
             if (p1Score == p2Score) { Winner = 3; }
             MongoDbCommand.InsertAgainstSummary(this);
         }
+    }
+    /// <summary>
+    /// 聊天对象信息
+    /// </summary>
+    public class ChatData
+    {
+        public string ChatID { get; set; }
+        public string TargetChaterUUID { get; set; }
+        public string Signature { get; set; }
+        public string Name { get; set; }
+        public bool Online { get; set; }
+        public ChatType CurrentChatType { get; set; }
+        public StateType PlayerStateType { get; set; }
+        public int LastReadIndex { get; set; }
+        public int LastMessageIndex { get; set; }
+        public int UnReadCount { get; set; }
+        public string LastMessage { get; set; }
+        public string LastMessageTime { get; set; }
+    }
+    public class ChatMessageData
+    {
+        public string _id { get; set; }
+        //不同日期的聊天日志
+        public List<ChatMessage> chatMessages = new();
+        ////聊天者的UUID
+        //public List<int> chatterUUID = new List<int>();
+        public class ChatMessage
+        {
+            //消息索引
+            public int index;
+            public string date;
+            //发言者
+            public string speakerUUID;
+            public string speakerName;
+            //消息类型
+            public ChatMessageType messageType;
+            //聊天信息、语音、图片信息
+            public string text;
+
+            public ChatMessage()
+            {
+            }
+        }
+        public void AppendMessage(string speakerUUID, string speakerName, string Text)
+        {
+            string date = DateTime.Today.ToShortDateString();
+            chatMessages.Add(new ChatMessage() { speakerUUID = speakerUUID, speakerName = speakerName, date = date, text = Text });
+        }
+        //固定时段定时操作
+        public void DeleteLog(int userUUID, string Text)
+        {
+            string date = DateTime.Today.ToShortDateString();
+        }
+    }
+    public class OfflineInviteData
+    {
+        public string _id;
+        public string senderUID;
+        public string receiverUID;
+        public string senderName;
+        public string receiverName;
+        public DateTime creatTime;
+        public OfflineInviteData() { }
+        public OfflineInviteData( string UID, string receiverUID)
+        {
+            var userInfo = MongoDbCommand.QueryUserInfo(UID);
+            if (userInfo == null) return;
+            _id = Guid.NewGuid().ToString();
+            creatTime = DateTime.Now;
+            this.senderUID = userInfo.UID;
+            this.senderName = userInfo.Name;
+            this.receiverUID = receiverUID;
+            this.receiverName = MongoDbCommand.QueryOtherUserInfo(receiverUID).Name;
+        }
+        //不同日期的聊天日志
+        public void Appect()
+        {
+            MongoDbCommand.AddChatMember(senderUID, receiverUUID);
+            MongoDbCommand.DeleteOfflineRequest(_id);
+        }
+        public void Reject() => MongoDbCommand.DeleteOfflineRequest(_id);
     }
 }

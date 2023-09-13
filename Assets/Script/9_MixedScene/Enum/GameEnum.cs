@@ -373,4 +373,30 @@ namespace TouhouMachineLearningSummary.GameEnum
         Remilia_Scarlet,
         Kijin_Seija,
     }
+    //////////////////////////////////聊天系统//////////////////////////////////////////////
+    public enum ChatMessageType
+    {
+        Text,
+        Expression
+    }
+    //聊天类型
+    public enum ChatType
+    {
+        //官方，发一些比赛活动通知之类的
+        Official,
+        //好友聊天
+        Friend,
+        //大厅，所有人可参加
+        Lobby,
+        //大型比赛群组聊天，做一些赛事协调安排
+        GroupChat
+    }
+    //状态类型
+    public enum StateType
+    {
+        Free,
+        InBattle,
+        Spectating,
+        InMatch,
+    }
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using TouhouMachineLearningSummary.GameEnum;
 
 namespace Server
 {
@@ -14,6 +15,8 @@ namespace Server
         static MongoClient client;
         static IMongoDatabase db;
         static IMongoCollection<PlayerInfo>? PlayerInfoCollection { get; set; }
+        static IMongoCollection<ChatMessageData> ChatDataCollection { get; set; }
+        static IMongoCollection<OfflineInviteData> OfflineRequestDataCollection { get; set; }
         static IMongoCollection<CardConfig>? CardConfigCollection { get; set; }
         static IMongoCollection<ServerConfig>? ServerConfigCollection { get; set; }
         static IMongoCollection<AgainstSummary>? SummaryCollection { get; set; }
@@ -37,6 +40,8 @@ namespace Server
             client = new MongoClient(File.ReadAllLines("Config.ini")[1]);
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
+            ChatDataCollection = db.GetCollection<ChatMessageData>("ChatData");
+            OfflineRequestDataCollection = db.GetCollection<OfflineInviteData>("OfflineRequestData");
             CardConfigCollection = db.GetCollection<CardConfig>("CardConfig");
             ServerConfigCollection = db.GetCollection<ServerConfig>("ServerConfig");
             SummaryCollection = db.GetCollection<AgainstSummary>("AgainstSummary");
@@ -111,6 +116,20 @@ namespace Server
             //1正确,-1密码错误,-2无此账号
             //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
             return userInfo;
+        }
+        /// <summary>
+        /// 查询脱敏后的用户信息
+        /// </summary>
+        /// <param name="accountOrUID"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static PlayerInfo? QueryUserInfo(string UID, string password)
+        {
+            return Login(UID, password);
+        }
+        public static PlayerInfo? QueryOtherUserInfo(string UID)
+        {
+            return Login(UID, password);
         }
         //////////////////////////////////////////////////抽卡系统///////////////////////////////////////////////////////////////////
         public static string AddFaiths(string uid, string password, Faith newFaith)
@@ -308,7 +327,141 @@ namespace Server
         }
         public static string GetLastCardUpdateTime() => CardConfigCollection.AsQueryable().Max(x => x.UpdataTime).ToString();
         public static string GetLastCardUpdateVersion() => CardConfigCollection.AsQueryable().Max(x => x.Version).ToString();
+        //////////////////////////////////////////////////聊天系统///////////////////////////////////////////////////////////////////
+        //离线请求
+        public static void CreatOfflineRequest(OfflineInviteData offlineRequest) => OfflineRequestDataCollection.InsertOne(offlineRequest);
+        public static void DeleteOfflineRequest(string requestId) => OfflineRequestDataCollection.DeleteOne(request => request._id == requestId);
+        /// <summary>
+        /// 通过account用户凭证查询所有和自身相关的离线请求
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public static List<OfflineInviteData> RequestOfflineInvite(string account)
+        {
+            var userInfo = QueryUserInfo(account);
+            if (userInfo == null) return new List<OfflineInviteData>();
+            return OfflineRequestDataCollection
+                .AsQueryable()
+                .Where(request => request.receiverUID == userInfo.UID)
+                .ToList();
+        }
+        /// <summary>
+        /// 通过离线请求id查询指定的离线请求
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public static OfflineInviteData QueryOfflineRequest(string requestId) => OfflineRequestDataCollection
+            .AsQueryable()
+            .FirstOrDefault(request => request._id == requestId);
+        public static void AddChatMember(string senderUUID, string receiveUUID)
+        {
+            string chatID = Guid.NewGuid().ToString();
+            InsertChat(chatID, senderUUID, receiveUUID);
+            InsertChat(chatID, receiveUUID, senderUUID);
 
+            static void InsertChat(string chatID, string playerA_UID, string playerB_UID)
+            {
+                // 使用 UUID 进行查找
+                var filter = Builders<PlayerInfo>.Filter.Eq(x => x.UID, playerA_UID);
+                var foundPlayer = PlayerInfoCollection.Find(filter).FirstOrDefault();
+                if (foundPlayer != null)
+                {
+                    // 创建 ChatData 对象
+                    var chatData = new ChatData
+                    {
+                        ChatID = chatID,
+                        TargetChaterUUID = playerB_UID,
+                    };
+                    // 更新 Chats 属性
+                    foundPlayer.ChatTargets.Add(chatData);
+                    // 更新 MongoDB 中的记录
+                    var update = Builders<PlayerInfo>.Update.Set(x => x.ChatTargets, foundPlayer.ChatTargets);
+                    PlayerInfoCollection.UpdateOne(filter, update);
+                }
+            }
+        }
+        public static void AddMessageToChatLog(string chatID, ChatMessageData.ChatMessage message)
+        {
+
+            var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chat => chat._id == chatID);
+            if (targetChat == null)
+            {
+                targetChat = new ChatMessageData() { _id = chatID };
+                message.date = DateTime.Now.ToShortTimeString();
+                message.index = 0;
+                targetChat.chatMessages.Add(message);
+                ChatDataCollection.InsertOne(targetChat);
+            }
+            else
+            {
+
+                message.date = DateTime.Now.ToShortTimeString();
+                var lastMessage = targetChat.chatMessages.LastOrDefault();
+                message.index = lastMessage == null ? 0 : lastMessage.index + 1;
+                targetChat.chatMessages.Add(message);
+                var filter = Builders<ChatMessageData>.Filter.Eq(x => x._id, chatID);
+                var update = Builders<ChatMessageData>.Update.Set(x => x.chatMessages, targetChat.chatMessages);
+                ChatDataCollection.UpdateOne(filter, update);
+            }
+
+        }
+        public static int QueryLastChatLogIndex(string chatID)
+        {
+            var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
+            if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
+            {
+                return chatMessage.index;
+            }
+            return -1;
+        }
+        //查询最后一条消息的内容和时间
+        public static (string, string) QueryLastChatLogMessageAndTime(string chatID)
+        {
+            var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
+            if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
+            {
+                switch (chatMessage.messageType)
+                {
+                    case ChatMessageType.Text: return (chatMessage.text, chatMessage.date);
+                    case ChatMessageType.Expression: return ("【表情】", chatMessage.date);
+                    default: return ("【未定义类型消息】", chatMessage.date);
+                }
+            }
+            return ("", "");
+        }
+        //start为-1时，自动替换值为聊天记录中最后一条，range为负数时，代表向上查询
+        public static List<ChatMessageData.ChatMessage> QueryChatLog(string chatID, int start, int range)
+        {
+            var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
+            if (targetChat == null)
+            {
+                return new List<ChatMessageData.ChatMessage>();
+            }
+            else
+            {
+                //判断最后一个聊天记录的索引
+                var lastMessage = targetChat.chatMessages.LastOrDefault();
+                if (lastMessage == null) return new List<ChatMessageData.ChatMessage>();
+                var lastIndex = lastMessage.index;
+                int end = lastIndex;
+                if (start == -1)
+                {
+                    start = lastIndex;
+                }
+                if (range > 0)
+                {
+                    end = start + range;
+                }
+                else
+                {
+                    end = start + 1;
+                    start = end + range;
+                }
+                //这里优化下范围，暂时全部返回
+                //return targetChat.chatMessages;
+                return targetChat.chatMessages.Where(message => message.index >= start && message.index < end).ToList();
+            }
+        }
 
     }
 }

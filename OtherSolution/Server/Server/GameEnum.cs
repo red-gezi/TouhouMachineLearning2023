@@ -1,105 +1,414 @@
-ï»¿public enum AgainstModeType
+namespace TouhouMachineLearningSummary.GameEnum
 {
-    Story,//æ•…äº‹æ¨¡å¼
-    Practice,//ç»ƒä¹ æ¨¡å¼
+    public enum FirstTurn { PlayerFirst, OpponentFirst, Random }
+    public enum AgainstModeType
+    {
+        Story,//¹ÊÊÂÄ£Ê½
+        Practice,//Á·Ï°Ä£Ê½
 
-    Casual,//ä¼‘é—²æ¨¡å¼
-    Rank,//å¤©æ¢¯æ¨¡å¼
-    Arena,//ç«æŠ€åœºæ¨¡å¼
-}
-public enum NetAcyncType
-{
-    Init,
-    FocusCard,
-    PlayCard,
-    SelectRegion,
-    SelectUnites,
-    SelectLocation,
-    SelectProperty,
-    SelectBoardCard,
-    ExchangeCard,
-    RoundStartExchangeOver,
-    Pass,
-    Surrender
-}
-//éœ€è¦åœ¨å®¢æˆ·ç«¯åŒæ­¥æ›´æ–°
-public enum UpdateType
-{
-    Name,
-    UnlockTitles,
-    PrefixTitle,
-    SuffixTitle,
-    Decks,
-    UseDeckNum,
-    Stage,
-    LastLoginTime,
-}
-public enum PlayerOperationType
-{
-    PlayCard,//å‡ºç‰Œ
-    DisCard,//å¼ƒç‰Œ
-    Pass,//è¿‡ç‰Œ
-}
-public enum SelectOperationType
-{
-    SelectProperty,//é€‰æ‹©å±æ€§
-    SelectUnite,//é€‰æ‹©å•ä½
-    SelectRegion,//é€‰æ‹©å¯¹æˆ˜åŒºåŸŸ
-    SelectLocation,//é€‰æ‹©ä½ç½®åæ ‡
-    SelectBoardCard,//ä»é¢æ¿ä¸­é€‰æ‹©å¡ç‰Œ
-    SelectExchangeOver,//é€‰æ‹©æ¢ç‰Œå®Œæ¯•
-}
-public enum CardState
-{
-    None,//é»˜è®¤ç©ºçŠ¶æ€
-    Seal,//å°å° æ¸…æ¥šæ‰€æœ‰é™„åŠ å€¼å’Œé™„åŠ çŠ¶æ€ï¼Œå¹¶ä½¿èƒ½åŠ›æ— æ³•ç”Ÿæ•ˆ
-    Invisibility,//éšèº« æ— æ³•ä½œä¸ºä¸»åŠ¨é€‰æ‹©ç›®æ ‡
-    Pry,//çª¥æ¢ å¼ºåˆ¶å¡ç‰Œæ­£é¢ï¼ŒæŒç»­ä¸€å›åˆ
-    Cover,//è¦†ç›– å¼ºåˆ¶æ˜¾ç¤ºå¡ç‰ŒèƒŒé¢ï¼Œæ»¡è¶³æ¡ä»¶åç¿»è½¬
+        Casual,//ĞİÏĞÄ£Ê½
+        Rank,//ÌìÌİÄ£Ê½
+        Arena,//¾º¼¼³¡Ä£Ê½
+    }
+    public enum NotifyBoardMode
+    {
+        Ok,
+        Ok_Cancel,
+        Cancel,
+        Input
+    }
+    public enum PageType
+    {
+        CardList,
+        Image,
+        Text
+    }
+    public enum TriggerTime
+    {
+        Before,
+        When,
+        After
+    }
+    public enum TriggerType
+    {
+        ////////////////////////////////////////////////ÒÆ¶¯/////////////////////////////////////////
+        /// <summary>
+        /// Éú³É
+        /// </summary>
+        Generate,
+        /// <summary>
+        /// ³éÈ¡
+        /// </summary>
+        Draw,
+        /// <summary>
+        /// ´ò³ö
+        /// </summary>
+        Play,
+        /// <summary>
+        /// »ØÊÖ
+        /// </summary>
+        Reback,
+        /// <summary>
+        /// ²¿Êğ
+        /// </summary>
+        Deploy,
+        /// <summary>
+        /// ¶ªÆú
+        /// </summary>
+        Discard,
+        /// <summary>
+        /// ËÀÍö
+        /// </summary>
+        Dead,
+        /// <summary>
+        /// ¸´»î
+        /// </summary>
+        Revive,
+        /// <summary>
+        /// Î»ÒÆ
+        /// </summary>
+        Move,
+        /// <summary>
+        /// ¼äÏ¶
+        /// </summary>
+        Banish,
+        /// <summary>
+        /// ÕÙ»½
+        /// </summary>
+        Summon,
+        ////////////////////////////////////////////////µãÊı/////////////////////////////////////////
+        /// <summary>
+        /// ÖÃÖµ
+        /// </summary>
+        Set,
+        /// <summary>
+        /// ÔöÒæ
+        /// </summary>
+        Gain,
+        /// <summary>
+        /// ÉËº¦
+        /// </summary>
+        Hurt,
+        /// <summary>
+        /// ÖÎÓú
+        /// </summary>
+        Cure,
+        /// <summary>
+        /// ÖØÖÃ
+        /// </summary>
+        Reset,
+        /// <summary>
+        /// ´İ»Ù
+        /// </summary>
+        Destory,
+        /// <summary>
+        /// Ç¿»¯
+        /// </summary>
+        Strengthen,
+        /// <summary>
+        /// Èõ»¯
+        /// </summary>
+        Weak,
+        /// <summary>
+        /// Äæ×ª
+        /// </summary>
+        Reverse,
+        /// <summary>
+        /// µãÊıÔö¼Ó£¬Ö»ÓĞ³É¹¦´¥·¢µãÊı±ä»¯Ê±²Å»á´¥·¢
+        /// </summary>
+        Increase,
+        /// <summary>
+        /// µãÊı¼õÉÙ£¬Ö»ÓĞ³É¹¦´¥·¢µãÊı±ä»¯Ê±²Å»á´¥·¢
+        /// </summary>
+        Decrease,
+        ////////////////////////////////////////////////×´Ì¬/////////////////////////////////////////
+        StateAdd,
+        StateClear,
+        ////////////////////////////////////////////////×Ö¶Î/////////////////////////////////////////
+        FieldSet,
+        FieldChange,
+        ////////////////////////////////////////////////Æ·ÖÊ/////////////////////////////////////////
+        /// <summary>
+        /// Ìá´¿
+        /// </summary>
+        /// /// <summary>
+        /// Ä§Õú
+        /// </summary>
+        ////////////////////////////////////////////////½×¶Î/////////////////////////////////////////
+        RoundStart,
+        RoundEnd,
+        TurnStart,
+        TurnEnd,
+        Pass,
+    }
     /// <summary>
-    /// ç¦é”¢ æ— æ³•æ‰“å‡º
+    /// ¿¨ÅÆ¸½¼Ó×´Ì¬ÀàĞÍ   £¡£¡£¡£¡²»Òª¸Ä±äË³Ğò£¬ÓĞĞÂµÄÔÙºóÃæ×·¼Ó£¬·şÎñ¶ËºÍ·­Òë±í¸ñĞèÒªÍ¬²½¸üĞÂ£¡£¡£¡£¡
     /// </summary>
-    Close,//ç¦é”¢ æ— æ³•æ‰“å‡º
-    Fate,//å‘½è¿ ä½äºè‡ªåŠ¨é€‰æ‹©ç›®æ ‡åˆ—è¡¨ä¸­æ—¶ä¼šè¢«ä¼˜å…ˆé€‰æ‹©
-    Lurk,//æ½œä¼ï¼ˆé—´è°ï¼‰éƒ¨ç½²è‡³å¯¹æ–¹åœºä¸Š
-    Furor,//ç‹‚æš´ 
-    Docile,//æ¸©é¡º
-    Poisoning,//ä¸­æ¯’ å›åˆç»“æŸæ—¶ç»™ä¸è‡ªèº«1ç‚¹ä¼¤å®³
-    Rely,//å‡­ä¾ æ›¿æ¢ç›®æ ‡å¡ç‰ŒæŸç§ç±»å‹æ•ˆæœ
-    Water,//æ°´
-    Fire,//ç«
-    Wind,//é£
-    Soil,//åœŸ
-    Hold, //é©»å®ˆ å°å±€ç»“æŸæ—¶ä¸è¿›å…¥å¢“åœ°å¹¶å–æ¶ˆæ­¤çŠ¶æ€
-    Congealbounds,//ç»“ç•Œ æŠµæ¶ˆä¸€æ¬¡ä¼¤å®³
-    Forbidden,//ç¦è¶³ æ— æ³•è¢«ç§»åŠ¨
-    Apothanasia,//å»¶å‘½ ç‚¹æ•°ä¸º0æ—¶å¢ç›Šè‡ªèº«ä¸€ç‚¹
-    Black,//é»‘
-    White,//ç™½
-}
-/// <summary>
-/// å¡ç‰Œé™„åŠ å€¼ç±»å‹     ï¼ï¼ï¼ï¼ä¸è¦æ”¹å˜é¡ºåºï¼Œæœ‰æ–°çš„å†åé¢è¿½åŠ ï¼ŒæœåŠ¡ç«¯å’Œç¿»è¯‘è¡¨æ ¼éœ€è¦åŒæ­¥æ›´æ–°ï¼ï¼ï¼ï¼
-/// </summary>
-public enum CardField
-{
-    None,//é»˜è®¤ç©ºçŠ¶æ€
-    Timer,//è®¡æ—¶
-    Inspire,//é¼“èˆ
-    Chain,//è¿é”
-    Energy,//èƒ½é‡
-    Shield,//æŠ¤ç›¾ æŠµæ¶ˆç­‰é‡ä¼¤å®³
-    Pary,//ç¥ˆç¥· 
-}
-public enum VariationType
-{
-    None,
-    Reverse,//é€†è½¬
-}
-public enum Camp
-{
-    Neutral,
-    Taoism,
-    Shintoism,
-    Buddhism,
-    Technology
+    public enum CardState
+    {
+        None,//Ä¬ÈÏ¿Õ×´Ì¬
+        Seal,//·âÓ¡ Çå³şËùÓĞ¸½¼ÓÖµºÍ¸½¼Ó×´Ì¬£¬²¢Ê¹ÄÜÁ¦ÎŞ·¨ÉúĞ§
+        Invisibility,//ÒşÉí ÎŞ·¨×÷ÎªÖ÷¶¯Ñ¡ÔñÄ¿±ê
+        Pry,//¿úÌ½ Ç¿ÖÆ¿¨ÅÆÕıÃæ£¬³ÖĞøÒ»»ØºÏ
+        Cover,//¸²¸Ç Ç¿ÖÆÏÔÊ¾¿¨ÅÆ±³Ãæ£¬Âú×ãÌõ¼şºó·­×ª
+        /// <summary>
+        /// ½ûïÀ ÎŞ·¨´ò³ö
+        /// </summary>
+        Close,//½ûïÀ ÎŞ·¨´ò³ö
+        Fate,//ÃüÔË Î»ÓÚ×Ô¶¯Ñ¡ÔñÄ¿±êÁĞ±íÖĞÊ±»á±»ÓÅÏÈÑ¡Ôñ
+        Lurk,//Ç±·ü£¨¼äµı£©²¿ÊğÖÁ¶Ô·½³¡ÉÏ
+        Furor,//¿ñ±© 
+        Docile,//ÎÂË³
+        Poisoning,//ÖĞ¶¾ »ØºÏ½áÊøÊ±¸øÓë×ÔÉí1µãÉËº¦
+        Rely,//Æ¾ÒÀ Ìæ»»Ä¿±ê¿¨ÅÆÄ³ÖÖÀàĞÍĞ§¹û
+        Water,//Ë®
+        Fire,//»ğ
+        Wind,//·ç
+        Soil,//ÍÁ
+        Hold, //×¤ÊØ Ğ¡¾Ö½áÊøÊ±²»½øÈëÄ¹µØ²¢È¡Ïû´Ë×´Ì¬
+        Congealbounds,//½á½ç µÖÏûÒ»´ÎÉËº¦
+        Forbidden,//½û×ã ÎŞ·¨±»ÒÆ¶¯
+        Apothanasia,//ÑÓÃü µãÊıÎª0Ê±ÔöÒæ×ÔÉíÒ»µã
+        Black,//ºÚ
+        White,//°×
+    }
+    /// <summary>
+    /// ¿¨ÅÆ¸½¼ÓÖµÀàĞÍ     £¡£¡£¡£¡²»Òª¸Ä±äË³Ğò£¬ÓĞĞÂµÄÔÙºóÃæ×·¼Ó£¬·şÎñ¶ËºÍ·­Òë±í¸ñĞèÒªÍ¬²½¸üĞÂ£¡£¡£¡£¡
+    /// </summary>
+    public enum CardField
+    {
+        None,//Ä¬ÈÏ¿Õ×´Ì¬
+        Timer,//¼ÆÊ±
+        Inspire,//¹ÄÎè
+        Chain,//Á¬Ëø
+        Energy,//ÄÜÁ¿
+        Shield,//»¤¶Ü µÖÏûµÈÁ¿ÉËº¦
+        Pary,//Æíµ» 
+    }
+    /// <summary>
+    /// Òì±äÀàĞÍ
+    /// </summary>
+    public enum VariationType
+    {
+        None,
+        Reverse,//Äæ×ª
+    }
+
+    public enum Camp
+    {
+        Neutral,
+        Taoism,
+        Shintoism,
+        Buddhism,
+        Technology
+    }
+    public enum GameRegion
+    {
+        Water,
+        Fire,
+        Wind,
+        Soil,
+        Leader,
+        Hand,
+        Used,
+        Deck,
+        Grave,
+        Battle = 99,
+        None = 100,
+    }
+    public enum BattleRegion
+    {
+        Water, Fire, Wind, Soil, All = 99, None = 100
+    }
+
+    public enum CardType
+    {
+        Unit,
+        Special,
+    }
+    public enum CardFeature
+    {
+        LargestPointUnits,
+        LowestPointUnits,
+        LargestRankUnits,
+        LowestRankUnits,
+        NotZero,
+    }
+    public enum CardRank
+    {
+        Leader,
+        Gold,
+        Silver,
+        Copper,
+
+        NoGold,//Í­¿¨+Òø¿¨
+        GoldAndLeader//½ğ¿¨+ÁìĞä¿¨
+    }
+
+    public enum CardBoardMode
+    {
+        Temp,//Ä¬ÈÏ×´Ì¬£¬ÎŞ·¨²Ù×÷£¬µ«¿ÉÒÔ¹Ø±Õ
+        Select,//¶à´ÎÑ¡ÔñÄ£Ê½
+        ExchangeCard,//µ¥´Î³é¿¨Ä£Ê½
+        ShowOnly,//ÎŞ°´Å¥£¬ÎŞ·¨²Ù×÷Ä£Ê½
+        ShowOnlyAndHide//ÎŞ°´Å¥£¬ÎŞ·¨²Ù×÷Ä£Ê½
+    }
+    public enum CardBoardType
+    {
+        Actual,//Êµ¼ÊÄ£Ê½£¬¼ÓÔØÓµÓĞÊµÌåµÄ¿¨ÅÆ¼¯ºÏÊı¾İ
+        Vitual,//ĞéÄâÄ£Ê½,¼ÓÔØ²»´æÔÚµÄ¿¨ÅÆ¼¯ºÏÊı¾İ
+        Temp,//ÁÙÊ±Ä£Ê½£¬¼ÓÔØÍæ¼ÒÁÙÊ±´ò¿ªµÄ¿¨ÅÆ¼¯ºÏÊı¾İ
+    }
+    //¿¨ÅÆÃæ°åÖĞ¿¨ÅÆ¿É¼ûĞÔ
+    public enum BoardCardVisible
+    {
+        AlwaysShow,
+        AlwaysHide,
+        FromCard
+    }
+    public enum CardTag
+    {
+        /// <summary>
+        /// ·û¿¨
+        /// </summary>
+        SpellCard,
+        /// <summary>
+        /// 
+        /// </summary>
+        Variation,
+        /// <summary>
+        /// »úĞµ
+        /// </summary>
+        Machine,
+        /// <summary>
+        /// Ñı¾«
+        /// </summary>
+        Fairy,
+        /// <summary>
+        /// ÎïÌå
+        /// </summary>
+        Object,
+        /// <summary>
+        /// µÀ¾ß
+        /// </summary>
+        Tool,
+        /// <summary>
+        /// Ñı¹Ö¼£
+        /// </summary>
+        Yokai,
+        /// <summary>
+        /// Ææ¼£
+        /// </summary>
+        Miracle,
+    }
+    public enum Orientation
+    {
+        /// <summary>
+        /// ÒÔµ±Ç°»ØºÏ·½×÷ÎªÖ÷ÊÓ½ÇµÄÎÒ·½ÇøÓò
+        /// </summary>
+        My,
+        /// <summary>
+        /// ÒÔµ±Ç°»ØºÏ·½×÷ÎªÖ÷ÊÓ½ÇµÄ¶Ô·½ÇøÓò
+        /// </summary>
+        Op,
+        /// <summary>
+        /// Ë«·½ÇøÓò
+        /// </summary>
+        All,
+        /// <summary>
+        /// ÒÔ¿Í»§¶ËÊÓ½Ç·½×÷ÎªÖ÷ÊÓ½ÇµÄÉÏ·½ÇøÓò
+        /// </summary>
+        Up,
+        /// <summary>
+        /// ÒÔ¿Í»§¶ËÊÓ½Ç·½×÷ÎªÖ÷ÊÓ½ÇµÄÏÂ·½ÇøÓò
+        /// </summary>
+        Down,
+    }
+    public enum Territory { My, Op, All }
+    public enum Language
+    {
+        Ch,
+        Tc,
+        En,
+        geyu
+    }
+    public enum CardPointType
+    {
+        green,
+        red,
+        white
+    }
+    //·şÎñÆ÷ĞèÒªÍ¬²½¸üĞÂ
+    public enum NetAcyncType
+    {
+        Init,
+        FocusCard,
+        PlayCard,
+        DisCard,
+        SelectRegion,
+        SelectUnits,
+        SelectLocation,
+        SelectProperty,
+        SelectBoardCard,
+        ExchangeCard,
+        RoundStartExchangeOver,
+        Pass,
+        Surrender
+    }
+    public enum PracticeLeader
+    {
+        Reimu_Hakurei,
+        Sanae_Kotiya,
+
+        Mononobe_no_Futo,
+        Kaku_Seiga,
+
+        Hijiri_Byakuren,
+        Koishi_Komeiji,
+
+        Nitori_Kawasiro,
+        Kaguya_Houraisan,
+
+        Cirno,
+        Remilia_Scarlet,
+        Kijin_Seija,
+    }
+    //////////////////////////////////ÕËºÅÓëÁÄÌìÏµÍ³//////////////////////////////////////////////
+    public enum UpdateType
+    {
+        Name,
+        UnlockTitles,
+        PrefixTitle,
+        SuffixTitle,
+        Decks,
+        UseDeckNum,
+        Stage,
+        LastLoginTime,
+    }
+
+    public enum ChatMessageType
+    {
+        Text,
+        Expression
+    }
+    //ÁÄÌìÀàĞÍ
+    public enum ChatType
+    {
+        //¹Ù·½£¬·¢Ò»Ğ©±ÈÈü»î¶¯Í¨ÖªÖ®ÀàµÄ
+        Official,
+        //ºÃÓÑÁÄÌì
+        Friend,
+        //´óÌü£¬ËùÓĞÈË¿É²Î¼Ó
+        Lobby,
+        //´óĞÍ±ÈÈüÈº×éÁÄÌì£¬×öÒ»Ğ©ÈüÊÂĞ­µ÷°²ÅÅ
+        GroupChat
+    }
+    //×´Ì¬ÀàĞÍ
+    public enum StateType
+    {
+        Free,
+        InBattle,
+        Spectating,
+        InMatch,
+    }
 }
