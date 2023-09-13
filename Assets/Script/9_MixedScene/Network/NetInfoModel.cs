@@ -94,7 +94,7 @@ namespace TouhouMachineLearningSummary.Model
         public Texture2D faithTexture;
         [NonSerialized]
         public Sprite faithSprite;
-        [NonSerialized] 
+        [NonSerialized]
         public string userName;
 
         public void Init()
@@ -129,6 +129,8 @@ namespace TouhouMachineLearningSummary.Model
         public string E_mail { get; set; }
         //玩家游戏中的名字
         public string Name { get; set; }
+        public List<ChatTargetInfo> ChatTargets { get; set; } = new();
+
         public List<string> UnlockTitleTags { get; set; }
         public string UsePrefixTitleTag { get; set; }
         public string UseSuffixTitleTag { get; set; }
@@ -205,6 +207,59 @@ namespace TouhouMachineLearningSummary.Model
             bool isSuccessUpdateDeck = await Command.NetCommand.UpdateInfoAsync(UpdateType.Decks, Decks);
             bool isSuccessUpdateUseDeckNum = await Command.NetCommand.UpdateInfoAsync(UpdateType.UseDeckNum, UseDeckNum);
             return isSuccessUpdateDeck && isSuccessUpdateUseDeckNum;
+        }
+    }
+    /// <summary>
+    /// 可离线加好友请求
+    /// </summary>
+    public class OfflineInviteInfo
+    {
+        public string _id;
+        public int senderUUID;
+        public int receiverUUID;
+        public string senderName;
+        public string receiverName;
+        public DateTime creatTime;
+        public OfflineInviteInfo() { }
+    }
+    /// <summary>
+    /// 聊天对象信息
+    /// </summary>
+    public class ChatTargetInfo
+    {
+        public string ChatID { get; set; }
+        public string TargetChaterUID { get; set; }
+        public string Signature { get; set; }
+        public string Name { get; set; }
+        public bool Online { get; set; }
+        public ChatType CurrentChatType { get; set; }
+        public StateType PlayerStateType { get; set; }
+        public int LastReadIndex { get; set; }
+        public int LastMessageIndex { get; set; }
+        public int UnReadCount { get; set; }
+        public string LastMessage { get; set; }
+        public string LastMessageTime { get; set; }
+    }
+    public class ChatMessageInfo
+    {
+        public string _id { get; set; }
+        //不同日期的聊天日志
+        public List<ChatMessage> chatMessages = new();
+        ////聊天者的UUID
+        //public List<int> chatterUUID = new List<int>();
+        public class ChatMessage
+        {
+            //消息索引
+            public int index;
+            public string date;
+            //发言者
+            public string speakerUUID;
+            public string speakerName;
+            //消息类型
+            public ChatMessageType messageType;
+            //聊天信息、语音、图片信息
+            public string text;
+            public ChatMessage(){}
         }
     }
 }

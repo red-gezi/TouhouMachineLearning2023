@@ -324,7 +324,7 @@ namespace TouhouMachineLearningSummary.Command
         /// </summary>
         /// <param name="UID"></param>
         /// <returns></returns>
-        public static async Task AddFriend(int UID)
+        public static async Task AddFriend(string UID)
         {
             await CheckHubState();
             await TouHouHub.SendAsync("AddFriend", PlayerPassWord, UID);
@@ -334,7 +334,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task QueryOfflineInvite()
         {
             await CheckHubState();
-            var offlineInvites = await TouHouHub.InvokeAsync<List<OfflineInviteData>>("QueryOfflineInvite", PlayerPassWord, PlayerUID);
+            var offlineInvites = await TouHouHub.InvokeAsync<List<OfflineInviteInfo>>("QueryOfflineInvite", PlayerPassWord, PlayerUID);
             //嵌套弹窗
         }
         //玩家登录时查询有无离线请求，如加好友等
@@ -345,30 +345,30 @@ namespace TouhouMachineLearningSummary.Command
         }
         ///////////////////删除好友////////////////////
         //主动删除者隐藏该聊天，对方则是锁定该聊天不再能发送消息
-        public static async Task DeleteFriend(int UID)
+        public static async Task DeleteFriend(string UID)
         {
             await CheckHubState();
             await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, UID);
         }
         ///////////////////打开聊天界面////////////////
         //刷新好友列表中指定用户的状态信息,并更新本地
-        public static async Task QueryChatTargetInfo(int targetUID)
+        public static async Task QueryChatTargetInfo(string targetUID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, PlayerUID, targetUID);
+            await TouHouHub.InvokeAsync<ChatTargetInfo>("QueryChatTargetInfo", PlayerPassWord, PlayerUID, targetUID);
         }
         //刷新好友列表中每个用户的状态信息,并更新本地
         public static async Task QueryAllChatTargetInfo()
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, PlayerUID);
+            await TouHouHub.InvokeAsync<List<ChatTargetInfo>>("QueryAllChatTargetInfo", PlayerPassWord, PlayerUID);
         }
         ///////////////////聊天记录///////////////
         //start为-1时，自动替换值为聊天记录中最后一条，range为负数时，代表向上查询
-        public static async Task QueryChatLog(string chatID, int start, int num)
+        public static async Task QueryChatLog(string chatID)
         {
             await CheckHubState();
-            var chatMessages = await TouHouHub.InvokeAsync<List<ChatMessageData.ChatMessage>>("QueryChatLog", PlayerPassWord, chatID);
+            var chatMessages = await TouHouHub.InvokeAsync<List<ChatMessageInfo.ChatMessage>>("QueryChatLog", PlayerPassWord, chatID);
         }
         //清除指定聊天未读消息数量
         public static async Task ClearUnreadCount(string chatID)
@@ -378,10 +378,10 @@ namespace TouhouMachineLearningSummary.Command
         }
         ///////////////////发送聊天信息///////////////
         //请求发送消息
-        public static async Task SendMessage(string chatId, ChatMessageData.ChatMessage message, int speakerUID, int targetChaterUID)
+        public static async Task SendMessage(string chatID, ChatMessageInfo.ChatMessage message, string speakerUID, string targetChaterUID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("SendMessage", PlayerPassWord, chatId, message, speakerUID, targetChaterUID);
+            await TouHouHub.SendAsync("SendMessage", PlayerPassWord, chatID, message, speakerUID, targetChaterUID);
         }
         ///////////////////////////////////////////////////房间操作////////////////////////////////////////////////////////////////
         public static async Task JoinHoldOnList(AgainstModeType modeType, int firstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo)
