@@ -53,7 +53,7 @@ namespace TouhouMachineLearningSummary.Manager
         {
             await Command.NetCommand.AddFriend(targetUUID);
         }
-        public async void DeleteFriend(string targetUUID) => await Command.NetCommand.DeleteFriend(targetUUID);
+        public  void DeleteFriend(string targetUUID) =>  Command.NetCommand.DeleteFriend(targetUUID);
         ////////////////////////////////聊天面板操作指令//////////////////////////////////////////
         //聊天界面
         public async void OpenChatTargetCanves()
@@ -91,8 +91,8 @@ namespace TouhouMachineLearningSummary.Manager
         //刷新玩家本地信息，更新聊天对象列表用户列表数据、修改用户信息、道具使用、增加或删除好友时调用，同时会刷新聊天对象界面
         public void RefreshChatTargets(string playerData)
         {
-            GameData.LocalPlayerData = playerData.ToObject<PlayerData>();
-            int chatCount = GameData.LocalPlayerData.Chats.Count;
+            var chatTargets = playerData.ToObject<List<ChatTargetInfo>>();
+            int chatCount = chatTargets.Count;
             int currentChatButtonCount = chatTargetContent.childCount;
             for (int i = currentChatButtonCount; i < chatCount; i++)
             {
@@ -105,21 +105,21 @@ namespace TouhouMachineLearningSummary.Manager
                 {
                     GameObject chatTarget = chatTargetContent.GetChild(i).gameObject;
                     chatTarget.SetActive(true);
-                    ChatData chatData = GameData.LocalPlayerData.Chats[i];
-                    int targetChaterUUID = chatData.TargetChaterUUID;
+                    var chatTargetInfo = chatTargets[i];
+                    var targetChaterUUID = chatTargetInfo.TargetChaterUID;
                     //移动到服务端
                     //注意UI报null的话会导致服务端自动退出
-                    chatTarget.transform.GetChild(0).GetComponent<Text>().text = chatData.Name;
-                    chatTarget.transform.GetChild(1).GetComponent<Text>().text = chatData.Name + ":" + chatData.LastMessage;
-                    chatTarget.transform.GetChild(2).GetComponent<Text>().text = chatData.Name + ":" + chatData.LastMessageTime;
+                    chatTarget.transform.GetChild(0).GetComponent<Text>().text = chatTargetInfo.Name;
+                    chatTarget.transform.GetChild(1).GetComponent<Text>().text = chatTargetInfo.Name + ":" + chatTargetInfo.LastMessage;
+                    chatTarget.transform.GetChild(2).GetComponent<Text>().text = chatTargetInfo.Name + ":" + chatTargetInfo.LastMessageTime;
                     //设置未读数字
-                    chatTarget.transform.GetChild(3).gameObject.SetActive(chatData.UnReadCount > 0);
-                    chatTarget.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = chatData.UnReadCount.ToString();
-                    chatTarget.transform.GetChild(4).GetComponent<Text>().text = chatData.Signature;
+                    chatTarget.transform.GetChild(3).gameObject.SetActive(chatTargetInfo.UnReadCount > 0);
+                    chatTarget.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = chatTargetInfo.UnReadCount.ToString();
+                    chatTarget.transform.GetChild(4).GetComponent<Text>().text = chatTargetInfo.Signature;
                     chatTarget.GetComponent<Button>().onClick.RemoveAllListeners();
-                    chatTarget.GetComponent<Button>().onClick.AddListener(() => OpenChatMessageCanves(chatData.ChatID));
+                    chatTarget.GetComponent<Button>().onClick.AddListener(() => OpenChatMessageCanves(chatTargetInfo.ChatID));
                     chatTarget.transform.GetChild(5).GetComponent<Button>().onClick.RemoveAllListeners();
-                    chatTarget.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(() => ChatCommand.RequestDeleteFriend(chatData.TargetChaterUUID));
+                    chatTarget.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(() => Command.NetCommand.DeleteFriend(chatTargetInfo.TargetChaterUID));
                 }
                 else
                 {
@@ -176,7 +176,7 @@ namespace TouhouMachineLearningSummary.Manager
             }
         }
         ////////////////////////////////发送消息//////////////////////////////////////////
-        public void SendTextToPlayer()
+        public async void SendTextToPlayer()
         {
             //根据对象id在聊天面板中查找指定聊天
             var message = new ChatMessage()
@@ -186,9 +186,10 @@ namespace TouhouMachineLearningSummary.Manager
                 speakerName = Info.AgainstInfo.OnlineUserInfo.Name,
                 text = chatMessageInput.text,
             };
-            var current = Info.AgainstInfo.OnlineUserInfo.ChatTargets.FirstOrDefault(chat=>chat.ChatID==currentOpenChatID);
-            NetCommand.SendMessage(current.ChatID, message, Info.AgainstInfo.OnlineUserInfo.UID, current.TargetChaterUUID);
             chatMessageInput.text = "";
+            var current = Info.AgainstInfo.OnlineUserInfo.ChatTargets.FirstOrDefault(chat => chat.ChatID == currentOpenChatID);
+            await NetCommand.SendMessage(current.ChatID, message, Info.AgainstInfo.OnlineUserInfo.UID, current.TargetChaterUID);
+            //通知刷新
         }
         public void SendExpressionToPlayer()
         {
@@ -236,7 +237,7 @@ namespace TouhouMachineLearningSummary.Manager
             PopupShow();
         }
         ////////////////////////////////消息通告系统//////////////////////////////////////////
-        public async void NotificeInviteResult(bool isSucceed,  string name)
+        public async void NotificeInviteResult(bool isSucceed, string name)
         {
             //这里弹个窗通知就行
             string text = $"对玩家 {name} 的好友邀请";

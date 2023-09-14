@@ -35,6 +35,11 @@ namespace TouhouMachineLearningSummary.Command
                     {
                         Debug.Log(message);
                     });
+                    TouHouHub.On("QueryOfflineInvite", () =>
+                    {
+                        Debug.Log("客户端被要求查询所有离线请求");
+                        _ = NetCommand.QueryOfflineInvite();
+                    });
                     TouHouHub.On<object[]>("StartAgainst", ReceiveInfo =>
                     {
                         Info.AgainstInfo.RoomID = ReceiveInfo[0].ToType<string>();
@@ -296,8 +301,11 @@ namespace TouhouMachineLearningSummary.Command
         }
         ///////////////////////////////////////////////////用户操作////////////////////////////////////////////////////////////////
         //所有操作均需附带玩家密码，用于服务器校验操作合法性
-        static string PlayerPassWord => AgainstInfo.OnlineUserInfo.Password;
-        static string PlayerUID => AgainstInfo.OnlineUserInfo.UID;
+        //static string PlayerPassWord => AgainstInfo.OnlineUserInfo.Password;
+        //static string PlayerUID => AgainstInfo.OnlineUserInfo.UID;
+        static string PlayerPassWord => "";
+       
+        static string PlayerUID => "1000";
         public static async Task<bool> UpdateInfoAsync(UpdateType updateType, object updateValue)
         {
             try
@@ -324,20 +332,21 @@ namespace TouhouMachineLearningSummary.Command
         /// </summary>
         /// <param name="UID"></param>
         /// <returns></returns>
-        public static async Task AddFriend(string UID)
+        public static async Task AddFriend(string targetUID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("AddFriend", PlayerPassWord, UID);
+            await TouHouHub.SendAsync("AddFriend", PlayerPassWord, PlayerUID, targetUID);
         }
         ///////////////////请求同步离线请求///////////
         //玩家登录或被服务器通知时查询有无离线请求，如加好友等
         public static async Task QueryOfflineInvite()
         {
+            Debug.Log("查询离线好友请求");
             await CheckHubState();
             var offlineInvites = await TouHouHub.InvokeAsync<List<OfflineInviteInfo>>("QueryOfflineInvite", PlayerPassWord, PlayerUID);
             //嵌套弹窗
         }
-        //玩家登录时查询有无离线请求，如加好友等
+        //对好友请求做出回应并
         public static async Task ResponseOfflineInvite(string requestId, bool inviteResult)
         {
             await CheckHubState();
@@ -345,7 +354,7 @@ namespace TouhouMachineLearningSummary.Command
         }
         ///////////////////删除好友////////////////////
         //主动删除者隐藏该聊天，对方则是锁定该聊天不再能发送消息
-        public static async Task DeleteFriend(string UID)
+        public static async void DeleteFriend(string UID)
         {
             await CheckHubState();
             await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, UID);

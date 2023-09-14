@@ -44,12 +44,23 @@ namespace TouhouMachineLearningSummary.Test
                 abilities.Add(cardAbility);
             }
             Debug.Log(abilities.ToJson());
-           
+
         }
         public async void Start()
         {
 
-            
+
+        }
+        [Button("创建离线邀请")]
+        public async void a0()
+        {
+            await Command.NetCommand.LoginAsync("1000", "");
+            await Command.NetCommand.AddFriend("1000");
+        }
+        [Button("查询离线邀请")]
+        public void a1()
+        {
+            Command.NetCommand.QueryOfflineInvite();
         }
         [Button("下载拥有记录")]
         public void test1()

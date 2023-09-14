@@ -212,6 +212,7 @@ namespace TouhouMachineLearningSummary.Model
     /// <summary>
     /// 可离线加好友请求
     /// </summary>
+    [Serializable]
     public class OfflineInviteInfo
     {
         public string _id;
