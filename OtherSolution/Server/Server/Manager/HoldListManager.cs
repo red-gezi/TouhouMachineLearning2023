@@ -5,15 +5,15 @@ namespace Server
 {
     class HoldListManager
     {
-        static Dictionary<AgainstModeType, List<HoldInfo>> HoldLists { get; set; } = new Dictionary<AgainstModeType, List<HoldInfo>>();
+        static Dictionary<AgainstModeType, List<HoldInfo>> HoldLists { get; set; } = new ();
 
-        static List<PlayerInfo> playerInfos = new List<PlayerInfo>();
+        static List<PlayerInfo> playerInfos = new();
         public static void Init()
         {
 
             foreach (AgainstModeType againstMode in Enum.GetValues(typeof(AgainstModeType)))
             {
-                HoldLists[againstMode] = new List<HoldInfo>();
+                HoldLists[againstMode] = new ();
             }
         }
         public static void Add(AgainstModeType againstMode,int FirstMode, PlayerInfo playerInfo, PlayerInfo virtualOpponentInfo,IClientProxy caller)

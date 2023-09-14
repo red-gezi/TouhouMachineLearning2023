@@ -20,7 +20,18 @@ public class TouHouHub : Hub
     }
     //////////////////////////////////////////////账户////////////////////////////////////////////////////////////////////
     public int Register(string account, string password) => MongoDbCommand.Register(account, password);
-    public PlayerInfo? Login(string account, string password) => MongoDbCommand.Login(account, password);
+    public PlayerInfo? Login(string account, string password)
+    {
+
+
+        PlayerInfo? playerInfo = MongoDbCommand.Login(account, password);
+        if (playerInfo != null)
+        {
+            OnlineUserManager.Add(Context.ConnectionId, playerInfo);
+        }
+        return playerInfo;
+    }
+
     public List<string> DrawCard(string uid, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(uid, password, selectFaiths);
     //////////////////////////////////////////////等候列表////////////////////////////////////////////////////////////////////
     public void Join(AgainstModeType againstMode, int FirstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo) => HoldListManager.Add(againstMode, FirstMode, userInfo, virtualOpponentInfo, Clients.Caller);
@@ -93,6 +104,46 @@ public class TouHouHub : Hub
         {
             Clients.Client("").SendAsync("ChatReceive", (name, message).ToJson());
         }
+    }
+    public void AddFriend(string password, string senderUID, string recevierUID)
+    {
+        OfflineInviteInfo offlineRequest = new OfflineInviteInfo(password, senderUID, recevierUID);
+        if (offlineRequest._id == null)
+        {
+            Console.WriteLine("离线请求创建失败，无对应UID玩家");
+            return;
+        }
+        MongoDbCommand.CreatOfflineRequest(offlineRequest);
+        var targetConnectId = OnlineUserManager.GetConnectId(recevierUID);
+        if (targetConnectId == null) return;
+        //对方在线则通知对方触发离线邀请检测
+        Console.WriteLine("好友邀请目标存在，直接发起邀请");
+        Clients.Client(targetConnectId).SendAsync("QueryOfflineInvite");
+    }
+
+    public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID)
+    {
+        var s= MongoDbCommand.QueryOfflineInvites(password, senderUID);
+        return MongoDbCommand.QueryOfflineInvites(password, senderUID);
+    }
+
+    public void ResponseOfflineInvite(string password, string requestId, bool inviteResult)
+    {
+        Console.WriteLine("进行了选择，选择结果为" + requestId + inviteResult);
+        var offlineRequests = MongoDbCommand.QueryOfflineInvite(requestId);
+        if (inviteResult)
+        {
+            offlineRequests.Appect();
+        }
+        else
+        {
+            offlineRequests.Reject();
+        }
+        //接受邀请，通知对方创建并打开聊天记录
+        var targetConnectId = OnlineUserManager.GetConnectId(offlineRequests.senderUID);
+        if (targetConnectId == "") return;
+        //对方在线则触发离线邀请检测
+        Clients.Client(targetConnectId).SendAsync("");
     }
     public void Test(string text) => Clients.Caller.SendAsync("Test", "服务器向你问候" + text);
 }

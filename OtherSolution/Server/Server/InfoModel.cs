@@ -316,7 +316,8 @@ namespace Server
             string date = DateTime.Today.ToShortDateString();
         }
     }
-    public class OfflineInviteData
+    [Serializable]
+    public class OfflineInviteInfo
     {
         public string _id;
         public string senderUID;
@@ -324,22 +325,23 @@ namespace Server
         public string senderName;
         public string receiverName;
         public DateTime creatTime;
-        public OfflineInviteData() { }
-        public OfflineInviteData( string UID, string receiverUID)
+        public OfflineInviteInfo() { }
+        public OfflineInviteInfo(string password, string senderUID, string receiverUID)
         {
-            var userInfo = MongoDbCommand.QueryUserInfo(UID);
-            if (userInfo == null) return;
+            var userInfo = MongoDbCommand.QueryUserInfo(senderUID, password);
+            var otherUserInfo = MongoDbCommand.QueryOtherUserInfo(receiverUID);
+            if (userInfo == null || otherUserInfo == null) return;
             _id = Guid.NewGuid().ToString();
             creatTime = DateTime.Now;
             this.senderUID = userInfo.UID;
             this.senderName = userInfo.Name;
             this.receiverUID = receiverUID;
-            this.receiverName = MongoDbCommand.QueryOtherUserInfo(receiverUID).Name;
+            this.receiverName = otherUserInfo.Name;
         }
         //不同日期的聊天日志
         public void Appect()
         {
-            MongoDbCommand.AddChatMember(senderUID, receiverUUID);
+            MongoDbCommand.AddChatMember(senderUID, receiverUID);
             MongoDbCommand.DeleteOfflineRequest(_id);
         }
         public void Reject() => MongoDbCommand.DeleteOfflineRequest(_id);

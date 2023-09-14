@@ -16,7 +16,7 @@ namespace Server
         static IMongoDatabase db;
         static IMongoCollection<PlayerInfo>? PlayerInfoCollection { get; set; }
         static IMongoCollection<ChatMessageData> ChatDataCollection { get; set; }
-        static IMongoCollection<OfflineInviteData> OfflineRequestDataCollection { get; set; }
+        static IMongoCollection<OfflineInviteInfo> OfflineRequestDataCollection { get; set; }
         static IMongoCollection<CardConfig>? CardConfigCollection { get; set; }
         static IMongoCollection<ServerConfig>? ServerConfigCollection { get; set; }
         static IMongoCollection<AgainstSummary>? SummaryCollection { get; set; }
@@ -41,7 +41,7 @@ namespace Server
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
             ChatDataCollection = db.GetCollection<ChatMessageData>("ChatData");
-            OfflineRequestDataCollection = db.GetCollection<OfflineInviteData>("OfflineRequestData");
+            OfflineRequestDataCollection = db.GetCollection<OfflineInviteInfo>("OfflineRequestData");
             CardConfigCollection = db.GetCollection<CardConfig>("CardConfig");
             ServerConfigCollection = db.GetCollection<ServerConfig>("ServerConfig");
             SummaryCollection = db.GetCollection<AgainstSummary>("AgainstSummary");
@@ -99,37 +99,37 @@ namespace Server
         //之后会根据登录方式进行扩展
         public static PlayerInfo? Login(string accountOrUID, string password)
         {
-            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == accountOrUID|| info.UID==accountOrUID);
-            PlayerInfo? userInfo = null;
-            if (PlayerInfoCollection.Find(CheckUserExistQuery).Any())
+            var userInfo = QueryUserInfo(accountOrUID, password);
+            if (userInfo.Password == password.GetSaltHash(userInfo.UID))
             {
-                userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
-                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
-                {
-                    var result = UpdateInfo(userInfo.UID, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
-                }
-                else
-                {
-                    userInfo = null;
-                }
+                var result = UpdateInfo(userInfo.UID, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
             }
-            //1正确,-1密码错误,-2无此账号
-            //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
             return userInfo;
         }
+
         /// <summary>
         /// 查询脱敏后的用户信息
         /// </summary>
         /// <param name="accountOrUID"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public static PlayerInfo? QueryUserInfo(string UID, string password)
+        public static PlayerInfo QueryUserInfo(string accountOrUID, string password)
         {
-            return Login(UID, password);
+            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.Account == accountOrUID || info.UID == accountOrUID);
+            PlayerInfo? userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
+            if (userInfo != null && userInfo.Password == password.GetSaltHash(userInfo.UID))
+            {
+                return userInfo;
+            }
+            //1正确,-1密码错误,-2无此账号
+            //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
+            return null;
         }
-        public static PlayerInfo? QueryOtherUserInfo(string UID)
+        public static PlayerInfo QueryOtherUserInfo(string UID)
         {
-            return Login(UID, password);
+            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == UID);
+            PlayerInfo userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
+            return userInfo;
         }
         //////////////////////////////////////////////////抽卡系统///////////////////////////////////////////////////////////////////
         public static string AddFaiths(string uid, string password, Faith newFaith)
@@ -235,7 +235,7 @@ namespace Server
                     else
                     {
                         //卡池计算公式
-                        Random rand = new Random();
+                        Random rand = new();
                         return ServerConfigManager.DrawAbleCardIDs_Test
                                     .OrderBy(x => rand.Next())
                                     .Take(selectFaiths.Count)
@@ -329,17 +329,17 @@ namespace Server
         public static string GetLastCardUpdateVersion() => CardConfigCollection.AsQueryable().Max(x => x.Version).ToString();
         //////////////////////////////////////////////////聊天系统///////////////////////////////////////////////////////////////////
         //离线请求
-        public static void CreatOfflineRequest(OfflineInviteData offlineRequest) => OfflineRequestDataCollection.InsertOne(offlineRequest);
+        public static void CreatOfflineRequest(OfflineInviteInfo offlineRequest) => OfflineRequestDataCollection.InsertOne(offlineRequest);
         public static void DeleteOfflineRequest(string requestId) => OfflineRequestDataCollection.DeleteOne(request => request._id == requestId);
         /// <summary>
         /// 通过account用户凭证查询所有和自身相关的离线请求
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static List<OfflineInviteData> RequestOfflineInvite(string account)
+        public static List<OfflineInviteInfo> QueryOfflineInvites(string password,string senderUID)
         {
-            var userInfo = QueryUserInfo(account);
-            if (userInfo == null) return new List<OfflineInviteData>();
+            var userInfo = QueryUserInfo(senderUID, password);
+            if (userInfo == null) return new List<OfflineInviteInfo>();
             return OfflineRequestDataCollection
                 .AsQueryable()
                 .Where(request => request.receiverUID == userInfo.UID)
@@ -350,7 +350,7 @@ namespace Server
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static OfflineInviteData QueryOfflineRequest(string requestId) => OfflineRequestDataCollection
+        public static OfflineInviteInfo QueryOfflineInvite(string requestId) => OfflineRequestDataCollection
             .AsQueryable()
             .FirstOrDefault(request => request._id == requestId);
         public static void AddChatMember(string senderUUID, string receiveUUID)
@@ -420,12 +420,12 @@ namespace Server
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
             if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
             {
-                switch (chatMessage.messageType)
+                return chatMessage.messageType switch
                 {
-                    case ChatMessageType.Text: return (chatMessage.text, chatMessage.date);
-                    case ChatMessageType.Expression: return ("【表情】", chatMessage.date);
-                    default: return ("【未定义类型消息】", chatMessage.date);
-                }
+                    ChatMessageType.Text => (chatMessage.text, chatMessage.date),
+                    ChatMessageType.Expression => ("【表情】", chatMessage.date),
+                    _ => ("【未定义类型消息】", chatMessage.date),
+                };
             }
             return ("", "");
         }
