@@ -215,12 +215,12 @@ namespace TouhouMachineLearningSummary.Model
     [Serializable]
     public class OfflineInviteInfo
     {
-        public string _id;
-        public int senderUUID;
-        public int receiverUUID;
-        public string senderName;
-        public string receiverName;
-        public DateTime creatTime;
+        public string _id { get; set; }
+        public int SenderUUID { get; set; }
+        public int ReceiverUUID { get; set; }
+        public string SenderName { get; set; }
+        public string SeceiverName { get; set; }
+        public DateTime CreatTime { get; set; }
         public OfflineInviteInfo() { }
     }
     /// <summary>

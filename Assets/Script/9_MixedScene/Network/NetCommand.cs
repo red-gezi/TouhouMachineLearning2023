@@ -26,10 +26,12 @@ namespace TouhouMachineLearningSummary.Command
                     TouHouHub = new HubConnectionBuilder().WithUrl($"http://{ip}/TouHouHub").Build();
                     await TouHouHub.StartAsync();
 
-                    TouHouHub.On<string>("ChatReceive", message =>
+                    TouHouHub.On<string, ChatMessageInfo.ChatMessage>("ChatMessageReceive", (chatID, chatMessage) =>
                     {
-                        var receive = message.ToObject<(string name, string text, string targetUser)>();
-                        ChatManager.MainChat.ReceiveMessage(receive.name, receive.text, receive.targetUser);
+
+                        //var receive = message.ToObject<(string name, string text, string targetUser)>();
+                        //ChatManager.MainChat.ReceiveMessage(receive.name, receive.text, receive.targetUser);
+                        ChatUIManager.Instance.RefreshChatMessages(chatID, new List<ChatMessageInfo.ChatMessage>() { chatMessage });
                     });
                     TouHouHub.On<string>("test", message =>
                     {
@@ -304,7 +306,7 @@ namespace TouhouMachineLearningSummary.Command
         //static string PlayerPassWord => AgainstInfo.OnlineUserInfo.Password;
         //static string PlayerUID => AgainstInfo.OnlineUserInfo.UID;
         static string PlayerPassWord => "";
-       
+
         static string PlayerUID => "1000";
         public static async Task<bool> UpdateInfoAsync(UpdateType updateType, object updateValue)
         {
@@ -345,6 +347,7 @@ namespace TouhouMachineLearningSummary.Command
             await CheckHubState();
             var offlineInvites = await TouHouHub.InvokeAsync<List<OfflineInviteInfo>>("QueryOfflineInvite", PlayerPassWord, PlayerUID);
             //嵌套弹窗
+            ChatUIManager.Instance.PopupLoad(offlineInvites);
         }
         //对好友请求做出回应并
         public static async Task ResponseOfflineInvite(string requestId, bool inviteResult)
@@ -370,7 +373,8 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task QueryAllChatTargetInfo()
         {
             await CheckHubState();
-            await TouHouHub.InvokeAsync<List<ChatTargetInfo>>("QueryAllChatTargetInfo", PlayerPassWord, PlayerUID);
+            Info.AgainstInfo.OnlineUserInfo.ChatTargets = await TouHouHub.InvokeAsync<List<ChatTargetInfo>>("QueryAllChatTargetInfo", PlayerPassWord, PlayerUID);
+            ChatUIManager.Instance.RefreshChatTargets();
         }
         ///////////////////聊天记录///////////////
         //start为-1时，自动替换值为聊天记录中最后一条，range为负数时，代表向上查询

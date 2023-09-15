@@ -93,16 +93,21 @@ public class TouHouHub : Hub
     }
 
     //////////////////////////////////////////////聊天////////////////////////////////////////////////////////////////////
-    public void Chat(string name, string message, string target)
+    ///await TouHouHub.SendAsync("SendMessage", PlayerPassWord, chatID, message, speakerUID, targetChaterUID);
+    public void SendMessage(string PlayerPassWord, string chatID, ChatMessageData.ChatMessage message, string speakerUID, string targetChaterUID)
     {
         Console.WriteLine("转发聊天记录" + message);
-        if (target == "")
+        MongoDbCommand.AddMessageToChatLog(chatID, message);
+        //通知双方更新消息
+        var targetConnectId = OnlineUserManager.GetConnectId(speakerUID);
+        if (targetConnectId != null)
         {
-            Clients.All.SendAsync("ChatReceive", (name, message).ToJson());
+            Clients.Client(targetConnectId).SendAsync("ChatMessageReceive", chatID, message);
         }
-        else
+        targetConnectId = OnlineUserManager.GetConnectId(targetChaterUID);
+        if (targetConnectId != null)
         {
-            Clients.Client("").SendAsync("ChatReceive", (name, message).ToJson());
+            Clients.Client(targetConnectId).SendAsync("ChatMessageReceive", chatID, message);
         }
     }
     public void AddFriend(string password, string senderUID, string recevierUID)
@@ -121,11 +126,7 @@ public class TouHouHub : Hub
         Clients.Client(targetConnectId).SendAsync("QueryOfflineInvite");
     }
 
-    public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID)
-    {
-        var s= MongoDbCommand.QueryOfflineInvites(password, senderUID);
-        return MongoDbCommand.QueryOfflineInvites(password, senderUID);
-    }
+    public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID) => MongoDbCommand.QueryOfflineInvites(password, senderUID);
 
     public void ResponseOfflineInvite(string password, string requestId, bool inviteResult)
     {
@@ -140,7 +141,7 @@ public class TouHouHub : Hub
             offlineRequests.Reject();
         }
         //接受邀请，通知对方创建并打开聊天记录
-        var targetConnectId = OnlineUserManager.GetConnectId(offlineRequests.senderUID);
+        var targetConnectId = OnlineUserManager.GetConnectId(offlineRequests.SenderUID);
         if (targetConnectId == "") return;
         //对方在线则触发离线邀请检测
         Clients.Client(targetConnectId).SendAsync("");

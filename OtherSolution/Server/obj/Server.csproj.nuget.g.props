@@ -13,7 +13,11 @@
     <SourceRoot Include="C:\Users\wuyunge\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)antdesign.charts\0.2.0\buildTransitive\AntDesign.Charts.props" Condition="Exists('$(NuGetPackageRoot)antdesign.charts\0.2.0\buildTransitive\AntDesign.Charts.props')" />
-    <Import Project="$(NuGetPackageRoot)antdesign\0.10.2\buildTransitive\AntDesign.props" Condition="Exists('$(NuGetPackageRoot)antdesign\0.10.2\buildTransitive\AntDesign.props')" />
+    <Import Project="$(NuGetPackageRoot)antdesign.charts\0.3.1\buildTransitive\AntDesign.Charts.props" Condition="Exists('$(NuGetPackageRoot)antdesign.charts\0.3.1\buildTransitive\AntDesign.Charts.props')" />
+    <Import Project="$(NuGetPackageRoot)antdesign\0.15.5\buildTransitive\AntDesign.props" Condition="Exists('$(NuGetPackageRoot)antdesign\0.15.5\buildTransitive\AntDesign.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\wuyunge\.nuget\packages\awssdk.core\3.7.100.14</PkgAWSSDK_Core>
+    <PkgAWSSDK_SecurityToken Condition=" '$(PkgAWSSDK_SecurityToken)' == '' ">C:\Users\wuyunge\.nuget\packages\awssdk.securitytoken\3.7.100.14</PkgAWSSDK_SecurityToken>
+  </PropertyGroup>
 </Project>

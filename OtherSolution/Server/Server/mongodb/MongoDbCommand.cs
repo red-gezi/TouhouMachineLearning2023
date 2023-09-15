@@ -342,7 +342,7 @@ namespace Server
             if (userInfo == null) return new List<OfflineInviteInfo>();
             return OfflineRequestDataCollection
                 .AsQueryable()
-                .Where(request => request.receiverUID == userInfo.UID)
+                .Where(request => request.ReceiverUID == userInfo.UID)
                 .ToList();
         }
         /// <summary>
@@ -388,7 +388,7 @@ namespace Server
             {
                 targetChat = new ChatMessageData() { _id = chatID };
                 message.date = DateTime.Now.ToShortTimeString();
-                message.index = 0;
+                message.Index = 0;
                 targetChat.chatMessages.Add(message);
                 ChatDataCollection.InsertOne(targetChat);
             }
@@ -397,7 +397,7 @@ namespace Server
 
                 message.date = DateTime.Now.ToShortTimeString();
                 var lastMessage = targetChat.chatMessages.LastOrDefault();
-                message.index = lastMessage == null ? 0 : lastMessage.index + 1;
+                message.Index = lastMessage == null ? 0 : lastMessage.Index + 1;
                 targetChat.chatMessages.Add(message);
                 var filter = Builders<ChatMessageData>.Filter.Eq(x => x._id, chatID);
                 var update = Builders<ChatMessageData>.Update.Set(x => x.chatMessages, targetChat.chatMessages);
@@ -410,7 +410,7 @@ namespace Server
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
             if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
             {
-                return chatMessage.index;
+                return chatMessage.Index;
             }
             return -1;
         }
@@ -422,7 +422,7 @@ namespace Server
             {
                 return chatMessage.messageType switch
                 {
-                    ChatMessageType.Text => (chatMessage.text, chatMessage.date),
+                    ChatMessageType.Text => (chatMessage.Text, chatMessage.date),
                     ChatMessageType.Expression => ("【表情】", chatMessage.date),
                     _ => ("【未定义类型消息】", chatMessage.date),
                 };
@@ -442,7 +442,7 @@ namespace Server
                 //判断最后一个聊天记录的索引
                 var lastMessage = targetChat.chatMessages.LastOrDefault();
                 if (lastMessage == null) return new List<ChatMessageData.ChatMessage>();
-                var lastIndex = lastMessage.index;
+                var lastIndex = lastMessage.Index;
                 int end = lastIndex;
                 if (start == -1)
                 {
@@ -459,7 +459,7 @@ namespace Server
                 }
                 //这里优化下范围，暂时全部返回
                 //return targetChat.chatMessages;
-                return targetChat.chatMessages.Where(message => message.index >= start && message.index < end).ToList();
+                return targetChat.chatMessages.Where(message => message.Index >= start && message.Index < end).ToList();
             }
         }
 

@@ -62,6 +62,7 @@ namespace TouhouMachineLearningSummary.Test
         {
             Command.NetCommand.QueryOfflineInvite();
         }
+        
         [Button("下载拥有记录")]
         public void test1()
         {

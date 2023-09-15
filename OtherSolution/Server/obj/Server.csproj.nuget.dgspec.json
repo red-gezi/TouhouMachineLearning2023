@@ -42,27 +42,27 @@
           "dependencies": {
             "AntDesign": {
               "target": "Package",
-              "version": "[0.10.2, )"
+              "version": "[0.15.5, )"
             },
             "AntDesign.Charts": {
               "target": "Package",
-              "version": "[0.2.0, )"
+              "version": "[0.3.1, )"
             },
             "Blazored.LocalStorage": {
               "target": "Package",
-              "version": "[4.2.0, )"
+              "version": "[4.4.0, )"
             },
             "Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[7.0.11, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.21.0, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.21.0, )"
             }
           },
           "imports": [

@@ -291,24 +291,21 @@ namespace Server
         public class ChatMessage
         {
             //消息索引
-            public int index;
-            public string date;
+            public int Index { get; set; }
+            public string SendTime { get; set; }
             //发言者
-            public string speakerUUID;
-            public string speakerName;
+            public string SpeakerUUID { get; set; }
+            public string SpeakerName { get; set; }
             //消息类型
             public ChatMessageType messageType;
             //聊天信息、语音、图片信息
-            public string text;
-
-            public ChatMessage()
-            {
-            }
+            public string Text;
+            public ChatMessage(){}
         }
         public void AppendMessage(string speakerUUID, string speakerName, string Text)
         {
             string date = DateTime.Today.ToShortDateString();
-            chatMessages.Add(new ChatMessage() { speakerUUID = speakerUUID, speakerName = speakerName, date = date, text = Text });
+            chatMessages.Add(new ChatMessage() { SpeakerUUID = speakerUUID, SpeakerName = speakerName, date = date, Text = Text });
         }
         //固定时段定时操作
         public void DeleteLog(int userUUID, string Text)
@@ -319,12 +316,12 @@ namespace Server
     [Serializable]
     public class OfflineInviteInfo
     {
-        public string _id;
-        public string senderUID;
-        public string receiverUID;
-        public string senderName;
-        public string receiverName;
-        public DateTime creatTime;
+        public string _id { get; set; }
+        public string SenderUID { get; set; }
+        public string ReceiverUID { get; set; }
+        public string SenderName { get; set; }
+        public string ReceiverName { get; set; }
+        public DateTime CreatTime { get; set; }
         public OfflineInviteInfo() { }
         public OfflineInviteInfo(string password, string senderUID, string receiverUID)
         {
@@ -332,16 +329,16 @@ namespace Server
             var otherUserInfo = MongoDbCommand.QueryOtherUserInfo(receiverUID);
             if (userInfo == null || otherUserInfo == null) return;
             _id = Guid.NewGuid().ToString();
-            creatTime = DateTime.Now;
-            this.senderUID = userInfo.UID;
-            this.senderName = userInfo.Name;
-            this.receiverUID = receiverUID;
-            this.receiverName = otherUserInfo.Name;
+            CreatTime = DateTime.Now;
+            this.SenderUID = userInfo.UID;
+            this.SenderName = userInfo.Name;
+            this.ReceiverUID = receiverUID;
+            this.ReceiverName = otherUserInfo.Name;
         }
         //不同日期的聊天日志
         public void Appect()
         {
-            MongoDbCommand.AddChatMember(senderUID, receiverUID);
+            MongoDbCommand.AddChatMember(SenderUID, ReceiverUID);
             MongoDbCommand.DeleteOfflineRequest(_id);
         }
         public void Reject() => MongoDbCommand.DeleteOfflineRequest(_id);
