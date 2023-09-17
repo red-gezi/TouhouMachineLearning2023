@@ -27,7 +27,7 @@ namespace TouhouMachineLearningSummary.Info
         /// 玩家线上人物信息
         /// </summary>
         [ShowInInspector]
-        public static PlayerInfo OnlineUserInfo { get; set; }
+        public static PlayerInfo OnlineUserInfo { get; set; } = new ();
         /// <summary>
         /// 玩家的用户信息（可能为线上信息或者单机固定卡组信息）
         /// </summary>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
@@ -17,6 +18,8 @@ namespace TouhouMachineLearningSummary.Manager
         public static ChatUIManager Instance;
         //聊天列表相关组件
         [Header("聊天列表组件")]
+        public Button addFriendButton;
+        public TextMeshProUGUI searchUUID;
         public GameObject chatTargetCanves;
         public Transform chatTargetContent;
         public GameObject chatTargetPrefab;
@@ -28,7 +31,6 @@ namespace TouhouMachineLearningSummary.Manager
         [Header("聊天框预制UI")]
         public GameObject leftChatMessagePrefab;
         public GameObject rightChatMessagePrefab;
-        public GameObject loadMorePrefab;
         public GameObject messageTimePrefab;
         [Header("消息弹窗组件")]
         public GameObject NotificationCanves;
@@ -42,6 +44,7 @@ namespace TouhouMachineLearningSummary.Manager
             PopupShow();
             NotificationCanves.SetActive(true);
             NotificationCanves.GetComponent<CanvasGroup>().alpha = 0;
+            addFriendButton.onClick.AddListener(async () => await NetCommand.AddFriend(searchUUID.text));
         }
         ////////////////////////////////玩家数据修改//////////////////////////////////////////
         //改名字
@@ -58,8 +61,8 @@ namespace TouhouMachineLearningSummary.Manager
         //聊天界面
         public async void OpenChatTargetCanves()
         {
-            chatTargetCanves.SetActive(true);
             await Command.NetCommand.QueryAllChatTargetInfo();
+            chatTargetCanves.SetActive(true);
         }
         public void CloseChatTargetCanves()
         {
@@ -89,7 +92,7 @@ namespace TouhouMachineLearningSummary.Manager
         //
 
         //刷新玩家本地信息，更新聊天对象列表用户列表数据、修改用户信息、道具使用、增加或删除好友时调用，同时会刷新聊天对象界面
-        public  void RefreshChatTargets()
+        public void RefreshChatTargets()
         {
             var chatTargets = Info.AgainstInfo.OnlineUserInfo.ChatTargets;
             int chatCount = chatTargets.Count;
@@ -128,7 +131,7 @@ namespace TouhouMachineLearningSummary.Manager
             }
         }
         //刷新聊天信息列表（只有收到消息和用户切换聊天对象时才会调用刷新）
-        public  async void RefreshChatMessages(string chatId, List<ChatMessage> chatMessages)
+        public async void RefreshChatMessages(string chatId, List<ChatMessage> chatMessages)
         {
             //这里会拿到指定chatid的指定范围的聊天记录，需要对已有聊天记录做个添加去重，然后刷新聊天对象列表和聊天框内容
             if (!allChatMessage.ContainsKey(chatId))
@@ -206,7 +209,7 @@ namespace TouhouMachineLearningSummary.Manager
             PopupShow();
             //向同频道所有人广播消息
         }
-      
+
         public async void PopupAccept()
         {
             await Command.NetCommand.ResponseOfflineInvite(currentOfflineRequest._id, true);

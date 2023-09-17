@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Channels;
 using TouhouMachineLearningSummary.GameEnum;
+using System.Data.Common;
 
 public class TouHouHub : Hub
 {
@@ -145,6 +146,30 @@ public class TouHouHub : Hub
         if (targetConnectId == "") return;
         //对方在线则触发离线邀请检测
         Clients.Client(targetConnectId).SendAsync("");
+    }
+    public List<ChatTargetInfo> QueryAllChatTargetInfo(string password, string senderUID)
+    {
+        //打开聊天窗口时，根据聊天列表，挨个更新聊天对象信息，更新到数据库中，并传输给客户端本地
+        //更新聊天对象详细信息
+        var playerData = MongoDbCommand.QueryUserInfo(senderUID, password);
+        for (int i = 0; i < playerData.ChatTargets.Count; i++)
+        {
+            string targetChaterUUID = playerData.ChatTargets[i].TargetChaterUUID;
+            PlayerInfo targetChatterInfo = MongoDbCommand.QueryOtherUserInfo(targetChaterUUID);
+            ChatTargetInfo targetChatter = playerData.ChatTargets[i];
+            if (targetChatter != null)
+            {
+                targetChatter.Name = targetChatterInfo.Name;
+                targetChatter.Signature = targetChatterInfo.Signature;
+                targetChatter.LastMessageIndex = MongoDbCommand.QueryLastChatLogIndex(targetChatter.ChatID);
+                targetChatter.UnReadCount = targetChatter.LastMessageIndex - targetChatter.LastReadIndex;
+                (string lastMessage, string lastMessageTime) = MongoDbCommand.QueryLastChatLogMessageAndTime(targetChatter.ChatID);
+                targetChatter.LastMessage = lastMessage;
+                targetChatter.LastMessageTime = lastMessageTime;
+            }
+        }
+        MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, playerData.ChatTargets);
+        return playerData.ChatTargets;
     }
     public void Test(string text) => Clients.Caller.SendAsync("Test", "服务器向你问候" + text);
 }

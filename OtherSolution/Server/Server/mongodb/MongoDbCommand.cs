@@ -367,7 +367,7 @@ namespace Server
                 if (foundPlayer != null)
                 {
                     // 创建 ChatData 对象
-                    var chatData = new ChatData
+                    var chatData = new ChatTargetInfo
                     {
                         ChatID = chatID,
                         TargetChaterUUID = playerB_UID,
@@ -387,7 +387,7 @@ namespace Server
             if (targetChat == null)
             {
                 targetChat = new ChatMessageData() { _id = chatID };
-                message.date = DateTime.Now.ToShortTimeString();
+                message.SendTime = DateTime.Now.ToShortTimeString();
                 message.Index = 0;
                 targetChat.chatMessages.Add(message);
                 ChatDataCollection.InsertOne(targetChat);
@@ -395,7 +395,7 @@ namespace Server
             else
             {
 
-                message.date = DateTime.Now.ToShortTimeString();
+                message.SendTime = DateTime.Now.ToShortTimeString();
                 var lastMessage = targetChat.chatMessages.LastOrDefault();
                 message.Index = lastMessage == null ? 0 : lastMessage.Index + 1;
                 targetChat.chatMessages.Add(message);
@@ -422,9 +422,9 @@ namespace Server
             {
                 return chatMessage.messageType switch
                 {
-                    ChatMessageType.Text => (chatMessage.Text, chatMessage.date),
-                    ChatMessageType.Expression => ("【表情】", chatMessage.date),
-                    _ => ("【未定义类型消息】", chatMessage.date),
+                    ChatMessageType.Text => (chatMessage.Text, chatMessage.SendTime),
+                    ChatMessageType.Expression => ("【表情】", chatMessage.SendTime),
+                    _ => ("【未定义类型消息】", chatMessage.SendTime),
                 };
             }
             return ("", "");

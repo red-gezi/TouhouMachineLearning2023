@@ -52,8 +52,9 @@ namespace Server
         public string E_mail { get; set; }
         //玩家游戏中的名字
         public string Name { get; set; }
-        public List<ChatData> ChatTargets { get; set; } = new();
-
+        //个性签名
+        public string Signature { get; set; }
+        public List<ChatTargetInfo> ChatTargets { get; set; } = new();
         public List<string> UnlockTitleTags { get; set; }
         public string UsePrefixTitleTag { get; set; }
         public string UseSuffixTitleTag { get; set; }
@@ -266,7 +267,7 @@ namespace Server
     /// <summary>
     /// 聊天对象信息
     /// </summary>
-    public class ChatData
+    public class ChatTargetInfo
     {
         public string ChatID { get; set; }
         public string TargetChaterUUID { get; set; }
@@ -300,12 +301,12 @@ namespace Server
             public ChatMessageType messageType;
             //聊天信息、语音、图片信息
             public string Text;
-            public ChatMessage(){}
+            public ChatMessage() { }
         }
         public void AppendMessage(string speakerUUID, string speakerName, string Text)
         {
             string date = DateTime.Today.ToShortDateString();
-            chatMessages.Add(new ChatMessage() { SpeakerUUID = speakerUUID, SpeakerName = speakerName, date = date, Text = Text });
+            chatMessages.Add(new ChatMessage() { SpeakerUUID = speakerUUID, SpeakerName = speakerName, SendTime = date, Text = Text });
         }
         //固定时段定时操作
         public void DeleteLog(int userUUID, string Text)
