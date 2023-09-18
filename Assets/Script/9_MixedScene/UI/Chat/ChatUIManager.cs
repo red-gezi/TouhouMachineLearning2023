@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TMPro;
 using TouhouMachineLearningSummary.Command;
@@ -18,7 +19,7 @@ namespace TouhouMachineLearningSummary.Manager
         public static ChatUIManager Instance;
         //聊天列表相关组件
         [Header("聊天列表组件")]
-        public Button addFriendButton;
+        public Button searchPlayerButton;
         public TextMeshProUGUI searchUUID;
         public GameObject chatTargetCanves;
         public Transform chatTargetContent;
@@ -32,6 +33,10 @@ namespace TouhouMachineLearningSummary.Manager
         public GameObject leftChatMessagePrefab;
         public GameObject rightChatMessagePrefab;
         public GameObject messageTimePrefab;
+        [Header("玩家消息组件")]
+        public GameObject playerInfoCanves;
+        public Button addFriendButton;
+        public Button querydetailPlayerInfoButton;
         [Header("消息弹窗组件")]
         public GameObject NotificationCanves;
         [Header("消息通知组件")]
@@ -39,12 +44,16 @@ namespace TouhouMachineLearningSummary.Manager
         private void Awake() => Instance = this;
         private void Start()
         {
+            //模拟登陆
+            NetCommand.LoginAsync("1000", "");
             CloseChatTargetCanves();
             CloseChatMessageCanves();
+            ClosePlayerInfoCanves();
             PopupShow();
             NotificationCanves.SetActive(true);
             NotificationCanves.GetComponent<CanvasGroup>().alpha = 0;
-            addFriendButton.onClick.AddListener(async () => await NetCommand.AddFriend(searchUUID.text));
+            searchPlayerButton.onClick.RemoveAllListeners();
+            searchPlayerButton.onClick.AddListener(() => OpenPlayerInfoCanves(searchUUID.text));
         }
         ////////////////////////////////玩家数据修改//////////////////////////////////////////
         //改名字
@@ -54,9 +63,21 @@ namespace TouhouMachineLearningSummary.Manager
         ////////////////////////////////好友操作指令//////////////////////////////////////////
         public async void AddFriendInvite(string targetUUID)
         {
+            var s = targetUUID.ToList();
+            targetUUID = Regex.Match(targetUUID, @"\d*").Value;
             await Command.NetCommand.AddFriend(targetUUID);
         }
+
         public void DeleteFriend(string targetUUID) => Command.NetCommand.DeleteFriend(targetUUID);
+        ////////////////////////////////信息面板操作指令//////////////////////////////////////////
+        public void OpenPlayerInfoCanves(string UID)
+        {
+            //查询玩家信息，如果没有，弹窗通知UID输入错误
+            playerInfoCanves.SetActive(true);
+            addFriendButton.onClick.RemoveAllListeners();
+            addFriendButton.onClick.AddListener(() => AddFriendInvite(searchUUID.text));
+        }
+        public void ClosePlayerInfoCanves() => playerInfoCanves.SetActive(false);
         ////////////////////////////////聊天面板操作指令//////////////////////////////////////////
         //聊天界面
         public async void OpenChatTargetCanves()

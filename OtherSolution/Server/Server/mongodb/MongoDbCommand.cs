@@ -127,6 +127,13 @@ namespace Server
         }
         public static PlayerInfo QueryOtherUserInfo(string UID)
         {
+            Console.WriteLine(UID);
+            Console.WriteLine(UID == "1000");
+            var result = PlayerInfoCollection.AsQueryable().ToList();
+            Console.WriteLine("开始debug");
+            Console.WriteLine(result[0].UID == "1000");
+            result.Where(info => info.UID == "1000").ToList();
+            Console.WriteLine(result[0].UID);
             var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == UID);
             PlayerInfo userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
             return userInfo;
@@ -329,14 +336,30 @@ namespace Server
         public static string GetLastCardUpdateVersion() => CardConfigCollection.AsQueryable().Max(x => x.Version).ToString();
         //////////////////////////////////////////////////聊天系统///////////////////////////////////////////////////////////////////
         //离线请求
-        public static void CreatOfflineRequest(OfflineInviteInfo offlineRequest) => OfflineRequestDataCollection.InsertOne(offlineRequest);
+        public static bool CreatOfflineRequest(OfflineInviteInfo offlineRequest)
+        {
+            if (OfflineRequestDataCollection.Find(invite =>
+                invite.SenderUID == offlineRequest.SenderUID &&
+                invite.ReceiverUID == offlineRequest.ReceiverUID
+                ) != null)
+            {
+                Console.WriteLine("已存在好友请求，不重复申请");
+                return false;
+            }
+            else
+            {
+                OfflineRequestDataCollection.InsertOne(offlineRequest);
+                return true;
+            }
+        }
+
         public static void DeleteOfflineRequest(string requestId) => OfflineRequestDataCollection.DeleteOne(request => request._id == requestId);
         /// <summary>
         /// 通过account用户凭证查询所有和自身相关的离线请求
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public static List<OfflineInviteInfo> QueryOfflineInvites(string password,string senderUID)
+        public static List<OfflineInviteInfo> QueryOfflineInvites(string password, string senderUID)
         {
             var userInfo = QueryUserInfo(senderUID, password);
             if (userInfo == null) return new List<OfflineInviteInfo>();

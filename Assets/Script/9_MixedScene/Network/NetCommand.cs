@@ -26,21 +26,22 @@ namespace TouhouMachineLearningSummary.Command
                     TouHouHub = new HubConnectionBuilder().WithUrl($"http://{ip}/TouHouHub").Build();
                     await TouHouHub.StartAsync();
 
+                    TouHouHub.On<string>("test", message => Debug.Log(message));
+                    TouHouHub.On("QueryOfflineInvite", () => _ = NetCommand.QueryOfflineInvite());
+                    TouHouHub.On<string>("Notifice", message => ChatUIManager.Instance.NotificeShow(message));
                     TouHouHub.On<string, ChatMessageInfo.ChatMessage>("ChatMessageReceive", (chatID, chatMessage) =>
+                        ChatUIManager.Instance.RefreshChatMessages(chatID, new List<ChatMessageInfo.ChatMessage>() { chatMessage }));
+                    TouHouHub.On<bool, string>("ResponseInvite", async (bool isSucceed, string name) =>
                     {
-
-                        //var receive = message.ToObject<(string name, string text, string targetUser)>();
-                        //ChatManager.MainChat.ReceiveMessage(receive.name, receive.text, receive.targetUser);
-                        ChatUIManager.Instance.RefreshChatMessages(chatID, new List<ChatMessageInfo.ChatMessage>() { chatMessage });
-                    });
-                    TouHouHub.On<string>("test", message =>
-                    {
-                        Debug.Log(message);
-                    });
-                    TouHouHub.On("QueryOfflineInvite", () =>
-                    {
-                        Debug.Log("客户端被要求查询所有离线请求");
-                        _ = NetCommand.QueryOfflineInvite();
+                        //这里弹个窗通知就行
+                        string text = $"对玩家 {name} 的好友邀请";
+                        text += (isSucceed ? "已被接受" : "已被拒绝");
+                        ChatUIManager.Instance.NotificeShow(text);
+                        //如果添加成功则触发好友列表刷新
+                        if (isSucceed)
+                        {
+                            await QueryAllChatTargetInfo();
+                        }
                     });
                     TouHouHub.On<object[]>("StartAgainst", ReceiveInfo =>
                     {

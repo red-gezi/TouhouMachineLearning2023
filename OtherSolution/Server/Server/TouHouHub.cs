@@ -113,22 +113,31 @@ public class TouHouHub : Hub
     }
     public void AddFriend(string password, string senderUID, string recevierUID)
     {
+        Console.WriteLine(recevierUID);
         OfflineInviteInfo offlineRequest = new OfflineInviteInfo(password, senderUID, recevierUID);
         if (offlineRequest._id == null)
         {
             Console.WriteLine("离线请求创建失败，无对应UID玩家");
             return;
         }
-        MongoDbCommand.CreatOfflineRequest(offlineRequest);
-        var targetConnectId = OnlineUserManager.GetConnectId(recevierUID);
-        if (targetConnectId == null) return;
-        //对方在线则通知对方触发离线邀请检测
-        Console.WriteLine("好友邀请目标存在，直接发起邀请");
-        Clients.Client(targetConnectId).SendAsync("QueryOfflineInvite");
+        if (MongoDbCommand.CreatOfflineRequest(offlineRequest))
+        {
+            var targetConnectId = OnlineUserManager.GetConnectId(recevierUID);
+            if (targetConnectId == null) return;
+            //对方在线则通知对方触发离线邀请检测
+            Console.WriteLine("好友邀请目标存在，直接发起邀请");
+            Clients.Client(targetConnectId).SendAsync("QueryOfflineInvite");
+        }
+        else
+        {
+            var targetConnectId = OnlineUserManager.GetConnectId(senderUID);
+            if (targetConnectId == null) return;
+            //对方在线则通知对方触发离线邀请检测
+            Console.WriteLine("好友邀请已存在，创建失败");
+            Clients.Client(targetConnectId).SendAsync("Notifice","请勿重复发送好友邀请");
+        }
     }
-
     public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID) => MongoDbCommand.QueryOfflineInvites(password, senderUID);
-
     public void ResponseOfflineInvite(string password, string requestId, bool inviteResult)
     {
         Console.WriteLine("进行了选择，选择结果为" + requestId + inviteResult);
@@ -145,7 +154,7 @@ public class TouHouHub : Hub
         var targetConnectId = OnlineUserManager.GetConnectId(offlineRequests.SenderUID);
         if (targetConnectId == "") return;
         //对方在线则触发离线邀请检测
-        Clients.Client(targetConnectId).SendAsync("");
+        Clients.Client(targetConnectId).SendAsync("ResponseInvite", inviteResult, offlineRequests.ReceiverName);
     }
     public List<ChatTargetInfo> QueryAllChatTargetInfo(string password, string senderUID)
     {
