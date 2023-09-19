@@ -331,10 +331,12 @@ namespace Server
         //离线请求
         public static bool CreatOfflineRequest(OfflineInviteInfo offlineRequest)
         {
-            if (OfflineRequestDataCollection.Find(invite =>
+            //是否已存在重复邀请
+            var checkOfflineRequest = OfflineRequestDataCollection.AsQueryable().FirstOrDefault(invite =>
                 invite.SenderUID == offlineRequest.SenderUID &&
                 invite.ReceiverUID == offlineRequest.ReceiverUID
-                ) != null)
+                );
+            if (checkOfflineRequest != null)
             {
                 Console.WriteLine("已存在好友请求，不重复申请");
                 return false;

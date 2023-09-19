@@ -50,6 +50,7 @@ namespace TouhouMachineLearningSummary.Manager
             CloseChatMessageCanves();
             ClosePlayerInfoCanves();
             PopupShow();
+            NetCommand.QueryOfflineInvite();
             NotificationCanves.SetActive(true);
             NotificationCanves.GetComponent<CanvasGroup>().alpha = 0;
             searchPlayerButton.onClick.RemoveAllListeners();
@@ -61,25 +62,21 @@ namespace TouhouMachineLearningSummary.Manager
         //查询玩家信息，并在相应中刷新UI
         //public void QueryLocalPlayerData() => ChatCommand.RequestLocalPlayerData();
         ////////////////////////////////好友操作指令//////////////////////////////////////////
-        public async void AddFriendInvite(string targetUUID)
-        {
-            var s = targetUUID.ToList();
-            targetUUID = Regex.Match(targetUUID, @"\d*").Value;
-            await Command.NetCommand.AddFriend(targetUUID);
-        }
+        public async void AddFriendInvite(string targetUUID) => await Command.NetCommand.AddFriend(targetUUID);
 
         public void DeleteFriend(string targetUUID) => Command.NetCommand.DeleteFriend(targetUUID);
         ////////////////////////////////信息面板操作指令//////////////////////////////////////////
-        public async void OpenPlayerInfoCanves(string UID)
+        public async void OpenPlayerInfoCanves(string targetUUID)
         {
             //查询玩家信息，如果没有，弹窗通知UID输入错误
-            var targetPlayerInfo =await NetCommand.QueryOtherUserInfo(UID);
+            targetUUID = Regex.Match(targetUUID, @"\d*").Value;
+            var targetPlayerInfo =await NetCommand.QueryOtherUserInfo(targetUUID);
             if (targetPlayerInfo != null)
             {
                 playerInfoCanves.SetActive(true);
                 //设置面板参数
                 addFriendButton.onClick.RemoveAllListeners();
-                addFriendButton.onClick.AddListener(() => AddFriendInvite(searchUUID.text));
+                addFriendButton.onClick.AddListener(() => AddFriendInvite(targetUUID));
             }
             else
             {

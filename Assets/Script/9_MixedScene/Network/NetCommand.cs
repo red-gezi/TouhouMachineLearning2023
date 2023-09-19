@@ -27,7 +27,7 @@ namespace TouhouMachineLearningSummary.Command
                     await TouHouHub.StartAsync();
 
                     TouHouHub.On<string>("test", message => Debug.Log(message));
-                    TouHouHub.On("QueryOfflineInvite", () => _ = NetCommand.QueryOfflineInvite());
+                    TouHouHub.On("QueryOfflineInvite", () => _ = QueryOfflineInvite());
                     TouHouHub.On<string>("Notifice", message => ChatUIManager.Instance.NotificeShow(message));
                     TouHouHub.On<string, ChatMessageInfo.ChatMessage>("ChatMessageReceive", (chatID, chatMessage) =>
                         ChatUIManager.Instance.RefreshChatMessages(chatID, new List<ChatMessageInfo.ChatMessage>() { chatMessage }));
