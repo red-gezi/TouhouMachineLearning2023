@@ -70,12 +70,21 @@ namespace TouhouMachineLearningSummary.Manager
 
         public void DeleteFriend(string targetUUID) => Command.NetCommand.DeleteFriend(targetUUID);
         ////////////////////////////////信息面板操作指令//////////////////////////////////////////
-        public void OpenPlayerInfoCanves(string UID)
+        public async void OpenPlayerInfoCanves(string UID)
         {
             //查询玩家信息，如果没有，弹窗通知UID输入错误
-            playerInfoCanves.SetActive(true);
-            addFriendButton.onClick.RemoveAllListeners();
-            addFriendButton.onClick.AddListener(() => AddFriendInvite(searchUUID.text));
+            var targetPlayerInfo =await NetCommand.QueryOtherUserInfo(UID);
+            if (targetPlayerInfo != null)
+            {
+                playerInfoCanves.SetActive(true);
+                //设置面板参数
+                addFriendButton.onClick.RemoveAllListeners();
+                addFriendButton.onClick.AddListener(() => AddFriendInvite(searchUUID.text));
+            }
+            else
+            {
+                NotificeShow("用户不存在");
+            }
         }
         public void ClosePlayerInfoCanves() => playerInfoCanves.SetActive(false);
         ////////////////////////////////聊天面板操作指令//////////////////////////////////////////

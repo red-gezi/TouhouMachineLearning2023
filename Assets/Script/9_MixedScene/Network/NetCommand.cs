@@ -209,6 +209,7 @@ namespace TouhouMachineLearningSummary.Command
                 return null;
             }
         }
+        public static async Task<PlayerInfo> QueryOtherUserInfo(string UID) => await TouHouHub.InvokeAsync<PlayerInfo>("QueryOtherUserInfoin", UID);
 
         public static async Task<List<string>> DrawCardAsync(string uid, string password, List<Faith> selectFaiths)
         {

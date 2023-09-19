@@ -127,13 +127,6 @@ namespace Server
         }
         public static PlayerInfo QueryOtherUserInfo(string UID)
         {
-            Console.WriteLine(UID);
-            Console.WriteLine(UID == "1000");
-            var result = PlayerInfoCollection.AsQueryable().ToList();
-            Console.WriteLine("开始debug");
-            Console.WriteLine(result[0].UID == "1000");
-            result.Where(info => info.UID == "1000").ToList();
-            Console.WriteLine(result[0].UID);
             var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == UID);
             PlayerInfo userInfo = PlayerInfoCollection.Find(CheckUserExistQuery).FirstOrDefault();
             return userInfo;

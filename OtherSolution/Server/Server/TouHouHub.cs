@@ -32,7 +32,7 @@ public class TouHouHub : Hub
         }
         return playerInfo;
     }
-
+    public PlayerInfo QueryOtherUserInfoin(string UID) => MongoDbCommand.QueryOtherUserInfo(UID);
     public List<string> DrawCard(string uid, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(uid, password, selectFaiths);
     //////////////////////////////////////////////等候列表////////////////////////////////////////////////////////////////////
     public void Join(AgainstModeType againstMode, int FirstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo) => HoldListManager.Add(againstMode, FirstMode, userInfo, virtualOpponentInfo, Clients.Caller);
