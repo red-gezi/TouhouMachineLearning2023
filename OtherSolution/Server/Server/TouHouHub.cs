@@ -134,7 +134,7 @@ public class TouHouHub : Hub
             if (targetConnectId == null) return;
             //对方在线则通知对方触发离线邀请检测
             Console.WriteLine("好友邀请已存在，创建失败");
-            Clients.Client(targetConnectId).SendAsync("Notifice","请勿重复发送好友邀请");
+            Clients.Client(targetConnectId).SendAsync("Notifice", "请勿重复发送好友邀请");
         }
     }
     public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID) => MongoDbCommand.QueryOfflineInvites(password, senderUID);
@@ -180,5 +180,7 @@ public class TouHouHub : Hub
         MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, playerData.ChatTargets);
         return playerData.ChatTargets;
     }
+    public List<ChatMessageData.ChatMessage> QueryChatLog(string chatID) => MongoDbCommand.QueryChatLog(chatID);
+
     public void Test(string text) => Clients.Caller.SendAsync("Test", "服务器向你问候" + text);
 }

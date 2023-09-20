@@ -447,39 +447,16 @@ namespace Server
             }
             return ("", "");
         }
-        //start为-1时，自动替换值为聊天记录中最后一条，range为负数时，代表向上查询
-        public static List<ChatMessageData.ChatMessage> QueryChatLog(string chatID, int start, int range)
+        //查询对话日志
+        public static List<ChatMessageData.ChatMessage> QueryChatLog(string chatID)
         {
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
             if (targetChat == null)
             {
                 return new List<ChatMessageData.ChatMessage>();
             }
-            else
-            {
-                //判断最后一个聊天记录的索引
-                var lastMessage = targetChat.chatMessages.LastOrDefault();
-                if (lastMessage == null) return new List<ChatMessageData.ChatMessage>();
-                var lastIndex = lastMessage.Index;
-                int end = lastIndex;
-                if (start == -1)
-                {
-                    start = lastIndex;
-                }
-                if (range > 0)
-                {
-                    end = start + range;
-                }
-                else
-                {
-                    end = start + 1;
-                    start = end + range;
-                }
-                //这里优化下范围，暂时全部返回
-                //return targetChat.chatMessages;
-                return targetChat.chatMessages.Where(message => message.Index >= start && message.Index < end).ToList();
-            }
+            return targetChat.chatMessages;
         }
-
     }
+
 }
