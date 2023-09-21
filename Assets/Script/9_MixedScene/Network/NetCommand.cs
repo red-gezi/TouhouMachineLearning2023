@@ -359,10 +359,11 @@ namespace TouhouMachineLearningSummary.Command
         }
         ///////////////////删除好友////////////////////
         //主动删除者隐藏该聊天，对方则是锁定该聊天不再能发送消息
-        public static async void DeleteFriend(string UID)
+        public static async void DeleteFriend(string targetUID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, UID);
+            await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, PlayerUID, targetUID);
+            ChatUIManager.Instance.RefreshChatTargets();
         }
         ///////////////////打开聊天界面////////////////
         //刷新好友列表中指定用户的状态信息,并更新本地

@@ -270,7 +270,7 @@ namespace Server
     public class ChatTargetInfo
     {
         public string ChatID { get; set; }
-        public string TargetChaterUUID { get; set; }
+        public string TargetChaterUID { get; set; }
         public string Signature { get; set; }
         public string Name { get; set; }
         public bool Online { get; set; }

@@ -388,7 +388,7 @@ namespace Server
                     var chatData = new ChatTargetInfo
                     {
                         ChatID = chatID,
-                        TargetChaterUUID = playerB_UID,
+                        TargetChaterUID = playerB_UID,
                     };
                     // 更新 Chats 属性
                     foundPlayer.ChatTargets.Add(chatData);

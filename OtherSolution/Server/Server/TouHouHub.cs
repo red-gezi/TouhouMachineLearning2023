@@ -137,6 +137,18 @@ public class TouHouHub : Hub
             Clients.Client(targetConnectId).SendAsync("Notifice", "请勿重复发送好友邀请");
         }
     }
+    public void DeleteFriend(string password, string senderUID, string targetUID)
+    {
+
+        var userInfo = MongoDbCommand.QueryUserInfo(senderUID, password);
+        var targetChat = userInfo.ChatTargets.FirstOrDefault(chat => chat.TargetChaterUID == targetUID);
+        if (targetChat != null)
+        {
+            userInfo.ChatTargets.Remove(targetChat);
+            MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, userInfo.ChatTargets);
+        }
+        Console.WriteLine("删除" + targetUID);
+    }
     public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID) => MongoDbCommand.QueryOfflineInvites(password, senderUID);
     public void ResponseOfflineInvite(string password, string requestId, bool inviteResult)
     {
@@ -163,7 +175,7 @@ public class TouHouHub : Hub
         var playerData = MongoDbCommand.QueryUserInfo(senderUID, password);
         for (int i = 0; i < playerData.ChatTargets.Count; i++)
         {
-            string targetChaterUUID = playerData.ChatTargets[i].TargetChaterUUID;
+            string targetChaterUUID = playerData.ChatTargets[i].TargetChaterUID;
             PlayerInfo targetChatterInfo = MongoDbCommand.QueryOtherUserInfo(targetChaterUUID);
             ChatTargetInfo targetChatter = playerData.ChatTargets[i];
             if (targetChatter != null)
