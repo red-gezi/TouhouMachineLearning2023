@@ -33,7 +33,7 @@ public class TouHouHub : Hub
         return playerInfo;
     }
     public PlayerInfo QueryOtherUserInfoin(string UID) => MongoDbCommand.QueryOtherUserInfo(UID);
-    public List<string> DrawCard(string uid, string password, List<Faith> selectFaiths) => MongoDbCommand.DrawCard(uid, password, selectFaiths);
+    public async Task<List<string>> DrawCard(string uid, string password, List<Faith> selectFaiths) => await MongoDbCommand.DrawCard(uid, password, selectFaiths);
     //////////////////////////////////////////////等候列表////////////////////////////////////////////////////////////////////
     public void Join(AgainstModeType againstMode, int FirstMode, PlayerInfo userInfo, PlayerInfo virtualOpponentInfo) => HoldListManager.Add(againstMode, FirstMode, userInfo, virtualOpponentInfo, Clients.Caller);
     public void Leave(AgainstModeType againstMode, string uid) => HoldListManager.Remove(againstMode, uid);
@@ -41,21 +41,18 @@ public class TouHouHub : Hub
     public void Async(NetAcyncType netAcyncType, string roomId, bool isPlayer1, object[] data) => RoomManager.GetRoom(roomId)?.AsyncInfo(netAcyncType, isPlayer1, data);
     public bool AgainstFinish(string roomId, string uid, int P1Score, int P2Score) => RoomManager.DisponseRoom(roomId, uid, P1Score, P2Score);
     //////////////////////////////////////////////用户信息更新操作////////////////////////////////////////////////////////////////////
-    public bool UpdateInfo(string uid, string password, UpdateType updateType, object updateValue)
+    public async Task<bool> UpdateInfo(string uid, string password, UpdateType updateType, object updateValue)
     {
         switch (updateType)
         {
-            case UpdateType.Name: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Name), updateValue.To<string>());
-            case UpdateType.UnlockTitles: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UnlockTitleTags), updateValue.To<List<string>>());
-            case UpdateType.PrefixTitle: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
-            case UpdateType.SuffixTitle: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseSuffixTitleTag), updateValue.To<string>());
-            case UpdateType.Decks: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Decks), updateValue.To<List<Deck>>());
-            case UpdateType.UseDeckNum: return MongoDbCommand.UpdateInfo(uid, password, (x => x.UseDeckNum), updateValue.To<int>());
-            case UpdateType.Stage: return MongoDbCommand.UpdateInfo(uid, password, (x => x.Stage), updateValue.To<Dictionary<string, int>>());
-            case UpdateType.LastLoginTime:
-                return MongoDbCommand.UpdateInfo(uid, password, (x => x.LastLoginTime), updateValue.To<DateTime>());
-                break;
-
+            case UpdateType.Name: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.Name), updateValue.To<string>());
+            case UpdateType.UnlockTitles: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.UnlockTitleTags), updateValue.To<List<string>>());
+            case UpdateType.PrefixTitle: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.UsePrefixTitleTag), updateValue.To<string>());
+            case UpdateType.SuffixTitle: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.UseSuffixTitleTag), updateValue.To<string>());
+            case UpdateType.Decks: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.Decks), updateValue.To<List<Deck>>());
+            case UpdateType.UseDeckNum: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.UseDeckNum), updateValue.To<int>());
+            case UpdateType.Stage: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.Stage), updateValue.To<Dictionary<string, int>>());
+            case UpdateType.LastLoginTime: return await MongoDbCommand.UpdateInfo(uid, password, (x => x.LastLoginTime), updateValue.To<DateTime>());
             default: return false;
         }
     }
@@ -137,7 +134,7 @@ public class TouHouHub : Hub
             Clients.Client(targetConnectId).SendAsync("Notifice", "请勿重复发送好友邀请");
         }
     }
-    public void DeleteFriend(string password, string senderUID, string targetUID)
+    public List<ChatTargetInfo> DeleteFriend(string password, string senderUID, string targetUID)
     {
 
         var userInfo = MongoDbCommand.QueryUserInfo(senderUID, password);
@@ -147,7 +144,8 @@ public class TouHouHub : Hub
             userInfo.ChatTargets.Remove(targetChat);
             MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, userInfo.ChatTargets);
         }
-        Console.WriteLine("删除" + targetUID);
+        Console.WriteLine(senderUID + "删除好友" + targetUID);
+        return userInfo.ChatTargets;
     }
     public List<OfflineInviteInfo> QueryOfflineInvite(string password, string senderUID) => MongoDbCommand.QueryOfflineInvites(password, senderUID);
     public void ResponseOfflineInvite(string password, string requestId, bool inviteResult)
@@ -168,7 +166,7 @@ public class TouHouHub : Hub
         //对方在线则触发离线邀请检测
         Clients.Client(targetConnectId).SendAsync("ResponseInvite", inviteResult, offlineRequests.ReceiverName);
     }
-    public List<ChatTargetInfo> QueryAllChatTargetInfo(string password, string senderUID)
+    public async Task<List<ChatTargetInfo>> QueryAllChatTargetInfo(string password, string senderUID)
     {
         //打开聊天窗口时，根据聊天列表，挨个更新聊天对象信息，更新到数据库中，并传输给客户端本地
         //更新聊天对象详细信息
@@ -189,7 +187,8 @@ public class TouHouHub : Hub
                 targetChatter.LastMessageTime = lastMessageTime;
             }
         }
-        MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, playerData.ChatTargets);
+        var result = await MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, playerData.ChatTargets);
+        Console.WriteLine("聊天对象列表更新" + result);
         return playerData.ChatTargets;
     }
     public List<ChatMessageData.ChatMessage> QueryChatLog(string chatID) => MongoDbCommand.QueryChatLog(chatID);

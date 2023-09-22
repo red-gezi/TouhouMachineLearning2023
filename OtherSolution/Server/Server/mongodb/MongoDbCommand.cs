@@ -108,7 +108,7 @@ namespace Server
         }
 
         /// <summary>
-        /// 查询脱敏后的用户信息
+        /// 查询玩家自身用户信息
         /// </summary>
         /// <param name="accountOrUID"></param>
         /// <param name="password"></param>
@@ -125,6 +125,12 @@ namespace Server
             //return (UserInfo != null ? 1 : playerInfoCollection.Find(CheckUserExistQuery).CountDocuments() > 0 ? -1 : -2, UserInfo);
             return null;
         }
+        // <summary>
+        /// 查询脱敏后的其余用户信息
+        /// </summary>
+        /// <param name="accountOrUID"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static PlayerInfo QueryOtherUserInfo(string UID)
         {
             var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == UID);
@@ -132,20 +138,12 @@ namespace Server
             return userInfo;
         }
         //////////////////////////////////////////////////抽卡系统///////////////////////////////////////////////////////////////////
-        public static string AddFaiths(string uid, string password, Faith newFaith)
+        public static async Task<string> AddFaiths(string uid, string password, Faith newFaith)
         {
-            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.UID == uid);
-            if (userInfo != null)
+            PlayerInfo? userInfo = QueryUserInfo(uid, password);
+            if (userInfo == null)
             {
-                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
-                {
-                    var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
-                }
-                else
-                {
-                    userInfo = null;
-                    return "账号验证失败";
-                }
+                return "账号验证失败";
             }
             var targetFaith = userInfo.Faiths.FirstOrDefault(userFaith => userFaith.BelongUserUID == newFaith.BelongUserUID);
             if (targetFaith == null)
@@ -156,7 +154,8 @@ namespace Server
             {
                 targetFaith.Count += newFaith.Count;
             }
-            PlayerInfoCollection.UpdateOne(info => info.UID == uid, Builders<PlayerInfo>.Update.Set(info => info.Faiths, userInfo.Faiths));
+            var result =await UpdateInfo(uid, userInfo.Password, (x => x.Faiths), userInfo.Faiths);
+            Console.WriteLine("信念增添结果"+result);
             return "信念增添成功";
         }
         public static string RemoveFaiths(string uid, string password, Faith newFaith)
@@ -198,20 +197,12 @@ namespace Server
             PlayerInfoCollection.UpdateOne(info => info.UID == uid, Builders<PlayerInfo>.Update.Set(info => info.Faiths, userInfo.Faiths));
             return "信念移除成功";
         }
-        public static List<string> DrawCard(string uid, string password, List<Faith> selectFaiths)
+        public static async Task<List<string>> DrawCard(string uid, string password, List<Faith> selectFaiths)
         {
-            PlayerInfo? userInfo = PlayerInfoCollection.AsQueryable().FirstOrDefault(info => info.UID == uid);
+
+            PlayerInfo? userInfo = QueryUserInfo(uid, password);
             if (userInfo != null)
             {
-                if (userInfo.Password == password.GetSaltHash(userInfo.UID))
-                {
-                    var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
-                }
-                else
-                {
-                    userInfo = null;
-                }
-
                 bool HaveEnoughFaith = true;
                 //判断能否扣除仓库中的信念
                 selectFaiths.GroupBy(x => x.BelongUserUID).ToList().ForEach(group =>
@@ -223,15 +214,15 @@ namespace Server
                     }
                 });
                 //满足抽卡条件
-                //if (HaveEnoughFaith)
-                if (true)
+                if (HaveEnoughFaith || true)
                 {
                     //如果是第一次，固定返回
                     if (userInfo.IsFirstDraw)
                     {
-                        var result = UpdateInfo(uid, userInfo.Password, (x => x.LastLoginTime), DateTime.Now);
+                        var result = await UpdateInfo(uid, password, (x => x.IsFirstDraw), false);
                         return new List<string> { "M_N0_1G_001" };
                     }
+                    //否则平等的随机抽卡
                     else
                     {
                         //卡池计算公式
@@ -241,7 +232,6 @@ namespace Server
                                     .Take(selectFaiths.Count)
                                     .ToList();
                     }
-                    //否则平等的随机抽卡
                 }
                 else
                 {
@@ -254,20 +244,14 @@ namespace Server
         }
         public static int GetRegisterPlayerCount() => PlayerInfoCollection.AsQueryable().Count();
         //////////////////////////////////////////////////用户信息更新///////////////////////////////////////////////////////////////////
-        public static bool UpdateInfo<TField>(string uid, string password, Expression<Func<PlayerInfo, TField>> setOperator, TField field)
+        public static async Task<bool> UpdateInfo<TField>(string uid, string password, Expression<Func<PlayerInfo, TField>> setOperator, TField field)
         {
-            var CheckUserExistQuery = Builders<PlayerInfo>.Filter.Where(info => info.UID == uid && info.Password == password);
-            var updateUserState = Builders<PlayerInfo>.Update.Set(setOperator, field);
-            IFindFluent<PlayerInfo, PlayerInfo> findFluent = PlayerInfoCollection.Find(CheckUserExistQuery);
-            if (findFluent.CountDocuments() > 0)
-            {
-                PlayerInfoCollection.UpdateOne(CheckUserExistQuery, updateUserState);
-                return true;//修改成功
-            }
-            else
-            {
-                return false;//修改失败
-            }
+            //获取加密后的真实密码
+            string realPassword = password.GetSaltHash(uid);
+            var filter = Builders<PlayerInfo>.Filter.Where(info => info.UID == uid && info.Password == realPassword);
+            var update = Builders<PlayerInfo>.Update.Set(setOperator, field);
+            var result = await PlayerInfoCollection.UpdateOneAsync(filter, update);
+            return result.ModifiedCount > 0;
         }
         //////////////////////////////////////////////////对战记录///////////////////////////////////////////////////////////////////
         public static void InsertAgainstSummary(AgainstSummary againstSummary) => SummaryCollection.InsertOne(againstSummary);

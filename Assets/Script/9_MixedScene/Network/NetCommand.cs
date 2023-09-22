@@ -362,7 +362,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async void DeleteFriend(string targetUID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("DeleteFriend", PlayerPassWord, PlayerUID, targetUID);
+            Info.AgainstInfo.OnlineUserInfo.ChatTargets = await TouHouHub.InvokeAsync<List<ChatTargetInfo>>("DeleteFriend", PlayerPassWord, PlayerUID, targetUID);
             ChatUIManager.Instance.RefreshChatTargets();
         }
         ///////////////////打开聊天界面////////////////
@@ -384,7 +384,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task QueryChatLog(string chatID)
         {
             await CheckHubState();
-            var chatMessages = await TouHouHub.InvokeAsync<List<ChatMessageInfo.ChatMessage>>("QueryChatLog", PlayerPassWord, chatID);
+            var chatMessages = await TouHouHub.InvokeAsync<List<ChatMessageInfo.ChatMessage>>("QueryChatLog", chatID);
         }
         //清除指定聊天未读消息数量
         public static async Task ClearUnreadCount(string chatID)
