@@ -63,6 +63,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.21.0, )"
+            },
+            "SSH.NET": {
+              "target": "Package",
+              "version": "[2020.0.2, )"
             }
           },
           "imports": [

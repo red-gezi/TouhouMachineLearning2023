@@ -217,3 +217,5 @@ D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.
 D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
 D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
 D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.0\Renci.SshNet.dll
+D:\vs2022-Project\TouhouMachineLearning2023\OtherSolution\Server\bin\Debug\net6.0\SshNet.Security.Cryptography.dll

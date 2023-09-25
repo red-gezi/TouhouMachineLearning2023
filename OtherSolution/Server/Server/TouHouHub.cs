@@ -173,8 +173,8 @@ public class TouHouHub : Hub
         var playerData = MongoDbCommand.QueryUserInfo(senderUID, password);
         for (int i = 0; i < playerData.ChatTargets.Count; i++)
         {
-            string targetChaterUUID = playerData.ChatTargets[i].TargetChaterUID;
-            PlayerInfo targetChatterInfo = MongoDbCommand.QueryOtherUserInfo(targetChaterUUID);
+            string targetChaterUID = playerData.ChatTargets[i].TargetChaterUID;
+            PlayerInfo targetChatterInfo = MongoDbCommand.QueryOtherUserInfo(targetChaterUID);
             ChatTargetInfo targetChatter = playerData.ChatTargets[i];
             if (targetChatter != null)
             {

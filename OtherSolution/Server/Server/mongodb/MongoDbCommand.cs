@@ -1,12 +1,9 @@
-﻿using AntDesign;
-using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using MongoDB.Driver;
+using Renci.SshNet;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 using TouhouMachineLearningSummary.GameEnum;
+using ConnectionInfo = Renci.SshNet.ConnectionInfo;
 
 namespace Server
 {
@@ -21,23 +18,42 @@ namespace Server
         static IMongoCollection<ServerConfig>? ServerConfigCollection { get; set; }
         static IMongoCollection<AgainstSummary>? SummaryCollection { get; set; }
         public static IMongoCollection<DiyCardInfo> DiyCardCollection { get; set; }
+
         public static void Init()
         {
-
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-
             Log.Summary("/////////////////////////////");
-            Log.Summary("V2023.5.5.01");
+            Log.Summary("V2023.9.25.V1");
             Log.Summary("/////////////////////////////");
             Log.Summary("链接数据库");
             //读取服务器配置保密文件
             if (!File.Exists("Config.ini"))
             {
-                File.WriteAllLines("Config.ini", new List<string> { "MongodbIP", "mongodb://127.0.0.1:28020" });
+                File.WriteAllLines("Config.ini", new List<string> { "你的ssh ip", "你的ssh密码" });
                 Console.WriteLine("检测不到配置文件，开始创建");
             }
-
-            client = new MongoClient(File.ReadAllLines("Config.ini")[1]);
+            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            if (isWindows)
+            {
+                string SSH_HOST = File.ReadAllLines("Config.ini")[0]; ;
+                string SSH_PASSWORD = File.ReadAllLines("Config.ini")[1];
+                // 创建 SSH 连接
+                var sshClient = new SshClient(SSH_HOST, 22, "root", SSH_PASSWORD);
+                sshClient.Connect();
+                // 创建 SSH 端口转发
+                var forwardedPort = new ForwardedPortLocal("localhost", "127.0.0.1", 28020);
+                sshClient.AddForwardedPort(forwardedPort);
+                forwardedPort.Start();
+                // 创建 MongoDB 连接字符串
+                string mongodbUri = $"mongodb://localhost:{forwardedPort.BoundPort}";
+                // 创建 MongoDB 客户端
+                client = new MongoClient(mongodbUri);
+                Console.WriteLine("当前数据库转发地址为" + mongodbUri);
+            }
+            else
+            {
+                client = new MongoClient("mongodb://127.0.0.1:28020");
+            }
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
             ChatDataCollection = db.GetCollection<ChatMessageData>("ChatData");
@@ -154,8 +170,8 @@ namespace Server
             {
                 targetFaith.Count += newFaith.Count;
             }
-            var result =await UpdateInfo(uid, userInfo.Password, (x => x.Faiths), userInfo.Faiths);
-            Console.WriteLine("信念增添结果"+result);
+            var result = await UpdateInfo(uid, userInfo.Password, (x => x.Faiths), userInfo.Faiths);
+            Console.WriteLine("信念增添结果" + result);
             return "信念增添成功";
         }
         public static string RemoveFaiths(string uid, string password, Faith newFaith)
