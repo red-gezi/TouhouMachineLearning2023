@@ -12,7 +12,7 @@ namespace Server
         static MongoClient client;
         static IMongoDatabase db;
         static IMongoCollection<PlayerInfo>? PlayerInfoCollection { get; set; }
-        static IMongoCollection<ChatMessageData> ChatDataCollection { get; set; }
+        static IMongoCollection<ChatMessageInfo> ChatDataCollection { get; set; }
         static IMongoCollection<OfflineInviteInfo> OfflineRequestDataCollection { get; set; }
         static IMongoCollection<CardConfig>? CardConfigCollection { get; set; }
         static IMongoCollection<ServerConfig>? ServerConfigCollection { get; set; }
@@ -56,7 +56,7 @@ namespace Server
             }
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");
-            ChatDataCollection = db.GetCollection<ChatMessageData>("ChatData");
+            ChatDataCollection = db.GetCollection<ChatMessageInfo>("ChatInfo");
             OfflineRequestDataCollection = db.GetCollection<OfflineInviteInfo>("OfflineRequestData");
             CardConfigCollection = db.GetCollection<CardConfig>("CardConfig");
             ServerConfigCollection = db.GetCollection<ServerConfig>("ServerConfig");
@@ -398,27 +398,27 @@ namespace Server
                 }
             }
         }
-        public static void AddMessageToChatLog(string chatID, ChatMessageData.ChatMessage message)
+        public static void AddMessageToChatLog(string chatID, ChatMessageInfo.ChatMessage message)
         {
 
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chat => chat._id == chatID);
             if (targetChat == null)
             {
-                targetChat = new ChatMessageData() { _id = chatID };
-                message.SendTime = DateTime.Now.ToShortTimeString();
+                targetChat = new ChatMessageInfo() { _id = chatID };
+                message.Date = DateTime.Now.ToShortTimeString();
                 message.Index = 0;
-                targetChat.chatMessages.Add(message);
+                targetChat.ChatMessages.Add(message);
                 ChatDataCollection.InsertOne(targetChat);
             }
             else
             {
 
-                message.SendTime = DateTime.Now.ToShortTimeString();
-                var lastMessage = targetChat.chatMessages.LastOrDefault();
+                message.Date = DateTime.Now.ToShortTimeString();
+                var lastMessage = targetChat.ChatMessages.LastOrDefault();
                 message.Index = lastMessage == null ? 0 : lastMessage.Index + 1;
-                targetChat.chatMessages.Add(message);
-                var filter = Builders<ChatMessageData>.Filter.Eq(x => x._id, chatID);
-                var update = Builders<ChatMessageData>.Update.Set(x => x.chatMessages, targetChat.chatMessages);
+                targetChat.ChatMessages.Add(message);
+                var filter = Builders<ChatMessageInfo>.Filter.Eq(x => x._id, chatID);
+                var update = Builders<ChatMessageInfo>.Update.Set(x => x.ChatMessages, targetChat.ChatMessages);
                 ChatDataCollection.UpdateOne(filter, update);
             }
 
@@ -426,7 +426,7 @@ namespace Server
         public static int QueryLastChatLogIndex(string chatID)
         {
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
-            if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
+            if (targetChat?.ChatMessages?.LastOrDefault() is ChatMessageInfo.ChatMessage chatMessage)
             {
                 return chatMessage.Index;
             }
@@ -436,26 +436,26 @@ namespace Server
         public static (string, string) QueryLastChatLogMessageAndTime(string chatID)
         {
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
-            if (targetChat?.chatMessages?.LastOrDefault() is ChatMessageData.ChatMessage chatMessage)
+            if (targetChat?.ChatMessages?.LastOrDefault() is ChatMessageInfo.ChatMessage chatMessage)
             {
-                return chatMessage.messageType switch
+                return chatMessage.MessageType switch
                 {
-                    ChatMessageType.Text => (chatMessage.Text, chatMessage.SendTime),
-                    ChatMessageType.Expression => ("【表情】", chatMessage.SendTime),
-                    _ => ("【未定义类型消息】", chatMessage.SendTime),
+                    ChatMessageType.Text => (chatMessage.Text, chatMessage.Date),
+                    ChatMessageType.Expression => ("【表情】", chatMessage.Date),
+                    _ => ("【未定义类型消息】", chatMessage.Date),
                 };
             }
             return ("", "");
         }
         //查询对话日志
-        public static List<ChatMessageData.ChatMessage> QueryChatLog(string chatID)
+        public static List<ChatMessageInfo.ChatMessage> QueryChatLog(string chatID)
         {
             var targetChat = ChatDataCollection.AsQueryable().FirstOrDefault(chatData => chatData._id == chatID);
             if (targetChat == null)
             {
-                return new List<ChatMessageData.ChatMessage>();
+                return new List<ChatMessageInfo.ChatMessage>();
             }
-            return targetChat.chatMessages;
+            return targetChat.ChatMessages;
         }
     }
 

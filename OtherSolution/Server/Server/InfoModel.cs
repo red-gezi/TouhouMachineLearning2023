@@ -282,31 +282,33 @@ namespace Server
         public string LastMessage { get; set; }
         public string LastMessageTime { get; set; }
     }
-    public class ChatMessageData
+
+    public class ChatMessageInfo
     {
         public string _id { get; set; }
         //不同日期的聊天日志
-        public List<ChatMessage> chatMessages = new();
+        public List<ChatMessage> ChatMessages { get; set; } = new();
         ////聊天者的UUID
         //public List<int> chatterUUID = new List<int>();
         public class ChatMessage
         {
             //消息索引
             public int Index { get; set; }
-            public string SendTime { get; set; }
+            public string Date { get; set; }
             //发言者
             public string SpeakerUUID { get; set; }
             public string SpeakerName { get; set; }
             //消息类型
-            public ChatMessageType messageType;
+            public ChatMessageType MessageType { get; set; }
             //聊天信息、语音、图片信息
-            public string Text;
+            public string Text { get; set; }
             public ChatMessage() { }
         }
-        public void AppendMessage(string speakerUUID, string speakerName, string Text)
+
+        public void AppendMessage(string speakerUUID, string speakerName, string text)
         {
             string date = DateTime.Today.ToShortDateString();
-            chatMessages.Add(new ChatMessage() { SpeakerUUID = speakerUUID, SpeakerName = speakerName, SendTime = date, Text = Text });
+            ChatMessages.Add(new ChatMessage() { SpeakerUUID = speakerUUID, SpeakerName = speakerName, Date = date, Text = text });
         }
         //固定时段定时操作
         public void DeleteLog(int userUUID, string Text)

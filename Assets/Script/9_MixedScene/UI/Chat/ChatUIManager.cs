@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.Manager
         [Header("聊天消息组件")]
         public GameObject chatMessageCanves;
         public Transform chatMessageContent;
-        public InputField chatMessageInput;
+        public Text chatMessageInput;
         [Header("聊天框预制UI")]
         public GameObject leftChatMessagePrefab;
         public GameObject rightChatMessagePrefab;
@@ -42,10 +42,10 @@ namespace TouhouMachineLearningSummary.Manager
         [Header("消息通知组件")]
         public GameObject PopupCanves;
         private void Awake() => Instance = this;
-        private void Start()
+        private async void Start()
         {
             //模拟登陆
-            NetCommand.LoginAsync("1000", "");
+            Info.AgainstInfo.OnlineUserInfo = await NetCommand.LoginAsync("1000", "");
             CloseChatTargetCanves();
             CloseChatMessageCanves();
             ClosePlayerInfoCanves();
@@ -70,7 +70,7 @@ namespace TouhouMachineLearningSummary.Manager
         {
             //查询玩家信息，如果没有，弹窗通知UID输入错误
             targetUUID = Regex.Match(targetUUID, @"\d*").Value;
-            var targetPlayerInfo =await NetCommand.QueryOtherUserInfo(targetUUID);
+            var targetPlayerInfo = await NetCommand.QueryOtherUserInfo(targetUUID);
             if (targetPlayerInfo != null)
             {
                 playerInfoCanves.SetActive(true);
@@ -167,11 +167,11 @@ namespace TouhouMachineLearningSummary.Manager
             }
             else
             {
-                var Indexs = allChatMessage[chatId].Select(msg => msg.index);
+                var Indexs = allChatMessage[chatId].Select(msg => msg.Index);
                 //添加新消息，去重，填补
                 chatMessages.ForEach(message =>
                 {
-                    if (!Indexs.Contains(message.index))
+                    if (!Indexs.Contains(message.Index))
                     {
                         allChatMessage[chatId].Add(message);
                     }
@@ -187,13 +187,13 @@ namespace TouhouMachineLearningSummary.Manager
                 for (int i = 0; i < allChatMessage[chatId].Count; i++)
                 {
                     var message = allChatMessage[chatId][i];
-                    bool isLocalPlayerSpeaker = (message.speakerUUID == Info.AgainstInfo.OnlineUserInfo.UID);
-                    switch (message.messageType)
+                    bool isLocalPlayerSpeaker = (message.SpeakerUUID == Info.AgainstInfo.OnlineUserInfo.UID);
+                    switch (message.MessageType)
                     {
                         case ChatMessageType.Text:
                             var messagePrefab = isLocalPlayerSpeaker ? Instance.rightChatMessagePrefab : Instance.leftChatMessagePrefab;
                             var messageItem = Instantiate(messagePrefab, Instance.chatMessageContent);
-                            messageItem.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = message.text;
+                            messageItem.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = message.Text;
                             chatMessageItem.Add(messageItem);
                             messageItem.SetActive(true);
                             //修改文字
@@ -211,10 +211,10 @@ namespace TouhouMachineLearningSummary.Manager
             //根据对象id在聊天面板中查找指定聊天
             var message = new ChatMessage()
             {
-                messageType = ChatMessageType.Text,
-                speakerUUID = Info.AgainstInfo.OnlineUserInfo.UID,
-                speakerName = Info.AgainstInfo.OnlineUserInfo.Name,
-                text = chatMessageInput.text,
+                MessageType = ChatMessageType.Text,
+                SpeakerUUID = Info.AgainstInfo.OnlineUserInfo.UID,
+                SpeakerName = Info.AgainstInfo.OnlineUserInfo.Name,
+                Text = chatMessageInput.text,
             };
             chatMessageInput.text = "";
             var current = Info.AgainstInfo.OnlineUserInfo.ChatTargets.FirstOrDefault(chat => chat.ChatID == currentOpenChatID);

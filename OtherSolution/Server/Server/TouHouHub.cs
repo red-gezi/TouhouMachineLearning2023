@@ -92,9 +92,9 @@ public class TouHouHub : Hub
 
     //////////////////////////////////////////////聊天////////////////////////////////////////////////////////////////////
     ///await TouHouHub.SendAsync("SendMessage", PlayerPassWord, chatID, message, speakerUID, targetChaterUID);
-    public void SendMessage(string PlayerPassWord, string chatID, ChatMessageData.ChatMessage message, string speakerUID, string targetChaterUID)
+    public void SendMessage(string PlayerPassWord, string chatID, ChatMessageInfo.ChatMessage message, string speakerUID, string targetChaterUID)
     {
-        Console.WriteLine("转发聊天记录" + message);
+        Console.WriteLine("转发聊天记录" + message.SpeakerName + ":" + message.Text);
         MongoDbCommand.AddMessageToChatLog(chatID, message);
         //通知双方更新消息
         var targetConnectId = OnlineUserManager.GetConnectId(speakerUID);
@@ -191,7 +191,7 @@ public class TouHouHub : Hub
         Console.WriteLine("聊天对象列表更新" + result);
         return playerData.ChatTargets;
     }
-    public List<ChatMessageData.ChatMessage> QueryChatLog(string chatID) => MongoDbCommand.QueryChatLog(chatID);
+    public List<ChatMessageInfo.ChatMessage> QueryChatLog(string chatID) => MongoDbCommand.QueryChatLog(chatID);
 
     public void Test(string text) => Clients.Caller.SendAsync("Test", "服务器向你问候" + text);
 }
