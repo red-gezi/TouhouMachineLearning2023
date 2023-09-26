@@ -7658,7 +7658,7 @@ MonoBehaviour:
   chatTargetPrefab: {fileID: 377029851724795664}
   chatMessageCanves: {fileID: 377029853625442819}
   chatMessageContent: {fileID: 377029851814952522}
-  chatMessageInput: {fileID: 377029853049651058}
+  chatMessageInput: {fileID: 377029852486749743}
   leftChatMessagePrefab: {fileID: 377029852599479819}
   rightChatMessagePrefab: {fileID: 377029852811093575}
   messageTimePrefab: {fileID: 377029853264791617}

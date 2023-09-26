@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.Manager
         [Header("聊天消息组件")]
         public GameObject chatMessageCanves;
         public Transform chatMessageContent;
-        public Text chatMessageInput;
+        public InputField chatMessageInput;
         [Header("聊天框预制UI")]
         public GameObject leftChatMessagePrefab;
         public GameObject rightChatMessagePrefab;
