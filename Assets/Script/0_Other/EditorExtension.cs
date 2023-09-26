@@ -18,7 +18,18 @@ namespace TouhouMachineLearningSummary.Other
 {
     public class EditorExtension : MonoBehaviour
     {
-        static string CommandPassword => File.ReadAllLines("config.ini")[1];
+        static string CommandPassword
+        {
+            get
+            {
+                if (!File.Exists("config.ini"))
+                {
+                    File.WriteAllLines("config.ini", new string[] { "指令密码", "这里写你的提交密码" });
+                }
+                return File.ReadAllLines("config.ini")[1];
+            }
+        }
+
         /////////////////////////////////////////////////////////////////工具///////////////////////////////////////////////////////////////////////////////////////////
         [MenuItem("TouHouMLS/Tools/打开服务端", false, 1)]
         static void StartServer() => System.Diagnostics.Process.Start(@"OtherSolution\Server\bin\Debug\net6.0\Server.exe");
@@ -202,7 +213,7 @@ namespace TouhouMachineLearningSummary.Other
                     try
                     {
                         //下载线上md5文件，如果不存在或与本地不一致则重新上传
-                         apkMD5FiIeDatas = webClient.DownloadData(@$"http://106.15.38.165:7777/AssetBundles/DllOrApk/Android/MD5.json");
+                        apkMD5FiIeDatas = webClient.DownloadData(@$"http://106.15.38.165:7777/AssetBundles/DllOrApk/Android/MD5.json");
                     }
                     catch (Exception e)
                     {

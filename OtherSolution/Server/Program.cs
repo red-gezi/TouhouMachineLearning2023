@@ -38,6 +38,11 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 app.MapHub<TouHouHub>("/TouHouHub");
 app.Urls.Add("http://*:495");
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Content-Security-Policy", "frame-ancestors 'self' https://www.baidu.com/");
+    await next.Invoke();
+});
 //app.Urls.Add("https://*:49514");
 Console.WriteLine("已载入回应中心");
 Console.WriteLine("服务端已启动");

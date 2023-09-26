@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using Renci.SshNet;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using TouhouMachineLearningSummary.GameEnum;
@@ -21,6 +22,10 @@ namespace Server
 
         public static void Init()
         {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.UseShellExecute = true;
+            startInfo.FileName = "Config.ini";
+
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             Log.Summary("/////////////////////////////");
             Log.Summary("V2023.9.25.V1");
@@ -31,15 +36,26 @@ namespace Server
             {
                 File.WriteAllLines("Config.ini", new List<string> { "你的ssh ip", "你的ssh密码" });
                 Console.WriteLine("检测不到配置文件，开始创建");
+                Process.Start(startInfo);
             }
-            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            if (isWindows)
+            bool isUseSSH = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            if (isUseSSH)
             {
                 string SSH_HOST = File.ReadAllLines("Config.ini")[0]; ;
                 string SSH_PASSWORD = File.ReadAllLines("Config.ini")[1];
                 // 创建 SSH 连接
                 var sshClient = new SshClient(SSH_HOST, 22, "root", SSH_PASSWORD);
-                sshClient.Connect();
+                try
+                {
+                    sshClient.Connect();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("链接失败，请检查有无配置SSH",e.Message);
+                    Process.Start(startInfo);
+
+                }
+                
                 // 创建 SSH 端口转发
                 var forwardedPort = new ForwardedPortLocal("localhost", "127.0.0.1", 28020);
                 sshClient.AddForwardedPort(forwardedPort);
