@@ -36,7 +36,6 @@ OtherSolution/xls检测更新/.vs/*
 *.cache
 //特殊文件
 password.txt
-
 UserSettings/Layouts/default-2021.dwlt
-config.ini
 OtherSolution/Server/bin/Debug/net6.0/config.ini
+config.ini
