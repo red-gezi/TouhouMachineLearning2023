@@ -100,11 +100,13 @@ public class TouHouHub : Hub
         var targetConnectId = OnlineUserManager.GetConnectId(speakerUID);
         if (targetConnectId != null)
         {
+            Console.WriteLine("发送给玩家"+ speakerUID);
             Clients.Client(targetConnectId).SendAsync("ChatMessageReceive", chatID, message);
         }
         targetConnectId = OnlineUserManager.GetConnectId(targetChaterUID);
         if (targetConnectId != null)
         {
+            Console.WriteLine("发送给玩家" + targetChaterUID);
             Clients.Client(targetConnectId).SendAsync("ChatMessageReceive", chatID, message);
         }
     }
@@ -120,6 +122,7 @@ public class TouHouHub : Hub
         if (MongoDbCommand.CreatOfflineRequest(offlineRequest))
         {
             var targetConnectId = OnlineUserManager.GetConnectId(recevierUID);
+            Console.WriteLine("尝试邀请对方");
             if (targetConnectId == null) return;
             //对方在线则通知对方触发离线邀请检测
             Console.WriteLine("好友邀请目标存在，直接发起邀请");
