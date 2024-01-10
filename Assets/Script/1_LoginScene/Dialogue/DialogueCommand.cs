@@ -84,7 +84,7 @@ namespace TouhouMachineLearningSummary.Command
             }
 
             DialogueInfo.instance.dialogueCanvas.SetActive(true);
-            Debug.LogError("对话组件开启");
+            Debug.LogWarning("对话组件开启");
             //加载剧情文本
             DialogueInfo.currnetDialogueModel = DialogueInfo.DialogueModels.FirstOrDefault(model => model.Tag == $"{stageTag}-{stageRank}");
             if (DialogueInfo.currnetDialogueModel != null)
@@ -111,7 +111,7 @@ namespace TouhouMachineLearningSummary.Command
                 else//读取完毕
                 {
                     Info.DialogueInfo.instance.dialogueCanvas.SetActive(false);
-                    Debug.LogError("对话组件关闭");
+                    Debug.LogWarning("对话组件关闭");
                 };
             }
         }
@@ -218,12 +218,12 @@ namespace TouhouMachineLearningSummary.Command
                     if (command.StartsWith("music"))
                     {
                         var music = command.Replace("music:", "");
-                        Debug.LogError("播放音乐" + music);
+                        Debug.LogWarning("播放音乐" + music);
                     }
                     if (command.StartsWith("backImage"))
                     {
                         var music = command.Replace("backImage:", "");
-                        Debug.LogError("切换背景图片" + music);
+                        Debug.LogWarning("切换背景图片" + music);
                     }
                 }
             }

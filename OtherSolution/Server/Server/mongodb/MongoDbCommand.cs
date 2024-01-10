@@ -28,7 +28,7 @@ namespace Server
 
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             Log.Summary("/////////////////////////////");
-            Log.Summary("V2023.9.25.V1");
+            Log.Summary("V2023.11.30.V1");
             Log.Summary("/////////////////////////////");
             Log.Summary("链接数据库");
             //读取服务器配置保密文件
@@ -69,6 +69,7 @@ namespace Server
             else
             {
                 client = new MongoClient("mongodb://127.0.0.1:28020");
+                Console.WriteLine("不通过ssh转发，地址" + "mongodb://127.0.0.1:28020");
             }
             db = client.GetDatabase("Gezi");
             PlayerInfoCollection = db.GetCollection<PlayerInfo>("PlayerInfo");

@@ -34,7 +34,9 @@ namespace TouhouMachineLearningSummary.Command
             Directory.CreateDirectory(targetPath);
             List<Task> ABLoadTask = new List<Task>();
             foreach (var file in new DirectoryInfo(targetPath).GetFiles().AsParallel()
-               .Where(file => file.Name.Contains("gezi") && !file.Name.Contains("meta") && !file.Name.Contains("manifest")))
+            .Where(file => file.Name.Contains("gezi")
+            && !file.Name.Contains("meta")
+            && !file.Name.Contains("manifest")))
             {
                 ABLoadTask.Add(LoadAssetBundle(file.FullName));
             }
@@ -45,7 +47,19 @@ namespace TouhouMachineLearningSummary.Command
 
             foreach (var ab in AssetBundle.GetAllLoadedAssetBundles())
             {
-                assets[ab.name] = ab.LoadAllAssets().ToList();
+                try
+                {
+                    //不将场景ab包纳入资源加载
+                    if (!ab.name.Contains("scene"))
+                    {
+                        assets[ab.name] = ab.LoadAllAssets().ToList();
+                    }
+                }
+                catch (System.Exception e)
+                {
+
+                    Debug.LogError(ab.name + e.Message);
+                }
             }
             Debug.LogWarning("生成AB包字典");
             async Task<AssetBundle> LoadAssetBundle(string path)

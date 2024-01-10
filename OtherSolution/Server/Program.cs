@@ -1,7 +1,9 @@
 using Blazored.LocalStorage;
+using Newtonsoft.Json.Linq;
 using Server;
 using Server.Data;
 using System;
+
 //链接用户数据库
 Log.Init();
 Log.Summary("日志系统初始化");
@@ -9,7 +11,7 @@ MongoDbCommand.Init();
 Log.Summary("数据库已初始化");
 HoldListManager.Init();
 Log.Summary("匹配管理器已初始化");
-HttpServer.Init();
+//HttpServer.Init();
 Log.Summary("资源服务器已初始化");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
@@ -18,6 +20,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<DiyInfo>();
+//加api
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR(hubOptions =>
 {
@@ -35,6 +39,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 app.MapBlazorHub();
+//加api
+app.MapControllers();
 app.MapFallbackToPage("/_Host");
 app.MapHub<TouHouHub>("/TouHouHub");
 app.Urls.Add("http://*:495");

@@ -56,7 +56,7 @@ namespace TouhouMachineLearningSummary.GameSystem
         {
             if (e.TargetCardId == null)
             {
-                Debug.LogError("无生效目标");
+                Debug.LogWarning("无生效目标");
                 return;
             }
             var card = Command.CardCommand.CreatCard(e);

@@ -120,7 +120,7 @@ namespace TouhouMachineLearningSummary.Command
                                     break;
                                 }
                             case NetAcyncType.RoundStartExchangeOver:
-                                Debug.LogError("交换卡牌完毕");
+                                Debug.LogWarning("交换卡牌完毕");
                                 if (AgainstInfo.IsPlayer1)
                                 {
                                     AgainstInfo.isPlayer2RoundStartExchangeOver = true;
@@ -376,21 +376,24 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task QueryAllChatTargetInfo()
         {
             await CheckHubState();
+            Debug.Log("开始刷新聊天列表前，时间：" + DateTime.Now);
             Info.AgainstInfo.OnlineUserInfo.ChatTargets = await TouHouHub.InvokeAsync<List<ChatTargetInfo>>("QueryAllChatTargetInfo", PlayerPassWord, PlayerUID);
+            Debug.Log("开始刷新聊天列后，时间：" + DateTime.Now);
             ChatUIManager.Instance.RefreshChatTargets();
         }
         ///////////////////聊天记录///////////////
         //start为-1时，自动替换值为聊天记录中最后一条，range为负数时，代表向上查询
-        public static async Task QueryChatLog(string chatID)
+        public static async Task<List<ChatMessageInfo.ChatMessage>> QueryChatLog(string chatID)
         {
             await CheckHubState();
             var chatMessages = await TouHouHub.InvokeAsync<List<ChatMessageInfo.ChatMessage>>("QueryChatLog", chatID);
+            return chatMessages;
         }
         //清除指定聊天未读消息数量
         public static async Task ClearUnreadCount(string chatID)
         {
             await CheckHubState();
-            await TouHouHub.SendAsync("ClearUnreadCount", PlayerPassWord, chatID);
+            await TouHouHub.SendAsync("ClearUnreadCount", PlayerPassWord, PlayerUID, chatID);
         }
         ///////////////////发送聊天信息///////////////
         //请求发送消息
@@ -467,7 +470,7 @@ namespace TouhouMachineLearningSummary.Command
                     case NetAcyncType.SelectUnits:
                         {
                             List<Location> Locations = Info.AgainstInfo.SelectUnits.SelectList(unit => unit.Location);
-                            Debug.LogError("选择单位完成：" + Locations.ToJson());
+                            Debug.LogWarning("选择单位完成：" + Locations.ToJson());
                             await TouHouHub.SendAsync("Async", AcyncType, AgainstInfo.RoomID, AgainstInfo.IsPlayer1, new object[] { Locations });
                             break;
                         }

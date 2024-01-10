@@ -166,7 +166,7 @@ namespace TouhouMachineLearningSummary.Other
                 string OnlieMD5FiIeDatas = "{}";
                 try
                 {
-                    OnlieMD5FiIeDatas = webClient.DownloadString(@$"http://106.15.38.165:7777/AssetBundles/{tag}/MD5.json");
+                    OnlieMD5FiIeDatas = webClient.DownloadString(@$"http://106.15.38.165:495/Download/{tag}/MD5.json");
 
                 }
                 catch (Exception e)
@@ -213,7 +213,7 @@ namespace TouhouMachineLearningSummary.Other
                     try
                     {
                         //下载线上md5文件，如果不存在或与本地不一致则重新上传
-                        apkMD5FiIeDatas = webClient.DownloadData(@$"http://106.15.38.165:7777/AssetBundles/DllOrApk/Android/MD5.json");
+                        apkMD5FiIeDatas = webClient.DownloadData(@$"http://106.15.38.165:495/Downloadc/Apk/MD5.json");
                     }
                     catch (Exception e)
                     {

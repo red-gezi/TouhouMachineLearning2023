@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -22,18 +22,25 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MapLine
   m_Shader: {fileID: -6465566751694194690, guid: 3b83bc68220507744bce24d6560d7d46, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
+  m_CustomRenderQueue: 2001
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_e8288b69178b4068ad77c1b8a35c3f7c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 68d33bc171346b640b23ff49c877b7ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e8288b69178b4068ad77c1b8a35c3f7c_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 68d33bc171346b640b23ff49c877b7ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}

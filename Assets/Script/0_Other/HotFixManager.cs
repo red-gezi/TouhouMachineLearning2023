@@ -14,12 +14,19 @@ using UnityEngine.UI;
 
 namespace TouhouMachineLearningSummary.Manager
 {
+    public enum GameStartMode
+    {
+        Editor,
+        PC_Release,
+        PC_Test,
+        Android
+    }
     public class HotFixManager : MonoBehaviour
     {
-        public string verious;
+        public string version;
         public Text loadText;
         public Text processText;
-        public Text versiousText;
+        public Text versionText;
 
         public TMP_Dropdown serverSelect;
         public Slider slider;
@@ -27,28 +34,35 @@ namespace TouhouMachineLearningSummary.Manager
         public GameObject RestartNotice;
         //服务器选择界面
         public GameObject ServerSelect;
-
-        static string serverTag = "PC";
         //后期自定义修改服务器ip
         //string serverIP = File.ReadAllLines("敏感信息.txt")[1];
-        static string serverAssetUrl = $"http://106.15.38.165:7777/AssetBundles";
+        static string serverDownloadUrl = $"http://106.15.38.165:495/Download";
         MD5 md5 = new MD5CryptoServiceProvider();
-
+        public static GameStartMode CurrentGameStartMode;
         void Start()
         {
             RestartNotice.transform.localScale = new Vector3(1, 0, 1);
-            versiousText.text = verious;
+            versionText.text = version;
             loadText.text = "初始化配置信息";
             ConfigManager.InitConfig();
             loadText.text = "校验资源包";
+            //根据平台和配置文件判断启动模式
+            if (Application.isEditor)
+                CurrentGameStartMode = GameStartMode.Editor;
+            else if (Application.isMobilePlatform)
+                CurrentGameStartMode = GameStartMode.Android;
+            else if (ConfigManager.GetServerTag() == "PC_Test")
+                CurrentGameStartMode = GameStartMode.PC_Test;
+            else
+                CurrentGameStartMode = GameStartMode.PC_Release;
         }
-        public void ChangeServer(int selectIndex) => serverTag = selectIndex == 0 ? "PC" : "Test";
         public async void StartGame()
         {
             //关掉选择界面
             ServerSelect.SetActive(false);
             //更新和加载AB包
             await CheckAssetBundles();
+            
         }
         //校验本地文件
         private async Task CheckAssetBundles()
@@ -63,7 +77,7 @@ namespace TouhouMachineLearningSummary.Manager
             Directory.CreateDirectory(downLoadPath);
             using (var httpClient = new HttpClient())
             {
-                var responseMessage = await httpClient.GetAsync($"{serverAssetUrl}/{serverTag}/MD5.json");
+                var responseMessage = await httpClient.GetAsync($"{serverDownloadUrl}/{serverTag}/MD5.json");
                 if (!responseMessage.IsSuccessStatusCode) { loadText.text = "MD5文件获取出错"; return; }
                 var OnlieMD5FiIeDatas = await responseMessage.Content.ReadAsStringAsync();
                 var Md5Dict = OnlieMD5FiIeDatas.ToObject<Dictionary<string, byte[]>>();
@@ -85,7 +99,7 @@ namespace TouhouMachineLearningSummary.Manager
                     else
                     {
                         loadText.text = MD5FiIeData.Key + "有新版本，开始重新下载";
-                        Debug.LogError(MD5FiIeData.Key + "有新版本，开始重新下载");
+                        Debug.LogWarning(MD5FiIeData.Key + "有新版本，开始重新下载");
                         await DownLoadFile(MD5FiIeData, localFile);
                         async Task DownLoadFile(KeyValuePair<string, byte[]> MD5FiIeData, FileInfo localFile)
                         {
@@ -93,8 +107,8 @@ namespace TouhouMachineLearningSummary.Manager
                             using (WebClient webClient = new WebClient())
                             {
                                 webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
-                                Debug.LogWarning("下载文件" + $"{serverAssetUrl}/{serverTag}/{MD5FiIeData.Key}");
-                                await webClient.DownloadFileTaskAsync(new System.Uri($"{serverAssetUrl}/{serverTag}/{MD5FiIeData.Key}"), localFile.FullName);
+                                Debug.LogWarning("下载文件" + $"{serverDownloadUrl}/{serverTag}/{MD5FiIeData.Key}");
+                                await webClient.DownloadFileTaskAsync(new System.Uri($"{serverDownloadUrl}/{serverTag}/{MD5FiIeData.Key}"), localFile.FullName);
                                 Debug.LogWarning(MD5FiIeData.Key + "下载完成");
                                 Debug.LogWarning("结束下载文件" + localFile.Name + " " + System.DateTime.Now);
                                 void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -114,23 +128,21 @@ namespace TouhouMachineLearningSummary.Manager
                 string localDllOrApkPath = "";
                 string onlineDllOrApkPath = "";
                 string onlineDllOrApk_MD5Path = "";
-
-
                 //在不同平台指定不同的路径
-                if (Application.isMobilePlatform)
+                if (CurrentGameStartMode == GameStartMode.Android)
                 {
                     //指定热更场景和资源本地路径
                     localDllOrApkPath = $"{Application.persistentDataPath}/APK/TouHouMachineLearningSummary.apk";
-                    onlineDllOrApkPath = $"{serverAssetUrl}/APK/TouHouMachineLearningSummary.apk";
-                    onlineDllOrApk_MD5Path = $"{serverAssetUrl}/APK/MD5.json";
+                    onlineDllOrApkPath = $"{serverDownloadUrl}/Apk/TouHouMachineLearningSummary.apk";
+                    onlineDllOrApk_MD5Path = $"{serverDownloadUrl}/Apk/MD5.json";
                 }
                 else
                 {
                     //指定热更场景和资源本地路径
                     localDllOrApkPath = new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("TouHouMachineLearningSummary.dll", SearchOption.AllDirectories).FirstOrDefault()?.FullName;
                     //指定热更场景和资源网络路径
-                    onlineDllOrApkPath = $"{serverAssetUrl}/Dll/{serverTag}/TouHouMachineLearningSummary.dll";
-                    onlineDllOrApk_MD5Path = $"{serverAssetUrl}/Dll/{serverTag}/MD5.json";
+                    onlineDllOrApkPath = $"{serverDownloadUrl}/{serverTag}_Dll/TouHouMachineLearningSummary.dll";
+                    onlineDllOrApk_MD5Path = $"{serverDownloadUrl}/{serverTag}_Dll/MD5.json";
                 }
 
                 responseMessage = await httpClient.GetAsync(onlineDllOrApk_MD5Path);
@@ -154,7 +166,7 @@ namespace TouhouMachineLearningSummary.Manager
                 }
             }
             md5.Dispose();
-           
+
             //加载AB包，并从中加载场景
             Debug.LogWarning("开始初始化AB包");
             AssetBundle.UnloadAllAssetBundles(true);
@@ -177,7 +189,7 @@ namespace TouhouMachineLearningSummary.Manager
         }
         public void RestartGame()
         {
-            if (Application.isMobilePlatform)
+            if (CurrentGameStartMode== GameStartMode.Android)
             {
                 //后续加上安卓重启
                 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");

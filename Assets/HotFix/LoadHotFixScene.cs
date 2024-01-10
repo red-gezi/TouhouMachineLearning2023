@@ -7,18 +7,17 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//该脚本无法被热更，修改需要重新打包，因只复制修改
+//该脚本无法被热更，修改需要重新打包
 public class LoadHotFixScene : MonoBehaviour
 {
     public static Action EndAction = null;
     static MD5 md5 = new MD5CryptoServiceProvider();
     public static Action StartAction = () => Init();
 
-
     static string serverTag = "PC_Release";
     static string hotFixSceneFileName = "scene0.gezi";
     static string hotFixAssetFileName = "hotfixscene.gezi";
-    static string serverAssetUrl = $"http://106.15.38.165:7777/AssetBundles";
+    static string serverDownloadUrl = $"http://106.15.38.165:495/Download";
 
     static string localHotFixSceneBundlePath = "";
     static string localHotFixAssetBundlePath = "";
@@ -33,17 +32,9 @@ public class LoadHotFixScene : MonoBehaviour
     static string onlineDllOrApk_MD5Path = "";
     //配置文件路径
     static string ConfigFileSavePath => (Application.isMobilePlatform ? Application.persistentDataPath : Directory.GetCurrentDirectory()) + "/GameConfig.ini";
-
     private void Start() => StartAction();
     private static async void Init()
     {
-        //判断正式版还是测试版，默认为正式版
-        if (File.Exists(ConfigFileSavePath) && File.ReadAllText(ConfigFileSavePath).Contains("Test"))
-        {
-            serverTag = "PC_Test";
-            Debug.Log("当前tag为" + serverTag);
-        }
-        //在不同平台指定不同的路径
         if (Application.isMobilePlatform)
         {
             //指定热更场景和资源本地路径
@@ -51,24 +42,25 @@ public class LoadHotFixScene : MonoBehaviour
             localHotFixAssetBundlePath = $"{Application.persistentDataPath}/Assetbundles/{hotFixAssetFileName}";
             localDllOrApkPath = $"{Application.persistentDataPath}/APK/THMLS.apk";
             //指定热更场景和资源网络路径
-            onlineHotFixSceneBundlePath = $"{serverAssetUrl}/Android/{hotFixSceneFileName}";
-            onlineHotFixAssetBundlePath = $"{serverAssetUrl}/Android/{hotFixAssetFileName}";
-            onlineAB_MD5sFile = $"{serverAssetUrl}/Android/MD5.json";
-            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/DllOrAPK/Android/MD5.json";
-            onlineDllOrApkPath = $"{serverAssetUrl}/DllOrAPK/Android/THMLS.apk";
+            onlineHotFixSceneBundlePath = $"{serverDownloadUrl}/Android/{hotFixSceneFileName}";
+            onlineHotFixAssetBundlePath = $"{serverDownloadUrl}/Android/{hotFixAssetFileName}";
+            onlineAB_MD5sFile = $"{serverDownloadUrl}/Android/MD5.json";
+            onlineDllOrApk_MD5Path = $"{serverDownloadUrl}/Apk/MD5.json";
+            onlineDllOrApkPath = $"{serverDownloadUrl}/Apk/THMLS.apk";
         }
         else
         {
             //指定热更场景和资源本地路径
+            localDllOrApkPath = new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("TouHouMachineLearningSummary.dll", SearchOption.AllDirectories).FirstOrDefault()?.FullName;
             localHotFixSceneBundlePath = $"Assetbundles/{serverTag}/{hotFixSceneFileName}";
             localHotFixAssetBundlePath = $"Assetbundles/{serverTag}/{hotFixAssetFileName}";
-            localDllOrApkPath = new DirectoryInfo(Directory.GetCurrentDirectory()).GetFiles("TouHouMachineLearningSummary.dll", SearchOption.AllDirectories).FirstOrDefault()?.FullName;
             //指定热更场景和资源网络路径
-            onlineHotFixSceneBundlePath = $"{serverAssetUrl}/{serverTag}/{hotFixSceneFileName}";
-            onlineHotFixAssetBundlePath = $"{serverAssetUrl}/{serverTag}/{hotFixAssetFileName}";
-            onlineAB_MD5sFile = $"{serverAssetUrl}/{serverTag}/MD5.json";
-            onlineDllOrApk_MD5Path = $"{serverAssetUrl}/DllOrAPK/{serverTag}/MD5.json";
-            onlineDllOrApkPath = $"{serverAssetUrl}/DllOrAPK/{serverTag}/TouHouMachineLearningSummary.dll";
+            onlineHotFixSceneBundlePath = $"{serverDownloadUrl}/{serverTag}/{hotFixSceneFileName}";
+            onlineHotFixAssetBundlePath = $"{serverDownloadUrl}/{serverTag}/{hotFixAssetFileName}";
+            onlineAB_MD5sFile = $"{serverDownloadUrl}/{serverTag}/MD5.json";
+            Debug.Log(onlineAB_MD5sFile);
+            onlineDllOrApk_MD5Path = $"{serverDownloadUrl}/{serverTag}_Dll/MD5.json";
+            onlineDllOrApkPath = $"{serverDownloadUrl}/{serverTag}_Dll/TouHouMachineLearningSummary.dll";
         }
         using (var httpClient = new HttpClient())
         {
@@ -121,18 +113,27 @@ public class LoadHotFixScene : MonoBehaviour
             {
                 httpResponse = await httpClient.GetAsync(onlineDllOrApkPath);
                 if (!httpResponse.IsSuccessStatusCode) { Debug.LogError("DllOrApk文件下载失败"); return; }
-                //报存相关的dll或者apk文件
+                //保存相关的dll或者apk文件
                 if (!Application.isEditor)
                 {
                     Directory.CreateDirectory(new FileInfo(localDllOrApkPath).DirectoryName);
                     File.WriteAllBytes(localDllOrApkPath, await httpResponse.Content.ReadAsByteArrayAsync());
                     if (Application.isMobilePlatform)
                     {
-                        AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
-                        AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText",
-                            new AndroidJavaObject("android.content.Context"), "Hello from Unity!", 0);
-                        toastObject.Call("show");
+                        InstallApk(localDllOrApkPath);
+                        
+                        void InstallApk(string apkFilePath)
+                        {
+                            AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+                            AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent", intentClass.GetStatic<string>("ACTION_VIEW"));
+                            AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
+                            AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + apkFilePath);
+                            intentObject.Call<AndroidJavaObject>("setDataAndType", uriObject, "application/vnd.android.package-archive");
 
+                            AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                            AndroidJavaObject currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
+                            currentActivity.Call("startActivity", intentObject);
+                        }
                         //安卓端重启重新安装
                         //AndroidJavaClass intentObj = new AndroidJavaClass("android.content.Intent");
                         //AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", intentObj.GetStatic<string>("ACTION_INSTALL_PACKAGE"));
@@ -165,6 +166,6 @@ public class LoadHotFixScene : MonoBehaviour
         AssetBundle.LoadFromFile(localHotFixSceneBundlePath);
         AssetBundle.LoadFromFile(localHotFixAssetBundlePath);
         Debug.LogWarning("重新载入完成");
-        SceneManager.LoadScene("0_HotFixScene");
+        SceneManager.LoadScene("0_HotfixScene");
     }
 }

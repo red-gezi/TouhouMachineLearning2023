@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 using System.Threading.Channels;
 using TouhouMachineLearningSummary.GameEnum;
 using System.Data.Common;
+using Newtonsoft.Json.Linq;
 
 public class TouHouHub : Hub
 {
@@ -100,7 +101,7 @@ public class TouHouHub : Hub
         var targetConnectId = OnlineUserManager.GetConnectId(speakerUID);
         if (targetConnectId != null)
         {
-            Console.WriteLine("发送给玩家"+ speakerUID);
+            Console.WriteLine("发送给玩家" + speakerUID);
             Clients.Client(targetConnectId).SendAsync("ChatMessageReceive", chatID, message);
         }
         targetConnectId = OnlineUserManager.GetConnectId(targetChaterUID);
@@ -195,6 +196,14 @@ public class TouHouHub : Hub
         return playerData.ChatTargets;
     }
     public List<ChatMessageInfo.ChatMessage> QueryChatLog(string chatID) => MongoDbCommand.QueryChatLog(chatID);
-
-    public void Test(string text) => Clients.Caller.SendAsync("Test", "服务器向你问候" + text);
+    public async void ClearUnreadCount(string password, string senderUID, string chatID)
+    {
+        var playerData = MongoDbCommand.QueryUserInfo(senderUID, password);
+        var targetChat = playerData.ChatTargets.FirstOrDefault(chat => chat.ChatID == chatID);
+        if (targetChat != null)
+        {
+            targetChat.LastReadIndex = targetChat.LastMessageIndex;
+            await MongoDbCommand.UpdateInfo(senderUID, password, info => info.ChatTargets, playerData.ChatTargets);
+        }
+    }
 }

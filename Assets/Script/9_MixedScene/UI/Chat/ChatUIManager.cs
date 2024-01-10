@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TMPro;
 using TouhouMachineLearningSummary.Command;
-using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Model;
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.UI;
 using static TouhouMachineLearningSummary.Model.ChatMessageInfo;
 
@@ -106,9 +106,10 @@ namespace TouhouMachineLearningSummary.Manager
         {
             chatMessageCanves.SetActive(true);
             currentOpenChatID = chatID;
-            await Command.NetCommand.QueryChatLog(chatID);
-            //读取后去掉红点
             await Command.NetCommand.ClearUnreadCount(chatID);
+            var message = await Command.NetCommand.QueryChatLog(chatID);
+            RefreshChatMessages(chatID, message);
+            //读取后去掉红点
         }
         public void CloseChatMessageCanves()
         {
@@ -137,8 +138,7 @@ namespace TouhouMachineLearningSummary.Manager
                     chatTarget.SetActive(true);
                     var chatTargetInfo = chatTargets[i];
                     var targetChaterUUID = chatTargetInfo.TargetChaterUID;
-                    //移动到服务端
-                    //注意UI报null的话会导致服务端自动退出
+
                     chatTarget.transform.GetChild(0).GetComponent<Text>().text = chatTargetInfo.Name;
                     chatTarget.transform.GetChild(1).GetComponent<Text>().text = chatTargetInfo.Name + ":" + chatTargetInfo.LastMessage;
                     chatTarget.transform.GetChild(2).GetComponent<Text>().text = chatTargetInfo.Name + ":" + chatTargetInfo.LastMessageTime;
@@ -160,6 +160,7 @@ namespace TouhouMachineLearningSummary.Manager
         //刷新聊天信息列表（只有收到消息和用户切换聊天对象时才会调用刷新）
         public async void RefreshChatMessages(string chatId, List<ChatMessage> chatMessages)
         {
+            Debug.Log("开始刷新，时间：" + DateTime.Now);
             //这里会拿到指定chatid的指定范围的聊天记录，需要对已有聊天记录做个添加去重，然后刷新聊天对象列表和聊天框内容
             if (!allChatMessage.ContainsKey(chatId))
             {
@@ -177,13 +178,16 @@ namespace TouhouMachineLearningSummary.Manager
                     }
                 });
             }
+            Debug.Log("开始刷新聊天列表，时间：" + DateTime.Now);
             //刷新聊天对象ui,暂时先列表所有的一起刷新
             await Command.NetCommand.QueryAllChatTargetInfo();
+            Debug.Log("开始刷新信息列表列表，时间：" + DateTime.Now);
             //如果改聊天正好打开，则刷新聊天信息窗口
             if (chatId == currentOpenChatID)
             {
                 chatMessageItem.ForEach(item => Destroy(item.gameObject));
                 chatMessageItem.Clear();
+                int height = 0;
                 for (int i = 0; i < allChatMessage[chatId].Count; i++)
                 {
                     var message = allChatMessage[chatId][i];
@@ -196,6 +200,7 @@ namespace TouhouMachineLearningSummary.Manager
                             messageItem.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = message.Text;
                             chatMessageItem.Add(messageItem);
                             messageItem.SetActive(true);
+                            height += (int)messageItem.GetComponent<RectTransform>().sizeDelta.y + 20;
                             //修改文字
                             break;
                         case ChatMessageType.Expression:
@@ -203,6 +208,16 @@ namespace TouhouMachineLearningSummary.Manager
                         default: break;
                     }
                 }
+                //更新聊天面板高度
+                RectTransform rectTransform = Instance.chatMessageContent.GetComponent<RectTransform>();
+                Vector2 sizeDelta = rectTransform.sizeDelta;
+                sizeDelta.y = height;
+                rectTransform.sizeDelta = sizeDelta;
+                //设置聊天在最底端
+                ScrollRect scrollRect = Instance.chatMessageContent.parent.parent.GetComponent<ScrollRect>();
+                scrollRect.normalizedPosition = new Vector2(0, 0);
+                Debug.Log("完全更新UI完毕，时间：" + DateTime.Now);
+
             }
         }
         ////////////////////////////////发送消息//////////////////////////////////////////
@@ -215,10 +230,13 @@ namespace TouhouMachineLearningSummary.Manager
                 SpeakerUUID = Info.AgainstInfo.OnlineUserInfo.UID,
                 SpeakerName = Info.AgainstInfo.OnlineUserInfo.Name,
                 Text = chatMessageInput.text,
+                //Text = GetImageData(),
             };
             chatMessageInput.text = "";
             var current = Info.AgainstInfo.OnlineUserInfo.ChatTargets.FirstOrDefault(chat => chat.ChatID == currentOpenChatID);
+            Debug.Log("开始发送消息，时间：" + DateTime.Now);
             await NetCommand.SendMessage(current.ChatID, message, Info.AgainstInfo.OnlineUserInfo.UID, current.TargetChaterUID);
+            Debug.Log("发送消息完毕，时间：" + DateTime.Now);
             //通知刷新
         }
         public void SendExpressionToPlayer()

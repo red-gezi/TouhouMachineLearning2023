@@ -124,9 +124,9 @@ namespace TouhouMachineLearningSummary.Command
                 case MenuState.ScenePage:
                     //场景组件初始化待补充
 
-                    Debug.LogError("激活场景页面前" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
+                    Debug.LogWarning("激活场景页面前" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
                     Command.BookCommand.ActiveCompment(isImmediately, BookCompmentType.ScenePage);
-                    Debug.LogError("激活场景页面后" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
+                    Debug.LogWarning("激活场景页面后" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff:ffffff"));
 
                     break;
 

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj": {}
+    "E:\\UnityProject\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj": {}
   },
   "projects": {
-    "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj": {
+    "E:\\UnityProject\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj",
+        "projectUniqueName": "E:\\UnityProject\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj",
         "projectName": "Server",
-        "projectPath": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\wuyunge\\.nuget\\packages\\",
-        "outputPath": "D:\\vs2022-Project\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\",
+        "projectPath": "E:\\UnityProject\\TouhouMachineLearning2023\\OtherSolution\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\50606\\.nuget\\packages\\",
+        "outputPath": "E:\\UnityProject\\TouhouMachineLearning2023\\OtherSolution\\Server\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\wuyunge\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\50606\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +80,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -87,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

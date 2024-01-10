@@ -203,7 +203,7 @@ namespace TouhouMachineLearningSummary.Command
             if (GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].RowManagers.Select(x => x.RowRank).Contains(e.location.X) && GameSystem.InfoSystem.AgainstCardSet[e.location.X].Count >= 6)
             {
                 //不满足生成条件
-                Debug.LogError("溢出后摧毁自身");
+                Debug.LogWarning("溢出后摧毁自身");
                 await GameSystem.PointSystem.Destory(new Event(null, card));
             }
             RowCommand.RefreshAllRowsCards();

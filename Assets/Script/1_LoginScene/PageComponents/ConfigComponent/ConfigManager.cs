@@ -7,10 +7,10 @@ namespace TouhouMachineLearningSummary.Manager
 {
     public partial class ConfigManager : MonoBehaviour
     {
-        static ConfigInfoModel configInfo = new ();
+        static ConfigInfoModel Config { get; set; } = new();
         static string ConfigFileSavePath => Application.isMobilePlatform ? Application.persistentDataPath : Directory.GetCurrentDirectory();
 
-        private static void SaveConfig() => File.WriteAllText(ConfigFileSavePath + "/GameConfig.ini", configInfo.ToJson());
+        private static void SaveConfig() => File.WriteAllText(ConfigFileSavePath + "/GameConfig.ini", Config.ToJson());
         public static void InitConfig()
         {
             //判断有无本地配置文件
@@ -20,21 +20,21 @@ namespace TouhouMachineLearningSummary.Manager
             if (!File.Exists(ConfigFileSavePath + "/GameConfig.ini"))
             {
                 Debug.Log("生成默认配置文件");
-                configInfo.Width = Screen.currentResolution.width;
-                configInfo.Heigh = Screen.currentResolution.height;
-                configInfo.IsFullScreen = Screen.fullScreen;
-                configInfo.UseLanguage = TranslateManager.currentLanguage;
-                configInfo.ServerMode = "PC_Release";
+                Config.Width = Screen.currentResolution.width;
+                Config.Heigh = Screen.currentResolution.height;
+                Config.IsFullScreen = Screen.fullScreen;
+                Config.UseLanguage = TranslateManager.currentLanguage;
+                Config.ServerMode = "PC_Release";
                 Directory.CreateDirectory(ConfigFileSavePath);
                 SaveConfig();
             }
             else
             {
                 Debug.Log("加载已有配置文件");
-                configInfo = File.ReadAllText(ConfigFileSavePath + "/GameConfig.ini").ToObject<ConfigInfoModel>();
-                Debug.Log("设置分辨率" + configInfo.Width + " " + configInfo.Heigh + " " + configInfo.IsFullScreen);
-                Screen.SetResolution(configInfo.Width, configInfo.Heigh, configInfo.IsFullScreen);
-                TranslateManager.currentLanguage = configInfo.UseLanguage;
+                Config = File.ReadAllText(ConfigFileSavePath + "/GameConfig.ini").ToObject<ConfigInfoModel>();
+                Debug.Log("设置分辨率" + Config.Width + " " + Config.Heigh + " " + Config.IsFullScreen);
+                Screen.SetResolution(Config.Width, Config.Heigh, Config.IsFullScreen);
+                TranslateManager.currentLanguage = Config.UseLanguage;
             }
 
 
@@ -43,17 +43,7 @@ namespace TouhouMachineLearningSummary.Manager
         /// 根据当前平台和配置文件获得相应热更版本的标签
         /// </summary>
         /// <returns></returns>
-        public static string GetServerTag()
-        {
-            if (Application.isMobilePlatform)
-            {
-                return "Android";
-            }
-            else
-            {
-                return configInfo.ServerMode;
-            }
-        }
+        public static string GetServerTag() => Application.isMobilePlatform ? "Android" : Config.ServerMode;
 
         /////////////////////////////////////////////////////////////////////////////游戏设置界面指令////////////////////////////////////////////////////////////////////////////////
         public TextMeshProUGUI ResolutionText;
@@ -61,37 +51,37 @@ namespace TouhouMachineLearningSummary.Manager
         public TextMeshProUGUI CodeText;
         public void SetResolution(int index)
         {
-            configInfo.Width = int.Parse(ResolutionText.text.Split("*")[0]);
-            configInfo.Heigh = int.Parse(ResolutionText.text.Split("*")[1]);
-            Debug.Log(configInfo.Width + "_" + configInfo.Heigh + "_" + configInfo.IsFullScreen);
-            Screen.SetResolution(configInfo.Width, configInfo.Heigh, configInfo.IsFullScreen);
+            Config.Width = int.Parse(ResolutionText.text.Split("*")[0]);
+            Config.Heigh = int.Parse(ResolutionText.text.Split("*")[1]);
+            Debug.Log(Config.Width + "_" + Config.Heigh + "_" + Config.IsFullScreen);
+            Screen.SetResolution(Config.Width, Config.Heigh, Config.IsFullScreen);
             SaveConfig();
         }
         public void SetScreenMode(int index)
         {
-            configInfo.IsFullScreen = (index == 0);
-            configInfo.Width = int.Parse(ResolutionText.text.Split("*")[0]);
-            configInfo.Heigh = int.Parse(ResolutionText.text.Split("*")[1]);
-            Debug.Log(configInfo.Width + "_" + configInfo.Heigh + "_" + configInfo.IsFullScreen);
-            Screen.SetResolution(configInfo.Width, configInfo.Heigh, configInfo.IsFullScreen);
+            Config.IsFullScreen = (index == 0);
+            Config.Width = int.Parse(ResolutionText.text.Split("*")[0]);
+            Config.Heigh = int.Parse(ResolutionText.text.Split("*")[1]);
+            Debug.Log(Config.Width + "_" + Config.Heigh + "_" + Config.IsFullScreen);
+            Screen.SetResolution(Config.Width, Config.Heigh, Config.IsFullScreen);
             SaveConfig();
         }
         public void SetLanguage(int index)
         {
-            configInfo.UseLanguage = LanguageText.text;
-            TranslateManager.currentLanguage = configInfo.UseLanguage;
+            Config.UseLanguage = LanguageText.text;
+            TranslateManager.currentLanguage = Config.UseLanguage;
             SaveConfig();
         }
         public void SetVolume(int index)
         {
-            configInfo.UseLanguage = LanguageText.text;
-            TranslateManager.currentLanguage = configInfo.UseLanguage;
+            Config.UseLanguage = LanguageText.text;
+            TranslateManager.currentLanguage = Config.UseLanguage;
             SaveConfig();
         }
         public void SetH_Mode(int index)
         {
-            configInfo.UseLanguage = LanguageText.text;
-            TranslateManager.currentLanguage = configInfo.UseLanguage;
+            Config.UseLanguage = LanguageText.text;
+            TranslateManager.currentLanguage = Config.UseLanguage;
             SaveConfig();
         }
         public void SendCode()
@@ -100,7 +90,7 @@ namespace TouhouMachineLearningSummary.Manager
         }
         public void SetServer(int selectIndex)
         {
-            configInfo.ServerMode = selectIndex == 0 ? "PC_Release" : "PC_Test";
+            Config.ServerMode = selectIndex == 0 ? "PC_Release" : "PC_Test";
             SaveConfig();
         }
     }
