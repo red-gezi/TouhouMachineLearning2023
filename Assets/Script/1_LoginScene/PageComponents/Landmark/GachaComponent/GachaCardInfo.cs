@@ -1,8 +1,4 @@
-﻿using System.Threading.Tasks;
-using TouhouMachineLearningSummary.control;
-using TouhouMachineLearningSummary.Thread;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Info
 {

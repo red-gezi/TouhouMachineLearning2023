@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.CardSpace
              {
                  for (int i = 0; i < 1 + GameSystem.InfoSystem.GetTwoSideField(this, CardField.Inspire) + 1; i++)
                  {
-                     await GameSystem.SelectSystem.SelectUnit(this, AgainstInfo.cardSet[GameRegion.Battle].CardList, 1, false);
+                     await GameSystem.SelectSystem.SelectUnit(this, AgainstInfo.GameCardsFilter[GameRegion.Battle].ContainCardList, 1, false);
                      await GameSystem.StateSystem.ChangeState(new Event(this, GameSystem.InfoSystem.SelectUnits).SetTargetState(CardState.Seal));
                  }
              }, Condition.Default)

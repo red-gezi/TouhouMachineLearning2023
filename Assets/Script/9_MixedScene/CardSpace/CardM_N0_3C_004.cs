@@ -27,7 +27,7 @@ namespace TouhouMachineLearningSummary.CardSpace
              {
                  for (int i = 0; i < GameSystem.InfoSystem.GetTwoSideField(this, CardField.Inspire) + 1; i++)
                  {
-                     await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.Copper, CardRank.Silver][CardFeature.LargestPointUnits].CardList, 1, true);
+                     await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.Copper, CardRank.Silver][CardFeature.LargestPointUnits].ContainCardList, 1, true);
                      await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.SelectUnits).SetPoint(1));
                  }
              }, Condition.Default)

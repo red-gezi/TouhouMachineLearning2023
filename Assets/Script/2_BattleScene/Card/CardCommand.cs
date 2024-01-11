@@ -192,15 +192,15 @@ namespace TouhouMachineLearningSummary.Command
             //加入指定区域，若生成在出牌区则自动触发打出效果
             if (location != null)
             {
-                int rank = location.Y >= 0 ? location.Y : Math.Max(0, AgainstInfo.cardSet[location.X].Count + 1 + location.Y);
-                AgainstInfo.cardSet[location.X].Insert(rank, card);
-                if (AgainstInfo.cardSet[GameRegion.Used].CardList.Contains(card))
+                int rank = location.Rank >= 0 ? location.Rank : Math.Max(0, AgainstInfo.GameCardsFilter[location.Row].Count + 1 + location.Rank);
+                AgainstInfo.GameCardsFilter[location.Row].Insert(rank, card);
+                if (AgainstInfo.GameCardsFilter[GameRegion.Used].ContainCardList.Contains(card))
                 {
                     await GameSystem.TransferSystem.PlayCard(new Event(null, card));
                 }
             }
             //如果目标区域在非战场区域，或者在战场区域且单位数少于6才触发生成效果
-            if (GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].RowManagers.Select(x => x.RowRank).Contains(e.location.X) && GameSystem.InfoSystem.AgainstCardSet[e.location.X].Count >= 6)
+            if (GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].ContainRowInfos.Select(x => x.RowRank).Contains(e.location.Row) && GameSystem.InfoSystem.AgainstCardSet[e.location.Row].Count >= 6)
             {
                 //不满足生成条件
                 Debug.LogWarning("溢出后摧毁自身");
@@ -212,11 +212,11 @@ namespace TouhouMachineLearningSummary.Command
         /// <summary>
         /// 从对战记录的简易卡牌模型复现原卡牌,不会触发生成连锁效果
         /// </summary>
-        /// <param name="sampleCard"></param>
+        /// <param name="simpleCard"></param>
         /// <returns></returns>
-        public static Card GenerateCard(SampleCardModel sampleCard)
+        public static Card GenerateCard(SimpleCardModel simpleCard)
         {
-            var card = CreatCard(new Event(null, targetCard: null).SetTargetCardId(sampleCard.CardID).SetCardBack(sampleCard.CardBackID));
+            var card = CreatCard(new Event(null, targetCard: null).SetTargetCardId(simpleCard.CardID).SetCardBack(simpleCard.CardBackID));
             card.Init();
             RowCommand.RefreshAllRowsCards();
             return card;
@@ -230,7 +230,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             var card = CreatCard(e);
             card.IsGray = true;
-            AgainstInfo.cardSet[e.location.X].Insert(e.location.Y, card);
+            AgainstInfo.GameCardsFilter[e.location.Row].Insert(e.location.Rank, card);
             RowCommand.RefreshAllRowsCards();
             return card;
         }
@@ -242,9 +242,9 @@ namespace TouhouMachineLearningSummary.Command
         }
         public static void OrderHandCard()
         {
-            AgainstInfo.cardSet[GameRegion.Hand].RowManagers.ForEach(singleRowInfo =>
+            AgainstInfo.GameCardsFilter[GameRegion.Hand].ContainRowInfos.ForEach(singleRowInfo =>
             {
-                AgainstInfo.cardSet[singleRowInfo.RowRank] = AgainstInfo.cardSet[singleRowInfo.RowRank].OrderByDescending(card => card.Rank).ThenBy(card => card.BasePoint).ThenBy(card => card.CardID).ToList();
+                AgainstInfo.GameCardsFilter[singleRowInfo.RowRank] = AgainstInfo.GameCardsFilter[singleRowInfo.RowRank].OrderByDescending(card => card.Rank).ThenBy(card => card.BasePoint).ThenBy(card => card.CardID).ToList();
             });
             RowCommand.RefreshAllRowsCards();
         }
@@ -254,9 +254,9 @@ namespace TouhouMachineLearningSummary.Command
             if (e.TargetCard == null) return;
             await Task.Delay(500);
             e.TargetCard.BelongCardList.Remove(e.TargetCard);
-            var targetCardList = AgainstInfo.cardSet.RowManagers[e.location.X].CardList;
+            var targetCardList = AgainstInfo.GameCardsFilter.ContainRowInfos[e.location.Row].CardList;
             //对插入位置做个符合范围的性纠正
-            var targetIndex = e.location.Y > 0 ? Math.Min(e.location.Y, targetCardList.Count) : Math.Max(0, targetCardList.Count + 1 + e.location.Y);
+            var targetIndex = e.location.Rank > 0 ? Math.Min(e.location.Rank, targetCardList.Count) : Math.Max(0, targetCardList.Count + 1 + e.location.Rank);
             targetCardList.Insert(targetIndex, e.TargetCard);
             //移动至不同区域做不同效果
             switch (e.region)
@@ -310,7 +310,7 @@ namespace TouhouMachineLearningSummary.Command
             await Task.Delay(100);
             Orientation targetOrientation = card.CurrentOrientation;
             card.BelongCardList.Remove(card);
-            AgainstInfo.cardSet[targetOrientation][GameRegion.Grave].RowManagers[0].CardList.Insert(0, card);
+            AgainstInfo.GameCardsFilter[targetOrientation][GameRegion.Grave].ContainRowInfos[0].CardList.Insert(0, card);
             //重置卡牌状态
             card.cardFields.Clear();
             card.cardStates.Clear();
@@ -347,11 +347,11 @@ namespace TouhouMachineLearningSummary.Command
         {
             //Debug.Log("交换卡牌");
             await WashCard(card, IsPlayerExchange, insertRank);
-            await CardCommand.DrawCard(new Event(null, GameSystem.InfoSystem.AgainstCardSet[IsPlayerExchange ? Orientation.My : Orientation.Op][GameRegion.Deck].CardList.FirstOrDefault()).SetDrawCard(IsPlayerExchange ? Orientation.My : Orientation.Op, true));
+            await CardCommand.DrawCard(new Event(null, GameSystem.InfoSystem.AgainstCardSet[IsPlayerExchange ? Orientation.My : Orientation.Op][GameRegion.Deck].ContainCardList.FirstOrDefault()).SetDrawCard(IsPlayerExchange ? Orientation.My : Orientation.Op, true));
             //await DrawCard(IsPlayerExchange);
             if (IsPlayerExchange)
             {
-                CardBoardCommand.ShowCardBoard(AgainstInfo.cardSet[isRoundStartExchange ? Orientation.Down : Orientation.My][GameRegion.Hand].CardList, CardBoardMode.ExchangeCard);
+                CardBoardCommand.ShowCardBoard(AgainstInfo.GameCardsFilter[isRoundStartExchange ? Orientation.Down : Orientation.My][GameRegion.Hand].ContainCardList, CardBoardMode.ExchangeCard);
             }
             static async Task WashCard(Card card, bool IsPlayerWash = true, int InsertRank = 0)
             {
@@ -359,16 +359,16 @@ namespace TouhouMachineLearningSummary.Command
                 if (IsPlayerWash)
                 {
                     AgainstInfo.TargetCard = card;
-                    int MaxCardRank = AgainstInfo.cardSet[Orientation.Down][GameRegion.Deck].CardList.Count;
+                    int MaxCardRank = AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Deck].ContainCardList.Count;
                     AgainstInfo.washInsertRank = AiCommand.GetRandom(0, MaxCardRank);
                     NetCommand.AsyncInfo(NetAcyncType.ExchangeCard);
-                    AgainstInfo.cardSet[Orientation.Down][GameRegion.Hand].Remove(card);
-                    AgainstInfo.cardSet[Orientation.Down][GameRegion.Deck].Add(card, AgainstInfo.washInsertRank);
+                    AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Hand].Remove(card);
+                    AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Deck].Add(card, AgainstInfo.washInsertRank);
                 }
                 else
                 {
-                    AgainstInfo.cardSet[Orientation.Up][GameRegion.Hand].Remove(card);
-                    AgainstInfo.cardSet[Orientation.Up][GameRegion.Deck].Add(card, InsertRank);
+                    AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Hand].Remove(card);
+                    AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Deck].Add(card, InsertRank);
                 }
                 RowCommand.RefreshAllRowsCards();
             }
@@ -383,7 +383,7 @@ namespace TouhouMachineLearningSummary.Command
             NetCommand.AsyncInfo(NetAcyncType.PlayCard);
             ChainManager.ShowChainCount();
             card.BelongCardList.Remove(card);
-            AgainstInfo.cardSet[Orientation.My][GameRegion.Used].Add(card);
+            AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Used].Add(card);
             AgainstInfo.playerPlayCard = null;
             RowCommand.RefreshAllRowsCards();
         }
@@ -392,7 +392,7 @@ namespace TouhouMachineLearningSummary.Command
             if (e.TargetCard != null)
             {
                 e.TargetCard.BelongCardList.Remove(e.TargetCard);
-                AgainstInfo.cardSet[e.orientation][GameRegion.Hand].Add(e.TargetCard);
+                AgainstInfo.GameCardsFilter[e.orientation][GameRegion.Hand].Add(e.TargetCard);
             }
             await Task.Delay(800);
             _ = SoundEffectCommand.PlayAsync(SoundEffectType.DrawCard);
@@ -418,7 +418,7 @@ namespace TouhouMachineLearningSummary.Command
             NetCommand.AsyncInfo(NetAcyncType.DisCard);
             card.isPrepareToPlay = false;
             card.BelongCardList.Remove(card);
-            AgainstInfo.cardSet[Orientation.My][GameRegion.Grave].Add(card);
+            AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Grave].Add(card);
             AgainstInfo.playerDisCard = null;
             RowCommand.RefreshAllRowsCards();
         }
@@ -582,7 +582,7 @@ namespace TouhouMachineLearningSummary.Command
                 case CardState.Black:
                     if (card.cardStates.Contains(CardState.White))
                     {
-                        await GameSystem.SelectSystem.SelectUnit(card, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.NoGold].CardList, 1, true);
+                        await GameSystem.SelectSystem.SelectUnit(card, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.NoGold].ContainCardList, 1, true);
                         await GameSystem.PointSystem.Hurt(new Event(card, GameSystem.InfoSystem.SelectUnits).SetPoint(1));
                         card.cardStates.Remove(CardState.White);
                     }
@@ -590,7 +590,7 @@ namespace TouhouMachineLearningSummary.Command
                 case CardState.White:
                     if (card.cardStates.Contains(CardState.Black))
                     {
-                        await GameSystem.SelectSystem.SelectUnit(card, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.NoGold].CardList, 1, true);
+                        await GameSystem.SelectSystem.SelectUnit(card, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.NoGold].ContainCardList, 1, true);
                         await GameSystem.PointSystem.Gain(new Event(card, GameSystem.InfoSystem.SelectUnits).SetPoint(1));
                         card.cardStates.Remove(CardState.Black);
                     }
@@ -701,7 +701,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task RoundEnd(Event e)
         {
             var card = e.TargetCard;
-            if (AgainstInfo.cardSet[GameRegion.Battle].CardList.Contains(card))
+            if (AgainstInfo.GameCardsFilter[GameRegion.Battle].ContainCardList.Contains(card))
             {
                 //如果有驻守则清掉状态保持原位，不然移入墓地
                 if (card[CardState.Hold])

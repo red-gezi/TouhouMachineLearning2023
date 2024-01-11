@@ -24,7 +24,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
               .AbilityAdd(async (e) =>
               {
-                    await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[CardRank.NoGold][GameRegion.Battle].CardList, 1);
+                    await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[CardRank.NoGold][GameRegion.Battle].ContainCardList, 1);
                     await GameSystem.StateSystem.ChangeState(new Event(this, GameSystem.InfoSystem.SelectUnit).SetTargetState( CardState.Cover));
               })
               .AbilityAppend();

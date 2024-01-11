@@ -26,9 +26,9 @@ namespace TouhouMachineLearningSummary.CardSpace
               {
 
                   //await GameSystem.TransferSystem.MoveCard(new TriggerInfoModel(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Fire].CardList).SetLocation(Orientation.My, GameRegion.Fire, -1));
-                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Soil].CardList).SetLocation(Orientation.My, GameRegion.Soil, -1));
-                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Fire].CardList).SetLocation(Orientation.Op, GameRegion.Fire, -1));
-                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Soil].CardList).SetLocation(Orientation.Op, GameRegion.Soil, -1));
+                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Soil].ContainCardList).SetLocation(Orientation.My, GameRegion.Soil, -1));
+                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Fire].ContainCardList).SetLocation(Orientation.Op, GameRegion.Fire, -1));
+                  await GameSystem.TransferSystem.MoveCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Soil].ContainCardList).SetLocation(Orientation.Op, GameRegion.Soil, -1));
                   //foreach (var card in GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Soil].CardList)
                   //{
                   //    await GameSystem.TransferSystem.MoveCard(new TriggerInfoModel(this, card).SetLocation(Orientation.My, GameRegion.Soil, -1));

@@ -29,7 +29,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                .AbilityAdd(async (e) =>
                {
                    //如果移动的对象在场上非金集合中，则追加1点伤害
-                   if (GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardRank.NoGold].CardList.Contains(e.TargetCard))
+                   if (GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardRank.NoGold].ContainCardList.Contains(e.TargetCard))
                    {
                        await GameSystem.PointSystem.Hurt(new Event(this, e.TargetCard).SetPoint(1).SetBullet(new BulletModel()));
                    }

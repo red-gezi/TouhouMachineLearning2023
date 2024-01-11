@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                    if (RightCard != null)
                    {
                        await GameSystem.TransferSystem.MoveCard(new Event(this, this).SetLocation(RightCard.CurrentOrientation, RightCard.CurrentRegion, RightCard.CurrentIndex));
-                       await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.NoGold].CardList, 1, true);
+                       await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.NoGold].ContainCardList, 1, true);
                        await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.SelectUnits).SetPoint(1).SetBullet(new BulletModel()));
                    }
                }, Condition.Default, Condition.OnMyRegion)

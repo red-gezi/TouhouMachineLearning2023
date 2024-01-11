@@ -4,6 +4,7 @@ using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Manager;
+using TouhouMachineLearningSummary.Other;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Test
@@ -11,9 +12,9 @@ namespace TouhouMachineLearningSummary.Test
     public class test : MonoBehaviour
     {
         [ShowInInspector]
-        public CardSet cardSet => AgainstInfo.cardSet;
+        public CardsFilter cardSet => AgainstInfo.GameCardsFilter;
         [ShowInInspector]
-        public CardSet FiltercardSet;
+        public CardsFilter FiltercardSet;
         [ShowInInspector]
         public Texture2D tex;
         public string text;

@@ -33,7 +33,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                   if (this[CardField.Energy] > 8)
                   {
                       await GameSystem.UiSystem.ShowTips(this, "ГЌди", new Color(1, 0, 0));
-                      await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].CardList).SetPoint(1).SetMeanWhile());
+                      await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].ContainCardList).SetPoint(1).SetMeanWhile());
                       await GameSystem.PointSystem.Destory(new Event(this, this));
                   }
               }, Condition.Default, Condition.OnMyRegion)

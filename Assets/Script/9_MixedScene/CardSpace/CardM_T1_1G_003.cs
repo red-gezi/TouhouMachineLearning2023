@@ -24,17 +24,17 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.SelectSystem.SelectBoardCard(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Hand].CardList);
+                   await GameSystem.SelectSystem.SelectBoardCard(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Hand].ContainCardList);
                    await GameSystem.TransferSystem.PlayCard(new Event(this, GameSystem.InfoSystem.SelectBoardCards));
                }, Condition.Default)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.NoGold].CardList);
+                   await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.NoGold].ContainCardList);
                    await GameSystem.TransferSystem.TransferCard(new Event(this, GameSystem.InfoSystem.SelectBoardCards).SetLocation(Orientation.My, GameRegion.Hand));
                }, Condition.Default)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.TransferSystem.DrawCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck].CardList.FirstOrDefault()));
+                   await GameSystem.TransferSystem.DrawCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck].ContainCardList.FirstOrDefault()));
                }, Condition.Default)
                .AbilityAppend();
         }

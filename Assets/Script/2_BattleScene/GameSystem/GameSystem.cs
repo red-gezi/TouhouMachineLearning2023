@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
+using TouhouMachineLearningSummary.Other;
 using UnityEngine;
 
 /// <summary>
@@ -129,7 +130,7 @@ namespace TouhouMachineLearningSummary.GameSystem
         /// </summary>
         public static async Task MoveCard(Event e)
         {
-            if (e.TargetCard != null && !e.TargetCard[CardState.Forbidden] && GameSystem.InfoSystem.AgainstCardSet[e.location.X].Count < 6)
+            if (e.TargetCard != null && !e.TargetCard[CardState.Forbidden] && GameSystem.InfoSystem.AgainstCardSet[e.location.Row].Count < 6)
             {
                 await GameSystemCommand.TriggerBroadcast(e[TriggerType.Move]);
             }
@@ -241,11 +242,11 @@ namespace TouhouMachineLearningSummary.GameSystem
     /// </summary>
     public class ProcessSystem
     {
-        public static async Task WhenTurnStart() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.cardSet.CardList)[TriggerType.TurnStart]);
-        public static async Task WhenTurnEnd() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.cardSet.CardList)[TriggerType.TurnEnd]);
-        public static async Task WhenRoundStart() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.cardSet.CardList)[TriggerType.RoundStart]);
-        public static async Task WhenRoundEnd() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.cardSet.CardList)[TriggerType.RoundEnd]);
-        public static async Task Pass() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.cardSet.CardList)[TriggerType.Pass]);
+        public static async Task WhenTurnStart() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.GameCardsFilter.ContainCardList)[TriggerType.TurnStart]);
+        public static async Task WhenTurnEnd() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.GameCardsFilter.ContainCardList)[TriggerType.TurnEnd]);
+        public static async Task WhenRoundStart() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.GameCardsFilter.ContainCardList)[TriggerType.RoundStart]);
+        public static async Task WhenRoundEnd() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.GameCardsFilter.ContainCardList)[TriggerType.RoundEnd]);
+        public static async Task Pass() => await GameSystemCommand.TriggerNotice(new Event(null, AgainstInfo.GameCardsFilter.ContainCardList)[TriggerType.Pass]);
     }
     /// <summary>
     /// 信息系统，获取游戏内卡牌所需的各类对战信息
@@ -255,7 +256,7 @@ namespace TouhouMachineLearningSummary.GameSystem
         /// <summary>
         /// 获取对战内所有卡牌集合,并可通过各种特征标签进行筛选
         /// </summary>
-        public static CardSet AgainstCardSet => AgainstInfo.cardSet;
+        public static CardsFilter AgainstCardSet => AgainstInfo.GameCardsFilter;
         /// <summary>
         /// 获取对战时通过选择操作选择的卡牌列表
         /// </summary>

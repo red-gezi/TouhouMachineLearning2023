@@ -25,7 +25,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.Before, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   List<Card> targetCards = GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.Silver, CardRank.Copper].CardList;
+                   List<Card> targetCards = GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Battle][CardRank.Silver, CardRank.Copper].ContainCardList;
                    targetCards.Remove(e.TriggerCard);
                    await GameSystem.SelectSystem.SelectUnit(this, targetCards, 1);
                    await GameSystem.PointSystem.Reversal(new Event(e.TriggerCard, GameSystem.InfoSystem.SelectUnits));

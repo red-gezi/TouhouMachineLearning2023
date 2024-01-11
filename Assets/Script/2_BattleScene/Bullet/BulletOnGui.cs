@@ -30,8 +30,8 @@ namespace TouhouMachineLearningSummary.Test
                 BulletTrackInt = GUI.Toolbar(new Rect(25, 85, 1250, 30), BulletTrackInt, Init(typeof(BulletTrack)).ToArray());
                 if (GUI.Button(new Rect(25, 150, 250, 30), "´¥·¢Ð§¹û"))
                 {
-                    var tirggerCard = Info.AgainstInfo.cardSet[Orientation.Down][GameRegion.Battle].CardList.FirstOrDefault();
-                    var targetCards = Info.AgainstInfo.cardSet[Orientation.Up][GameRegion.Battle].CardList.Take(3).ToList();
+                    var tirggerCard = Info.AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Battle].ContainCardList.FirstOrDefault();
+                    var targetCards = Info.AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Battle].ContainCardList.Take(3).ToList();
                     _ = GameSystem.PointSystem.Hurt(new Event(tirggerCard, targetCards)
                         .SetPoint(1)
                         .SetBullet(
@@ -44,9 +44,9 @@ namespace TouhouMachineLearningSummary.Test
                 }
                 if (GUI.Button(new Rect(25, 180, 250, 30), "ÕÙ»½¿¨Æ¬"))
                 {
-                    var cards1 = Info.AgainstInfo.cardSet[Orientation.Down][GameRegion.Deck].CardList.Take(3);
+                    var cards1 = Info.AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Deck].ContainCardList.Take(3);
                     _ = GameSystem.TransferSystem.SummonCard(new Event(null, cards1.ToList()));
-                    var cards2 = Info.AgainstInfo.cardSet[Orientation.Up][GameRegion.Deck].CardList.Take(3);
+                    var cards2 = Info.AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Deck].ContainCardList.Take(3);
                     _ = GameSystem.TransferSystem.SummonCard(new Event(null, cards2.ToList()));
                 }
             }

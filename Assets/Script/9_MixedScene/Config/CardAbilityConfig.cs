@@ -40,13 +40,13 @@ namespace TouhouMachineLearningSummary.Config
                 isAbilityActive &= JudgeAbilityActive(card, Condition.Dead, card.ShowPoint == 0);
                 isAbilityActive &= JudgeAbilityActive(card, Condition.NotDead, card.ShowPoint > 0);
                 isAbilityActive &= JudgeAbilityActive(card, Condition.NotSeal, !card[CardState.Seal]);
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnUse, Info.AgainstInfo.cardSet[GameRegion.Used].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnHand, Info.AgainstInfo.cardSet[GameRegion.Hand].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnDeck, Info.AgainstInfo.cardSet[GameRegion.Deck].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnGrave, Info.AgainstInfo.cardSet[GameRegion.Grave].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnBattle, Info.AgainstInfo.cardSet[GameRegion.Battle].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnMyRegion, Info.AgainstInfo.cardSet[Orientation.My].CardList.Contains(card));
-                isAbilityActive &= JudgeAbilityActive(card, Condition.OnOpRegion, Info.AgainstInfo.cardSet[Orientation.Op].CardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnUse, Info.AgainstInfo.GameCardsFilter[GameRegion.Used].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnHand, Info.AgainstInfo.GameCardsFilter[GameRegion.Hand].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnDeck, Info.AgainstInfo.GameCardsFilter[GameRegion.Deck].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnGrave, Info.AgainstInfo.GameCardsFilter[GameRegion.Grave].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnBattle, Info.AgainstInfo.GameCardsFilter[GameRegion.Battle].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnMyRegion, Info.AgainstInfo.GameCardsFilter[Orientation.My].ContainCardList.Contains(card));
+                isAbilityActive &= JudgeAbilityActive(card, Condition.OnOpRegion, Info.AgainstInfo.GameCardsFilter[Orientation.Op].ContainCardList.Contains(card));
                 return isAbilityActive;
             }
 

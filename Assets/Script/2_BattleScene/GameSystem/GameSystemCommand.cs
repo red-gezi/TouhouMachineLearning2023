@@ -19,15 +19,15 @@ namespace TouhouMachineLearningSummary.Command
         /// <returns></returns>
         public static async Task TriggerNotice(Event e)
         {
-            foreach (var card in AgainstInfo.cardSet.CardList)
+            foreach (var card in AgainstInfo.GameCardsFilter.ContainCardList)
             {
                 await Trigger(card, e[card][TriggerTime.Before]);
             }
-            foreach (var card in AgainstInfo.cardSet.CardList)
+            foreach (var card in AgainstInfo.GameCardsFilter.ContainCardList)
             {
                 await Trigger(card, e[card][TriggerTime.When]);
             }
-            foreach (var card in AgainstInfo.cardSet.CardList)
+            foreach (var card in AgainstInfo.GameCardsFilter.ContainCardList)
             {
                 await Trigger(card, e[card][TriggerTime.After]);
             }
@@ -52,7 +52,7 @@ namespace TouhouMachineLearningSummary.Command
                 //遍历所有触发对象，对每个对象目标外的全体对象广播xx效果前效果
                 foreach (var targetCard in e.TargetCards)
                 {
-                    foreach (var card in AgainstInfo.cardSet.CardList.Where(card => card != targetCard))
+                    foreach (var card in AgainstInfo.GameCardsFilter.ContainCardList.Where(card => card != targetCard))
                     {
                         //await Trigger(card, e[card][TriggerTime.Before]);
                         await Trigger(card, e[TriggerTime.Before]);
@@ -80,7 +80,7 @@ namespace TouhouMachineLearningSummary.Command
                 ////遍历所有触发对象，对每个对象目标外的全体对象广播XX之后效果
                 foreach (var targetCard in e.TargetCards)
                 {
-                    foreach (var card in AgainstInfo.cardSet.CardList.Where(card => card != targetCard))
+                    foreach (var card in AgainstInfo.GameCardsFilter.ContainCardList.Where(card => card != targetCard))
                     {
                         //Debug.LogError($"触发目标{card.CardID}{card.TranslateName}{TriggerTime.After}{e.TriggerType}");
                         //await Trigger(card, e[targetCard][TriggerTime.After]);

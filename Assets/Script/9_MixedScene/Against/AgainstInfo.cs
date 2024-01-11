@@ -5,6 +5,7 @@ using System.Linq;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Manager;
 using TouhouMachineLearningSummary.Model;
+using TouhouMachineLearningSummary.Other;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Info
@@ -27,7 +28,7 @@ namespace TouhouMachineLearningSummary.Info
         /// 玩家线上人物信息
         /// </summary>
         [ShowInInspector]
-        public static PlayerInfo OnlineUserInfo { get; set; } = new ();
+        public static PlayerInfo OnlineUserInfo { get; set; } = new();
         /// <summary>
         /// 玩家的用户信息（可能为线上信息或者单机固定卡组信息）
         /// </summary>
@@ -89,10 +90,10 @@ namespace TouhouMachineLearningSummary.Info
         public static bool IsWaitForSelectProperty { get; set; }
 
         //选择的区域
-        public static RowManager PlayerFocusRegion { get; set; }
+        public static RowInfo PlayerFocusRow { get; set; }
         public static bool IsWaitForSelectRegion { get; set; }
         public static int SelectRowRank { get; set; }
-        public static List<Card> SelectRowCardList => cardSet[SelectRowRank];
+        public static List<Card> SelectRowCardList => GameCardsFilter[SelectRowRank];
         //选择的单位
         public static Card ArrowStartCard { get; set; }
         public static Card ArrowEndCard { get; set; }
@@ -129,11 +130,11 @@ namespace TouhouMachineLearningSummary.Info
         //PvP我方超时，或者是PVE对方回合或者是Ai代理模式下
         public static bool IsAIControl => IsAiAgent || (IsPVE && !IsMyTurn || (IsPVP && IsMyTurn && CoinManager.isTimeout));
         /// <summary>
-        /// 对局中卡牌的集合
+        /// 一个对局中卡牌进行筛选后的集合
         /// </summary>
-        public static CardSet cardSet = new CardSet();
+        public static CardsFilter GameCardsFilter { get; set; } = new CardsFilter();
 
-        public static List<Card> AllCardList => CardSet.GlobalCardList.SelectMany(x => x).ToList();
+        public static List<Card> AllCardList => CardsFilter.GlobalCardList.SelectMany(x => x).ToList();
         //连锁数
         public static int lastP1ChainCount;
         public static int lastP2ChainCount;
@@ -163,10 +164,10 @@ namespace TouhouMachineLearningSummary.Info
         //分数
         public static (int P1Score, int P2Score) PlayerScore;
         public static (int MyScore, int OpScore) ShowScore => IsPlayer1 ? (PlayerScore.P1Score, PlayerScore.P2Score) : (PlayerScore.P2Score, PlayerScore.P1Score);
-        public static int TotalUpPoint => cardSet[Orientation.Up][GameRegion.Battle].CardList.Sum(card => card.ShowPoint);
-        public static int TotalDownPoint => cardSet[Orientation.Down][GameRegion.Battle].CardList.Sum(card => card.ShowPoint);
-        public static int TotalMyPoint => cardSet[Orientation.My][GameRegion.Battle].CardList.Sum(card => card.ShowPoint);
-        public static int TotalOpPoint => cardSet[Orientation.Op][GameRegion.Battle].CardList.Sum(card => card.ShowPoint);
+        public static int TotalUpPoint => GameCardsFilter[Orientation.Up][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
+        public static int TotalDownPoint => GameCardsFilter[Orientation.Down][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
+        public static int TotalMyPoint => GameCardsFilter[Orientation.My][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
+        public static int TotalOpPoint => GameCardsFilter[Orientation.Op][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
         public static int TotalPlayer1Point => IsPlayer1 ? TotalDownPoint : TotalUpPoint;
         public static int TotalPlayer2Point => IsPlayer1 ? TotalUpPoint : TotalDownPoint;
         public static int TurnRelativePoint => TotalMyPoint - TotalOpPoint;

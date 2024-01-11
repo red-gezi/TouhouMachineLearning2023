@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Play)
                 .AbilityAdd(async (e) =>
                 {
-                    await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[CardRank.Silver][CardRank.Copper][CardType.Unit].CardList, 1);
+                    await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[CardRank.Silver][CardRank.Copper][CardType.Unit].ContainCardList, 1);
                     await GameSystem.TransferSystem.ReviveCard(new Event(this, GameSystem.InfoSystem.SelectUnit));
                     await GameSystem.TransferSystem.PlayCard(new Event(GameSystem.InfoSystem.SelectUnit, GameSystem.InfoSystem.SelectUnit));
                 }, Condition.NotSeal)

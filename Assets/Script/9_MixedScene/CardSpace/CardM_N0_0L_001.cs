@@ -25,11 +25,11 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   int targetCount = AgainstInfo.cardSet[Orientation.My][GameRegion.Battle][CardTag.Fairy].CardList.Count - 1;
-                   for (int i = 0; i < AgainstInfo.cardSet[Orientation.My][GameRegion.Battle][CardTag.Fairy].CardList.Count; i++)
+                   int targetCount = AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Battle][CardTag.Fairy].ContainCardList.Count - 1;
+                   for (int i = 0; i < AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Battle][CardTag.Fairy].ContainCardList.Count; i++)
                    {
 
-                       List<Card> cardlist = AgainstInfo.cardSet[Orientation.Op][GameRegion.Battle][CardFeature.LargestPointUnits].CardList.ToList();
+                       List<Card> cardlist = AgainstInfo.GameCardsFilter[Orientation.Op][GameRegion.Battle][CardFeature.LargestPointUnits].ContainCardList.ToList();
                        if (cardlist.Any())
                        {
                            await GameSystem.SelectSystem.SelectUnit(this, cardlist, 1, isAuto: true);

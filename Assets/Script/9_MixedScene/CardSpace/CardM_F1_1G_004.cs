@@ -24,7 +24,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.TurnStart)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.SelectSystem.SelectUnit(this,GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand][CardFeature.LowestRankUnits, CardFeature.LowestPointUnits].CardList,1,true);
+                   await GameSystem.SelectSystem.SelectUnit(this,GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand][CardFeature.LowestRankUnits, CardFeature.LowestPointUnits].ContainCardList,1,true);
                    await GameSystem.StateSystem.SetState(new Event(this, GameSystem.InfoSystem.SelectUnit).SetTargetState( CardState.Pry));
                }, Condition.Default, Condition.OnMyRegion)
                .AbilityAppend();

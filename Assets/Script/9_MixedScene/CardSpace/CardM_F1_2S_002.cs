@@ -24,8 +24,8 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
              .AbilityAdd(async (e) =>
              {
-                 var rowLeftCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand].CardList.FirstOrDefault();
-                 var rowRightCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand].CardList.LastOrDefault();
+                 var rowLeftCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand].ContainCardList.FirstOrDefault();
+                 var rowRightCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Hand].ContainCardList.LastOrDefault();
                  if (rowLeftCard != null)
                  {
                      if (rowLeftCard != rowRightCard)

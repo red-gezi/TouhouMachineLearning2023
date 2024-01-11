@@ -26,7 +26,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.SelectSystem.SelectUnit(this, AgainstInfo.cardSet[Orientation.My][GameRegion.Battle][CardRank.Copper, CardRank.Silver][GameEnum.CardTag.Fairy].CardList, 1);
+                   await GameSystem.SelectSystem.SelectUnit(this, AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Battle][CardRank.Copper, CardRank.Silver][GameEnum.CardTag.Fairy].ContainCardList, 1);
                    await GameSystem.PointSystem.Cure
                    (
                        new Event(this, GameSystem.InfoSystem.SelectUnits)
@@ -34,8 +34,8 @@ namespace TouhouMachineLearningSummary.CardSpace
                    );
                    if (AgainstInfo.SelectUnits.Any())
                    {
-                       AgainstInfo.SelectRowRank = AgainstInfo.SelectUnits[0].Location.X;
-                       AgainstInfo.SelectRank = AgainstInfo.SelectUnits[0].Location.Y;
+                       AgainstInfo.SelectRowRank = AgainstInfo.SelectUnits[0].Location.Row;
+                       AgainstInfo.SelectRank = AgainstInfo.SelectUnits[0].Location.Rank;
                    }
                    await GameSystem.TransferSystem.DeployCard(new Event(this, GameSystem.InfoSystem.SelectUnits));
                }, Condition.Default)

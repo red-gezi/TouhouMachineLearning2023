@@ -8,6 +8,7 @@ using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Model;
+using TouhouMachineLearningSummary.Other;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Manager
@@ -52,7 +53,7 @@ namespace TouhouMachineLearningSummary.Manager
             public int RelativeEndPoint { get; set; }//玩家操作后双方的点数差  
             //0表示不投降，1表示玩家1投降，2表示玩家2投降
             public int SurrenderState { get; set; } = 0;
-            public List<List<SampleCardModel>> AllCardList { get; set; } = new List<List<SampleCardModel>>();
+            public List<List<SimpleCardModel>> AllCardList { get; set; } = new List<List<SimpleCardModel>>();
             public PlayerOperation TurnPlayerOperation { get; set; }
             public List<SelectOperation> TurnSelectOperations { get; set; } = new List<SelectOperation>();
             public TurnOperation() { }
@@ -63,7 +64,7 @@ namespace TouhouMachineLearningSummary.Manager
                 this.TotalTurnRank = AgainstInfo.totalTurnRank;
                 this.IsOnTheOffensive = AgainstInfo.isOnTheOffensive;
                 this.IsPlayer1Turn = !(AgainstInfo.IsPlayer1 ^ AgainstInfo.IsMyTurn);
-                this.AllCardList = CardSet.GlobalCardList.SelectList(cardlist => cardlist.SelectList(card => new SampleCardModel(card)));
+                this.AllCardList = CardsFilter.GlobalCardList.SelectList(cardlist => cardlist.SelectList(card => new SimpleCardModel(card)));
                 return this;
             }
             //回合开始时的基本操作，共三类
@@ -73,7 +74,7 @@ namespace TouhouMachineLearningSummary.Manager
             public class PlayerOperation
             {
                 public List<int> Operation { get; set; }
-                public List<SampleCardModel> TargetcardList { get; set; }
+                public List<SimpleCardModel> TargetcardList { get; set; }
                 public string SelectCardID { get; set; }         //打出的目标卡牌id
                 public int SelectCardIndex { get; set; }     //打出的目标卡牌索引
 
@@ -81,7 +82,7 @@ namespace TouhouMachineLearningSummary.Manager
                 public PlayerOperation(PlayerOperationType operation, List<Card> targetcardList, Card selectCard = null)
                 {
                     this.Operation = operation.EnumToOneHot();
-                    this.TargetcardList = targetcardList.SelectList(card => new SampleCardModel(card));
+                    this.TargetcardList = targetcardList.SelectList(card => new SimpleCardModel(card));
                     this.SelectCardID = selectCard?.CardID??"";
                     this.SelectCardIndex = selectCard == null ? -1 : targetcardList.IndexOf(selectCard);
                 }
@@ -100,7 +101,7 @@ namespace TouhouMachineLearningSummary.Manager
                 public bool IsPlay1ExchangeOver { get; set; }
 
                 //选择单位
-                public List<SampleCardModel> TargetCardList { get; set; }
+                public List<SimpleCardModel> TargetCardList { get; set; }
                 public List<int> SelectCardRank { get; set; }
                 public int SelectMaxNum { get; set; }
                 //区域
@@ -137,7 +138,7 @@ namespace TouhouMachineLearningSummary.Manager
                     case SelectOperationType.SelectUnit:
                         operation.TriggerCardID = triggerCard.CardID;
                         operation.SelectCardRank = AgainstInfo.SelectUnits.SelectList(selectUnit => targetCardList.IndexOf(selectUnit));
-                        operation.TargetCardList = targetCardList.SelectList(card => new SampleCardModel(card));
+                        operation.TargetCardList = targetCardList.SelectList(card => new SimpleCardModel(card));
                         operation.SelectMaxNum = selectMaxNum;
                         break;
                     case SelectOperationType.SelectBoardCard:
@@ -287,13 +288,13 @@ namespace TouhouMachineLearningSummary.Manager
                 TargetJumpTurn = TurnOperations.Last();
             }
             //清空所有卡牌
-            CardSet.GlobalCardList.ForEach(cardlist => cardlist.ForEach(card => UnityEngine.Object.Destroy(card.gameObject)));
-            CardSet.GlobalCardList.ForEach(cardlist => cardlist.Clear());
+            CardsFilter.GlobalCardList.ForEach(cardlist => cardlist.ForEach(card => UnityEngine.Object.Destroy(card.gameObject)));
+            CardsFilter.GlobalCardList.ForEach(cardlist => cardlist.Clear());
             //await Task.Delay(1000);
 
             //设置当前为跳转模式
             AgainstInfo.IsJumpMode = true;
-            await Control.StateControl.CreatAgainstProcess();
+            await AgainstManager.CreatAgainstProcess();
             //设置当前指定回合
             //重新读取
         }

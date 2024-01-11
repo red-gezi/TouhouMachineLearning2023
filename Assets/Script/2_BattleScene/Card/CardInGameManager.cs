@@ -91,13 +91,14 @@ namespace TouhouMachineLearningSummary.Manager
         {
             if (AgainstInfo.playerPrePlayCard != null && !EventSystem.current.IsPointerOverGameObject())
             {
-                if (AgainstInfo.PlayerFocusRegion != null && AgainstInfo.PlayerFocusRegion.name == "下方_墓地")
+                if (AgainstInfo.PlayerFocusRow != null && AgainstInfo.PlayerFocusRow.rowPrefab.name == "下方_墓地")
                 {
                     Info.AgainstInfo.playerDisCard = Info.AgainstInfo.playerPrePlayCard;
                 }
-                //将卡牌放回（不做处理）
-                else if (Info.AgainstInfo.PlayerFocusRegion != null && (AgainstInfo.PlayerFocusRegion.name == "下方_领袖" || AgainstInfo.PlayerFocusRegion.name == "下方_手牌"))
+                //将卡牌放回（不做数据改变处理）
+                else if (Info.AgainstInfo.PlayerFocusRow != null && (AgainstInfo.PlayerFocusRow.rowPrefab.name == "下方_领袖" || AgainstInfo.PlayerFocusRow.rowPrefab.name == "下方_手牌"))
                 {
+
                 }
                 else
                 {
@@ -120,13 +121,13 @@ namespace TouhouMachineLearningSummary.Manager
                 {
                     UiCommand.SetCardBoardOpen(CardBoardMode.Temp);
                     UiCommand.SetCardBoardTitle(ThisCard.CurrentOrientation == Orientation.Up ? "敌方墓地" : "我方墓地");
-                    CardBoardCommand.ShowCardBoard(GameSystem.InfoSystem.AgainstCardSet[ThisCard.CurrentOrientation][ThisCard.CurrentRegion].CardList, CardBoardMode.Temp, BoardCardVisible.AlwaysShow);
+                    CardBoardCommand.ShowCardBoard(GameSystem.InfoSystem.AgainstCardSet[ThisCard.CurrentOrientation][ThisCard.CurrentRegion].ContainCardList, CardBoardMode.Temp, BoardCardVisible.AlwaysShow);
                 }
                 if (ThisCard.CurrentRegion == GameRegion.Deck && ThisCard.CurrentOrientation == Orientation.Down)
                 {
                     UiCommand.SetCardBoardOpen(CardBoardMode.Temp);
                     UiCommand.SetCardBoardTitle("我方卡组");
-                    CardBoardCommand.ShowCardBoard(GameSystem.InfoSystem.AgainstCardSet[ThisCard.CurrentOrientation][ThisCard.CurrentRegion].CardList, CardBoardMode.Temp, BoardCardVisible.AlwaysShow);
+                    CardBoardCommand.ShowCardBoard(GameSystem.InfoSystem.AgainstCardSet[ThisCard.CurrentOrientation][ThisCard.CurrentRegion].ContainCardList, CardBoardMode.Temp, BoardCardVisible.AlwaysShow);
                     //为了debug暂时以真实顺序排序
                     //.OrderBy(card => card.CardRank)
                     //.ThenBy(card => card.ShowPoint)
@@ -148,19 +149,19 @@ namespace TouhouMachineLearningSummary.Manager
             else if (AgainstInfo.IsReplayMode) IsCardVisible = true;
             //位于领袖,战场,墓地区域时始终显示
             //位于领袖时始终显示
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Leader) IsCardVisible = true;
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Used) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Leader) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Used) IsCardVisible = true;
             //位于战场时始终显示
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Water) IsCardVisible = true;
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Fire) IsCardVisible = true;
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Wind) IsCardVisible = true;
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Soil) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Water) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Fire) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Wind) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Soil) IsCardVisible = true;
             //位于墓地时始终显示
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Grave) IsCardVisible = true;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Grave) IsCardVisible = true;
             //位于卡组时始终不显示
-            else if (ThisCard.BelongRowManager.gameRegion == GameRegion.Deck) IsCardVisible = false;
+            else if (ThisCard.BelongRow.gameRegion == GameRegion.Deck) IsCardVisible = false;
             //位于下方玩家时始终显示
-            else if (ThisCard.BelongRowManager.orientation == Orientation.Down) IsCardVisible = true;
+            else if (ThisCard.BelongRow.orientation == Orientation.Down) IsCardVisible = true;
             //其余情况不显示
             else IsCardVisible = false;
         }
@@ -250,24 +251,24 @@ namespace TouhouMachineLearningSummary.Manager
             //计算由系统控制卡牌的位置，还是由玩家手动操作
             if (ThisCard.IsSystemControlMove)
             {
-                var rowManager = ThisCard.BelongRowManager;
-                bool IsSingle = rowManager.gameRegion == GameRegion.Grave || rowManager.gameRegion == GameRegion.Deck || rowManager.gameRegion == GameRegion.Used;
+                var rowInfo = ThisCard.BelongRow;
+                bool IsSingle = rowInfo.gameRegion == GameRegion.Grave || rowInfo.gameRegion == GameRegion.Deck || rowInfo.gameRegion == GameRegion.Used;
                 //根据目标区域中卡牌数量计算卡牌组整体的偏移量，保证所有卡牌居中在区域中间
                 float Actual_Bias = IsSingle ? 0 : (Mathf.Min(ThisCard.BelongCardList.Count, 6) - 1) * 0.8f;
                 //根据区域中卡牌数量计算每隔卡牌之间的间隔，保证卡牌少时不会太过分散
-                float Actual_Interval = Mathf.Min(rowManager.Range / ThisCard.BelongCardList.Count, 1.6f);
+                float Actual_Interval = Mathf.Min(rowInfo.Range / ThisCard.BelongCardList.Count, 1.6f);
                 int cardIndex = ThisCard.BelongCardList.IndexOf(ThisCard);
 
-                Vector3 Actual_Offset_Up = rowManager.transform.up * (0.2f + cardIndex * 0.01f) * (ThisCard.isPrepareToPlay ? 1.1f : 1);
+                Vector3 Actual_Offset_Up = rowInfo.rowPrefab.transform.up * (0.2f + cardIndex * 0.01f) * (ThisCard.isPrepareToPlay ? 1.1f : 1);
                 //计算Card的落下前后的偏移距离
                 Vector3 moveStepOver_Offset = ThisCard.isMoveStepOver ? Vector3.zero : Vector3.up;
                 //计算抽卡的插入牌组前后的偏移距离
-                Vector3 drawStepOver_Offset = ThisCard.isDrawStepOver ? Vector3.zero : -rowManager.transform.forward;
+                Vector3 drawStepOver_Offset = ThisCard.isDrawStepOver ? Vector3.zero : -rowInfo.rowPrefab.transform.forward;
                 //焦点注释在Card时Card回像屏幕移动产生一个放大即将打出效果
-                Vector3 Actual_Offset_Forward = ThisCard.isPrepareToPlay ? -rowManager.transform.forward * 0.5f : Vector3.zero;
+                Vector3 Actual_Offset_Forward = ThisCard.isPrepareToPlay ? -rowInfo.rowPrefab.transform.forward * 0.5f : Vector3.zero;
                 //计算最终的Card位置的角度
-                Vector3 TargetPosition = rowManager.transform.position + Vector3.left * (Actual_Interval * cardIndex - Actual_Bias) + Actual_Offset_Up + Actual_Offset_Forward + moveStepOver_Offset + drawStepOver_Offset;
-                Vector3 TargetEuler = rowManager.transform.eulerAngles + new Vector3(0, 0, IsCardVisible ? 0 : 180);
+                Vector3 TargetPosition = rowInfo.rowPrefab.transform.position + Vector3.left * (Actual_Interval * cardIndex - Actual_Bias) + Actual_Offset_Up + Actual_Offset_Forward + moveStepOver_Offset + drawStepOver_Offset;
+                Vector3 TargetEuler = rowInfo.rowPrefab.transform.eulerAngles + new Vector3(0, 0, IsCardVisible ? 0 : 180);
                 //如果位置触发不一致再触发绑定效果
                 if (this.TargetPosition != TargetPosition || this.TargetEuler != TargetEuler)
                 {

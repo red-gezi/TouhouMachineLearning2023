@@ -7,9 +7,8 @@ using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Config;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
-using TouhouMachineLearningSummary.Model;
 using TouhouMachineLearningSummary.Manager;
-using TouhouMachineLearningSummary.Thread;
+using TouhouMachineLearningSummary.Model;
 using UnityEngine;
 using UnityEngine.UI;
 namespace TouhouMachineLearningSummary
@@ -90,7 +89,7 @@ namespace TouhouMachineLearningSummary
 
         //是否以灰色状态显示
         public bool IsGray { get; set; } = false;
-        public bool IsCardReadyToGrave => ShowPoint == 0 && AgainstInfo.cardSet[GameRegion.Battle].CardList.Contains(this);
+        public bool IsCardReadyToGrave => ShowPoint == 0 && AgainstInfo.GameCardsFilter[GameRegion.Battle].ContainCardList.Contains(this);
         //决定卡牌落下阶段是否
         public bool isMoveStepOver = true;
         //决定卡牌抽卡阶段是否完成
@@ -103,15 +102,15 @@ namespace TouhouMachineLearningSummary
 
         ////////////////////////////////////////卡牌延生信息/////////////////////////////////////////////////////////////
         //卡牌当前所属
-        public Territory CardCurrentTerritory => AgainstInfo.cardSet[Orientation.Down].CardList.Contains(this) ? Territory.My : Territory.Op;
+        public Territory CardCurrentTerritory => AgainstInfo.GameCardsFilter[Orientation.Down].ContainCardList.Contains(this) ? Territory.My : Territory.Op;
         [ShowInInspector]
         //卡牌默认可部署所属
-        public Orientation CurrentOrientation => AgainstInfo.cardSet[Orientation.Down].CardList.Contains(this) ? Orientation.Down : Orientation.Up;
+        public Orientation CurrentOrientation => AgainstInfo.GameCardsFilter[Orientation.Down].ContainCardList.Contains(this) ? Orientation.Down : Orientation.Up;
         public Orientation OppositeOrientation => CurrentOrientation == Orientation.Down ? Orientation.Up : Orientation.Down;
         //获取卡牌所在区域
-        public GameRegion CurrentRegion => AgainstInfo.cardSet.RowManagers.First(row => row.CardList.Contains(this)).gameRegion;
+        public GameRegion CurrentRegion => AgainstInfo.GameCardsFilter.ContainRowInfos.First(row => row.CardList.Contains(this)).gameRegion;
         //卡牌的当前顺序
-        public int CurrentIndex => AgainstInfo.cardSet.RowManagers.First(row => row.CardList.Contains(this)).CardList.IndexOf(this);
+        public int CurrentIndex => AgainstInfo.GameCardsFilter.ContainRowInfos.First(row => row.CardList.Contains(this)).CardList.IndexOf(this);
 
         //按水->土->风->火->水的顺序获取下一个区域属性
         public GameRegion LastBattleRegion => CurrentRegion switch
@@ -134,12 +133,12 @@ namespace TouhouMachineLearningSummary
         
         
 
-        public List<Card> BelongCardList => Command.RowCommand.GetCardList(this);
-        public RowManager BelongRowManager => AgainstInfo.cardSet.RowManagers.FirstOrDefault(row=>row.CardList.Contains(this));
+        public List<Card> BelongCardList => RowCommand.GetRowInfo(this).CardList;
+        public RowInfo BelongRow => RowCommand.GetRowInfo(this);
 
-        public Location Location => Command.RowCommand.GetLocation(this);
-        public Card LeftCard => Location.Y > 0 ? BelongCardList[Location.Y - 1] : null;
-        public Card RightCard => Location.Y < BelongCardList.Count - 1 ? BelongCardList[Location.Y + 1] : null;
+        public Location Location => RowCommand.GetLocation(this);
+        public Card LeftCard => Location.Rank > 0 ? BelongCardList[Location.Rank - 1] : null;
+        public Card RightCard => Location.Rank < BelongCardList.Count - 1 ? BelongCardList[Location.Rank + 1] : null;
         public List<Card> TwoSideCard
         {
             get

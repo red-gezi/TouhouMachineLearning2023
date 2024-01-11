@@ -27,7 +27,7 @@ namespace TouhouMachineLearningSummary.CardSpace
               .AbilityAdd(async (e) =>
               {
                   await GameSystem.PointSystem.Destory(
-                      new Event(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardRank.Copper, CardRank.Silver][CardFeature.LargestPointUnits].CardList)
+                      new Event(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardRank.Copper, CardRank.Silver][CardFeature.LargestPointUnits].ContainCardList)
                       );
               }, Condition.Default)
               .AbilityAppend();

@@ -82,7 +82,7 @@ namespace TouhouMachineLearningSummary
         /// </summary>
         public Event SetLocation(Orientation orientation, GameRegion regionType, int index=0)
         {
-            int x = GameSystem.InfoSystem.AgainstCardSet[regionType][orientation].RowManagers.First().RowRank;
+            int x = GameSystem.InfoSystem.AgainstCardSet[regionType][orientation].ContainRowInfos.First().RowRank;
             int y = index;
             location = new Location(x, y);
             return this;

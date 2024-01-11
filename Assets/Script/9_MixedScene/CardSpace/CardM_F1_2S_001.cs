@@ -24,7 +24,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.TurnEnd)
                .AbilityAdd(async (e) =>
                {
-                   var targetCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardFeature.LargestPointUnits].CardList.FirstOrDefault();
+                   var targetCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardFeature.LargestPointUnits].ContainCardList.FirstOrDefault();
                    if (targetCard != null)
                    {
                        await GameSystem.TransferSystem.MoveCard(new Event(this, this).SetLocation(targetCard.CurrentOrientation, targetCard.CurrentRegion, targetCard.CurrentIndex + 1));

@@ -18,7 +18,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                 .AbilityAdd(async (e) =>
                 {
                     var targetCard = GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck][CardRank.Copper]
-                    .CardList
+                    .ContainCardList
                     .Where(card => card.ShowPoint <= this[CardField.Pary])
                     .OrderBy(card => card.ShowPoint)
                     .FirstOrDefault();

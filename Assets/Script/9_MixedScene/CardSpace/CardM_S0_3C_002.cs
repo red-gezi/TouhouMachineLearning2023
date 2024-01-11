@@ -25,7 +25,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Decrease)
              .AbilityAdd(async (e) =>
              {
-                 await GameSystem.FieldSystem.ChangeField(new Event(this, Info.AgainstInfo.cardSet[Orientation.My][CardTag.Miracle].CardList).SetTargetField(CardField.Pary, 1).SetMeanWhile());
+                 await GameSystem.FieldSystem.ChangeField(new Event(this, Info.AgainstInfo.GameCardsFilter[Orientation.My][CardTag.Miracle].ContainCardList).SetTargetField(CardField.Pary, 1).SetMeanWhile());
              }, Condition.Default, Condition.OnMyRegion)
              .AbilityAppend();
         }

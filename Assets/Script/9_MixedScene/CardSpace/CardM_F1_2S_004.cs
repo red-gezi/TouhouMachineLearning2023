@@ -24,13 +24,13 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
              .AbilityAdd(async (e) =>
              {
-                 await GameSystem.SelectSystem.SelectBoardCard(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Grave].CardList);
+                 await GameSystem.SelectSystem.SelectBoardCard(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Grave].ContainCardList);
                  if (GameSystem.InfoSystem.SelectBoardCard != null)
                  {
                      var point = GameSystem.InfoSystem.SelectBoardCard.BasePoint;
                      await GameSystem.TransferSystem.BanishCard(new Event(this, GameSystem.InfoSystem.SelectBoardCard));
 
-                     await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].CardList, 1);
+                     await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle].ContainCardList, 1);
                      await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.SelectUnit).SetPoint(point));
                  }
              }, Condition.Default)

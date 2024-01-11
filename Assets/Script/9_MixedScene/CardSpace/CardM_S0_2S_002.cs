@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Play)
                 .AbilityAdd(async (e) =>
                 {
-                    var cardList = GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck][CardRank.NoGold].CardList
+                    var cardList = GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck][CardRank.NoGold].ContainCardList
                          .Where(card => card.ShowPoint <= this[CardField.Pary])
                          .ToList();
                     await GameSystem.SelectSystem.SelectBoardCard(this, cardList);

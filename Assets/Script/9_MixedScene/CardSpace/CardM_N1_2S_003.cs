@@ -31,7 +31,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                        await GameSystem.StateSystem.ClearState(new Event(this, this).SetTargetState(CardState.Docile));
                        await GameSystem.StateSystem.SetState(new Event(this, this).SetTargetState(CardState.Furor));
 
-                       await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][CurrentRegion].CardList).SetPoint(1).SetMeanWhile());
+                       await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][CurrentRegion].ContainCardList).SetPoint(1).SetMeanWhile());
 
                    }
                }, Condition.Default)

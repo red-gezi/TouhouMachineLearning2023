@@ -25,7 +25,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
              .AbilityAdd(async (e) =>
              {
-                 await GameSystem.FieldSystem.ChangeField(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][CardField.Inspire].CardList).SetTargetField(CardField.Inspire, 1));
+                 await GameSystem.FieldSystem.ChangeField(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][CardField.Inspire].ContainCardList).SetTargetField(CardField.Inspire, 1));
              }, Condition.Default)
              .AbilityAppend();
         }

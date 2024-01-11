@@ -64,16 +64,16 @@ namespace TouhouMachineLearningSummary.Command
                         {
                             case NetAcyncType.FocusCard:
                                 {
-                                    int X = receiveInfo[0].ToType<int>();
-                                    int Y = receiveInfo[1].ToType<int>();
-                                    AgainstInfo.OpponentFocusCard = Command.RowCommand.GetCard(X, Y);
+                                    int rowRank = receiveInfo[0].ToType<int>();
+                                    int rank = receiveInfo[1].ToType<int>();
+                                    AgainstInfo.OpponentFocusCard = RowCommand.GetCard(rowRank, rank);
                                     break;
                                 }
                             case NetAcyncType.PlayCard:
                                 {
-                                    int X = receiveInfo[0].ToType<int>();
-                                    int Y = receiveInfo[1].ToType<int>();
-                                    Card targetCard = Command.RowCommand.GetCard(X, Y);
+                                    int rowRank = receiveInfo[0].ToType<int>();
+                                    int rank = receiveInfo[1].ToType<int>();
+                                    Card targetCard = RowCommand.GetCard(rowRank, rank);
                                     Info.AgainstInfo.playerPlayCard = targetCard;
                                     break;
                                 }
@@ -87,17 +87,17 @@ namespace TouhouMachineLearningSummary.Command
                                 {
                                     Debug.Log("收到同步单位信息");
                                     List<Location> Locations = receiveInfo[0].ToType<List<Location>>();
-                                    AgainstInfo.SelectUnits.AddRange(Locations.Select(location => Command.RowCommand.GetCard(location.X, location.Y)));
+                                    AgainstInfo.SelectUnits.AddRange(Locations.Select(location => Command.RowCommand.GetCard(location.Row, location.Rank)));
                                     break;
                                 }
                             case NetAcyncType.SelectLocation:
                                 {
                                     Debug.Log("触发坐标同步");
-                                    int X = receiveInfo[0].ToType<int>();
-                                    int Y = receiveInfo[1].ToType<int>();
-                                    Info.AgainstInfo.SelectRowRank = X;
-                                    Info.AgainstInfo.SelectRank = Y;
-                                    Debug.Log($"坐标为：{X}:{Y}");
+                                    int rowRank = receiveInfo[0].ToType<int>();
+                                    int rank = receiveInfo[1].ToType<int>();
+                                    Info.AgainstInfo.SelectRowRank = rowRank;
+                                    Info.AgainstInfo.SelectRank = rank;
+                                    Debug.Log($"坐标为：{rowRank}:{rank}");
                                     break;
                                 }
                             case NetAcyncType.Pass:
@@ -446,14 +446,14 @@ namespace TouhouMachineLearningSummary.Command
                     case NetAcyncType.FocusCard:
                         {
                             Location TargetCardLocation = Info.AgainstInfo.PlayerFocusCard != null ? Info.AgainstInfo.PlayerFocusCard.Location : new Location(-1, -1);
-                            await TouHouHub.SendAsync("Async", AcyncType, AgainstInfo.RoomID, AgainstInfo.IsPlayer1, new object[] { TargetCardLocation.X, TargetCardLocation.Y });
+                            await TouHouHub.SendAsync("Async", AcyncType, AgainstInfo.RoomID, AgainstInfo.IsPlayer1, new object[] { TargetCardLocation.Row, TargetCardLocation.Rank });
                             break;
                         }
                     case NetAcyncType.PlayCard:
                         {
                             Debug.Log("同步打出卡牌");
                             Location TargetCardLocation = Info.AgainstInfo.playerPlayCard.Location;
-                            await TouHouHub.SendAsync("Async", AcyncType, AgainstInfo.RoomID, AgainstInfo.IsPlayer1, new object[] { TargetCardLocation.X, TargetCardLocation.Y });
+                            await TouHouHub.SendAsync("Async", AcyncType, AgainstInfo.RoomID, AgainstInfo.IsPlayer1, new object[] { TargetCardLocation.Row, TargetCardLocation.Rank });
                             break;
                         }
                     case NetAcyncType.DisCard:

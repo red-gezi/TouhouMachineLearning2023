@@ -19,20 +19,21 @@ namespace TouhouMachineLearningSummary.Manager
         private void GetFocusTarget()
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit[] Infos = Physics.RaycastAll(ray);
-            if (Infos.Length > 0)
+            RaycastHit[] infos = Physics.RaycastAll(ray);
+            bool isFocusRow = false;
+            foreach (RaycastHit hit in infos)
             {
-                for (int i = 0; i < Infos.Length; i++)
+                GameObject hitObject = hit.transform.gameObject;
+                RowInfo rowInfo = RowCommand.GetRowInfo(hitObject);
+                if (rowInfo != null)
                 {
-                    if (Infos[i].transform.GetComponent<RowManager>() != null)
-                    {
-                        AgainstInfo.PlayerFocusRegion = Infos[i].transform.GetComponent<RowManager>();
-                        AgainstInfo.FocusPoint = Infos[i].point;
-                        break;
-                    }
-                    AgainstInfo.PlayerFocusRegion = null;
+                    AgainstInfo.PlayerFocusRow = rowInfo;
+                    AgainstInfo.FocusPoint = hit.point;
+                    isFocusRow = true;
+                    break;
                 }
             }
+            AgainstInfo.PlayerFocusRow = isFocusRow ? AgainstInfo.PlayerFocusRow : null;
             float distance = (height - ray.origin.y) / ray.direction.y;
             AgainstInfo.dragToPoint = ray.GetPoint(distance);
             Debug.DrawLine(ray.origin, AgainstInfo.dragToPoint, Color.red);
@@ -66,7 +67,7 @@ namespace TouhouMachineLearningSummary.Manager
             {
                 if (AgainstInfo.IsWaitForSelectRegion)
                 {
-                    AgainstInfo.SelectRowRank = AgainstInfo.PlayerFocusRegion.RowRank;
+                    AgainstInfo.SelectRowRank = AgainstInfo.PlayerFocusRow.RowRank;
                 }
                 //处理选择单位的箭头
                 if (AgainstInfo.IsWaitForSelectUnits && AgainstInfo.PlayerFocusCard != null && !AgainstInfo.PlayerFocusCard.IsGray)
@@ -85,10 +86,10 @@ namespace TouhouMachineLearningSummary.Manager
                 }
                 if (AgainstInfo.IsWaitForSelectLocation)
                 {
-                    if (AgainstInfo.PlayerFocusRegion != null && AgainstInfo.PlayerFocusRegion.CanBeSelected)
+                    if (AgainstInfo.PlayerFocusRow != null && AgainstInfo.PlayerFocusRow.CanBeSelected)
                     {
-                        AgainstInfo.SelectRowRank = AgainstInfo.PlayerFocusRegion.RowRank;
-                        AgainstInfo.SelectRank = AgainstInfo.PlayerFocusRegion.Rank;
+                        AgainstInfo.SelectRowRank = AgainstInfo.PlayerFocusRow.RowRank;
+                        AgainstInfo.SelectRank = AgainstInfo.PlayerFocusRow.FocusRank;
                     }
                 }
             }

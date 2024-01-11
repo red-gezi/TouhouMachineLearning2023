@@ -25,7 +25,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardField.Energy].CardList, 2);
+                   await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[GameRegion.Battle][CardField.Energy].ContainCardList, 2);
                    await GameSystem.FieldSystem.SetField(new Event(this, this).SetTargetField(CardField.Energy, GameSystem.InfoSystem.SelectUnits.Sum(card => card[CardField.Energy])));
                    await GameSystem.FieldSystem.SetField(new Event(this, GameSystem.InfoSystem.SelectUnits).SetTargetField(CardField.Energy, 0));
                }, Condition.Default)

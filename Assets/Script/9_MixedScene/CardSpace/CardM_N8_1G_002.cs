@@ -33,7 +33,7 @@ namespace TouhouMachineLearningSummary.CardSpace
             AbalityRegister(TriggerTime.When, TriggerType.Deploy)
                .AbilityAdd(async (e) =>
                {
-                   await GameSystem.TransferSystem.DisCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Hand].CardList.LastOrDefault()));
+                   await GameSystem.TransferSystem.DisCard(new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Hand].ContainCardList.LastOrDefault()));
                }, Condition.Default)
                .AbilityAppend();
         }

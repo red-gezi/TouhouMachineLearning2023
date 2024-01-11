@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using TouhouMachineLearningSummary.Control;
 using TouhouMachineLearningSummary.Info;
+using TouhouMachineLearningSummary.Manager;
 using UnityEngine;
 namespace TouhouMachineLearningSummary.Command
 {
@@ -17,7 +17,7 @@ namespace TouhouMachineLearningSummary.Command
         public static void Bullet_Gain(Event e)
         {
             GameObject Bullet = GameObject.Instantiate(Info.ParticleInfo.Instance.GainBullet);
-            BulletControl bulletControl = Bullet.GetComponent<BulletControl>();
+            BulletManager bulletControl = Bullet.GetComponent<BulletManager>();
             bulletControl.Init(e.TriggerCard, e.TargetCard);
             bulletControl.Play();
             Bullet.GetComponent<ParticleSystem>().Play();
@@ -25,7 +25,7 @@ namespace TouhouMachineLearningSummary.Command
         internal static void Bullet_Hurt(Event e)
         {
             GameObject Bullet = GameObject.Instantiate(Info.ParticleInfo.Instance.HurtBullet);
-            BulletControl bulletControl = Bullet.GetComponent<BulletControl>();
+            BulletManager bulletControl = Bullet.GetComponent<BulletManager>();
             bulletControl.Init(e.TriggerCard, e.TargetCard);
             bulletControl.Play();
             Bullet.GetComponent<ParticleSystem>().Play();

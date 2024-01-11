@@ -27,7 +27,7 @@ namespace TouhouMachineLearningSummary.CardSpace
              {
                  await GameSystem.FieldSystem.SetField(new Event(this, this).SetTargetField(CardField.Inspire, 2));
                  await GameSystem.TransferSystem.SummonCard(
-                     new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck].CardList
+                     new Event(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.My][GameRegion.Deck].ContainCardList
                      .Where(card => card.CardID == "CardM_N0_2S_001" || card.CardID == "CardM_N0_2S_003")
                      .ToList())
                      );
