@@ -11,11 +11,7 @@ namespace TouhouMachineLearningSummary.Test
         [Button]
         public async void TestAudio(SoundEffectType type)
         {
-            var audioCLip = SoundEffectInfo.SoundEfects[type];
-            AudioSource Source = SoundEffectInfo.AudioScoure.GetComponent<AudioSource>();
-            Source.clip = audioCLip;
-            Source.Play();
-            await Task.Delay((int)(audioCLip.length * 1000));
+            Command.SoundEffectCommand.PlayAsync(type);
         }
     }
 }

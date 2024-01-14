@@ -10,6 +10,11 @@ namespace TouhouMachineLearningSummary.Manager
         public float height;
         Ray ray;
         public float PassPressTime;
+        Camera camera;
+        private void Awake()
+        {
+            camera = Camera.main;
+        }
         void Update()
         {
             GetFocusTarget();
@@ -18,7 +23,7 @@ namespace TouhouMachineLearningSummary.Manager
         }
         private void GetFocusTarget()
         {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] infos = Physics.RaycastAll(ray);
             bool isFocusRow = false;
             foreach (RaycastHit hit in infos)
@@ -33,11 +38,14 @@ namespace TouhouMachineLearningSummary.Manager
                     break;
                 }
             }
+            RowCommand.RefreshTempCard();
             AgainstInfo.PlayerFocusRow = isFocusRow ? AgainstInfo.PlayerFocusRow : null;
             float distance = (height - ray.origin.y) / ray.direction.y;
             AgainstInfo.dragToPoint = ray.GetPoint(distance);
+#if UNITY_EDITOR
             Debug.DrawLine(ray.origin, AgainstInfo.dragToPoint, Color.red);
             Debug.DrawRay(ray.origin, ray.direction, Color.white);
+#endif
         }
         private void KeyBoardEvent()
         {

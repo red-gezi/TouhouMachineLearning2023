@@ -51,7 +51,7 @@ namespace TouhouMachineLearningSummary
         public Dictionary<TriggerTime, Dictionary<TriggerType, List<Func<Event, Task>>>> CardAbility { get; set; } = new();
         //卡牌附加状态
         [ShowInInspector]
-        public List<CardState> cardStates = new ();
+        public List<CardState> cardStates = new();
         public bool this[CardState cardState]
         {
             get => cardStates.Contains(cardState);
@@ -72,7 +72,7 @@ namespace TouhouMachineLearningSummary
         }
         //卡牌附加值
         [ShowInInspector]
-        public Dictionary<CardField, int> cardFields = new ();
+        public Dictionary<CardField, int> cardFields = new();
         public int this[CardField cardField]
         {
             get => cardFields.ContainsKey(cardField) ? cardFields[cardField] : 0;
@@ -98,7 +98,7 @@ namespace TouhouMachineLearningSummary
         public bool isPrepareToPlay = false;
         //处于系统控制移动状态
         public bool IsSystemControlMove => this != AgainstInfo.playerPrePlayCard;
-       
+
 
         ////////////////////////////////////////卡牌延生信息/////////////////////////////////////////////////////////////
         //卡牌当前所属
@@ -130,12 +130,13 @@ namespace TouhouMachineLearningSummary
             GameRegion.Soil => GameRegion.Water,
             _ => CurrentRegion,
         };
-        
-        
+
+
 
         public List<Card> BelongCardList => RowCommand.GetRowInfo(this).CardList;
         public RowInfo BelongRow => RowCommand.GetRowInfo(this);
 
+        
         public Location Location => RowCommand.GetLocation(this);
         public Card LeftCard => Location.Rank > 0 ? BelongCardList[Location.Rank - 1] : null;
         public Card RightCard => Location.Rank < BelongCardList.Count - 1 ? BelongCardList[Location.Rank + 1] : null;
@@ -157,8 +158,8 @@ namespace TouhouMachineLearningSummary
         public Text PointText => transform.GetChild(0).GetChild(0).GetComponent<Text>();
         public Transform FieldIconContent => transform.GetChild(0).GetChild(1);
         public Transform StateIconContent => transform.GetChild(0).GetChild(2);
-       
-        
+
+
         #endregion
         #region 卡牌能力注册
         /// <summary>

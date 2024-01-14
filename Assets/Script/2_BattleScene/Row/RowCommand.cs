@@ -1,4 +1,5 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TouhouMachineLearningSummary.GameEnum;
@@ -14,6 +15,7 @@ namespace TouhouMachineLearningSummary.Command
         ////////////////////////////////////////获取游戏中行信息的某个数据///////////////////////////////////////////////////////////////////
         public static Card GetCard(int row, int rank) => row == -1 ? null : RowsInfo.rowInfoList[row].CardList[rank];
         public static Card GetCard(Location location) => location.Row == -1 ? null : RowsInfo.rowInfoList[location.Row].CardList[location.Rank];
+        public static List<Card> GetCardList(int rowRank) => RowsInfo.rowInfoList[rowRank].CardList;
         public static RowInfo GetRowInfo(Card targetCard) => RowsInfo.rowInfoList.FirstOrDefault(row => row.CardList.Contains(targetCard));
         public static RowInfo GetRowInfo(int rowRank) => RowsInfo.rowInfoList[rowRank];
         public static RowInfo GetRowInfo(GameObject rowPrefab) => RowsInfo.rowInfoList.FirstOrDefault(row => row.rowPrefab == rowPrefab);
@@ -26,8 +28,16 @@ namespace TouhouMachineLearningSummary.Command
         public static int GetFocusRank(RowInfo rowInfo)
         {
             float posx = -(AgainstInfo.FocusPoint.x - rowInfo.rowPrefab.transform.position.x);
-            int cardNum = rowInfo.CardList.Where(card => !card.IsGray).Count();
-            int rank = Enumerable.Range(0, cardNum).FirstOrDefault(i => posx > i * 1.6 - (cardNum - 1) * 0.8) + 1;
+            int cardNum = rowInfo.CardList.Count(card => !card.IsGray);
+            int rank = 0;
+            for (int i = 0; i < cardNum; i++)
+            {
+                if (posx > i * 1.6f - (cardNum - 1) * 0.8f)
+                {
+                    rank = i + 1;
+                }
+            }
+            //Enumerable.Range(0, cardNum).FirstOrDefault(i => posx > i * 1.6 - (cardNum - 1) * 0.8) + 1;
             return rank;
         }
         ////////////////////////////////////////设置卡牌行区域表现效果///////////////////////////////////////////////////////////////////
@@ -51,6 +61,24 @@ namespace TouhouMachineLearningSummary.Command
                     row.RowMaterial.SetColor("_GlossColor", row.color);
                 });
             }
+        }
+
+        public static void SetBelongRow(Card card, Orientation orientation, GameRegion region, int rank)
+        {
+            var targetCardList = AgainstInfo.GameCardsFilter[orientation][region].ContainCardList;
+            SetBelongRow(card, targetCardList, rank);
+        }
+        public static void SetBelongRow(Card card, Location location)
+        {
+            var targetCardList = RowCommand.GetCardList(location.Row);
+            SetBelongRow(card, targetCardList, location.Rank);
+        }
+        public static void SetBelongRow(Card card, List<Card> targetCardList, int rank)
+        {
+            card.BelongCardList.Remove(card);
+            //修正索引范围
+            var targetIndex = rank > 0 ? Math.Min(rank, targetCardList.Count) : Math.Max(0, targetCardList.Count + 1 + rank);
+            targetCardList.Insert(targetIndex, card);
         }
         //通过对局记录加载行数据
         public static void SetCardListFromSummary(List<List<SimpleCardModel>> sampleCardInfos)
@@ -84,28 +112,27 @@ namespace TouhouMachineLearningSummary.Command
             {
                 if (AgainstInfo.IsMyTurn)
                 {
-                    Card tempCard = rowInfo.TempCard;
                     int focusRank = GetFocusRank(rowInfo);
-                    //创建临时Card
-                    if (tempCard == null && rowInfo.CanBeSelected && AgainstInfo.PlayerFocusRow == rowInfo)
+                    // 创建临时Card
+                    if (rowInfo.TempCard == null && rowInfo.CanBeSelected && AgainstInfo.PlayerFocusRow == rowInfo)
                     {
                         Card modelCard = AgainstInfo.GameCardsFilter[Orientation.My][GameRegion.Used].ContainCardList.LastOrDefault();
-                        tempCard = Command.CardCommand.GenerateTempCard(new Event(null, targetCard: null)
-                                .SetTargetCardId(modelCard.CardID)
-                                .SetLocation(rowInfo.orientation, rowInfo.gameRegion, focusRank));
+                        rowInfo.TempCard = Command.CardCommand.GenerateTempCard(new Event(null, targetCard: null)
+                            .SetTargetCardId(modelCard.CardID)
+                            .SetLocation(rowInfo.orientation, rowInfo.gameRegion, focusRank));
                     }
-                    //改变临时Card的位置
-                    if (tempCard != null && focusRank != rowInfo.CardList.IndexOf(tempCard))
+                    // 改变临时Card的位置
+                    if (rowInfo.TempCard != null && focusRank != rowInfo.CardList.IndexOf(rowInfo.TempCard))
                     {
-                        rowInfo.CardList.Remove(tempCard);
-                        rowInfo.CardList.Insert(focusRank, tempCard);
+                        rowInfo.CardList.Remove(rowInfo.TempCard);
+                        rowInfo.CardList.Insert(focusRank, rowInfo.TempCard);
                     }
-                    //销毁临时Card
-                    if (tempCard != null && !(rowInfo.CanBeSelected && AgainstInfo.PlayerFocusRow == rowInfo))
+                    // 销毁临时Card
+                    if (rowInfo.TempCard != null && !(rowInfo.CanBeSelected && AgainstInfo.PlayerFocusRow == rowInfo))
                     {
-                        rowInfo.CardList.Remove(tempCard);
-                        GameObject.Destroy(tempCard.gameObject);
-                        tempCard = null;
+                        rowInfo.CardList.Remove(rowInfo.TempCard);
+                        GameObject.Destroy(rowInfo.TempCard.gameObject);
+                        rowInfo.TempCard = null;
                     }
                 }
                 //可部署时区域高亮

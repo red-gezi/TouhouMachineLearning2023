@@ -62,7 +62,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             var targetCard = e.TargetCard;
             await BulletCommand.InitBulletAsync(e);
-            _=ShakeCard(e.TargetCard);
+            _ = ShakeCard(e.TargetCard);
             if (targetCard[CardState.Congealbounds])
             {
                 await GameSystem.StateSystem.ClearState(new Event(e.TriggerCard, targetCard));
@@ -93,7 +93,7 @@ namespace TouhouMachineLearningSummary.Command
                     await GameSystem.PointSystem.Decrease(e);
                 }
                 //我死啦
-                if (targetCard.ShowPoint==0)
+                if (targetCard.ShowPoint == 0)
                 {
                     //延命
                     if (targetCard[CardState.Apothanasia])
@@ -253,11 +253,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             if (e.TargetCard == null) return;
             await Task.Delay(500);
-            e.TargetCard.BelongCardList.Remove(e.TargetCard);
-            var targetCardList = AgainstInfo.GameCardsFilter.ContainRowInfos[e.location.Row].CardList;
-            //对插入位置做个符合范围的性纠正
-            var targetIndex = e.location.Rank > 0 ? Math.Min(e.location.Rank, targetCardList.Count) : Math.Max(0, targetCardList.Count + 1 + e.location.Rank);
-            targetCardList.Insert(targetIndex, e.TargetCard);
+            RowCommand.SetBelongRow(e.TargetCard, e.location);
             //移动至不同区域做不同效果
             switch (e.region)
             {
@@ -310,7 +306,7 @@ namespace TouhouMachineLearningSummary.Command
             await Task.Delay(100);
             Orientation targetOrientation = card.CurrentOrientation;
             card.BelongCardList.Remove(card);
-            AgainstInfo.GameCardsFilter[targetOrientation][GameRegion.Grave].ContainRowInfos[0].CardList.Insert(0, card);
+            AgainstInfo.GameCardsFilter[card.CurrentOrientation][GameRegion.Grave].ContainRowInfos[0].CardList.Insert(0, card);
             //重置卡牌状态
             card.cardFields.Clear();
             card.cardStates.Clear();
@@ -687,7 +683,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task TurnEnd(Event e)
         {
             var card = e.TargetCard;
-           
+
             //将判定为死掉卡牌移入墓地，触发遗愿联锁效果
             //我死啦
             if (card.IsCardReadyToGrave)

@@ -19,6 +19,7 @@ namespace TouhouMachineLearningSummary.Command
             //初始化网络系统，用于获取指定版本卡牌信息
             await NetCommand.Init(isHotFixedLoad);
             //主界面加载时再加载音效
+            MusicCommand.Init();
             SoundEffectCommand.Init();
             TitleCommand.Load();
             //加载本地卡牌数据(仅编辑器模式下需要)

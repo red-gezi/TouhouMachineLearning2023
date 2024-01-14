@@ -25,7 +25,8 @@ namespace TouhouMachineLearningSummary.Command
             if (AlreadyInit) { return; }
             AlreadyInit = true;
             //若直接在编辑器中的后续界面运行时默认加载本地测试版本AB包
-            string targetPath = "AssetBundles/PC_Test";
+            string targetPath = "AB/PC_Test";
+            Debug.Log(targetPath);
             //如果当前是从热更界面进入且不是编辑器时从游戏下载的AB路径加载数据包
             if (isHotFixedLoad && !Application.isEditor)
             {
@@ -91,6 +92,10 @@ namespace TouhouMachineLearningSummary.Command
                 //Debug.LogError($"已完成资源集加载");
                 //targetAssets.ForEach(x => Debug.Log(x.name));
                 return targetAsset as T;
+            }
+            else
+            {
+                Debug.LogError("AB包中Tag为"+tag.ToLower()+"的资源无法找到");
             }
             return null;
         }

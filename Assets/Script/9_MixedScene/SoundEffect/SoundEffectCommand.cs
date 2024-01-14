@@ -21,7 +21,6 @@ namespace TouhouMachineLearningSummary.Command
         }
         public static async Task PlayAsync(SoundEffectType type)
         {
-            var result = Info.SoundEffectInfo.SoundEfects;
             var audioClip = Info.SoundEffectInfo.SoundEfects[type];
             AudioSource Source = Info.SoundEffectInfo.AudioScoure.AddComponent<AudioSource>();
             Source.clip = audioClip;

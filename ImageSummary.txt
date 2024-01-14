@@ -104,4 +104,3 @@ When_系统_Generate->对局开始:效果执行完毕
 When_系统_Generate->对局开始:效果执行完毕
 第1局_第1回合_玩家0->When_系统_TurnStart:触发被隐匿的弱点_TurnStart效果
 When_系统_TurnStart->第1局_第1回合_玩家0:效果执行完毕
-第1局_第1回合_玩家0->When_系统_Play:触发八意永琳_Play效果

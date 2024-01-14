@@ -196,19 +196,127 @@ MonoBehaviour:
     m_StrikethroughOffset: 18
     m_StrikethroughThickness: 6.298828
     m_TabWidth: 24
-  m_GlyphTable: []
-  m_CharacterTable: []
+  m_GlyphTable:
+  - m_Index: 2030
+    m_Metrics:
+      m_Width: 64
+      m_Height: 9
+      m_HorizontalBearingX: 11
+      m_HorizontalBearingY: 9
+      m_HorizontalAdvance: 86
+    m_GlyphRect:
+      m_X: 10
+      m_Y: 10
+      m_Width: 64
+      m_Height: 9
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 66
+    m_Metrics:
+      m_Width: 51
+      m_Height: 6
+      m_HorizontalBearingX: -2
+      m_HorizontalBearingY: -12
+      m_HorizontalAdvance: 48
+    m_GlyphRect:
+      m_X: 93
+      m_Y: 10
+      m_Width: 51
+      m_Height: 6
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 20
+    m_Metrics:
+      m_Width: 38
+      m_Height: 59
+      m_HorizontalBearingX: 6
+      m_HorizontalBearingY: 59
+      m_HorizontalAdvance: 48
+    m_GlyphRect:
+      m_X: 163
+      m_Y: 10
+      m_Width: 38
+      m_Height: 59
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 21
+    m_Metrics:
+      m_Width: 40
+      m_Height: 60
+      m_HorizontalBearingX: 4
+      m_HorizontalBearingY: 60
+      m_HorizontalAdvance: 48
+    m_GlyphRect:
+      m_X: 93
+      m_Y: 35
+      m_Width: 40
+      m_Height: 60
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  m_CharacterTable:
+  - m_ElementType: 1
+    m_Unicode: 8230
+    m_GlyphIndex: 2030
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 95
+    m_GlyphIndex: 66
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 49
+    m_GlyphIndex: 20
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 50
+    m_GlyphIndex: 21
+    m_Scale: 1
   m_AtlasTextures:
   - {fileID: 28268798066460806}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 1
-  m_UsedGlyphRects: []
-  m_FreeGlyphRects:
+  m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0
-    m_Width: 511
+    m_Width: 83
+    m_Height: 28
+  - m_X: 83
+    m_Y: 0
+    m_Width: 70
+    m_Height: 25
+  - m_X: 153
+    m_Y: 0
+    m_Width: 57
+    m_Height: 78
+  - m_X: 83
+    m_Y: 25
+    m_Width: 59
+    m_Height: 79
+  m_FreeGlyphRects:
+  - m_X: 210
+    m_Y: 0
+    m_Width: 301
     m_Height: 511
+  - m_X: 0
+    m_Y: 104
+    m_Width: 511
+    m_Height: 407
+  - m_X: 142
+    m_Y: 78
+    m_Width: 369
+    m_Height: 433
+  - m_X: 0
+    m_Y: 28
+    m_Width: 83
+    m_Height: 483
+  - m_X: 142
+    m_Y: 25
+    m_Width: 11
+    m_Height: 486
   m_fontInfo:
     Name: Liberation Sans
     PointSize: 86
@@ -240,7 +348,22 @@ MonoBehaviour:
   m_KerningTable:
     kerningPairs: []
   m_FontFeatureTable:
-    m_GlyphPairAdjustmentRecords: []
+    m_GlyphPairAdjustmentRecords:
+    - m_FirstAdjustmentRecord:
+        m_GlyphIndex: 20
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: -6.390625
+          m_YAdvance: 0
+      m_SecondAdjustmentRecord:
+        m_GlyphIndex: 20
+        m_GlyphValueRecord:
+          m_XPlacement: 0
+          m_YPlacement: 0
+          m_XAdvance: 0
+          m_YAdvance: 0
+      m_FeatureLookupFlags: 0
   fallbackFontAssets: []
   m_FallbackFontAssetTable: []
   m_CreationSettings:
