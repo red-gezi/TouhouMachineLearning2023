@@ -11,7 +11,7 @@ namespace TouhouMachineLearningSummary.Test
         [Button]
         public async void TestAudio(SoundEffectType type)
         {
-            Command.SoundEffectCommand.PlayAsync(type);
+            _ = Command.SoundEffectCommand.PlayAsync(type);
         }
     }
 }

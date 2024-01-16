@@ -1,13 +1,15 @@
 using System.IO;
 using TMPro;
+using TouhouMachineLearningSummary.Config;
 using TouhouMachineLearningSummary.Extension;
-using TouhouMachineLearningSummary.Model;
 using UnityEngine;
+using UnityEngine.UI;
+
 namespace TouhouMachineLearningSummary.Manager
 {
     public partial class ConfigManager : MonoBehaviour
     {
-        static ConfigInfoModel Config { get; set; } = new();
+        static GameConfig Config => GameConfig.Instance;
         static string ConfigFileSavePath => Application.isMobilePlatform ? Application.persistentDataPath : Directory.GetCurrentDirectory();
 
         private static void SaveConfig() => File.WriteAllText(ConfigFileSavePath + "/GameConfig.ini", Config.ToJson());
@@ -31,7 +33,7 @@ namespace TouhouMachineLearningSummary.Manager
             else
             {
                 Debug.Log("加载已有配置文件");
-                Config = File.ReadAllText(ConfigFileSavePath + "/GameConfig.ini").ToObject<ConfigInfoModel>();
+                GameConfig.Instance = File.ReadAllText(ConfigFileSavePath + "/GameConfig.ini").ToObject<GameConfig>();
                 Debug.Log("设置分辨率" + Config.Width + " " + Config.Heigh + " " + Config.IsFullScreen);
                 Screen.SetResolution(Config.Width, Config.Heigh, Config.IsFullScreen);
                 TranslateManager.currentLanguage = Config.UseLanguage;
@@ -49,6 +51,8 @@ namespace TouhouMachineLearningSummary.Manager
         public TextMeshProUGUI ResolutionText;
         public TextMeshProUGUI LanguageText;
         public TextMeshProUGUI CodeText;
+        public Slider musicVolume;
+        public Slider soundEffectVolume;
         public void SetResolution(int index)
         {
             Config.Width = int.Parse(ResolutionText.text.Split("*")[0]);
@@ -72,10 +76,14 @@ namespace TouhouMachineLearningSummary.Manager
             TranslateManager.currentLanguage = Config.UseLanguage;
             SaveConfig();
         }
-        public void SetVolume(int index)
+        public void SetMusicVolume(float volume)
         {
-            Config.UseLanguage = LanguageText.text;
-            TranslateManager.currentLanguage = Config.UseLanguage;
+            Config.MaxMusicVolume = musicVolume.value;
+            SaveConfig();
+        }
+        public void SetSoundEffectVolume(float volume)
+        {
+            Config.MaxSoundEffectVolume = soundEffectVolume.value;
             SaveConfig();
         }
         public void SetH_Mode(int index)

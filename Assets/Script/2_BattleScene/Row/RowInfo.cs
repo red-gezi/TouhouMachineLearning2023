@@ -25,7 +25,5 @@ namespace TouhouMachineLearningSummary.Info
         public int RowRank => (int)gameRegion + (AgainstInfo.IsPlayer1 ^ (orientation == Orientation.Down) ? 9 : 0);
         //鼠标当前焦点位置
         public int FocusRank => RowCommand.GetFocusRank(this);
-
-
     }
 }

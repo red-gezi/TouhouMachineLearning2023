@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using TouhouMachineLearningSummary.Config;
 using TouhouMachineLearningSummary.GameEnum;
+using TouhouMachineLearningSummary.Info;
+using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
 namespace TouhouMachineLearningSummary.Command
 {
@@ -8,24 +12,34 @@ namespace TouhouMachineLearningSummary.Command
     {
         public static void Init()
         {
-            //如果已经加载了则无需在加载
-            if (Info.SoundEffectInfo.SoundEfects.Count == 0)
+            //如果已经加载了,有数据了则无需再次加载
+            if (!Info.SoundEffectInfo.SoundEfects.Any())
             {
-                for (int i = 0; i < Enum.GetValues(typeof(MusicType)).Length; i++)
+                foreach (MusicType musicType in Enum.GetValues(typeof(MusicType)))
                 {
-                    Info.MusicInfo.Musics[(MusicType)i] = AssetBundleCommand.Load<AudioClip>("Music", ((MusicType)i).ToString());
+                    Info.MusicInfo.Musics[musicType] = AssetBundleCommand.Load<AudioClip>("Music", musicType.ToString());
                 }
             }
-
         }
-        public static void Play(MusicType type)
+        public static async void Play(MusicType type)
         {
             var audioClip = Info.MusicInfo.Musics[type];
             AudioSource Source = Info.MusicInfo.Instance.audioScoure;
+            if (Source.clip != null)
+            {
+                await CustomThread.TimerAsync(0.5f, progress =>
+                {
+                    Source.volume = GameConfig.Instance.MaxMusicVolume * (1 - progress);
+                });
+            }
             Source.clip = audioClip;
             Source.spatialBlend = 1;
             Source.pitch = 1.3f;
             Source.Play();
+            await CustomThread.TimerAsync(0.5f, progress =>
+            {
+                Source.volume = GameConfig.Instance.MaxMusicVolume * progress;
+            });
         }
     }
 }
