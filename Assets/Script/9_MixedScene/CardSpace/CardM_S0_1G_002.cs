@@ -29,7 +29,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                    {
                        await GameSystem.TransferSystem.MoveCard(new Event(this, this).SetLocation(RightCard.CurrentOrientation, RightCard.CurrentRegion, RightCard.CurrentIndex));
                        await GameSystem.SelectSystem.SelectUnit(this, GameSystem.InfoSystem.AgainstCardSet[Orientation.Op][GameRegion.Battle][CardRank.NoGold].ContainCardList, 1, true);
-                       await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.SelectUnits).SetPoint(1).SetBullet(new BulletModel()));
+                       await GameSystem.PointSystem.Hurt(new Event(this, GameSystem.InfoSystem.SelectUnits).SetPoint(1).AddDanmuEffect(new DanmuModel()));
                    }
                }, Condition.Default, Condition.OnMyRegion)
                .AbilityAppend();

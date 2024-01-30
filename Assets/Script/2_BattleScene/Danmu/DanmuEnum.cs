@@ -3,29 +3,31 @@ using UnityEngine;
 namespace TouhouMachineLearningSummary.GameEnum
 {
     [SerializeField]
-    public enum BulletType
+    public enum DanmuType
     {
-        //DreamOfSeal,
-        //Hurt,
         BigBall,
         SmallBall,
         MiBall,
         Butterfly,
         Bomb,//从天而降的轰炸
         Heal,
-        TailingBullet
+        TailingBullet,
+        Smoke,
+        MagicCircle,
     }
     //卡牌轨迹
-    public enum BulletTrack
+    public enum DanmuTrack
     {
         Round,//环绕
         Line,//直射
         Parabola,//抛射
-        Fixed,//直接在卡牌上生效
+        FixedOnTriggerCard,//在触发卡牌上生效
+        FixedOnTargetCard,//在目标卡牌上生效
         Down,//从天而降
+        RayLine,//在触发卡牌上射向目标卡牌
         Test,
     }
-    public enum BulletColor
+    public enum DanmuColor
     {
         Default,
         Red,
@@ -33,17 +35,5 @@ namespace TouhouMachineLearningSummary.GameEnum
         Green,
         White,
         Black,
-    }
-    //击中对方后的演出特效
-    public enum BulletStartEffect
-    {
-        None,
-        Smoke
-    }
-    //击中对方后的演出特效
-    public enum BulletEndEffect
-    {
-        None,
-        Smoke
     }
 }

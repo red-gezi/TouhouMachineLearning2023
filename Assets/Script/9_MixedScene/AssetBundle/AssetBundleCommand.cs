@@ -87,10 +87,8 @@ namespace TouhouMachineLearningSummary.Command
                 var targetAsset = targetAssets.FirstOrDefault(asset => asset.name == fileName && asset.GetType() == typeof(T));
                 if (targetAsset == null)
                 {
-                    Debug.LogError($"无法找到资源,已加载{assets.Count}个资源" + typeof(T) + "-" + tag + "-" + fileName);
+                    Debug.LogError($"无法从{tag}AB包找到{typeof(T)}类型的资源{fileName}资源,当前已加载{assets.Count}个AB包，请检查资源是否放入ab包或者ab包未载入" );
                 }
-                //Debug.LogError($"已完成资源集加载");
-                //targetAssets.ForEach(x => Debug.Log(x.name));
                 return targetAsset as T;
             }
             else

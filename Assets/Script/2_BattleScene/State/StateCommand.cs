@@ -439,8 +439,8 @@ namespace TouhouMachineLearningSummary.Command
             filterCards.Remove(triggerCard);
             AgainstInfo.ArrowStartCard = triggerCard;
             AgainstInfo.IsWaitForSelectUnits = true;
-            AgainstInfo.AllCardList.ForEach(card => card.IsGray = true);
-            filterCards.ForEach(card => card.IsGray = false);
+            AgainstInfo.AllCardList.ForEach(card => card.IsTemp = true);
+            filterCards.ForEach(card => card.IsTemp = false);
             RowCommand.RefreshAllRowsCards();
             AgainstInfo.SelectUnits.Clear();
             //await Task.Delay(500);
@@ -486,7 +486,7 @@ namespace TouhouMachineLearningSummary.Command
             UiCommand.DestoryAllArrow();
             await CustomThread.Delay(250);
             //Debug.Log("同步选择单位完毕");
-            AgainstInfo.AllCardList.ForEach(card => card.IsGray = false);
+            AgainstInfo.AllCardList.ForEach(card => card.IsTemp = false);
             RowCommand.RefreshAllRowsCards();
             AgainstInfo.IsWaitForSelectUnits = false;
             //Debug.Log("结束选择单位");

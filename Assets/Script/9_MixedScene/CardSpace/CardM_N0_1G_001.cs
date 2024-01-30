@@ -30,7 +30,7 @@ namespace TouhouMachineLearningSummary.CardSpace
                    await GameSystem.PointSystem.Cure
                    (
                        new Event(this, GameSystem.InfoSystem.SelectUnits)
-                       .SetBullet(new BulletModel(BulletType.BigBall, BulletColor.Green, BulletTrack.Line))
+                       .AddDanmuEffect(new DanmuModel(DanmuType.BigBall, DanmuColor.Green, DanmuTrack.Line))
                    );
                    if (AgainstInfo.SelectUnits.Any())
                    {

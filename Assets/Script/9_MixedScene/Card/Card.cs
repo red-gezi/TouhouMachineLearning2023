@@ -87,8 +87,8 @@ namespace TouhouMachineLearningSummary
         }
         ////////////////////////////////////////卡牌状态/////////////////////////////////////////////////////////////
 
-        //是否以灰色状态显示
-        public bool IsGray { get; set; } = false;
+        //是否是部署时的临时展示卡牌，是的话以灰色状态显示
+        public bool IsTemp { get; set; } = false;
         public bool IsCardReadyToGrave => ShowPoint == 0 && AgainstInfo.GameCardsFilter[GameRegion.Battle].ContainCardList.Contains(this);
         //决定卡牌落下阶段是否
         public bool isMoveStepOver = true;

@@ -30,7 +30,7 @@ namespace TouhouMachineLearningSummary
         public GameRegion region = GameRegion.None;
         public bool isOrder = true;
         public string carkBackID;
-        public BulletModel BulletModel { get; set; }
+        public List<DanmuModel> BulletModels { get; set; } = new List<DanmuModel>();
         [JsonIgnore]
         public Event this[TriggerTime triggerTime] => Clone(triggerTime: triggerTime);
         [JsonIgnore]
@@ -47,7 +47,7 @@ namespace TouhouMachineLearningSummary
             e.TargetCards = targetCards ?? this.TargetCards;
             e.triggerMeanWhile = triggerMeanWhile;
             e.TriggerCard = TriggerCard;
-            e.BulletModel = BulletModel;
+            e.BulletModels = BulletModels;
             e.location = location;
             e.point = point;
             e.TargetState = TargetState;
@@ -80,7 +80,7 @@ namespace TouhouMachineLearningSummary
         /// <summary>
         /// 设置部署区域（靠所属，区域和次序定位，次序为正代表从左往右，最左侧位置为0，为负代表从右往左，最右侧为-1）
         /// </summary>
-        public Event SetLocation(Orientation orientation, GameRegion regionType, int index=0)
+        public Event SetLocation(Orientation orientation, GameRegion regionType, int index = 0)
         {
             int rowRank = GameSystem.InfoSystem.AgainstCardSet[regionType][orientation].ContainRowInfos.First().RowRank;
             int rank = index;
@@ -124,9 +124,9 @@ namespace TouhouMachineLearningSummary
             this.carkBackID = cardBackId;
             return this;
         }
-        public Event SetBullet(BulletModel bulletModel)
+        public Event AddDanmuEffect(params DanmuModel[] bulletModels)
         {
-            this.BulletModel = bulletModel;
+            this.BulletModels = bulletModels.ToList();
             return this;
         }
         /// <summary>

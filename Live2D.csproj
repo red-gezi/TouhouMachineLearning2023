@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -137,8 +137,8 @@
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\ObjectExtensionMethods.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\CubismHitDrawable.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeController.cs" />
-    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Expression\CubismExpressionPreview.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\LookAt\Billboarder.cs" />
+    <Compile Include="Assets\Plugins\Live2D\Cubism\Samples\OriginalWorkflow\Expression\CubismExpressionPreview.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\Raycasting\CubismRaycastable.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Framework\MotionFade\CubismFadeStateObserver.cs" />
     <Compile Include="Assets\Plugins\Live2D\Cubism\Core\Unmanaged\CubismUnmanagedMemory.cs" />
@@ -577,6 +577,9 @@
     <Reference Include="Microsoft.AspNetCore.SignalR.Client">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\Unity3D\2022.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
     </Reference>
@@ -959,7 +962,8 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

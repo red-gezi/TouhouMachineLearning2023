@@ -239,7 +239,7 @@ namespace TouhouMachineLearningSummary.Manager
                     ThisCard.StateIconContent.GetChild(i).gameObject.SetActive(false);
                 }
             }
-            CardMaterial.SetFloat("_IsTemp", ThisCard.IsGray ? 0 : 1);
+            CardMaterial.SetFloat("_IsTemp", ThisCard.IsTemp ? 0 : 1);
         }
         /// <summary>
         /// 刷新Card的位置和角度

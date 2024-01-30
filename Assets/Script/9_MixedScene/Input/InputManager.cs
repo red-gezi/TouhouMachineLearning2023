@@ -78,7 +78,7 @@ namespace TouhouMachineLearningSummary.Manager
                     AgainstInfo.SelectRowRank = AgainstInfo.PlayerFocusRow.RowRank;
                 }
                 //处理选择单位的箭头
-                if (AgainstInfo.IsWaitForSelectUnits && AgainstInfo.PlayerFocusCard != null && !AgainstInfo.PlayerFocusCard.IsGray)
+                if (AgainstInfo.IsWaitForSelectUnits && AgainstInfo.PlayerFocusCard != null && !AgainstInfo.PlayerFocusCard.IsTemp)
                 {
                     Card playerFocusCard = AgainstInfo.PlayerFocusCard;
                     if (!AgainstInfo.SelectUnits.Contains(playerFocusCard))

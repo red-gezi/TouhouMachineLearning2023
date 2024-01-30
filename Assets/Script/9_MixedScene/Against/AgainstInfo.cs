@@ -164,10 +164,10 @@ namespace TouhouMachineLearningSummary.Info
         //分数
         public static (int P1Score, int P2Score) PlayerScore;
         public static (int MyScore, int OpScore) ShowScore => IsPlayer1 ? (PlayerScore.P1Score, PlayerScore.P2Score) : (PlayerScore.P2Score, PlayerScore.P1Score);
-        public static int TotalUpPoint => GameCardsFilter[Orientation.Up][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
-        public static int TotalDownPoint => GameCardsFilter[Orientation.Down][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
-        public static int TotalMyPoint => GameCardsFilter[Orientation.My][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
-        public static int TotalOpPoint => GameCardsFilter[Orientation.Op][GameRegion.Battle].ContainCardList.Sum(card => card.ShowPoint);
+        public static int TotalUpPoint => GameCardsFilter[Orientation.Up][GameRegion.Battle].ContainCardList.Where(card => !card.IsTemp).Sum(card => card.ShowPoint);
+        public static int TotalDownPoint => GameCardsFilter[Orientation.Down][GameRegion.Battle].ContainCardList.Where(card => !card.IsTemp).Sum(card => card.ShowPoint);
+        public static int TotalMyPoint => GameCardsFilter[Orientation.My][GameRegion.Battle].ContainCardList.Where(card => !card.IsTemp).Sum(card => card.ShowPoint);
+        public static int TotalOpPoint => GameCardsFilter[Orientation.Op][GameRegion.Battle].ContainCardList.Where(card => !card.IsTemp).Sum(card => card.ShowPoint);
         public static int TotalPlayer1Point => IsPlayer1 ? TotalDownPoint : TotalUpPoint;
         public static int TotalPlayer2Point => IsPlayer1 ? TotalUpPoint : TotalDownPoint;
         public static int TurnRelativePoint => TotalMyPoint - TotalOpPoint;

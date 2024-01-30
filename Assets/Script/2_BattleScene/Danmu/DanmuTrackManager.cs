@@ -5,19 +5,19 @@ using UnityEngine;
 namespace TouhouMachineLearningSummary.Manager
 {
     //梦想封印
-    partial class BulletTrackManager : MonoBehaviour
+    partial class DanmuTrackManager : MonoBehaviour
     {
         public float maxDinsance = 2;
         public float speed = 1.5f;
         Vector3 startPosition, endPosition;
-        public async Task Play(Event e, BulletTrack track)
+        public async Task Execute(Event e, DanmuTrack track)
         {
             this.startPosition = e.TriggerCard.transform.position;
             this.endPosition = e.TargetCard.transform.position;
             Vector3 tempPos = Vector3.zero;
             switch (track)
             {
-                case BulletTrack.Round://环绕并直行
+                case DanmuTrack.Round://环绕并直行
                     {
                         await CustomThread.TimerAsync(Mathf.PI * 6f / 4, (timer) =>
                         {
@@ -37,7 +37,7 @@ namespace TouhouMachineLearningSummary.Manager
                         await Task.Delay(11000 * (int)(Mathf.PI * 6f / 4 + 0.5f));
                     }
                     break;
-                case BulletTrack.Line://直射
+                case DanmuTrack.Line://直射
                     {
                         await CustomThread.TimerAsync(0.5f, (process) =>
                         {
@@ -45,7 +45,6 @@ namespace TouhouMachineLearningSummary.Manager
                             transform.localScale = process * Vector3.one;
                         });
                         tempPos = transform.position;
-                        _ = Command.SoundEffectCommand.PlayAsync(SoundEffectType.Laser);
                         await CustomThread.TimerAsync(0.5f, (process) =>
                         {
                             transform.position = Vector3.Lerp(tempPos, e.TargetCard.transform.position, process);
@@ -55,7 +54,7 @@ namespace TouhouMachineLearningSummary.Manager
                     }
                     break;
 
-                case BulletTrack.Parabola://抛射
+                case DanmuTrack.Parabola://抛射
                     await CustomThread.TimerAsync(0.5f, (process) =>
                     {
                         transform.position = startPosition + Vector3.up * process;
@@ -74,13 +73,13 @@ namespace TouhouMachineLearningSummary.Manager
                     Destroy(gameObject);
                     _ = CameraManager.manager.VibrationCameraAsync();
                     break;
-                case BulletTrack.Fixed://固定位置
+                case DanmuTrack.FixedOnTriggerCard://固定位置
                     transform.position = e.TargetCard.transform.position;
                     Destroy(gameObject, 3);
                     break;
-                case BulletTrack.Down://从下而上
+                case DanmuTrack.Down://从下而上
                     break;
-                case BulletTrack.Test:
+                case DanmuTrack.Test:
                     await CustomThread.TimerAsync(0.5f, (timer) =>
                     {
                         transform.position = startPosition + Vector3.up * timer;

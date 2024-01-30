@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -58,6 +58,7 @@
     <Analyzer Include="D:\Unity3D\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Settings\GaussianBlurRenderPassFeature.cs" />
     <Compile Include="Assets\HotFix\LoadHotFixScene.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +480,9 @@
     <Reference Include="Microsoft.AspNetCore.SignalR.Client">
       <HintPath>Assets\Assemblies\SignalR\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>D:\Unity3D\2022.3.14f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
     </Reference>
@@ -857,6 +861,9 @@
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
@@ -872,11 +879,17 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
@@ -899,6 +912,14 @@
       <Project>{FBF8F30D-676B-FFF5-D681-56A2534E4841}</Project>
       <Name>Unity.Sysroot.Linux_x86_64</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
+      <Project>{3D6CD030-AE70-B21B-0810-6F562941A367}</Project>
+      <Name>Unity.2D.IK.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="PsdPlugin.csproj">
+      <Project>{FDE4CEFB-4D2A-B10D-FE0B-F5AEE8146216}</Project>
+      <Name>PsdPlugin</Name>
+    </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{9DDB8386-10C6-68F5-0088-2BF060FDF52B}</Project>
       <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
@@ -915,6 +936,10 @@
       <Project>{01A047A3-B80C-094F-DB37-7BF8463A0BBE}</Project>
       <Name>TouhouMachineLearningSummary</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Path.Editor.csproj">
+      <Project>{A9DC4AE0-B5C8-7D51-ADBA-FAE393A7F036}</Project>
+      <Name>Unity.2D.Common.Path.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
       <Project>{81144C1C-26F2-D7F0-645B-B459179DD452}</Project>
       <Name>Unity.Timeline.Editor</Name>
@@ -927,13 +952,25 @@
       <Project>{4012A402-63BE-B5CA-3EA7-1F7B4C8620F3}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
+      <Project>{CC926EB0-E4A3-CC97-E818-F075C17D5EC1}</Project>
+      <Name>Unity.2D.Animation.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="ParrelSync.csproj">
       <Project>{57835599-E462-6559-EF28-501CBC505255}</Project>
       <Name>ParrelSync</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
+      <Project>{1CBD644D-56A6-406D-5AB6-92657AEF68CF}</Project>
+      <Name>Unity.InternalAPIEngineBridge.001</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{A4A1638C-7D35-7315-96DF-6164CBB0DC96}</Project>
       <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
+      <Project>{7BD59D14-2ECA-83CF-0ADF-B5C5F890931C}</Project>
+      <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{B999509F-40BB-0DB5-B39E-C2EEEB324DB2}</Project>
@@ -947,6 +984,18 @@
       <Project>{D01A8BFB-C6EA-3D10-67DD-A32BB049A24D}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{CDBA5CC2-D294-6FBC-8024-59FA8C3D6A81}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
+      <Project>{DDE7A8CF-B5BF-F39E-92CD-8AF3C46CB7D8}</Project>
+      <Name>Unity.2D.Psdimporter.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
+      <Project>{5331F8A7-3F4E-781F-C05D-2EBB37F32EBA}</Project>
+      <Name>Unity.InternalAPIEditorBridge.001</Name>
+    </ProjectReference>
     <ProjectReference Include="Live2D.csproj">
       <Project>{90464133-A6F7-0BEA-7AF2-CA4C85F9A93C}</Project>
       <Name>Live2D</Name>
@@ -954,6 +1003,10 @@
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{1123B707-6A14-2594-F0D9-6B7826AE8876}</Project>
       <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
+      <Project>{5488C3C6-2E0A-C1C3-4C9C-CD9E074D4B7A}</Project>
+      <Name>Unity.2D.Common.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{F446908F-E091-9177-DE44-F9F3AB6795A4}</Project>
@@ -978,6 +1031,14 @@
     <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
       <Project>{12BC0291-652A-3C4C-B991-1B6CB045B9CB}</Project>
       <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
+      <Project>{58ABBC5E-F769-CC86-1CCB-712BEC18A26A}</Project>
+      <Name>Unity.2D.Animation.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Editor.csproj">
+      <Project>{3A1BE721-F021-27E5-5C4E-71082FA9DA82}</Project>
+      <Name>Unity.2D.IK.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

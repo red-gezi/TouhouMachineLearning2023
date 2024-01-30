@@ -28,7 +28,7 @@ namespace TouhouMachineLearningSummary.Command
         public static int GetFocusRank(RowInfo rowInfo)
         {
             float posx = -(AgainstInfo.FocusPoint.x - rowInfo.rowPrefab.transform.position.x);
-            int cardNum = rowInfo.CardList.Count(card => !card.IsGray);
+            int cardNum = rowInfo.CardList.Count(card => !card.IsTemp);
             int rank = 0;
             for (int i = 0; i < cardNum; i++)
             {

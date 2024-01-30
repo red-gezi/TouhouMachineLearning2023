@@ -13,8 +13,10 @@ namespace TouhouMachineLearningSummary.Config
         public string UseLanguage { get; set; }
         //用户设置的音乐音量倍数
         public float MaxMusicVolume { get; set; } = 1;
-        //用户设置的音乐音量倍数
+        //用户设置的音效音量倍数
         public float MaxSoundEffectVolume { get; set; } = 1;
+        //用户设置的语音音量倍数
+        public float MaxVoiceVolume { get; set; } = 1;
         public bool H_Mode { get; set; }
         public string ServerMode { get; set; }
     }

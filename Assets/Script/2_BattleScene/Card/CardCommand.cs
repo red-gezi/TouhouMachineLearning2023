@@ -23,7 +23,7 @@ namespace TouhouMachineLearningSummary.Command
         {
             var targetShowPoint = e.TargetCard.ShowPoint;
 
-            await BulletCommand.InitBulletAsync(e);
+            await DanmuCommand.CreatDanmuAsync(e);
             int actualChangePoint = e.point - e.TargetCard.ShowPoint;
 
             await e.TargetCard.Manager.ShowTips((actualChangePoint > 0 ? "+" : "") + actualChangePoint, Color.gray, false);
@@ -41,7 +41,7 @@ namespace TouhouMachineLearningSummary.Command
         }
         public static async Task Gain(Event e)
         {
-            await BulletCommand.InitBulletAsync(e);
+            await DanmuCommand.CreatDanmuAsync(e);
             //await Task.Delay(1000);
             int actualChangePoint = e.point;
             await e.TargetCard.Manager.ShowTips("+" + actualChangePoint, Color.green, false);
@@ -61,7 +61,7 @@ namespace TouhouMachineLearningSummary.Command
         public static async Task Hurt(Event e)
         {
             var targetCard = e.TargetCard;
-            await BulletCommand.InitBulletAsync(e);
+            await DanmuCommand.CreatDanmuAsync(e);
             _ = ShakeCard(e.TargetCard);
             if (targetCard[CardState.Congealbounds])
             {
@@ -229,7 +229,7 @@ namespace TouhouMachineLearningSummary.Command
         public static Card GenerateTempCard(Event e)
         {
             var card = CreatCard(e);
-            card.IsGray = true;
+            card.IsTemp = true;
             AgainstInfo.GameCardsFilter[e.location.Row].Insert(e.location.Rank, card);
             RowCommand.RefreshAllRowsCards();
             return card;

@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TouhouMachineLearningSummary.Config;
 using TouhouMachineLearningSummary.GameEnum;
-using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Thread;
 using UnityEngine;
 namespace TouhouMachineLearningSummary.Command
@@ -21,25 +20,40 @@ namespace TouhouMachineLearningSummary.Command
                 }
             }
         }
+        public static void SetVolume() => Info.MusicInfo.Instance.audioScoure.volume = GameConfig.Instance.MaxMusicVolume;
         public static async void Play(MusicType type)
         {
             var audioClip = Info.MusicInfo.Musics[type];
             AudioSource Source = Info.MusicInfo.Instance.audioScoure;
             if (Source.clip != null)
             {
+                //创建一个新音源，并渐变增大
+                var newAudioSource = Info.MusicInfo.Instance.audioScoure.gameObject.AddComponent<AudioSource>();
+                _ = PlayMusic(audioClip, newAudioSource);
+                //旧音源逐渐变小并销毁
                 await CustomThread.TimerAsync(0.5f, progress =>
                 {
                     Source.volume = GameConfig.Instance.MaxMusicVolume * (1 - progress);
                 });
+                GameObject.DestroyImmediate(Source);
+                Info.MusicInfo.Instance.audioScoure = newAudioSource;
             }
-            Source.clip = audioClip;
-            Source.spatialBlend = 1;
-            Source.pitch = 1.3f;
-            Source.Play();
-            await CustomThread.TimerAsync(0.5f, progress =>
+            else
             {
-                Source.volume = GameConfig.Instance.MaxMusicVolume * progress;
-            });
+                await PlayMusic(audioClip, Source);
+            }
+
+            static async Task PlayMusic(AudioClip audioClip, AudioSource Source)
+            {
+                Source.clip = audioClip;
+                Source.spatialBlend = 1;
+                Source.pitch = 1.3f;
+                Source.Play();
+                await CustomThread.TimerAsync(0.5f, progress =>
+                {
+                    Source.volume = GameConfig.Instance.MaxMusicVolume * progress;
+                });
+            }
         }
     }
 }

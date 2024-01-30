@@ -1,5 +1,6 @@
 using System.IO;
 using TMPro;
+using TouhouMachineLearningSummary.Command;
 using TouhouMachineLearningSummary.Config;
 using TouhouMachineLearningSummary.Extension;
 using UnityEngine;
@@ -53,6 +54,7 @@ namespace TouhouMachineLearningSummary.Manager
         public TextMeshProUGUI CodeText;
         public Slider musicVolume;
         public Slider soundEffectVolume;
+        public Slider voiceVolume;
         public void SetResolution(int index)
         {
             Config.Width = int.Parse(ResolutionText.text.Split("*")[0]);
@@ -76,12 +78,18 @@ namespace TouhouMachineLearningSummary.Manager
             TranslateManager.currentLanguage = Config.UseLanguage;
             SaveConfig();
         }
-        public void SetMusicVolume(float volume)
+        public void SetMusicVolume()
         {
             Config.MaxMusicVolume = musicVolume.value;
+            MusicCommand.SetVolume();
             SaveConfig();
         }
-        public void SetSoundEffectVolume(float volume)
+        public void SetSoundEffectVolume()
+        {
+            Config.MaxSoundEffectVolume = soundEffectVolume.value;
+            SaveConfig();
+        }
+        public void SetVoiceVolume()
         {
             Config.MaxSoundEffectVolume = soundEffectVolume.value;
             SaveConfig();

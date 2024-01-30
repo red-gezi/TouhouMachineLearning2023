@@ -1,10 +1,12 @@
 ﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Manager;
 using TouhouMachineLearningSummary.Other;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Test
@@ -59,11 +61,15 @@ namespace TouhouMachineLearningSummary.Test
             await Command.NetCommand.AddFriend("1000");
         }
         [Button("查询离线邀请")]
-        public void a1()
+        public async void a1()
         {
-            Command.NetCommand.QueryOfflineInvite();
+           
         }
-        
+        public class MyClass
+        {
+            //public Vector2 a = Vector2.left;
+            public System.Numerics.Vector2 b = new System.Numerics.Vector2(2, 1);
+        }
         [Button("下载拥有记录")]
         public void test1()
         {
