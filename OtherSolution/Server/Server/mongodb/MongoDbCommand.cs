@@ -79,7 +79,13 @@ namespace Server
             ServerConfigCollection = db.GetCollection<ServerConfig>("ServerConfig");
             SummaryCollection = db.GetCollection<AgainstSummary>("AgainstSummary");
             DiyCardCollection = db.GetCollection<DiyCardInfo>("DiyCards");
-
+           var command= DiyCardCollection
+                .AsQueryable()
+                .Where(card=>card.Rank=="G")
+                .Skip(1)
+                .Take(2)
+                .ToList();
+            Console.WriteLine(command);
             Log.Summary($"查询到用户信息{PlayerInfoCollection.AsQueryable().Count()}条");
             Log.Summary($"查询到卡牌配置信息{CardConfigCollection.AsQueryable().Count()}条");
             Log.Summary($"查询到对局记录信息{SummaryCollection.AsQueryable().Count()}条");

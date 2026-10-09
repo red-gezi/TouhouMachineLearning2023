@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Manager;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace TouhouMachineLearningSummary.Command
 {
@@ -19,13 +20,14 @@ namespace TouhouMachineLearningSummary.Command
             {
                 await Task.Delay((int)(danmuInfo.delayTime * 1000));
                 //子弹，场景2
-                GameObject newBullet = GameObject.Instantiate(AssetBundleCommand.Load<GameObject>("Bullet", danmuInfo.bulletType.ToString()));
+                GameObject newBullet = GameObject.Instantiate(AssetBundleCommand.Load<GameObject>("Danmu", danmuInfo.bulletType.ToString()));
                 DanmuTrackManager trackManager = newBullet.AddComponent<DanmuTrackManager>();
 
                 //指定为默认颜色时不对弹幕颜色进行修改
                 if (danmuInfo.color != DanmuColor.Default)
                 {
-                    newBullet.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_Color", danmuInfo.bulletColor);
+                    //newBullet.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_Color", danmuInfo.bulletColor);
+                    newBullet.GetComponent<VisualEffect>().SetVector4("Color",danmuInfo.bulletColor);
                 }
                 //根据子弹类型添加音效
                 switch (danmuInfo.bulletType)

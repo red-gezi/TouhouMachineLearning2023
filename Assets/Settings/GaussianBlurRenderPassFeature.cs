@@ -9,6 +9,26 @@ public class GaussianBlurRenderPassFeature : ScriptableRendererFeature
     static readonly int TempTargetId1 = Shader.PropertyToID("_TempTargetColorTint1");       // 用来暂存纹理
     public Material postMaterial;                      // 后处理材质
 
+    GaussianBlurRenderPass gaussianBlurPass;
+    public RenderPassEvent renderPassEvent;
+    /// <inheritdoc/>
+    public override void Create()
+    {
+        var stack = VolumeManager.instance.stack;
+        var parameter = stack.GetComponent<GaussianBlurParameter>();
+        gaussianBlurPass = new GaussianBlurRenderPass
+        {
+            renderPassEvent = renderPassEvent,
+            parameter = parameter,
+            postMaterial = postMaterial,
+        };
+    }
+    public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
+    {
+        renderer.EnqueuePass(gaussianBlurPass);
+    }
+   
+
     class GaussianBlurRenderPass : ScriptableRenderPass
     {
         public GaussianBlurParameter parameter;            // 参数类
@@ -52,24 +72,7 @@ public class GaussianBlurRenderPassFeature : ScriptableRendererFeature
             }
         }
     }
-    GaussianBlurRenderPass gaussianBlurPass;
-    public RenderPassEvent renderPassEvent;
-    /// <inheritdoc/>
-    public override void Create()
-    {
-        var stack = VolumeManager.instance.stack;
-        var parameter = stack.GetComponent<GaussianBlurParameter>();
-        gaussianBlurPass = new GaussianBlurRenderPass
-        {
-            renderPassEvent = renderPassEvent,
-            parameter = parameter,
-            postMaterial = postMaterial,
-        };
-    }
-    public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
-    {
-        renderer.EnqueuePass(gaussianBlurPass);
-    }
+    
 }
 //挂在Volume上的参数
 public class GaussianBlurParameter : VolumeComponent

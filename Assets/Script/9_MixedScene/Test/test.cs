@@ -1,12 +1,10 @@
 ﻿using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using TouhouMachineLearningSummary.Extension;
 using TouhouMachineLearningSummary.GameEnum;
 using TouhouMachineLearningSummary.Info;
 using TouhouMachineLearningSummary.Manager;
 using TouhouMachineLearningSummary.Other;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace TouhouMachineLearningSummary.Test

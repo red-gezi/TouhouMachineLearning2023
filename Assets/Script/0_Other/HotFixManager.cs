@@ -161,7 +161,8 @@ namespace TouhouMachineLearningSummary.Manager
                     if (!Application.isEditor)
                     {
                         File.WriteAllBytes(localDllOrApkPath, await responseMessage.Content.ReadAsByteArrayAsync());
-                        RestartGame();
+                        //RestartGame();
+                        InstallUpdateApk();
                     }
                 }
             }
@@ -187,26 +188,35 @@ namespace TouhouMachineLearningSummary.Manager
             Debug.LogWarning("AB包加载完毕，切换场景。。。");
             SceneManager.LoadScene("1_LoginScene", LoadSceneMode.Single);
         }
-        public void RestartGame()
+        private void InstallUpdateApk(string apkPath)
         {
-            if (CurrentGameStartMode== GameStartMode.Android)
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.M && !Permission.HasUserAuthorizedPermission(Permission.RequestInstallPackages))
+            //{
+            //    Permission.RequestUserPermission(Permission.RequestInstallPackages);
+            //    // 用户需要手动在系统设置中授权，此处可能需要额外处理引导用户去设置页面的逻辑
+            //}
+            //else
+            //{
+            //    var intent = new Intent(Intent.ActionView);
+            //    intent.SetDataAndType(Android.Net.Uri.FromFile(new Java.IO.File(apkPath)), "application/vnd.android.package-archive");
+            //    intent.AddFlags(ActivityFlags.NewTask);
+            //    Android.App.Application.Context.StartActivity(intent);
+            //}
+        }
+       public void RestartGame()
+        {
+            if (CurrentGameStartMode == GameStartMode.Android)
             {
-                //后续加上安卓重启
                 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
                 string packageName = activity.Call<string>("getPackageName");
 
                 AndroidJavaObject intent = activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", packageName);
 
-                intent.Call<AndroidJavaObject>("addFlags", 0x00200000); //FLAG_ACTIVITY_CLEAR_TOP
-                intent.Call<AndroidJavaObject>("addFlags", 0x10000000); //FLAG_ACTIVITY_NEW_TASK
+                intent.Call<AndroidJavaObject>("addFlags", 0x00200000); // FLAG_ACTIVITY_CLEAR_TOP
+                intent.Call<AndroidJavaObject>("addFlags", 0x10000000); // FLAG_ACTIVITY_NEW_TASK
 
                 activity.Call("startActivity", intent);
-
-                AndroidJavaObject unityActivity = activity.Call<AndroidJavaObject>("getApplicationContext");
-                unityActivity.Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("restartPackage", packageName);
-                //AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
-                //activity.Call("startActivity", activity.Call<AndroidJavaObject>("getBaseContext").Call<AndroidJavaObject>("getPackageManager").Call<AndroidJavaObject>("getLaunchIntentForPackage", activity.Call<AndroidJavaObject>("getPackageName")));
-                Application.Quit();
+                activity.Call("finishAffinity"); 
             }
             else
             {
@@ -215,12 +225,14 @@ namespace TouhouMachineLearningSummary.Manager
                 {
                     System.Diagnostics.Process.Start(game.FullName);
                 }
-                Application.Quit();
+                 Application.Quit();
             }
+
+           
         }
         private void OnGUI()
         {
-            if (GUI.Button(new Rect(0, 150, 100, 50), "重新加载"))
+            if (GUI.Button(new Rect(0, 150, 100, 50), "重启"))
             {
                 RestartGame();
             }

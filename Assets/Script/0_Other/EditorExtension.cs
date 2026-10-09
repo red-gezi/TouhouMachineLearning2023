@@ -113,13 +113,37 @@ namespace TouhouMachineLearningSummary.Other
             }
         }
         /////////////////////////////////////////////////////////////////发布热更新资源///////////////////////////////////////////////////////////////////////////////////////////
+        [MenuItem("TouHouMLS/Public/更新本地AB包资源", priority = 150)]
+        static void BuildAssetBundlesToEditor() => BuildAssetBundles();
         [MenuItem("TouHouMLS/Public/发布电脑游戏热更资源为测试版", priority = 151)]
         static void BuildDAssetBundlesToTest() => BuildAssetBundles("PC_Test");
         [MenuItem("TouHouMLS/Public/发布电脑游戏热更资源为正式版", priority = 152)]
         static void BuildAssetBundlesToRelease() => BuildAssetBundles("PC_Release");
         [MenuItem("TouHouMLS/Public/发布安卓端游戏热更资源为正式版", priority = 153)]
         static void BuildAssetBundlesToAndroid() => BuildAssetBundles("Android");
-
+        //仅打包AB包
+        private static void BuildAssetBundles()
+        {
+            //打标签
+            new DirectoryInfo(@"Assets\GameResources").GetDirectories()
+                .ForEach(dire =>
+                {
+                    dire.GetFiles("*.*", SearchOption.AllDirectories)
+                            .Where(file => file.Extension != ".meta")
+                            .ToList()
+                            .ForEach(file =>
+                            {
+                                string path = file.FullName.Replace(Directory.GetCurrentDirectory() + @"\", "");
+                                AssetImporter.GetAtPath(path).assetBundleName = $"{dire.Name}.gezi";
+                            });
+                });
+            Debug.LogWarning("标签修改完毕，开始打包");
+            //将AB打包到AB文件夹下，并上传
+            string outputPath = Directory.GetCurrentDirectory() + $@"\AB\PC_Test";
+            Directory.CreateDirectory(outputPath);
+            BuildPipeline.BuildAssetBundles(outputPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+        }
+        //打包AB包并上传
         private static async void BuildAssetBundles(string tag)
         {
             //打标签

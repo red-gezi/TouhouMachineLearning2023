@@ -49,7 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blur: 0.6
+    - _Blur: 0.2
     - _QueueControl: 1
     - _QueueOffset: 50
     m_Colors: []

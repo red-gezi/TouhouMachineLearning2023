@@ -14,6 +14,7 @@ namespace TouhouMachineLearningSummary.GameEnum
         TailingBullet,
         Smoke,
         MagicCircle,
+        Lightning,
     }
     //卡牌轨迹
     public enum DanmuTrack

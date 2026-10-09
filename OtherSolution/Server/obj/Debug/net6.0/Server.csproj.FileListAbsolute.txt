@@ -192,7 +192,6 @@ E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\scopedcss\bundle\Server.styles.css
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\scopedcss\projectbundle\Server.bundle.scp.css
-E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\Server.csproj.CopyComplete
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\Server.dll
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\refint\Server.dll
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\Server.pdb
@@ -245,3 +244,5 @@ E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Server.props
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Server.props
 E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\staticwebassets.pack.json
+E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\Server.sourcelink.json
+E:\UnityProject\TouhouMachineLearning2023\OtherSolution\Server\obj\Debug\net6.0\Server.csproj.Up2Date

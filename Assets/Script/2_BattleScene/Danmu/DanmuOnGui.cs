@@ -44,7 +44,7 @@ namespace TouhouMachineLearningSummary.Test
                     var cards2 = Info.AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Deck].ContainCardList.Take(3);
                     _ = GameSystem.TransferSystem.SummonCard(new Event(null, cards2.ToList()));
                 }
-                if (GUI.Button(new Rect(25, 180, 250, 30), "播放固定组合效果"))
+                if (GUI.Button(new Rect(25, 210, 250, 30), "播放固定组合效果"))
                 {
                     var tirggerCard = Info.AgainstInfo.GameCardsFilter[Orientation.Down][GameRegion.Battle].ContainCardList.FirstOrDefault();
                     var targetCards = Info.AgainstInfo.GameCardsFilter[Orientation.Up][GameRegion.Battle].ContainCardList.Take(3).ToList();

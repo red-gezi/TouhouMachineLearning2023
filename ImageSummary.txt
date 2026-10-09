@@ -104,3 +104,47 @@ When_系统_Generate->对局开始:效果执行完毕
 When_系统_Generate->对局开始:效果执行完毕
 第1局_第1回合_玩家0->When_系统_TurnStart:触发被隐匿的弱点_TurnStart效果
 When_系统_TurnStart->第1局_第1回合_玩家0:效果执行完毕
+第1局_第1回合_玩家0->When_系统_Summon:触发1_Summon效果
+When_系统_Summon->When_系统_Summon:触发本能「本我的解放」_Summon效果
+When_系统_Summon->When_系统_Summon:效果执行完毕
+When_系统_Summon->When_系统_Summon:触发月兔谍报员_Summon效果
+When_系统_Summon->When_系统_Summon:效果执行完毕
+When_系统_Summon->When_系统_Summon:触发抑制「Super Ego」_Summon效果
+When_系统_Summon->When_系统_Summon:效果执行完毕
+When_系统_Summon->When_系统_Summon:触发月兔狙击兵_Summon效果
+When_系统_Summon->When_系统_Summon:效果执行完毕
+When_系统_Summon->When_系统_Summon:触发底牌窥伺_Summon效果
+When_系统_Summon->When_系统_Summon:效果执行完毕
+When_系统_Summon->第1局_第1回合_玩家0:效果执行完毕
+第1局_第1回合_玩家0->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发底牌窥伺_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发底牌窥伺_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->第1局_第1回合_玩家0:效果执行完毕
+第1局_第1回合_玩家0->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->第1局_第1回合_玩家0:效果执行完毕
+第1局_第1回合_玩家0->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发底牌窥伺_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发底牌窥伺_Hurt效果
+When_1_Hurt->When_1_Hurt:触发本能「本我的解放」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发抑制「Super Ego」_Hurt效果
+When_1_Hurt->When_1_Hurt:效果执行完毕
+When_1_Hurt->When_1_Hurt:触发底牌窥伺_Hurt效果

@@ -1,0 +1,245 @@
+﻿@page "/disease-analysis"
+@using System.Collections.Generic
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- 左侧区域 - 病灶列表与参数设置 -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">病灶列表</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var lesion in Model.Lesions)
+                            {
+                                <tr>
+                                    <td>@lesion.SequenceNumber</td>
+                                    <td>@lesion.Description</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 病灶详情 -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="card-title">病灶详情</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="location">位置:</label>
+                        <input type="text" class="form-control" id="location" value="@Model.SelectedLesion.Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="keyImage">关键图像:</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="@Model.KeyImage1Url" alt="关键图像1" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                                <img src="@Model.KeyImage2Url" alt="关键图像2" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 移行带参数 -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5 class="card-title">移行带参数</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="t2wi">T2WI:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="t2wi" id="t2wi-high" value="high">
+                                    <label class="form-check-label" for="t2wi-high">高信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="t2wi" id="t2wi-low" value="low">
+                                    <label class="form-check-label" for="t2wi-low">低信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="t2wi" id="t2wi-uneven" value="uneven">
+                                    <label class="form-check-label" for="t2wi-uneven">不均匀信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="t2wi" id="t2wi-equal" value="equal">
+                                    <label class="form-check-label" for="t2wi-equal">等信号</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dwi">DWI:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="dwi" id="dwi-high" value="high">
+                                    <label class="form-check-label" for="dwi-high">高信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="dwi" id="dwi-slightlyHigh" value="slightlyHigh">
+                                    <label class="form-check-label" for="dwi-slightlyHigh">稍高信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="dwi" id="dwi-low" value="low">
+                                    <label class="form-check-label" for="dwi-low">低信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="dwi" id="dwi-equal" value="equal">
+                                    <label class="form-check-label" for="dwi-equal">等信号</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="adc">ADC:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="adc" id="adc-low" value="low">
+                                    <label class="form-check-label" for="adc-low">低信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="adc" id="adc-slightlyLow" value="slightlyLow">
+                                    <label class="form-check-label" for="adc-slightlyLow">稍低信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="adc" id="adc-high" value="high">
+                                    <label class="form-check-label" for="adc-high">高信号</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="adc" id="adc-equal" value="equal">
+                                    <label class="form-check-label" for="adc-equal">等信号</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lesionMaxDiameter">病灶最大径线:</label>
+                                <input type="number" class="form-control" id="lesionMaxDiameter" placeholder="cm">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="finalScore">最终评分:</label>
+                                <input type="text" class="form-control" id="finalScore" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bladderInvasion">膀胱外侵犯:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="bladderInvasion" id="bladderInvasionYes">
+                                    <label class="form-check-label" for="bladderInvasionYes">有</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prostateCapsule">病灶区域前列腺包膜:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prostateCapsule" id="prostateCapsuleSmooth" value="smooth">
+                                    <label class="form-check-label" for="prostateCapsuleSmooth">光滑</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prostateCapsule" id="prostateCapsuleRough" value="rough">
+                                    <label class="form-check-label" for="prostateCapsuleRough">不光整</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prostateCapsule" id="prostateCapsuleBroken" value="broken">
+                                    <label class="form-check-label" for="prostateCapsuleBroken">包膜破坏伴腺体外侵犯</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="neurovascularBundlesInvolvement">神经血管束受累:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="neurovascularBundlesInvolvement" id="neurovascularBundlesNone" value="none">
+                                    <label class="form-check-label" for="neurovascularBundlesNone">无</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="neurovascularBundlesInvolvement" id="neurovascularBundlesLeft" value="left">
+                                    <label class="form-check-label" for="neurovascularBundlesLeft">左侧</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="neurovascularBundlesInvolvement" id="neurovascularBundlesRight" value="right">
+                                    <label class="form-check-label" for="neurovascularBundlesRight">右侧</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="neurovascularBundlesInvolvement" id="neurovascularBundlesBoth" value="both">
+                                    <label class="form-check-label" for="neurovascularBundlesBoth">双侧</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bladderInvolvement">膀胱受累:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="bladderInvolvement" id="bladderInvolvementNone" value="none">
+                                    <label class="form-check-label" for="bladderInvolvementNone">无</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="bladderInvolvement" id="bladderInvolvementYes" value="yes">
+                                    <label class="form-check-label" for="bladderInvolvementYes">有</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- 右侧区域 - 图形显示 -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">图形显示</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="@Model.GraphicDisplayBaseUrl" alt="Base" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="@Model.GraphicDisplayMidUrl" alt="Mid" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="@Model.GraphicDisplayApexUrl" alt="Apex" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    class Model
+    {
+        static DiseaseAnalysisPageModel model = new();
+        public static List<DiseaseAnalysisPageModel.Lesion> Lesions = new() { new() { SequenceNumber = 1, Description = "yaya", Location = "what" } };
+        public static DiseaseAnalysisPageModel.Lesion SelectedLesion => Lesions.FirstOrDefault();
+        public static string GraphicDisplayBaseUrl => model.GraphicDisplayBaseUrl;
+        public static string GraphicDisplayMidUrl => model.GraphicDisplayBaseUrl;
+        public static string GraphicDisplayApexUrl => model.GraphicDisplayBaseUrl; 
+        public static string KeyImage1Url => model.GraphicDisplayBaseUrl;
+        public static string KeyImage2Url => model.GraphicDisplayBaseUrl;
+    }
+    public class DiseaseAnalysisPageModel
+    {
+        public List<Lesion> Lesions { get; set; } = new List<Lesion>();
+        public Lesion SelectedLesion { get; set; } = new Lesion();
+        public string KeyImage1Url { get; set; } = "path/to/key/image1.jpg";
+        public string KeyImage2Url { get; set; } = "path/to/key/image2.jpg";
+        public string GraphicDisplayBaseUrl { get; set; } = "path/to/graphic/display/base.jpg";
+        public string GraphicDisplayMidUrl { get; set; } = "path/to/graphic/display/mid.jpg";
+        public string GraphicDisplayApexUrl { get; set; } = "path/to/graphic/display/apex.jpg";
+
+        public class Lesion
+        {
+            public int SequenceNumber { get; set; }
+            public string Description { get; set; }
+            public string Location { get; set; }
+        }
+    }
+}

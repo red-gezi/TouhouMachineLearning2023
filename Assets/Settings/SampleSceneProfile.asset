@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8749945088957525080
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: GaussianBlurParameter
+  m_EditorClassIdentifier: Assembly-CSharp::GaussianBlurParameter
+  active: 1
+  iterations:
+    m_OverrideState: 1
+    m_Value: 0
+  blurSpread:
+    m_OverrideState: 1
+    m_Value: 0.2
+  downSample:
+    m_OverrideState: 1
+    m_Value: 20
+--- !u!114 &-8544618727543725897
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: GaussianBlurParameter
+  m_EditorClassIdentifier: Assembly-CSharp::GaussianBlurParameter
+  active: 1
+  iterations:
+    m_OverrideState: 1
+    m_Value: 0
+  blurSpread:
+    m_OverrideState: 1
+    m_Value: 2.11
+  downSample:
+    m_OverrideState: 0
+    m_Value: 2
 --- !u!114 &-7893295128165547882
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -135,7 +179,7 @@ MonoBehaviour:
   - {fileID: 849379129802519247}
   - {fileID: -7893295128165547882}
   - {fileID: -7011558710299706105}
-  - {fileID: -5657790043138659003}
+  - {fileID: -8749945088957525080}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -199,6 +243,28 @@ MonoBehaviour:
   downSample:
     m_OverrideState: 1
     m_Value: 4
+--- !u!114 &2002721344269776775
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: GaussianBlurParameter
+  m_EditorClassIdentifier: Assembly-CSharp::GaussianBlurParameter
+  active: 1
+  iterations:
+    m_OverrideState: 1
+    m_Value: 0
+  blurSpread:
+    m_OverrideState: 1
+    m_Value: 0.58
+  downSample:
+    m_OverrideState: 1
+    m_Value: 2
 --- !u!114 &2278207047452247073
 MonoBehaviour:
   m_ObjectHideFlags: 3
